@@ -1,0 +1,62 @@
+:root,
+[data-theme="light"] {
+  --link-color: #717171;
+  --black: #000;
+  --white: #fff;
+  --medium-aquamarine: #25cfb1;
+  --dark-lime: #8edb03;
+  --white-smoke-2: #f2f2f2;
+  --gray4: #bdbdbd;
+  --text-color: #555;
+  --lime: #bffd50;
+  --bg: #fafafa;
+  --dim-grey: #646464;
+  --purple: #9453ff;
+  --grey-4: #8e8e8e;
+  --red-ok: #ff000d;
+  --white-smoke: #f0f0f0;
+  --dodger-blue: #3b85f4;
+  --red-txt: #d00;
+  --link-hover: #1a1b1fbf;
+  --header-button-color: #555;
+  --header-button-color-hover: #000;
+  --header-button-bg-hover: #bffd50;
+  --header-bg-color: #ffffffe6;
+
+  // Tag colors
+  --tag-blue-color: #367ef6;
+  --tag-blue-bg: #5393ff29;
+  --tag-blue-border: #5393ff80;
+
+  --tag-orange-color: #ff9453;
+  --tag-orange-bg: #ff945324;
+  --tag-orange-border: #ff945380;
+
+  --tag-green-color: #1cc151;
+  --tag-green-bg: #47c97124;
+  --tag-green-border: #47c97180;
+
+  --tag-yellow-color: #e1c116;
+  --tag-yellow-bg: #ffe31e24;
+  --tag-yellow-border: #ffe31e80;
+
+  --tag-purple-color: #9453ff;
+  --tag-purple-bg: #9453ff24;
+  --tag-purple-border: #9453ff80;
+
+  --tag-red-color: #ff5368;
+  --tag-red-bg: #ff536824;
+  --tag-red-border: #ff536880;
+}
+
+[data-theme="dark"] {
+  --bg: #3c3a40;
+  --text-color: #ffffff;
+  --link-color: #f2f2f2;
+  --lime: #8edb03;
+  --header-button-color: #555;
+  --header-button-color-hover: #000;
+  --header-button-bg-hover: #bffd50;
+  --header-bg-color: #ffffffe6;
+  --footer-bg-color: #fafafa;
+}

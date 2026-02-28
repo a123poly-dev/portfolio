@@ -1,37 +1,36 @@
 import cn from "classnames"
 import { useScrollReveal } from "../../hooks/useScrollReveal"
+import { Tag } from "../Tag"
+import type { TTagColor } from "../Tag"
 
 import styles from "./About.module.scss"
 
-// Reuse tag styles from WorkCard
-import tagStyles from "../WorkCard/WorkCard.module.scss"
-
 type TTagItem = {
   label: string
-  className: string
+  color: TTagColor
 }
 
 const skills: TTagItem[] = [
-  { label: "Product design", className: tagStyles.tagGreen },
-  { label: "Research", className: tagStyles.tagGreen },
-  { label: "UX", className: tagStyles.tagGreen },
-  { label: "UI", className: tagStyles.tagRed },
-  { label: "HIG", className: tagStyles.tagBlue },
-  { label: "Material design", className: tagStyles.tagBlue },
-  { label: "Graphic Design", className: tagStyles.tagRed },
-  { label: "Prototyping", className: tagStyles.tagPurple },
-  { label: "Animation", className: tagStyles.tagPurple },
-  { label: "B2B", className: tagStyles.tagOrange },
-  { label: "B2C", className: tagStyles.tagOrange },
+  { label: "Product design", color: "green" },
+  { label: "Research", color: "green" },
+  { label: "UX", color: "green" },
+  { label: "UI", color: "red" },
+  { label: "HIG", color: "blue" },
+  { label: "Material design", color: "blue" },
+  { label: "Graphic Design", color: "red" },
+  { label: "Prototyping", color: "purple" },
+  { label: "Animation", color: "purple" },
+  { label: "B2B", color: "orange" },
+  { label: "B2C", color: "orange" },
 ]
 
 const tools: TTagItem[] = [
-  { label: "Figma", className: tagStyles.tagPurple },
-  { label: "Adobe Cloud", className: tagStyles.tagPurple },
-  { label: "Miro", className: tagStyles.tagGreen },
-  { label: "Git", className: tagStyles.tagBlue },
-  { label: "HTML", className: tagStyles.tagBlue },
-  { label: "CSS", className: tagStyles.tagBlue },
+  { label: "Figma", color: "purple" },
+  { label: "Adobe Cloud", color: "purple" },
+  { label: "Miro", color: "green" },
+  { label: "Git", color: "blue" },
+  { label: "HTML", color: "blue" },
+  { label: "CSS", color: "blue" },
 ]
 
 export const About = () => {
@@ -58,12 +57,7 @@ export const About = () => {
                 <div className={styles.label}>Skills:</div>
                 <div className={styles.tagsWrap}>
                   {skills.map((s) => (
-                    <span
-                      key={s.label}
-                      className={`${tagStyles.tag} ${s.className}`}
-                    >
-                      {s.label}
-                    </span>
+                    <Tag key={s.label} label={s.label} color={s.color} />
                   ))}
                 </div>
               </div>
@@ -71,12 +65,7 @@ export const About = () => {
                 <div className={styles.label}>Tools:</div>
                 <div className={styles.tagsWrap}>
                   {tools.map((t) => (
-                    <span
-                      key={t.label}
-                      className={`${tagStyles.tag} ${t.className}`}
-                    >
-                      {t.label}
-                    </span>
+                    <Tag key={t.label} label={t.label} color={t.color} />
                   ))}
                 </div>
               </div>

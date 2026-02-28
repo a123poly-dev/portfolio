@@ -1,16 +1,16 @@
-@use '../../styles/variables' as *;
+@use "../../styles/variables" as *;
 
 .hero {
   margin-top: 100px;
 }
 
 .container {
-  max-width: $container-max-width;
+  max-width: var(--container-max-width);
   margin: 0 auto;
 }
 
 .date {
-  font-family: $font-family;
+  font-family: var(--font-family);
   color: var(--dark-grey);
   font-size: var(--text-size);
   letter-spacing: 1px;
@@ -19,7 +19,7 @@
 }
 
 .title {
-  font-family: $font-family-display;
+  font-family: var(--font-family-display);
   color: var(--black);
   font-size: 49px;
   line-height: 120%;
@@ -36,18 +36,26 @@
 
 // Cover variants
 .coverPulkovo {
-  background-image: url('https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65e5c455269ef601bfa200a5_cover_1.png'), linear-gradient(#4fd5ff, #58afff);
-  background-position: 50% 100%, 0 0;
+  background-image:
+    url("https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65e5c455269ef601bfa200a5_cover_1.png"),
+    linear-gradient(#4fd5ff, #58afff);
+  background-position:
+    50% 100%,
+    0 0;
   background-size: 986px, auto;
 }
 
 .coverPbx {
-  background-image: url('https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65cd00088256015f4f632a15_cover_1.png'), linear-gradient(135deg, #fff170, #ffce4f);
-  background-position: 50% 100%, 0 0;
+  background-image:
+    url("https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65cd00088256015f4f632a15_cover_1.png"),
+    linear-gradient(135deg, #fff170, #ffce4f);
+  background-position:
+    50% 100%,
+    0 0;
   background-size: 1010px, auto;
 }
 
-@media screen and (max-width: $breakpoint-md) {
+@media screen and (max-width: var(--breakpoint-md)) {
   .hero {
     padding-left: 40px;
     padding-right: 40px;
@@ -59,7 +67,7 @@
   }
 }
 
-@media screen and (max-width: $breakpoint-sm) {
+@media screen and (max-width: var(--breakpoint-sm)) {
   .hero {
     padding-left: 24px;
     padding-right: 24px;
@@ -71,7 +79,7 @@
   }
 }
 
-@media screen and (max-width: $breakpoint-xs) {
+@media screen and (max-width: var(--breakpoint-xs)) {
   .cover {
     background-size: 260px, auto;
     height: 130px;

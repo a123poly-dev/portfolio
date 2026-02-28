@@ -1,4 +1,4 @@
-@use '../../styles/variables' as *;
+@use "../../styles/variables" as *;
 
 .grid {
   display: grid;
@@ -6,7 +6,7 @@
   gap: 32px;
 }
 
-@media screen and (max-width: $breakpoint-md) {
+@media screen and (max-width: var(--breakpoint-md)) {
   .grid {
     grid-template-columns: 1fr;
   }

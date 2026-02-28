@@ -1,4 +1,4 @@
-@use '../../styles/variables' as *;
+@use "../../styles/variables" as *;
 
 .works {
   margin-top: 0;
@@ -7,7 +7,7 @@
 }
 
 .container {
-  max-width: $container-max-width;
+  max-width: var(--container-max-width);
   margin: 0 auto;
 }
 
@@ -30,7 +30,7 @@
   grid-column: span 1;
 }
 
-@media screen and (max-width: $breakpoint-md) {
+@media screen and (max-width: var(--breakpoint-md)) {
   .works {
     padding-left: 40px;
     padding-right: 40px;
@@ -47,7 +47,7 @@
   }
 }
 
-@media screen and (max-width: $breakpoint-sm) {
+@media screen and (max-width: var(--breakpoint-sm)) {
   .works {
     padding-left: 24px;
     padding-right: 24px;

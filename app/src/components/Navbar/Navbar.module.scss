@@ -1,9 +1,9 @@
-@use '../../styles/variables' as *;
+@use "../../styles/variables" as *;
 
 .menu {
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
-  background-color: #ffffffe6;
+  background-color: var(--header-bg-color);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,7 +14,7 @@
 
 .container {
   width: 100%;
-  max-width: $container-max-width;
+  max-width: var(--container-max-width);
   margin: 0 auto;
   padding: 24px 0;
 }
@@ -38,8 +38,8 @@
 }
 
 .navLink {
-  color: var(--grey-5);
-  font-family: $font-family;
+  color: var(--header-button-color);
+  font-family: var(--font-family);
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
@@ -47,27 +47,29 @@
   padding: 5px 12px;
   margin: 0 8px;
   border-radius: 40px;
-  transition: background-color 0.2s, color 0.2s;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
 
   &:hover {
-    color: var(--black);
-    background-color: var(--lime);
+    color: var(--header-button-color-hover);
+    background-color: var(--header-button-bg-hover);
   }
 }
 
-@media screen and (max-width: $breakpoint-md) {
+@media screen and (max-width: var(--breakpoint-md)) {
   .container {
     padding: 16px 40px;
   }
 }
 
-@media screen and (max-width: $breakpoint-sm) {
+@media screen and (max-width: var(--breakpoint-sm)) {
   .container {
     padding: 16px 24px;
   }
 }
 
-@media screen and (max-width: $breakpoint-xs) {
+@media screen and (max-width: var(--breakpoint-xs)) {
   .container {
     padding: 16px 24px;
   }

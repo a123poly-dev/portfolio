@@ -1,0 +1,58 @@
+@use "../../styles/variables" as *;
+
+.tag {
+  font-family: var(--font-family);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 140%;
+  border-radius: 12px;
+  padding: 4px 8px;
+  border: 1px solid;
+}
+
+.tagLink {
+  composes: tag;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.tagBlue {
+  color: var(--tag-blue-color);
+  background-color: var(--tag-blue-bg);
+  border-color: var(--tag-blue-border);
+}
+
+.tagOrange {
+  color: var(--tag-orange-color);
+  background-color: var(--tag-orange-bg);
+  border-color: var(--tag-orange-border);
+}
+
+.tagGreen {
+  color: var(--tag-green-color);
+  background-color: var(--tag-green-bg);
+  border-color: var(--tag-green-border);
+}
+
+.tagYellow {
+  color: var(--tag-yellow-color);
+  background-color: var(--tag-yellow-bg);
+  border-color: var(--tag-yellow-border);
+}
+
+.tagPurple {
+  color: var(--tag-purple-color);
+  background-color: var(--tag-purple-bg);
+  border-color: var(--tag-purple-border);
+}
+
+.tagRed {
+  color: var(--tag-red-color);
+  background-color: var(--tag-red-bg);
+  border-color: var(--tag-red-border);
+}

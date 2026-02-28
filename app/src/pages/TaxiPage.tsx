@@ -14,6 +14,13 @@ export const TaxiPage = () => {
     window.scrollTo(0, 0)
   }, [pathname])
 
+  useEffect(() => {
+    document.documentElement.dataset.theme = "dark"
+    return () => {
+      document.documentElement.dataset.theme = "light"
+    }
+  }, [])
+
   return (
     <div className={styles.page}>
       <Navbar />

@@ -13,9 +13,9 @@ import {
   OKEY_SITE_PATH,
   YA_CALLS_PATH,
   TAXI_PATH,
-} from "./constants/routPathConstants"
+} from "./constants/routePathConstants"
 
-function App() {
+const App = () => {
   return (
     <BrowserRouter>
       <Routes>

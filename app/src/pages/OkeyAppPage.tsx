@@ -15,7 +15,7 @@ export const OkeyAppPage = () => (
       </p>
       <h1
         style={{
-          fontFamily: "var(--font-family-2)",
+          fontFamily: "var(var(--font-family)-2)",
           color: "var(--black)",
           fontSize: "49px",
           lineHeight: "120%",

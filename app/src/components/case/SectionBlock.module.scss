@@ -1,4 +1,4 @@
-@use '../../styles/variables' as *;
+@use "../../styles/variables" as *;
 
 .section {
   margin-top: 100px;
@@ -6,18 +6,18 @@
 }
 
 .container {
-  max-width: $container-max-width;
+  max-width: var(--container-max-width);
   margin: 0 auto;
 }
 
-@media screen and (max-width: $breakpoint-md) {
+@media screen and (max-width: var(--breakpoint-md)) {
   .section {
     padding-left: 40px;
     padding-right: 40px;
   }
 }
 
-@media screen and (max-width: $breakpoint-sm) {
+@media screen and (max-width: var(--breakpoint-sm)) {
   .section {
     padding-left: 24px;
     padding-right: 24px;

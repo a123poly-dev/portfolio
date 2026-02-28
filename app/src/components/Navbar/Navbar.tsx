@@ -2,7 +2,7 @@ import {
   ROOT_PATH,
   MAIN_PAGE_WORKS,
   MAIN_PAGE_ABOUT,
-} from "../../constants/routPathConstants"
+} from "../../constants/routePathConstants"
 
 import styles from "./Navbar.module.scss"
 

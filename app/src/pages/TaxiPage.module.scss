@@ -1,12 +1,7 @@
-@use '../styles/variables' as *;
-
-.page {
-  background-color: #3c3a40;
-  color: #fff;
-}
+@use "../styles/variables" as *;
 
 .heroStack {
-  max-width: $container-max-width;
+  max-width: var(--container-max-width);
   margin: 0 auto;
   padding: 100px 20px;
   display: grid;
@@ -14,7 +9,7 @@
   grid-template-areas: "area area" ". .";
   gap: 32px;
 
-  @media screen and (max-width: $breakpoint-sm) {
+  @media screen and (max-width: var(--breakpoint-sm)) {
     grid-template-columns: 1fr;
     grid-template-areas: "area" "." ".";
     padding: 80px 24px;
@@ -34,14 +29,13 @@
 }
 
 .h2White {
-  font-family: $font-family-display;
-  color: #fff;
+  font-family: var(--font-family-display);
   font-size: 49px;
   line-height: 120%;
   width: 80%;
   margin-bottom: 40px;
 
-  @media screen and (max-width: $breakpoint-sm) {
+  @media screen and (max-width: var(--breakpoint-sm)) {
     font-size: 36px;
     width: 100%;
   }
@@ -49,14 +43,14 @@
 
 .paragraphWhite {
   color: #f2f2f2;
-  font-family: $font-family;
+  font-family: var(--font-family);
   font-size: 16px;
   line-height: 140%;
   letter-spacing: 0.2px;
 }
 
 .h4White {
-  font-family: $font-family-display;
+  font-family: var(--font-family-display);
   color: #fff;
   font-size: 31px;
   line-height: 120%;
@@ -76,7 +70,7 @@
   align-items: center;
   justify-content: center;
 
-  @media screen and (max-width: $breakpoint-sm) {
+  @media screen and (max-width: var(--breakpoint-sm)) {
     flex-direction: column;
   }
 }
@@ -85,7 +79,7 @@
   flex: 1;
   max-width: 46%;
 
-  @media screen and (max-width: $breakpoint-sm) {
+  @media screen and (max-width: var(--breakpoint-sm)) {
     max-width: 100%;
   }
 }
@@ -108,8 +102,7 @@
 }
 
 .headingWhite {
-  font-family: $font-family-display;
-  color: #fff;
+  font-family: var(--font-family-display);
   font-size: 39px;
   line-height: 140%;
   letter-spacing: 1px;
@@ -119,16 +112,11 @@
 }
 
 .linkWhite {
-  color: #fff;
   font-size: 16px;
   letter-spacing: 0.2px;
   text-decoration: none;
   display: inline-block;
   margin-top: 24px;
-
-  &:hover {
-    color: var(--dark-lime);
-  }
 }
 
 .videoWrapper {
@@ -145,8 +133,7 @@
 }
 
 .kiitosTitle {
-  font-family: $font-family-display;
-  color: #fff;
+  font-family: var(--font-family-display);
   font-size: 49px;
   line-height: 120%;
   margin-bottom: 8px;
@@ -160,9 +147,4 @@
 .sticker {
   max-width: 200px;
   height: auto;
-}
-
-// Footer override for dark page
-.footer {
-  background-color: #3c3a40;
 }

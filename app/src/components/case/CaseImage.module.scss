@@ -1,4 +1,4 @@
-@use '../../styles/variables' as *;
+@use "../../styles/variables" as *;
 
 .figure {
   margin: 0;
@@ -11,7 +11,7 @@
 }
 
 .caption {
-  font-family: $font-family;
+  font-family: var(--font-family);
   color: var(--dark-grey);
   letter-spacing: 0.2px;
   text-align: center;

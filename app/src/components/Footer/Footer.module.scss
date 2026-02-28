@@ -1,14 +1,14 @@
-@use '../../styles/variables' as *;
+@use "../../styles/variables" as *;
 
 .footer {
-  background-color: var(--bg);
+  background-color: var(--footer-bg-color);
   border-top: 1px solid #e3e3e3;
   padding: 0 30px 40px;
 }
 
 .container {
   width: 100%;
-  max-width: $container-max-width;
+  max-width: var(--container-max-width);
   margin: 32px auto 0;
 }
 
@@ -28,8 +28,8 @@
 }
 
 .contactLink {
-  color: var(--grey-5);
-  font-family: $font-family;
+  color: var(--link-color);
+  font-family: var(--font-family);
   margin-left: 24px;
 
   &:hover {
@@ -37,7 +37,7 @@
   }
 }
 
-@media screen and (max-width: $breakpoint-sm) {
+@media screen and (max-width: var(--breakpoint-sm)) {
   .footer {
     padding-left: 15px;
     padding-right: 15px;
