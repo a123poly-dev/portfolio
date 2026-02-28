@@ -12,6 +12,21 @@ export default meta
 
 type Story = StoryObj<typeof Heading>
 
+export const Default: Story = {
+  args: {
+    type: "heading-h1",
+    children: "Hello, World!",
+  },
+}
+
+export const WithAsOverride: Story = {
+  args: {
+    type: "heading-h1",
+    as: "h3",
+    children: "Visually heading-h1, rendered as h3",
+  },
+}
+
 const allTypes: THeadingType[] = [
   "heading-h1",
   "heading-h2",
@@ -30,13 +45,5 @@ export const AllTypes: Story = {
         </Heading>
       ))}
     </div>
-  ),
-}
-
-export const WithAsOverride: Story = {
-  render: () => (
-    <Heading type="heading-h1" as="h3">
-      Visually heading-h1, rendered as h3
-    </Heading>
   ),
 }

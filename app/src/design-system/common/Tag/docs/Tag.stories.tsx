@@ -12,6 +12,21 @@ export default meta
 
 type Story = StoryObj<typeof Tag>
 
+export const Default: Story = {
+  args: {
+    label: "UX",
+    color: "purple",
+  },
+}
+
+export const AsLink: Story = {
+  args: {
+    label: "Clickable tag",
+    color: "blue",
+    href: "https://example.com",
+  },
+}
+
 const allColors: TTagColor[] = ["blue", "orange", "green", "yellow", "purple", "red"]
 
 export const AllColors: Story = {
@@ -21,11 +36,5 @@ export const AllColors: Story = {
         <Tag key={color} label={color} color={color} />
       ))}
     </div>
-  ),
-}
-
-export const AsLink: Story = {
-  render: () => (
-    <Tag label="Clickable tag" color="blue" href="https://example.com" />
   ),
 }
