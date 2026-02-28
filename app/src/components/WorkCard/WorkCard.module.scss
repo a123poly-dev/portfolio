@@ -1,0 +1,192 @@
+@use '../../styles/variables' as *;
+
+.card {
+  background-color: var(--bg);
+  text-decoration: none;
+  display: block;
+  width: 100%;
+}
+
+.cover {
+  border-radius: var(--work-items-border-radius);
+  width: 100%;
+  background-repeat: no-repeat, repeat;
+  position: relative;
+  overflow: hidden;
+}
+
+.coverLarge {
+  height: 360px;
+}
+
+.coverSmall {
+  height: 250px;
+}
+
+// Cover variants
+.pulkovoCover {
+  background-image: url('https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65cb54a138b8b76c642f5392_img_pulkovo.png'), linear-gradient(#4fd5ff, #58afff);
+  background-position: 15% 30%, 0 0;
+  background-size: 1342px, auto;
+}
+
+.okeyAppCover {
+  background-image: url('https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65cb5e8dc86f961710226b1d_img_okeyapp.png'), linear-gradient(135deg, #a1ffa5, #b3ff68);
+  background-position: 47% 33%, 0 0;
+  background-size: 828px, auto;
+}
+
+.pbhCover {
+  background-image: url('https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65cb61d8289371a37fc02b8e_img_PBX.png'), linear-gradient(127deg, #fff170, #ffce4f);
+  background-position: 30% -5%, 0 0;
+  background-size: 742px, auto;
+}
+
+.taxiCover {
+  background-image: url('https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65cb6a187726bfd4d45369bd_img_taxi.png'), linear-gradient(130deg, #fae369, #f6c249);
+  background-position: 43% -11%, 0 0;
+  background-size: 385px, auto;
+}
+
+.okeySiteCover {
+  background-image: url('https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65e86afc7649162eacdebaf1_img_okey_site.png'), linear-gradient(#a1ffa5, #b3ff68);
+  background-position: 30% 14%, 0 0;
+  background-size: 686px, auto;
+}
+
+.pbxyaCover {
+  background-image: url('https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65cbccb8fd057202aa49ffcf_CS_1.png'), linear-gradient(135deg, #b98eff, #a073ff);
+  background-position: 50%, 0 0;
+  background-size: cover, auto;
+}
+
+.gpnCover {
+  background-image: url('https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65cbcdd67eea30fddeae0906_CS_2.png'), linear-gradient(138deg, #65edff, #7ec1ff);
+  background-position: 50%, 0 0;
+  background-size: cover, auto;
+}
+
+// Hover overlay
+.overlay {
+  border-radius: var(--work-items-border-radius);
+  font-family: $font-family-display;
+  color: var(--white);
+  text-align: center;
+  letter-spacing: 1px;
+  background-color: #83a548cc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-size: 31px;
+  font-weight: 600;
+  line-height: 140%;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+  position: absolute;
+  inset: 0;
+
+  .card:hover & {
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+  }
+}
+
+.comingSoonOverlay {
+  composes: overlay;
+  background-color: transparent;
+  opacity: 1;
+  font-family: $font-family;
+  font-size: 25px;
+}
+
+// Tags
+.tags {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  font-family: $font-family;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 140%;
+  border-radius: 12px;
+  padding: 4px 8px;
+  border: 1px solid;
+}
+
+.tagBlue {
+  color: var(--tag-blue-color);
+  background-color: var(--tag-blue-bg);
+  border-color: var(--tag-blue-border);
+}
+
+.tagOrange {
+  color: var(--tag-orange-color);
+  background-color: var(--tag-orange-bg);
+  border-color: var(--tag-orange-border);
+}
+
+.tagGreen {
+  color: var(--tag-green-color);
+  background-color: var(--tag-green-bg);
+  border-color: var(--tag-green-border);
+}
+
+.tagYellow {
+  color: var(--tag-yellow-color);
+  background-color: var(--tag-yellow-bg);
+  border-color: var(--tag-yellow-border);
+}
+
+.tagPurple {
+  color: var(--tag-purple-color);
+  background-color: var(--tag-purple-bg);
+  border-color: var(--tag-purple-border);
+}
+
+.tagRed {
+  color: var(--tag-red-color);
+  background-color: var(--tag-red-bg);
+  border-color: var(--tag-red-border);
+}
+
+.date {
+  font-family: $font-family;
+  color: var(--grey-4);
+  font-size: var(--small-text-size);
+  margin-top: 20px;
+  font-weight: 400;
+  line-height: 120%;
+}
+
+.title {
+  font-family: $font-family-display;
+  color: var(--black);
+  letter-spacing: 1px;
+  margin-top: 8px;
+  margin-bottom: 32px;
+  font-weight: 600;
+  line-height: 120%;
+}
+
+.titleLarge {
+  font-size: 31px;
+}
+
+.titleSmall {
+  font-family: $font-family;
+  font-size: 20px;
+  letter-spacing: 0.5px;
+}
+
+@media screen and (max-width: $breakpoint-md) {
+  .overlay {
+    display: none;
+  }
+}

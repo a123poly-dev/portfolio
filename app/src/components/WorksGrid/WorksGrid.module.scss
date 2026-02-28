@@ -1,0 +1,55 @@
+@use '../../styles/variables' as *;
+
+.works {
+  margin-top: 0;
+  margin-bottom: 100px;
+  padding-top: 100px;
+}
+
+.container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto auto auto;
+  gap: 40px 32px;
+}
+
+.fullWidth {
+  grid-column: span 4;
+}
+
+.halfWidth {
+  grid-column: span 2;
+}
+
+.quarterWidth {
+  grid-column: span 1;
+}
+
+@media screen and (max-width: $breakpoint-md) {
+  .works {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .fullWidth,
+  .halfWidth,
+  .quarterWidth {
+    grid-column: span 1;
+  }
+}
+
+@media screen and (max-width: $breakpoint-sm) {
+  .works {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}

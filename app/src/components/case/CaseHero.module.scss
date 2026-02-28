@@ -1,0 +1,80 @@
+@use '../../styles/variables' as *;
+
+.hero {
+  margin-top: 100px;
+}
+
+.container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+}
+
+.date {
+  font-family: $font-family;
+  color: var(--dark-grey);
+  font-size: var(--text-size);
+  letter-spacing: 1px;
+  line-height: 140%;
+  margin-bottom: 4px;
+}
+
+.title {
+  font-family: $font-family-display;
+  color: var(--black);
+  font-size: 49px;
+  line-height: 120%;
+  margin-bottom: 40px;
+}
+
+.cover {
+  border-radius: var(--work-items-border-radius);
+  width: 100%;
+  height: 475px;
+  background-repeat: no-repeat, repeat;
+  margin-bottom: 80px;
+}
+
+// Cover variants
+.coverPulkovo {
+  background-image: url('https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65e5c455269ef601bfa200a5_cover_1.png'), linear-gradient(#4fd5ff, #58afff);
+  background-position: 50% 100%, 0 0;
+  background-size: 986px, auto;
+}
+
+.coverPbx {
+  background-image: url('https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65cd00088256015f4f632a15_cover_1.png'), linear-gradient(135deg, #fff170, #ffce4f);
+  background-position: 50% 100%, 0 0;
+  background-size: 1010px, auto;
+}
+
+@media screen and (max-width: $breakpoint-md) {
+  .hero {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .cover {
+    background-size: 640px, auto;
+    height: 295px;
+  }
+}
+
+@media screen and (max-width: $breakpoint-sm) {
+  .hero {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .cover {
+    background-size: 480px, auto;
+    height: 216px;
+  }
+}
+
+@media screen and (max-width: $breakpoint-xs) {
+  .cover {
+    background-size: 260px, auto;
+    height: 130px;
+    display: none;
+  }
+}

@@ -1,0 +1,76 @@
+@use '../../styles/variables' as *;
+
+.section {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+}
+
+.kiitos {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  align-items: center;
+}
+
+.textBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 46%;
+}
+
+.title {
+  font-family: $font-family-display;
+  color: var(--black);
+  font-size: 61px;
+  line-height: 120%;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: var(--dark-grey);
+  font-family: $font-family;
+  font-size: 16px;
+  line-height: 140%;
+}
+
+.imageBlock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sticker {
+  max-width: 200px;
+}
+
+@media screen and (max-width: $breakpoint-md) {
+  .section {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .kiitos {
+    display: block;
+    text-align: center;
+  }
+
+  .textBlock {
+    max-width: 100%;
+    align-items: center;
+    margin-bottom: 32px;
+  }
+}
+
+@media screen and (max-width: $breakpoint-sm) {
+  .section {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}

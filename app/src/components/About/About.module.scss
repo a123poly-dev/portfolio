@@ -1,0 +1,184 @@
+@use '../../styles/variables' as *;
+
+.about {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto auto;
+  gap: 0 32px;
+}
+
+.titleCell {
+  grid-column: span 4;
+}
+
+.sectionTitle {
+  font-family: $font-family-display;
+  color: var(--black);
+  letter-spacing: 2px;
+  font-size: 61px;
+  line-height: 120%;
+  margin-bottom: 32px;
+}
+
+.experienceCell {
+  grid-column: span 2;
+}
+
+.heading {
+  font-family: $font-family-display;
+  color: var(--black);
+  text-align: left;
+  letter-spacing: 1px;
+  font-size: 39px;
+  font-weight: 600;
+  line-height: 140%;
+  margin-bottom: 24px;
+}
+
+.description {
+  font-family: $font-family;
+  color: var(--dark-grey);
+  letter-spacing: 0.2px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 140%;
+}
+
+.skillsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-top: 32px;
+}
+
+.label {
+  font-family: $font-family;
+  color: var(--black);
+  font-size: var(--text-size);
+  font-weight: 700;
+  line-height: 140%;
+}
+
+.tagsWrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+// Education cell shares column span with experience
+.educationCell {
+  grid-column: span 1;
+}
+
+.educationList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.educationText {
+  font-family: $font-family;
+  color: var(--dark-grey);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 140%;
+}
+
+// Contact cell
+.contactCell {
+  grid-column: span 1;
+}
+
+.photoBlock {
+  display: block;
+}
+
+.photo {
+  width: 251px;
+}
+
+.socials {
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.socialLink {
+  &:hover {
+    opacity: 0.6;
+  }
+}
+
+.socialIcon {
+  width: 24px;
+}
+
+.cvBlock {
+  display: flex;
+  gap: 12px;
+  margin-top: 40px;
+  align-items: center;
+}
+
+.cvInner {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.cvLink {
+  color: var(--grey-5);
+  font-family: $font-family;
+  font-size: 16px;
+  line-height: 23px;
+
+  &:hover {
+    color: var(--dark-lime);
+  }
+}
+
+@media screen and (max-width: $breakpoint-md) {
+  .about {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .titleCell,
+  .experienceCell,
+  .educationCell,
+  .contactCell {
+    grid-column: span 1;
+  }
+}
+
+@media screen and (max-width: $breakpoint-sm) {
+  .about {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+@media screen and (max-width: $breakpoint-xs) {
+  .heading {
+    font-family: $font-family;
+    letter-spacing: 0.5px;
+    font-size: 25px;
+  }
+}

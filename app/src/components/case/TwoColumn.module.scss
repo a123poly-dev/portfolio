@@ -1,0 +1,13 @@
+@use '../../styles/variables' as *;
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+@media screen and (max-width: $breakpoint-md) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

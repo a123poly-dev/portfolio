@@ -1,0 +1,25 @@
+@use '../../styles/variables' as *;
+
+.section {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: $breakpoint-md) {
+  .section {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+@media screen and (max-width: $breakpoint-sm) {
+  .section {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}

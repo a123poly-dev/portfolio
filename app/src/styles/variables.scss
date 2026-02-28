@@ -1,0 +1,70 @@
+// Fonts
+@font-face {
+  font-family: 'Clashdisplay';
+  src: url('../assets/fonts/ClashDisplay-Semibold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+// SCSS variables
+$font-family: 'DM Sans', sans-serif;
+$font-family-display: 'Clashdisplay', sans-serif;
+
+$breakpoint-md: 991px;
+$breakpoint-sm: 767px;
+$breakpoint-xs: 479px;
+
+$container-max-width: 1100px;
+
+// CSS custom properties
+:root {
+  --grey-5: #717171;
+  --black: #000;
+  --white: #fff;
+  --medium-aquamarine: #25cfb1;
+  --dark-lime: #8edb03;
+  --white-smoke-2: #f2f2f2;
+  --font-family-display: 'Clashdisplay', sans-serif;
+  --gray4: #bdbdbd;
+  --dark-grey: #555;
+  --lime: #bffd50;
+  --bg: #fafafa;
+  --dim-grey: #646464;
+  --purple: #9453ff;
+  --text-size: 16px;
+  --font-family: 'DM Sans', sans-serif;
+  --work-items-border-radius: 24px;
+  --grey-4: #8e8e8e;
+  --small-text-size: 13px;
+  --red-ok: #ff000d;
+  --white-smoke: #f0f0f0;
+  --dodger-blue: #3b85f4;
+  --red-txt: #d00;
+  --link-hover: #1a1b1fbf;
+
+  // Tag colors
+  --tag-blue-color: #367ef6;
+  --tag-blue-bg: #5393ff29;
+  --tag-blue-border: #5393ff80;
+
+  --tag-orange-color: #ff9453;
+  --tag-orange-bg: #ff945324;
+  --tag-orange-border: #ff945380;
+
+  --tag-green-color: #1cc151;
+  --tag-green-bg: #47c97124;
+  --tag-green-border: #47c97180;
+
+  --tag-yellow-color: #e1c116;
+  --tag-yellow-bg: #ffe31e24;
+  --tag-yellow-border: #ffe31e80;
+
+  --tag-purple-color: #9453ff;
+  --tag-purple-bg: #9453ff24;
+  --tag-purple-border: #9453ff80;
+
+  --tag-red-color: #ff5368;
+  --tag-red-bg: #ff536824;
+  --tag-red-border: #ff536880;
+}

@@ -1,0 +1,85 @@
+@use '../../styles/variables' as *;
+
+.header {
+  margin-top: 100px;
+  margin-bottom: 0;
+}
+
+.container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+}
+
+.content {
+  max-width: 765px;
+  margin: 100px auto 60px;
+}
+
+.titleRow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.title {
+  font-family: $font-family-display;
+  color: var(--purple);
+  text-align: center;
+  letter-spacing: 1.5px;
+  font-size: 61px;
+  font-weight: 600;
+  line-height: 120%;
+  margin-bottom: 24px;
+}
+
+.avatar {
+  width: 92px;
+  margin-left: 16px;
+}
+
+.subtitle {
+  font-family: $font-family-display;
+  color: var(--black);
+  text-align: center;
+  letter-spacing: 1px;
+  font-size: 39px;
+  font-weight: 600;
+  line-height: 140%;
+  margin-bottom: 24px;
+}
+
+.location {
+  color: var(--grey-5);
+  font-family: $font-family;
+  font-size: var(--text-size);
+  text-align: center;
+  line-height: 140%;
+}
+
+@media screen and (max-width: $breakpoint-md) {
+  .header {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+@media screen and (max-width: $breakpoint-sm) {
+  .header {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+@media screen and (max-width: $breakpoint-xs) {
+  .content {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .subtitle {
+    font-family: $font-family;
+    letter-spacing: 0.5px;
+    font-size: 25px;
+  }
+}

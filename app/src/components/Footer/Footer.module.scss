@@ -1,0 +1,59 @@
+@use '../../styles/variables' as *;
+
+.footer {
+  background-color: var(--bg);
+  border-top: 1px solid #e3e3e3;
+  padding: 0 30px 40px;
+}
+
+.container {
+  width: 100%;
+  max-width: $container-max-width;
+  margin: 32px auto 0;
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.copyright {
+  color: var(--black);
+}
+
+.links {
+  display: flex;
+  align-items: center;
+}
+
+.contactLink {
+  color: var(--grey-5);
+  font-family: $font-family;
+  margin-left: 24px;
+
+  &:hover {
+    color: var(--black);
+  }
+}
+
+@media screen and (max-width: $breakpoint-sm) {
+  .footer {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .bottom {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .copyright {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .links {
+    margin-top: 15px;
+  }
+}

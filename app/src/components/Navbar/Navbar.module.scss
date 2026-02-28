@@ -1,0 +1,74 @@
+@use '../../styles/variables' as *;
+
+.menu {
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  background-color: #ffffffe6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 10;
+}
+
+.container {
+  width: 100%;
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 24px 0;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  max-width: 105px;
+  display: block;
+  padding: 4px 0;
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.navLink {
+  color: var(--grey-5);
+  font-family: $font-family;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.25px;
+  padding: 5px 12px;
+  margin: 0 8px;
+  border-radius: 40px;
+  transition: background-color 0.2s, color 0.2s;
+
+  &:hover {
+    color: var(--black);
+    background-color: var(--lime);
+  }
+}
+
+@media screen and (max-width: $breakpoint-md) {
+  .container {
+    padding: 16px 40px;
+  }
+}
+
+@media screen and (max-width: $breakpoint-sm) {
+  .container {
+    padding: 16px 24px;
+  }
+}
+
+@media screen and (max-width: $breakpoint-xs) {
+  .container {
+    padding: 16px 24px;
+  }
+}

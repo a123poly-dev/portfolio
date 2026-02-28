@@ -1,0 +1,168 @@
+@use '../styles/variables' as *;
+
+.page {
+  background-color: #3c3a40;
+  color: #fff;
+}
+
+.heroStack {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 100px 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "area area" ". .";
+  gap: 32px;
+
+  @media screen and (max-width: $breakpoint-sm) {
+    grid-template-columns: 1fr;
+    grid-template-areas: "area" "." ".";
+    padding: 80px 24px;
+  }
+}
+
+.heroTitle {
+  grid-area: area;
+}
+
+.label {
+  color: #bdbdbd;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+.h2White {
+  font-family: $font-family-display;
+  color: #fff;
+  font-size: 49px;
+  line-height: 120%;
+  width: 80%;
+  margin-bottom: 40px;
+
+  @media screen and (max-width: $breakpoint-sm) {
+    font-size: 36px;
+    width: 100%;
+  }
+}
+
+.paragraphWhite {
+  color: #f2f2f2;
+  font-family: $font-family;
+  font-size: 16px;
+  line-height: 140%;
+  letter-spacing: 0.2px;
+}
+
+.h4White {
+  font-family: $font-family-display;
+  color: #fff;
+  font-size: 31px;
+  line-height: 120%;
+  margin-bottom: 24px;
+}
+
+// Hero sections (alternating image/text)
+.heroSection {
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 40px 30px;
+}
+
+.heroFlex {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  justify-content: center;
+
+  @media screen and (max-width: $breakpoint-sm) {
+    flex-direction: column;
+  }
+}
+
+.heroSplit {
+  flex: 1;
+  max-width: 46%;
+
+  @media screen and (max-width: $breakpoint-sm) {
+    max-width: 100%;
+  }
+}
+
+.heroImage {
+  width: 100%;
+  height: auto;
+}
+
+// Prototype section
+.prototypeSection {
+  max-width: 940px;
+  margin: 100px auto 80px;
+  padding: 0 30px;
+  text-align: center;
+
+  @media screen and (max-width: 568px) {
+    display: none;
+  }
+}
+
+.headingWhite {
+  font-family: $font-family-display;
+  color: #fff;
+  font-size: 39px;
+  line-height: 140%;
+  letter-spacing: 1px;
+  text-align: center;
+  max-width: 500px;
+  margin: 0 auto 40px;
+}
+
+.linkWhite {
+  color: #fff;
+  font-size: 16px;
+  letter-spacing: 0.2px;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 24px;
+
+  &:hover {
+    color: var(--dark-lime);
+  }
+}
+
+.videoWrapper {
+  border-radius: 24px;
+  overflow: hidden;
+  display: inline-block;
+}
+
+// Kiitos for dark theme
+.kiitosSection {
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 40px 30px 86px;
+}
+
+.kiitosTitle {
+  font-family: $font-family-display;
+  color: #fff;
+  font-size: 49px;
+  line-height: 120%;
+  margin-bottom: 8px;
+}
+
+.kiitosSubtitle {
+  color: #f2f2f2;
+  font-size: 16px;
+}
+
+.sticker {
+  max-width: 200px;
+  height: auto;
+}
+
+// Footer override for dark page
+.footer {
+  background-color: #3c3a40;
+}
