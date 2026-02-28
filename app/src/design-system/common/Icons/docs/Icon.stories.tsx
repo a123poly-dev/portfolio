@@ -15,17 +15,27 @@ type Story = StoryObj<typeof Icon>
 export const Default: Story = {
   args: {
     name: "linkedin",
-    size: 24,
+    size: "md",
   },
 }
 
-const allIcons: TIconName[] = ["linkedin", "telegram", "instagram"]
+export const Sizes: Story = {
+  render: () => (
+    <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
+      <Icon name="drive" size="sm" /> -- 18px
+      <Icon name="telegram" size="md" /> -- 24px
+      <Icon name="instagram" size="lg" /> -- 40px
+    </div>
+  ),
+}
+
+const allIcons: TIconName[] = ["linkedin", "telegram", "instagram", "drive"]
 
 export const AllIcons: Story = {
   render: () => (
     <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
       {allIcons.map((name) => (
-        <Icon key={name} name={name} size={24} />
+        <Icon key={name} name={name} size="md" />
       ))}
     </div>
   ),
