@@ -1,3 +1,4 @@
+import cn from "classnames"
 import type { PropsWithChildren } from "react"
 import styles from "./SectionBlock.module.scss"
 
@@ -7,7 +8,7 @@ type TSectionBlockProps = {
 
 export const SectionBlock = ({ children, className }: TSectionBlockProps) => {
   return (
-    <section className={`${styles.section} ${className ?? ""}`}>
+    <section className={cn(styles.section, className)}>
       <div className={styles.container}>{children}</div>
     </section>
   )

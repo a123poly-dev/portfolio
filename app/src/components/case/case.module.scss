@@ -10,31 +10,19 @@
 }
 
 .h4 {
-  font-family: var(--font-family-display);
-  color: var(--black);
   margin-top: 0;
   margin-bottom: 24px;
-  font-size: 31px;
-  line-height: 120%;
 }
 
 .h5 {
-  color: var(--black);
-  letter-spacing: 0.5px;
   margin-top: 0;
   margin-bottom: 0;
-  font-size: 25px;
-  line-height: 140%;
 }
 
 .h6 {
-  font-family: var(--font-family);
   color: #3298dc;
-  letter-spacing: 0.2px;
   margin-top: 0;
   margin-bottom: 16px;
-  font-size: 20px;
-  line-height: 120%;
 }
 
 .h6Red {
@@ -84,6 +72,10 @@
   margin-top: 40px;
 }
 
+.mb40 {
+  margin-bottom: 40px;
+}
+
 .mt56 {
   margin-top: 56px;
 }
@@ -117,13 +109,9 @@
 
 // Heading for prototypes
 .headingCenter {
-  font-family: var(--font-family-display);
-  color: var(--black);
   text-align: center;
   max-width: 570px;
   margin: 0 auto 40px;
-  font-size: 39px;
-  line-height: 140%;
 }
 
 // Gradient text

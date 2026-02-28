@@ -1,5 +1,6 @@
 import cn from "classnames"
 import { useScrollReveal } from "../../hooks/useScrollReveal"
+import { Heading } from "../Heading"
 import { Tag } from "../Tag"
 import type { TTagColor } from "../Tag"
 
@@ -41,11 +42,11 @@ export const About = () => {
       <div className={styles.container}>
         <div ref={ref} className={cn(styles.grid, "scroll-reveal")}>
           <div className={styles.titleCell}>
-            <h1 className={styles.sectionTitle}>About</h1>
+            <Heading type="heading-h1" className={styles.sectionTitle}>About</Heading>
           </div>
 
           <div className={styles.experienceCell}>
-            <h3 className={styles.heading}>Experience &amp;Skills</h3>
+            <Heading type="heading-h3" className={styles.heading}>Experience &amp;Skills</Heading>
             <p className={styles.description}>
               I thrive on creating seamless user experiences that delight and
               engage. From mapping out user journeys to conducting user
@@ -73,7 +74,7 @@ export const About = () => {
           </div>
 
           <div className={styles.educationCell}>
-            <h3 className={styles.heading}>Education</h3>
+            <Heading type="heading-h3" className={styles.heading}>Education</Heading>
             <div className={styles.label}>ITMO University</div>
             <div className={styles.educationList}>
               <p className={styles.educationText}>

@@ -1,10 +1,11 @@
+import cn from "classnames"
 import { CaseLayout } from "../components/case/CaseLayout"
 import { CaseHero } from "../components/case/CaseHero"
 import { SectionBlock } from "../components/case/SectionBlock"
 import { TwoColumn } from "../components/case/TwoColumn"
 import { CaseImage } from "../components/case/CaseImage"
 import heroStyles from "../components/case/CaseHero.module.scss"
-import s from "../components/case/case.module.scss"
+import styles from "../components/case/case.module.scss"
 
 export const PulkovoPage = () => {
   return (
@@ -19,49 +20,51 @@ export const PulkovoPage = () => {
       <SectionBlock>
         <TwoColumn
           left={
-            <div className={`${s.vflex} ${s.gap32}`}>
+            <div className={cn(styles.vflex, styles.gap32)}>
               <div>
-                <p className={s.uppercaseText}>About project</p>
-                <h3 className={s.h5}>
+                <p className={styles.uppercaseText}>About project</p>
+                <h3 className={styles.h5}>
                   The Airport Resource Management System (RMS) is being
                   developed to improve airport operations due to more passengers
                   and strict requirements from airlines and the government.
                 </h3>
               </div>
               <div style={{ display: "flex", gap: "20px" }}>
-                <div className={s.vflex}>
-                  <p className={s.uppercaseText}>Users:</p>
-                  <h4 className={s.h6}>4,000 employees</h4>
-                  <p className={s.paragraph}>with different access levels</p>
+                <div className={styles.vflex}>
+                  <p className={styles.uppercaseText}>Users:</p>
+                  <h4 className={styles.h6}>4,000 employees</h4>
+                  <p className={styles.paragraph}>
+                    with different access levels
+                  </p>
                 </div>
-                <div className={s.vflex}>
-                  <p className={s.uppercaseText}>Future plan:</p>
-                  <h4 className={s.h6}>Expansion</h4>
-                  <p className={s.paragraph}>More departments and users</p>
+                <div className={styles.vflex}>
+                  <p className={styles.uppercaseText}>Future plan:</p>
+                  <h4 className={styles.h6}>Expansion</h4>
+                  <p className={styles.paragraph}>More departments and users</p>
                 </div>
               </div>
             </div>
           }
           right={
-            <div className={`${s.vflex} ${s.gap32}`}>
+            <div className={cn(styles.vflex, styles.gap32)}>
               <div>
-                <p className={s.uppercaseText}>Project objective</p>
-                <p className={s.paragraph}>
+                <p className={styles.uppercaseText}>Project objective</p>
+                <p className={styles.paragraph}>
                   The aim is to improve airport operations and transparency. The
                   system will help the airport plan and manage its resources
                   better.
                 </p>
               </div>
               <div>
-                <p className={s.uppercaseText}>The team</p>
-                <p className={s.paragraph}>
+                <p className={styles.uppercaseText}>The team</p>
+                <p className={styles.paragraph}>
                   1 Solo Designer, 6 Engineers, 8 Analysts, 2 Project Managers,
                   and other professionals from internal and external sources.
                 </p>
               </div>
               <div>
-                <p className={s.uppercaseText}>MY role</p>
-                <p className={s.paragraph}>
+                <p className={styles.uppercaseText}>MY role</p>
+                <p className={styles.paragraph}>
                   I joined the team a year into the project's development. My
                   role was to dive into the project, establish design processes,
                   enhance user interaction, and address issues. I also
@@ -75,10 +78,10 @@ export const PulkovoPage = () => {
 
       {/* Research */}
       <SectionBlock>
-        <h2 className={s.h4}>Research</h2>
+        <h2 className={styles.h4}>Research</h2>
         <TwoColumn
           left={
-            <p className={s.paragraph}>
+            <p className={styles.paragraph}>
               I base my work on personal experience. Recognizing the need for
               specific expertise in airport dispatching product development, I
               conducted comparative analysis. After convincing stakeholders, I
@@ -93,7 +96,7 @@ export const PulkovoPage = () => {
             </p>
           }
           right={
-            <p className={s.paragraph}>
+            <p className={styles.paragraph}>
               Initially, dispatchers used multiple systems, resulting in
               multitasking across numerous screens. Yet,{" "}
               <strong>
@@ -123,9 +126,9 @@ export const PulkovoPage = () => {
             />
           }
           right={
-            <div className={s.vflex}>
-              <h2 className={s.h4}>Half-Low-Fidelity Designs</h2>
-              <p className={s.paragraph}>
+            <div className={styles.vflex}>
+              <h2 className={styles.h4}>Half-Low-Fidelity Designs</h2>
+              <p className={styles.paragraph}>
                 The developers had already incorporated the Bulma component
                 library, shaping most user scenario screens, like tables or
                 pop-up windows, from the outset. However, the timeliner began
@@ -144,12 +147,12 @@ export const PulkovoPage = () => {
 
       {/* High-Fidelity Designs */}
       <SectionBlock>
-        <div className={`${s.vflex} ${s.gap56}`}>
+        <div className={cn(styles.vflex, styles.gap56)}>
           <div>
-            <h2 className={s.h4}>High-Fidelity Designs</h2>
+            <h2 className={styles.h4}>High-Fidelity Designs</h2>
             <TwoColumn
               left={
-                <p className={s.paragraph}>
+                <p className={styles.paragraph}>
                   The business aimed to maximize information display on the
                   timeliner and admired the solution our Turkish colleagues
                   implemented. However, it wasn't suitable for Pulkovo even with
@@ -158,7 +161,7 @@ export const PulkovoPage = () => {
                 </p>
               }
               right={
-                <p className={s.paragraph}>
+                <p className={styles.paragraph}>
                   <strong>
                     Furthermore, the timeliner acts like a traffic light: red
                     signals a problem, yellow suggests attention, and green
@@ -176,9 +179,9 @@ export const PulkovoPage = () => {
             />
           </div>
 
-          <div className={`${s.vflex} ${s.gap24}`}>
-            <h3 className={s.h5}>Timeline customization</h3>
-            <p className={s.paragraph}>
+          <div className={cn(styles.vflex, styles.gap24)}>
+            <h3 className={styles.h5}>Timeline customization</h3>
+            <p className={styles.paragraph}>
               The timeliner offers customization settings, granting users
               options like choosing a dark theme or adjusting the zoom level.
               These settings provide flexibility and enable users to personalize
@@ -198,8 +201,8 @@ export const PulkovoPage = () => {
             />
           </div>
 
-          <div className={`${s.vflex} ${s.gap24}`}>
-            <h3 className={s.h5}>Other states and screens</h3>
+          <div className={cn(styles.vflex, styles.gap24)}>
+            <h3 className={styles.h5}>Other states and screens</h3>
             <CaseImage
               src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65e5d6aa17ad9a70d359b27c_08.png"
               alt="Drag and drop a task to another employee"
@@ -230,10 +233,10 @@ export const PulkovoPage = () => {
 
       {/* Details */}
       <SectionBlock>
-        <h2 className={s.h4}>Details</h2>
+        <h2 className={styles.h4}>Details</h2>
         <TwoColumn
           left={
-            <p className={s.paragraph}>
+            <p className={styles.paragraph}>
               My role in the project was diverse, as the system was extensive in
               scope. However, the most significant and interesting work was done
               on the timeliner, as it is one of the primary tools used for
@@ -243,7 +246,7 @@ export const PulkovoPage = () => {
             </p>
           }
           right={
-            <p className={s.paragraph}>
+            <p className={styles.paragraph}>
               Certainly, we didn't design all the states directly on the
               timeliner. Instead, various states were created separately, and
               documentation was prepared collaboratively with analysts using
@@ -253,7 +256,7 @@ export const PulkovoPage = () => {
             </p>
           }
         />
-        <div className={`${s.vflex} ${s.gap24}`}>
+        <div className={cn(styles.vflex, styles.gap24)}>
           <CaseImage
             src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65e5d6a9ea7cc03c1f192da1_13.png"
             alt="Component details"
@@ -267,10 +270,10 @@ export const PulkovoPage = () => {
 
       {/* Reflections */}
       <SectionBlock>
-        <h2 className={s.h4}>Reflections</h2>
+        <h2 className={styles.h4}>Reflections</h2>
         <TwoColumn
           left={
-            <p className={s.paragraph}>
+            <p className={styles.paragraph}>
               <strong>Collaboration and Communication are vital:</strong> Close
               collaboration with team members, analysts, developers, and airport
               staff ensured a shared understanding and successful project
@@ -280,7 +283,7 @@ export const PulkovoPage = () => {
             </p>
           }
           right={
-            <p className={s.paragraph}>
+            <p className={styles.paragraph}>
               <strong>Valuable lessons learned:</strong> The project provided
               valuable insights into complex project and software development
               for the airport, emphasizing the importance of adaptability,

@@ -3,6 +3,8 @@ import { useLocation } from "react-router-dom"
 import { Navbar } from "../components/Navbar/Navbar"
 import { Footer } from "../components/Footer/Footer"
 import { VideoEmbed } from "../components/case/VideoEmbed"
+import { KiitosSection } from "../components/case/KiitosSection"
+import { Heading } from "../components/Heading"
 
 import caseStyles from "../components/case/case.module.scss"
 import styles from "./TaxiPage.module.scss"
@@ -29,9 +31,9 @@ export const TaxiPage = () => {
       <div className={styles.heroStack}>
         <div className={styles.heroTitle}>
           <p className={styles.label}>2020</p>
-          <h1 className={styles.h2White}>
+          <Heading type="heading-h2" as="h1" className={styles.h2White}>
             Concept of Sitimobil Assist for driver app taxi
-          </h1>
+          </Heading>
         </div>
         <div>
           <p className={styles.label}>Challenge</p>
@@ -78,7 +80,7 @@ export const TaxiPage = () => {
             />
           </div>
           <div className={styles.heroSplit}>
-            <h2 className={styles.h4White}>About concept</h2>
+            <Heading type="heading-h4" as="h2" className={styles.h4White}>About concept</Heading>
             <p className={styles.paragraphWhite}>
               Sitimobil Assist is an intelligent driver assistant integrated
               into the Sitimobil app. This feature provides drivers with
@@ -97,7 +99,7 @@ export const TaxiPage = () => {
       <div className={styles.heroSection}>
         <div className={styles.heroFlex}>
           <div className={styles.heroSplit}>
-            <h2 className={styles.h4White}>Easy to run</h2>
+            <Heading type="heading-h4" as="h2" className={styles.h4White}>Easy to run</Heading>
             <p className={styles.paragraphWhite}>
               The assistant can be activated either by voice command or by
               pressing a dedicated button. This convenient feature ensures that
@@ -128,7 +130,7 @@ export const TaxiPage = () => {
             />
           </div>
           <div className={styles.heroSplit}>
-            <h2 className={styles.h4White}>Recommendations</h2>
+            <Heading type="heading-h4" as="h2" className={styles.h4White}>Recommendations</Heading>
             <p className={styles.paragraphWhite}>
               The Assistant collects data and help the driver with widgets to
               optimise their performance.
@@ -154,7 +156,7 @@ export const TaxiPage = () => {
       <div className={styles.heroSection}>
         <div className={styles.heroFlex}>
           <div className={styles.heroSplit}>
-            <h2 className={styles.h4White}>Demand forecast</h2>
+            <Heading type="heading-h4" as="h2" className={styles.h4White}>Demand forecast</Heading>
             <p className={styles.paragraphWhite}>
               Assistant uses analytical algorithms to predict peak demand in
               specific time intervals and areastyles. On the map it provides
@@ -175,9 +177,9 @@ export const TaxiPage = () => {
 
       {/* Prototype video */}
       <div className={styles.prototypeSection}>
-        <h2 className={styles.headingWhite}>
+        <Heading type="heading-h3" as="h2" className={styles.headingWhite}>
           Let&apos;s see the prototype of app
-        </h2>
+        </Heading>
         <div className={styles.videoWrapper}>
           <VideoEmbed vimeoId="919276369" width={500} height={727} />
         </div>
@@ -193,22 +195,7 @@ export const TaxiPage = () => {
       </div>
 
       {/* Kiitos dark version */}
-      <div className={styles.kiitosSection}>
-        <div className={styles.heroFlex}>
-          <div className={styles.heroSplit}>
-            <h1 className={styles.kiitosTitle}>Kiitos!*</h1>
-            <p className={styles.kiitosSubtitle}>*Thanks</p>
-          </div>
-          <div className={styles.heroSplit}>
-            <img
-              src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/64a9768448fbf45c6d1c7d34_sticker%201.png"
-              alt="Sticker"
-              loading="lazy"
-              className={styles.sticker}
-            />
-          </div>
-        </div>
-      </div>
+      <KiitosSection />
 
       <Footer />
     </div>

@@ -1,4 +1,5 @@
 import type { PropsWithChildren, ReactNode } from "react"
+import { Heading } from "../Heading"
 
 import styles from "./CaseHero.module.scss"
 
@@ -18,7 +19,7 @@ export const CaseHero = ({
     <section className={styles.hero}>
       <div className={styles.container}>
         <div className={styles.date}>{date}</div>
-        <h2 className={styles.title}>{title}</h2>
+        <Heading type="heading-h2" as="h2" className={styles.title}>{title}</Heading>
         {coverClassName && (
           <div className={`${styles.cover} ${coverClassName}`} />
         )}

@@ -1,6 +1,7 @@
 import cn from "classnames"
 import { Link } from "react-router-dom"
 import { useScrollReveal } from "../../hooks/useScrollReveal"
+import { Heading } from "../Heading"
 import { Tag } from "../Tag"
 import type { TProject } from "../WorksGrid/works-data"
 
@@ -47,14 +48,13 @@ export const WorkCard = ({ project }: TWorkCardProps) => {
         ))}
       </div>
       <div className={styles.date}>{project.date}</div>
-      <h4
-        className={cn(styles.title, {
-          [styles.titleSmall]: isSmall,
-          [styles.titleLarge]: !isSmall,
-        })}
+      <Heading
+        type={isSmall ? "heading-h5" : "heading-h4"}
+        as="h4"
+        className={styles.title}
       >
         {project.title}
-      </h4>
+      </Heading>
     </div>
   )
 

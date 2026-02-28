@@ -19,22 +19,7 @@
 }
 
 .copyright {
-  color: var(--black);
-}
-
-.links {
-  display: flex;
-  align-items: center;
-}
-
-.contactLink {
-  color: var(--link-color);
-  font-family: var(--font-family);
-  margin-left: 24px;
-
-  &:hover {
-    color: var(--black);
-  }
+  color: var(--footer-color);
 }
 
 @media screen and (max-width: var(--breakpoint-sm)) {

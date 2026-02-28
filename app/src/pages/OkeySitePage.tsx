@@ -3,6 +3,7 @@ import { SectionBlock } from "../components/case/SectionBlock"
 import { TwoColumn } from "../components/case/TwoColumn"
 import { CaseImage } from "../components/case/CaseImage"
 import { VideoEmbed } from "../components/case/VideoEmbed"
+import { Heading } from "../components/Heading"
 import s from "../components/case/case.module.scss"
 
 export const OkeySitePage = () => {
@@ -14,25 +15,17 @@ export const OkeySitePage = () => {
         <p className={s.paragraph} style={{ marginBottom: "4px" }}>
           06.2021 - 08.2021
         </p>
-        <h1
-          style={{
-            fontFamily: "var(var(--font-family)-2)",
-            color: "var(--black)",
-            fontSize: "49px",
-            lineHeight: "120%",
-            marginBottom: "40px",
-          }}
-        >
+        <Heading type="heading-h2" as="h1" className={s.mb40}>
           Concept for online store &quot;O&apos;KEY&quot;
-        </h1>
+        </Heading>
 
-        <h3 className={s.h5} style={{ marginBottom: "40px" }}>
+        <Heading type="heading-h5" as="h3" className={s.mb40}>
           O&apos;KEY Group is a major Russian supermarket chain with stores in
           cities across the country. Since O&apos;KEY was planning to transition
           to a microservice architecture to ensure high speed and fault
           tolerance of systems, this was an excellent opportunity to completely
           redesign the mobile application to improve the user experience.
-        </h3>
+        </Heading>
 
         <TwoColumn
           left={
@@ -86,7 +79,7 @@ export const OkeySitePage = () => {
 
       {/* Research */}
       <SectionBlock>
-        <h2 className={s.h4}>Research</h2>
+        <Heading type="heading-h4" as="h2" className={s.h4}>Research</Heading>
         <TwoColumn
           left={
             <p className={s.paragraph}>
@@ -123,7 +116,7 @@ export const OkeySitePage = () => {
 
       {/* High-Fidelity Designs */}
       <SectionBlock>
-        <h2 className={s.h4}>High-Fidelity Designs of site</h2>
+        <Heading type="heading-h4" as="h2" className={s.h4}>High-Fidelity Designs of site</Heading>
         <TwoColumn
           left={
             <p className={s.paragraph}>
@@ -167,7 +160,7 @@ export const OkeySitePage = () => {
 
       {/* Adaptive version */}
       <SectionBlock>
-        <h2 className={s.h4}>Adaptive version</h2>
+        <Heading type="heading-h4" as="h2" className={s.h4}>Adaptive version</Heading>
         <CaseImage
           src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/64c5552d4e8053b433b68441_01.png"
           alt="Adaptive version"
@@ -177,9 +170,9 @@ export const OkeySitePage = () => {
       {/* Prototype */}
       <SectionBlock>
         <div className={s.prototypeSection}>
-          <h2 className={s.headingCenter}>
+          <Heading type="heading-h3" as="h2" className={s.headingCenter}>
             Let&apos;s see the prototype of desktop &amp; adaptive versions
-          </h2>
+          </Heading>
           <a
             href="https://www.figma.com/proto/0Wgx2umO3HMR6easnPKQ4Y/concept_prototype?page-id=107%3A1957&type=design&node-id=157-203&viewport=1008%2C-15164%2C0.37&t=mWJoPfFoJptBlyFh-1&scaling=min-zoom&starting-point-node-id=157%3A203&mode=design"
             target="_blank"

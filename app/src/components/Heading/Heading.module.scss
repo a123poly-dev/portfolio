@@ -1,0 +1,45 @@
+.headingH1 {
+  font-family: var(--font-family-display);
+  color: var(--black);
+  font-size: 61px;
+  line-height: 120%;
+  letter-spacing: 1.5px;
+}
+
+.headingH2 {
+  font-family: var(--font-family-display);
+  color: var(--black);
+  font-size: 49px;
+  line-height: 120%;
+}
+
+.headingH3 {
+  font-family: var(--font-family-display);
+  color: var(--black);
+  font-size: 39px;
+  line-height: 140%;
+  letter-spacing: 1px;
+}
+
+.headingH4 {
+  font-family: var(--font-family-display);
+  color: var(--black);
+  font-size: 31px;
+  line-height: 120%;
+}
+
+.headingH5 {
+  font-family: var(--font-family);
+  color: var(--black);
+  font-size: 25px;
+  line-height: 140%;
+  letter-spacing: 0.5px;
+}
+
+.headingH6 {
+  font-family: var(--font-family);
+  color: var(--black);
+  font-size: 20px;
+  line-height: 120%;
+  letter-spacing: 0.2px;
+}

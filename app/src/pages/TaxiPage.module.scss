@@ -29,9 +29,6 @@
 }
 
 .h2White {
-  font-family: var(--font-family-display);
-  font-size: 49px;
-  line-height: 120%;
   width: 80%;
   margin-bottom: 40px;
 
@@ -50,10 +47,7 @@
 }
 
 .h4White {
-  font-family: var(--font-family-display);
   color: #fff;
-  font-size: 31px;
-  line-height: 120%;
   margin-bottom: 24px;
 }
 
@@ -102,10 +96,6 @@
 }
 
 .headingWhite {
-  font-family: var(--font-family-display);
-  font-size: 39px;
-  line-height: 140%;
-  letter-spacing: 1px;
   text-align: center;
   max-width: 500px;
   margin: 0 auto 40px;
@@ -117,34 +107,14 @@
   text-decoration: none;
   display: inline-block;
   margin-top: 24px;
+
+  &:hover {
+    color: var(--dark-lime);
+  }
 }
 
 .videoWrapper {
   border-radius: 24px;
   overflow: hidden;
   display: inline-block;
-}
-
-// Kiitos for dark theme
-.kiitosSection {
-  max-width: 940px;
-  margin: 0 auto;
-  padding: 40px 30px 86px;
-}
-
-.kiitosTitle {
-  font-family: var(--font-family-display);
-  font-size: 49px;
-  line-height: 120%;
-  margin-bottom: 8px;
-}
-
-.kiitosSubtitle {
-  color: #f2f2f2;
-  font-size: 16px;
-}
-
-.sticker {
-  max-width: 200px;
-  height: auto;
 }
