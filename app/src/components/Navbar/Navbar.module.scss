@@ -57,6 +57,67 @@
   }
 }
 
+// Burger button — hidden on desktop
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background-color: var(--header-button-color);
+    border-radius: 1px;
+    transition:
+      transform 0.3s ease,
+      opacity 0.3s ease;
+  }
+}
+
+// Burger → X animation
+.burgerOpen {
+  span:nth-child(1) {
+    transform: rotate(45deg) translateY(5px) translateX(5px);
+  }
+
+  span:nth-child(2) {
+    opacity: 0;
+  }
+
+  span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-5px) translateX(5px);
+  }
+}
+
+// Mobile menu — hidden on desktop, animated on mobile
+.mobileMenu {
+  display: none;
+}
+
+.mobileLink {
+  color: var(--header-button-color);
+  font-family: var(--font-family);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.25px;
+  padding: 8px 16px;
+  border-radius: 40px;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+
+  &:hover {
+    color: var(--header-button-color-hover);
+    background-color: var(--header-button-bg-hover);
+  }
+}
+
 @media screen and (max-width: $breakpoint-md) {
   .container {
     padding: 16px 40px;
@@ -66,6 +127,36 @@
 @media screen and (max-width: $breakpoint-sm) {
   .container {
     padding: 16px 24px;
+  }
+
+  .navList {
+    display: none;
+  }
+
+  .burger {
+    display: flex;
+  }
+
+  .mobileMenu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    padding-bottom: 0;
+    transition:
+      max-height 0.3s ease,
+      opacity 0.3s ease,
+      padding-bottom 0.3s ease;
+  }
+
+  .mobileMenuOpen {
+    max-height: 120px;
+    opacity: 1;
+    padding-bottom: 30px;
   }
 }
 
