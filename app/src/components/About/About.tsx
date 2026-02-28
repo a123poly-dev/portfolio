@@ -4,6 +4,7 @@ import { Heading } from "@design-system/common/Heading"
 import { Tag } from "@design-system/common/Tag"
 import type { TTagColor } from "@design-system/common/Tag"
 import { IconButton } from "@design-system/common/IconButton"
+import { Icon } from "@design-system/common/Icons"
 
 import styles from "./About.module.scss"
 
@@ -125,11 +126,7 @@ export const About = () => {
             <div className={styles.cvBlock}>
               <div className={styles.label}>CV:</div>
               <div className={styles.cvInner}>
-                <img
-                  src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65cba1f12dc64ae8780ec6f6_drive.svg"
-                  loading="lazy"
-                  alt=""
-                />
+                <Icon name="drive" size="sm" />
                 <a
                   href="https://drive.google.com/file/d/1mGUrUfwG9Sgmn57VYVrz6PI0KoskK2LL/view?usp=sharing"
                   target="_blank"
