@@ -19,10 +19,7 @@ export const MobileMenu = ({
   isMainPage,
 }: TMobileMenuProps) => (
   <div className={cn(styles.mobileMenu, isOpen && styles.mobileMenuOpen)}>
-    <a href={ROOT_PATH} className={styles.mobileLink} onClick={handleLinkClick}>
-      Home
-    </a>
-    {isMainPage && (
+    {isMainPage ? (
       <>
         <a
           href={ROOT_PATH + MAIN_PAGE_WORKS}
@@ -39,6 +36,14 @@ export const MobileMenu = ({
           About &amp;CV
         </a>
       </>
+    ) : (
+      <a
+        href={ROOT_PATH}
+        className={styles.mobileLink}
+        onClick={handleLinkClick}
+      >
+        Home
+      </a>
     )}
     <a
       href="https://www.linkedin.com/in/apolina/"

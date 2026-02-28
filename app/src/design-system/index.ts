@@ -1,7 +1,13 @@
 export { Heading } from "./common/Heading"
 export { Tag } from "./common/Tag"
 export type { TTagColor } from "./common/Tag"
+export { Icon } from "./common/Icons"
+export type { TIconName } from "./common/Icons"
+export { IconButton } from "./common/IconButton"
+export { ButtonLink } from "./common/ButtonLink"
 
+export { BurgerButton } from "./features/BurgerButton"
 export { Navbar } from "./features/Navbar"
 export { Header } from "./features/Header"
 export { Footer } from "./features/Footer"
+export { CaseImage } from "./features/CaseImage"

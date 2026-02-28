@@ -3,7 +3,7 @@ import { CaseLayout } from "../components/case/CaseLayout"
 import { CaseHero } from "../components/case/CaseHero"
 import { SectionBlock } from "../components/case/SectionBlock"
 import { TwoColumn } from "../components/case/TwoColumn"
-import { CaseImage } from "../components/case/CaseImage"
+import { CaseImage } from "@design-system/features/CaseImage"
 import heroStyles from "../components/case/CaseHero.module.scss"
 import styles from "../components/case/case.module.scss"
 

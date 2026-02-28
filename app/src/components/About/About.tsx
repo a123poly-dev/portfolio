@@ -3,6 +3,7 @@ import { useScrollReveal } from "../../hooks/useScrollReveal"
 import { Heading } from "@design-system/common/Heading"
 import { Tag } from "@design-system/common/Tag"
 import type { TTagColor } from "@design-system/common/Tag"
+import { IconButton } from "@design-system/common/IconButton"
 
 import styles from "./About.module.scss"
 
@@ -104,46 +105,21 @@ export const About = () => {
                 width={251}
               />
               <div className={styles.socials}>
-                <a
+                <IconButton
+                  icon="linkedin"
                   href="https://www.linkedin.com/in/apolina/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.socialLink}
-                >
-                  <img
-                    src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65cb9aec0cc054f9d6fca108_linkedin.svg"
-                    loading="lazy"
-                    width={24}
-                    alt="LinkedIn"
-                    className={styles.socialIcon}
-                  />
-                </a>
-                <a
+                  label="LinkedIn"
+                />
+                <IconButton
+                  icon="telegram"
                   href="https://t.me/aapoly"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.socialLink}
-                >
-                  <img
-                    src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65cb9aec0600ba0b41696831_tg.svg"
-                    loading="lazy"
-                    width={24}
-                    alt="Telegram"
-                  />
-                </a>
-                <a
+                  label="Telegram"
+                />
+                <IconButton
+                  icon="instagram"
                   href="https://www.instagram.com/polinakzz/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.socialLink}
-                >
-                  <img
-                    src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65cb9aec59802924663c8c4b_ig.svg"
-                    loading="lazy"
-                    width={24}
-                    alt="Instagram"
-                  />
-                </a>
+                  label="Instagram"
+                />
               </div>
             </div>
             <div className={styles.cvBlock}>

@@ -1,0 +1,34 @@
+.burger {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background-color: var(--header-button-color);
+    border-radius: 1px;
+    transition:
+      transform 0.3s ease,
+      opacity 0.3s ease;
+  }
+}
+
+.burgerOpen {
+  span:nth-child(1) {
+    transform: rotate(45deg) translateY(5px) translateX(5px);
+  }
+
+  span:nth-child(2) {
+    opacity: 0;
+  }
+
+  span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-5px) translateX(5px);
+  }
+}
