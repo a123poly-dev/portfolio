@@ -5,7 +5,7 @@ import {
   ROOT_PATH,
   MAIN_PAGE_ABOUT,
   MAIN_PAGE_WORKS,
-} from "../../constants/routePathConstants"
+} from "../../../constants/routePathConstants"
 
 type TMobileMenuProps = {
   isOpen: boolean

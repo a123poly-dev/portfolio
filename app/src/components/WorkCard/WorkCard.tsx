@@ -1,8 +1,8 @@
 import cn from "classnames"
 import { Link } from "react-router-dom"
 import { useScrollReveal } from "../../hooks/useScrollReveal"
-import { Heading } from "../Heading"
-import { Tag } from "../Tag"
+import { Heading } from "@design-system/common/Heading"
+import { Tag } from "@design-system/common/Tag"
 import type { TProject } from "../WorksGrid/works-data"
 
 import styles from "./WorkCard.module.scss"

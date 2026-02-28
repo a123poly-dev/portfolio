@@ -1,10 +1,10 @@
 import { useEffect } from "react"
 import { useLocation } from "react-router-dom"
-import { Navbar } from "../components/Navbar/Navbar"
-import { Footer } from "../components/Footer/Footer"
+import { Navbar } from "@design-system/features/Navbar"
+import { Footer } from "@design-system/features/Footer"
 import { VideoEmbed } from "../components/case/VideoEmbed"
 import { KiitosSection } from "../components/case/KiitosSection"
-import { Heading } from "../components/Heading"
+import { Heading } from "@design-system/common/Heading"
 
 import caseStyles from "../components/case/case.module.scss"
 import styles from "./TaxiPage.module.scss"
@@ -80,7 +80,9 @@ export const TaxiPage = () => {
             />
           </div>
           <div className={styles.heroSplit}>
-            <Heading type="heading-h4" as="h2" className={styles.h4White}>About concept</Heading>
+            <Heading type="heading-h4" as="h2" className={styles.h4White}>
+              About concept
+            </Heading>
             <p className={styles.paragraphWhite}>
               Sitimobil Assist is an intelligent driver assistant integrated
               into the Sitimobil app. This feature provides drivers with
@@ -99,7 +101,9 @@ export const TaxiPage = () => {
       <div className={styles.heroSection}>
         <div className={styles.heroFlex}>
           <div className={styles.heroSplit}>
-            <Heading type="heading-h4" as="h2" className={styles.h4White}>Easy to run</Heading>
+            <Heading type="heading-h4" as="h2" className={styles.h4White}>
+              Easy to run
+            </Heading>
             <p className={styles.paragraphWhite}>
               The assistant can be activated either by voice command or by
               pressing a dedicated button. This convenient feature ensures that
@@ -130,7 +134,9 @@ export const TaxiPage = () => {
             />
           </div>
           <div className={styles.heroSplit}>
-            <Heading type="heading-h4" as="h2" className={styles.h4White}>Recommendations</Heading>
+            <Heading type="heading-h4" as="h2" className={styles.h4White}>
+              Recommendations
+            </Heading>
             <p className={styles.paragraphWhite}>
               The Assistant collects data and help the driver with widgets to
               optimise their performance.
@@ -156,7 +162,9 @@ export const TaxiPage = () => {
       <div className={styles.heroSection}>
         <div className={styles.heroFlex}>
           <div className={styles.heroSplit}>
-            <Heading type="heading-h4" as="h2" className={styles.h4White}>Demand forecast</Heading>
+            <Heading type="heading-h4" as="h2" className={styles.h4White}>
+              Demand forecast
+            </Heading>
             <p className={styles.paragraphWhite}>
               Assistant uses analytical algorithms to predict peak demand in
               specific time intervals and areastyles. On the map it provides

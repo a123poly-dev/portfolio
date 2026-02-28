@@ -1,4 +1,4 @@
-import { Heading } from "../Heading"
+import { Heading } from "@design-system/common/Heading"
 import styles from "./KiitosSection.module.scss"
 
 export const KiitosSection = () => (
@@ -6,7 +6,9 @@ export const KiitosSection = () => (
     <div className={styles.container}>
       <div className={styles.kiitos}>
         <div className={styles.textBlock}>
-          <Heading type="heading-h1" className={styles.title}>Kiitos!*</Heading>
+          <Heading type="heading-h1" className={styles.title}>
+            Kiitos!*
+          </Heading>
           <div className={styles.subtitle}>*Thanks</div>
         </div>
         <div className={styles.imageBlock}>

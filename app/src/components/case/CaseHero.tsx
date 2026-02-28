@@ -1,6 +1,6 @@
 import cn from "classnames"
 import type { PropsWithChildren, ReactNode } from "react"
-import { Heading } from "../Heading"
+import { Heading } from "@design-system/common/Heading"
 
 import styles from "./CaseHero.module.scss"
 

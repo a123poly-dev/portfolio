@@ -3,7 +3,7 @@ import { CaseHero } from "../components/case/CaseHero"
 import { SectionBlock } from "../components/case/SectionBlock"
 import { TwoColumn } from "../components/case/TwoColumn"
 import { CaseImage } from "../components/case/CaseImage"
-import { Heading } from "../components/Heading"
+import { Heading } from "@design-system/common/Heading"
 import heroStyles from "../components/case/CaseHero.module.scss"
 import styles from "../components/case/case.module.scss"
 
@@ -62,7 +62,9 @@ export function YaCallsPage() {
 
       {/* Research */}
       <SectionBlock>
-        <Heading type="heading-h4" as="h2" className={styles.h4}>Research</Heading>
+        <Heading type="heading-h4" as="h2" className={styles.h4}>
+          Research
+        </Heading>
         <TwoColumn
           left={
             <p className={styles.paragraph}>
@@ -93,7 +95,9 @@ export function YaCallsPage() {
 
       {/* High-Fidelity Designs */}
       <SectionBlock>
-        <Heading type="heading-h4" as="h2" className={styles.h4}>High-Fidelity Designs</Heading>
+        <Heading type="heading-h4" as="h2" className={styles.h4}>
+          High-Fidelity Designs
+        </Heading>
         <TwoColumn
           left={
             <p className={styles.paragraph}>
@@ -124,7 +128,9 @@ export function YaCallsPage() {
           style={{ marginTop: "56px" }}
         >
           <div>
-            <Heading type="heading-h5" as="h3" className={styles.h5}>Simplified tables for MVP</Heading>
+            <Heading type="heading-h5" as="h3" className={styles.h5}>
+              Simplified tables for MVP
+            </Heading>
             <p className={styles.paragraph}>
               In this MVP version of Ya.Calls, we streamline the user experience
               by focusing solely on essential information presented in
@@ -137,7 +143,9 @@ export function YaCallsPage() {
           </div>
 
           <div>
-            <Heading type="heading-h5" as="h3" className={styles.h5}>Units</Heading>
+            <Heading type="heading-h5" as="h3" className={styles.h5}>
+              Units
+            </Heading>
             <CaseImage
               src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65cd1919b3658c56d9ad26ea_05_1.png"
               alt="Units overview"
@@ -149,7 +157,9 @@ export function YaCallsPage() {
           </div>
 
           <div>
-            <Heading type="heading-h5" as="h3" className={styles.h5}>Operators</Heading>
+            <Heading type="heading-h5" as="h3" className={styles.h5}>
+              Operators
+            </Heading>
             <CaseImage
               src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65cd1919887f7eeb84ba85ae_06_1.png"
               alt="Operators"
@@ -157,7 +167,9 @@ export function YaCallsPage() {
           </div>
 
           <div>
-            <Heading type="heading-h5" as="h3" className={styles.h5}>Routing</Heading>
+            <Heading type="heading-h5" as="h3" className={styles.h5}>
+              Routing
+            </Heading>
             <p className={styles.paragraph}>
               We adapted the routing functionality directly from the
               Ya.Telephony project.
@@ -173,7 +185,9 @@ export function YaCallsPage() {
           </div>
 
           <div>
-            <Heading type="heading-h5" as="h3" className={styles.h5}>Dashboard</Heading>
+            <Heading type="heading-h5" as="h3" className={styles.h5}>
+              Dashboard
+            </Heading>
             <p className={styles.paragraph}>
               Initially, we intended to design a customizable and flexible
               dashboard. However, upon discussion with stakeholders, we
@@ -187,7 +201,9 @@ export function YaCallsPage() {
           </div>
 
           <div>
-            <Heading type="heading-h5" as="h3" className={styles.h5}>Webphone</Heading>
+            <Heading type="heading-h5" as="h3" className={styles.h5}>
+              Webphone
+            </Heading>
             <p className={styles.paragraph}>
               The Webphone functionality was adapted from the Ya.Telephony
               project to fulfill the objectives of Ya.Calls. We streamlined the
@@ -200,7 +216,9 @@ export function YaCallsPage() {
           </div>
 
           <div>
-            <Heading type="heading-h5" as="h3" className={styles.h5}>Calls</Heading>
+            <Heading type="heading-h5" as="h3" className={styles.h5}>
+              Calls
+            </Heading>
             <p className={styles.paragraph}>
               The page displaying calls may seem overwhelming initially, but{" "}
               <strong>
@@ -215,7 +233,9 @@ export function YaCallsPage() {
           </div>
 
           <div>
-            <Heading type="heading-h5" as="h3" className={styles.h5}>Reports</Heading>
+            <Heading type="heading-h5" as="h3" className={styles.h5}>
+              Reports
+            </Heading>
             <CaseImage
               src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65cd191a4d1b2e4bfa518fe4_11_1.png"
               alt="Reports"

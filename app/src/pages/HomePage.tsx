@@ -1,8 +1,8 @@
-import { Navbar } from "../components/Navbar/Navbar"
-import { Header } from "../components/Header/Header"
+import { Navbar } from "@design-system/features/Navbar"
+import { Header } from "@design-system/features/Header"
 import { WorksGrid } from "../components/WorksGrid/WorksGrid"
 import { About } from "../components/About/About"
-import { Footer } from "../components/Footer/Footer"
+import { Footer } from "@design-system/features/Footer"
 
 export const HomePage = () => (
   <>

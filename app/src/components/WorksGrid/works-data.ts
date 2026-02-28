@@ -1,4 +1,4 @@
-import type { TTagColor } from "../Tag"
+import type { TTagColor } from "@design-system/common/Tag"
 
 export type TTag = {
   label: string

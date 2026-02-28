@@ -4,7 +4,7 @@ import { SectionBlock } from "../components/case/SectionBlock"
 import { TwoColumn } from "../components/case/TwoColumn"
 import { CaseImage } from "../components/case/CaseImage"
 import { VideoEmbed } from "../components/case/VideoEmbed"
-import { Heading } from "../components/Heading"
+import { Heading } from "@design-system/common/Heading"
 
 import styles from "../components/case/case.module.scss"
 
@@ -37,19 +37,25 @@ export const OkeyAppPage = () => (
       <div className={styles.metricsGrid}>
         <div className={styles.metricCard}>
           <p className={styles.uppercaseText}>Date of launch:</p>
-          <Heading type="heading-h6" as="h4" className={styles.h6Red}>March 2021</Heading>
+          <Heading type="heading-h6" as="h4" className={styles.h6Red}>
+            March 2021
+          </Heading>
           <p className={styles.paragraph}>
             New mobile app updated on App store &amp; Play Market.
           </p>
         </div>
         <div className={styles.metricCard}>
           <p className={styles.uppercaseText}>New rating:</p>
-          <Heading type="heading-h6" as="h4" className={styles.h6Red}>4.7 in 2022</Heading>
+          <Heading type="heading-h6" as="h4" className={styles.h6Red}>
+            4.7 in 2022
+          </Heading>
           <p className={styles.paragraph}>The old rating was 3,5 in 2019</p>
         </div>
         <div className={styles.metricCard}>
           <p className={styles.uppercaseText}>Orders from app:</p>
-          <Heading type="heading-h6" as="h4" className={styles.h6Red}>Over 47%</Heading>
+          <Heading type="heading-h6" as="h4" className={styles.h6Red}>
+            Over 47%
+          </Heading>
           <p className={styles.paragraph}>From annual report 2020</p>
         </div>
       </div>
@@ -99,7 +105,9 @@ export const OkeyAppPage = () => (
 
     {/* Research */}
     <SectionBlock>
-      <Heading type="heading-h4" as="h2" className={styles.h4}>Research</Heading>
+      <Heading type="heading-h4" as="h2" className={styles.h4}>
+        Research
+      </Heading>
       <CaseImage
         src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/64c2d55d3f3a95657ceeed62_02.png"
         alt="Customer Journey Map"
@@ -109,7 +117,9 @@ export const OkeyAppPage = () => (
       <TwoColumn
         left={
           <div>
-            <Heading type="heading-h5" as="h3" className={styles.h5}>Research Phase Challenges</Heading>
+            <Heading type="heading-h5" as="h3" className={styles.h5}>
+              Research Phase Challenges
+            </Heading>
             <p className={styles.paragraph}>
               Convincing the client of the research's necessity was challenging.
               We worked with limited resources and respondents, mainly using
@@ -142,9 +152,13 @@ export const OkeyAppPage = () => (
       <TwoColumn
         left={
           <div className={cn(styles.vflex, styles.gap32)}>
-            <Heading type="heading-h4" as="h2" className={styles.h4}>Dividing screen</Heading>
+            <Heading type="heading-h4" as="h2" className={styles.h4}>
+              Dividing screen
+            </Heading>
             <div>
-              <Heading type="heading-h5" as="h3" className={styles.h5}>Omnichannel Integration.</Heading>
+              <Heading type="heading-h5" as="h3" className={styles.h5}>
+                Omnichannel Integration.
+              </Heading>
               <p className={styles.paragraph}>
                 The company decided to merge new offline features for O&apos;KEY
                 hypermarkets into the existing online shopping app instead of
@@ -153,7 +167,9 @@ export const OkeyAppPage = () => (
               </p>
             </div>
             <div>
-              <Heading type="heading-h5" as="h3" className={styles.h5}>Omnichannel Integration.</Heading>
+              <Heading type="heading-h5" as="h3" className={styles.h5}>
+                Omnichannel Integration.
+              </Heading>
               <p className={styles.paragraph}>
                 Explaining the concept of offline functionality, only available
                 in the store, proved challenging as online shopping is already
@@ -195,7 +211,9 @@ export const OkeyAppPage = () => (
         }
         right={
           <div>
-            <Heading type="heading-h5" as="h3" className={styles.h5}>Usability study</Heading>
+            <Heading type="heading-h5" as="h3" className={styles.h5}>
+              Usability study
+            </Heading>
             <p className={styles.paragraph}>
               Initially, we had only two design options for the dividing screen
               based on the client's needs. A quick the Hallway testing showed
@@ -233,7 +251,9 @@ export const OkeyAppPage = () => (
 
     {/* High-Fidelity Designs */}
     <SectionBlock>
-      <Heading type="heading-h4" as="h2" className={styles.h4}>High-Fidelity Designs of app</Heading>
+      <Heading type="heading-h4" as="h2" className={styles.h4}>
+        High-Fidelity Designs of app
+      </Heading>
       <TwoColumn
         left={
           <p className={styles.paragraph}>
@@ -274,14 +294,18 @@ export const OkeyAppPage = () => (
           />
         </div>
         <div>
-          <Heading type="heading-h5" as="h3" className={styles.h5}>Booking a delivery time in advance</Heading>
+          <Heading type="heading-h5" as="h3" className={styles.h5}>
+            Booking a delivery time in advance
+          </Heading>
           <CaseImage
             src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/64c2d562f426f043548f056a_08.png"
             alt="Booking delivery"
           />
         </div>
         <div>
-          <Heading type="heading-h5" as="h3" className={styles.h5}>Login &amp; Sign up</Heading>
+          <Heading type="heading-h5" as="h3" className={styles.h5}>
+            Login &amp; Sign up
+          </Heading>
           <CaseImage
             src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/64c2d55e3c418fcfa367d207_09.png"
             alt="Login"
@@ -292,7 +316,9 @@ export const OkeyAppPage = () => (
           />
         </div>
         <div>
-          <Heading type="heading-h5" as="h3" className={styles.h5}>Catalog. Different type of products</Heading>
+          <Heading type="heading-h5" as="h3" className={styles.h5}>
+            Catalog. Different type of products
+          </Heading>
           <CaseImage
             src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/64c2d55ffb4555c9c6b92779_11.png"
             alt="Catalog"
@@ -316,42 +342,54 @@ export const OkeyAppPage = () => (
           />
         </div>
         <div>
-          <Heading type="heading-h5" as="h3" className={styles.h5}>Cart with personal discounts</Heading>
+          <Heading type="heading-h5" as="h3" className={styles.h5}>
+            Cart with personal discounts
+          </Heading>
           <CaseImage
             src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/64c2d55e1cfc3a7a94fc353b_15.png"
             alt="Cart"
           />
         </div>
         <div>
-          <Heading type="heading-h5" as="h3" className={styles.h5}>Profile</Heading>
+          <Heading type="heading-h5" as="h3" className={styles.h5}>
+            Profile
+          </Heading>
           <CaseImage
             src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/64c2d55e58c1180ab11ceccf_16.png"
             alt="Profile"
           />
         </div>
         <div>
-          <Heading type="heading-h5" as="h3" className={styles.h5}>My orders</Heading>
+          <Heading type="heading-h5" as="h3" className={styles.h5}>
+            My orders
+          </Heading>
           <CaseImage
             src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/64c2d55e91bab8e99c68df5e_17.png"
             alt="My orders"
           />
         </div>
         <div>
-          <Heading type="heading-h5" as="h3" className={styles.h5}>Personal discount</Heading>
+          <Heading type="heading-h5" as="h3" className={styles.h5}>
+            Personal discount
+          </Heading>
           <CaseImage
             src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/64c2d55ed36247b6a37f5df1_18.png"
             alt="Personal discount"
           />
         </div>
         <div>
-          <Heading type="heading-h5" as="h3" className={styles.h5}>Statistics</Heading>
+          <Heading type="heading-h5" as="h3" className={styles.h5}>
+            Statistics
+          </Heading>
           <CaseImage
             src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/64c2d55e395078c0e43217db_19.png"
             alt="Statistics"
           />
         </div>
         <div>
-          <Heading type="heading-h5" as="h3" className={styles.h5}>Help &amp; Onbordings</Heading>
+          <Heading type="heading-h5" as="h3" className={styles.h5}>
+            Help &amp; Onbordings
+          </Heading>
           <CaseImage
             src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/64c2d55f27a3bbe0191c28d1_20.png"
             alt="Help and onboarding"

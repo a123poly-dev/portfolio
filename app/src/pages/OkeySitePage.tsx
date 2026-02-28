@@ -3,7 +3,7 @@ import { SectionBlock } from "../components/case/SectionBlock"
 import { TwoColumn } from "../components/case/TwoColumn"
 import { CaseImage } from "../components/case/CaseImage"
 import { VideoEmbed } from "../components/case/VideoEmbed"
-import { Heading } from "../components/Heading"
+import { Heading } from "@design-system/common/Heading"
 import s from "../components/case/case.module.scss"
 
 export const OkeySitePage = () => {
@@ -79,7 +79,9 @@ export const OkeySitePage = () => {
 
       {/* Research */}
       <SectionBlock>
-        <Heading type="heading-h4" as="h2" className={s.h4}>Research</Heading>
+        <Heading type="heading-h4" as="h2" className={s.h4}>
+          Research
+        </Heading>
         <TwoColumn
           left={
             <p className={s.paragraph}>
@@ -116,7 +118,9 @@ export const OkeySitePage = () => {
 
       {/* High-Fidelity Designs */}
       <SectionBlock>
-        <Heading type="heading-h4" as="h2" className={s.h4}>High-Fidelity Designs of site</Heading>
+        <Heading type="heading-h4" as="h2" className={s.h4}>
+          High-Fidelity Designs of site
+        </Heading>
         <TwoColumn
           left={
             <p className={s.paragraph}>
@@ -160,7 +164,9 @@ export const OkeySitePage = () => {
 
       {/* Adaptive version */}
       <SectionBlock>
-        <Heading type="heading-h4" as="h2" className={s.h4}>Adaptive version</Heading>
+        <Heading type="heading-h4" as="h2" className={s.h4}>
+          Adaptive version
+        </Heading>
         <CaseImage
           src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/64c5552d4e8053b433b68441_01.png"
           alt="Adaptive version"

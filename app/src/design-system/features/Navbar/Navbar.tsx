@@ -4,7 +4,7 @@ import {
   ROOT_PATH,
   MAIN_PAGE_WORKS,
   MAIN_PAGE_ABOUT,
-} from "../../constants/routePathConstants"
+} from "../../../constants/routePathConstants"
 
 import styles from "./Navbar.module.scss"
 import { MobileMenu } from "./MobileMenu"
