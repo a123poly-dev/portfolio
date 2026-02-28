@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
-import { Footer } from "../Footer"
+import { Footer } from ".."
 
 const meta: Meta<typeof Footer> = {
   title: "Features/Footer",
