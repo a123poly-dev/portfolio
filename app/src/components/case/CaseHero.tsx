@@ -1,3 +1,4 @@
+import cn from "classnames"
 import type { PropsWithChildren, ReactNode } from "react"
 import { Heading } from "../Heading"
 
@@ -19,10 +20,10 @@ export const CaseHero = ({
     <section className={styles.hero}>
       <div className={styles.container}>
         <div className={styles.date}>{date}</div>
-        <Heading type="heading-h2" as="h2" className={styles.title}>{title}</Heading>
-        {coverClassName && (
-          <div className={`${styles.cover} ${coverClassName}`} />
-        )}
+        <Heading type="heading-h2" as="h2" className={styles.title}>
+          {title}
+        </Heading>
+        {coverClassName && <div className={cn(styles.cover, coverClassName)} />}
         {children}
       </div>
     </section>
