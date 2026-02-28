@@ -1,11 +1,12 @@
 import { useState, useEffect, useRef } from "react"
-import cn from "classnames"
 import {
   ROOT_PATH,
   MAIN_PAGE_WORKS,
   MAIN_PAGE_ABOUT,
 } from "../../../constants/routePathConstants"
 
+import { ButtonLink } from "@design-system/common/ButtonLink"
+import { BurgerButton } from "@design-system/features/BurgerButton"
 import styles from "./Navbar.module.scss"
 import { MobileMenu } from "./MobileMenu"
 
@@ -57,39 +58,30 @@ export const Navbar = ({ isMainPage = false }: TNavbarProps) => {
             {isMainPage && (
               <>
                 <li>
-                  <a href={MAIN_PAGE_WORKS} className={styles.navLink}>
-                    Works
-                  </a>
+                  <ButtonLink href={MAIN_PAGE_WORKS}>Works</ButtonLink>
                 </li>
                 <li>
-                  <a href={MAIN_PAGE_ABOUT} className={styles.navLink}>
-                    About &amp;CV
-                  </a>
+                  <ButtonLink href={MAIN_PAGE_ABOUT}>About &amp;CV</ButtonLink>
                 </li>
               </>
             )}
             <li>
-              <a
+              <ButtonLink
                 href="https://www.linkedin.com/in/apolina/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.navLink}
+                isExternal
               >
                 LinkedIn
-              </a>
+              </ButtonLink>
             </li>
           </ul>
 
           {/* Burger — visible on mobile only */}
-          <button
-            className={cn(styles.burger, isOpen && styles.burgerOpen)}
-            onClick={() => setIsOpen((prev) => !prev)}
-            aria-label="Menu"
-          >
-            <span />
-            <span />
-            <span />
-          </button>
+          <div className={styles.burgerWrap}>
+            <BurgerButton
+              isOpen={isOpen}
+              onClick={() => setIsOpen((prev) => !prev)}
+            />
+          </div>
         </div>
       </div>
 

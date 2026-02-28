@@ -2,7 +2,7 @@ import cn from "classnames"
 import { CaseLayout } from "../components/case/CaseLayout"
 import { SectionBlock } from "../components/case/SectionBlock"
 import { TwoColumn } from "../components/case/TwoColumn"
-import { CaseImage } from "../components/case/CaseImage"
+import { CaseImage } from "@design-system/features/CaseImage"
 import { VideoEmbed } from "../components/case/VideoEmbed"
 import { Heading } from "@design-system/common/Heading"
 
