@@ -9,25 +9,37 @@ import {
 
 type TMobileMenuProps = {
   isOpen: boolean
+  isMainPage: boolean
   handleLinkClick: () => void
 }
 
-export const MobileMenu = ({ isOpen, handleLinkClick }: TMobileMenuProps) => (
+export const MobileMenu = ({
+  isOpen,
+  handleLinkClick,
+  isMainPage,
+}: TMobileMenuProps) => (
   <div className={cn(styles.mobileMenu, isOpen && styles.mobileMenuOpen)}>
-    <a
-      href={ROOT_PATH + MAIN_PAGE_WORKS}
-      className={styles.mobileLink}
-      onClick={handleLinkClick}
-    >
-      Works
+    <a href={ROOT_PATH} className={styles.mobileLink} onClick={handleLinkClick}>
+      Home
     </a>
-    <a
-      href={ROOT_PATH + MAIN_PAGE_ABOUT}
-      className={styles.mobileLink}
-      onClick={handleLinkClick}
-    >
-      About &amp;CV
-    </a>
+    {isMainPage && (
+      <>
+        <a
+          href={ROOT_PATH + MAIN_PAGE_WORKS}
+          className={styles.mobileLink}
+          onClick={handleLinkClick}
+        >
+          Works
+        </a>
+        <a
+          href={ROOT_PATH + MAIN_PAGE_ABOUT}
+          className={styles.mobileLink}
+          onClick={handleLinkClick}
+        >
+          About &amp;CV
+        </a>
+      </>
+    )}
     <a
       href="https://www.linkedin.com/in/apolina/"
       target="_blank"

@@ -94,7 +94,11 @@ export const Navbar = ({ isMainPage = false }: TNavbarProps) => {
       </div>
 
       {/* Mobile menu — always in DOM for CSS animation */}
-      <MobileMenu isOpen={isOpen} handleLinkClick={handleLinkClick} />
+      <MobileMenu
+        isOpen={isOpen}
+        handleLinkClick={handleLinkClick}
+        isMainPage={isMainPage}
+      />
     </nav>
   )
 }
