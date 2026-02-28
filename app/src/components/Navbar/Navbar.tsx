@@ -1,3 +1,9 @@
+import {
+  ROOT_PATH,
+  MAIN_PAGE_WORKS,
+  MAIN_PAGE_ABOUT,
+} from "../../constants/routPathConstants"
+
 import styles from "./Navbar.module.scss"
 
 type TNavbarProps = {
@@ -8,7 +14,7 @@ export const Navbar = ({ isMainPage = false }: TNavbarProps) => (
   <nav className={styles.menu}>
     <div className={styles.container}>
       <div className={styles.wrapper}>
-        <a href="#" className={styles.logo}>
+        <a href={ROOT_PATH} className={styles.logo}>
           <img
             src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65ca4aabc8b3698a1fb75d27_logo.svg"
             width={138}
@@ -20,13 +26,13 @@ export const Navbar = ({ isMainPage = false }: TNavbarProps) => (
           {isMainPage && (
             <>
               <li>
-                <a href="#works" className={styles.navLink}>
+                <a href={MAIN_PAGE_WORKS} className={styles.navLink}>
                   Works
                 </a>
               </li>
 
               <li>
-                <a href="#about" className={styles.navLink}>
+                <a href={MAIN_PAGE_ABOUT} className={styles.navLink}>
                   About &amp;CV
                 </a>
               </li>

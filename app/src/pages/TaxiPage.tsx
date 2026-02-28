@@ -64,7 +64,7 @@ export const TaxiPage = () => {
         <div className={styles.heroFlex}>
           <div className={styles.heroSplit}>
             <img
-              src="https://cdn.prod.website-filestyles.com/6464c7692ca8b8c075cd4223/64a97685c8b96cd400e1aaad_Frame%2034064.png"
+              src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/64a97685c8b96cd400e1aaad_Frame%2034064.png"
               alt="About concept"
               loading="lazy"
               className={styles.heroImage}
@@ -100,7 +100,7 @@ export const TaxiPage = () => {
           </div>
           <div className={styles.heroSplit}>
             <img
-              src="https://cdn.prod.website-filestyles.com/6464c7692ca8b8c075cd4223/64a976853bb2957738a84f8e_Frame%2034064-1.png"
+              src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/64a976853bb2957738a84f8e_Frame%2034064-1.png"
               alt="Easy to run"
               loading="lazy"
               className={styles.heroImage}
@@ -114,7 +114,7 @@ export const TaxiPage = () => {
         <div className={styles.heroFlex}>
           <div className={styles.heroSplit}>
             <img
-              src="https://cdn.prod.website-filestyles.com/6464c7692ca8b8c075cd4223/64a97685e6d7f48c1fceb256_Frame%2034064-2.png"
+              src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/64a97685e6d7f48c1fceb256_Frame%2034064-2.png"
               alt="Recommendations"
               loading="lazy"
               className={styles.heroImage}
@@ -157,7 +157,7 @@ export const TaxiPage = () => {
           </div>
           <div className={styles.heroSplit}>
             <img
-              src="https://cdn.prod.website-filestyles.com/6464c7692ca8b8c075cd4223/64a9d24737b580eded798cf2_Frame%2034064.png"
+              src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/64a9d24737b580eded798cf2_Frame%2034064.png"
               alt="Demand forecast"
               loading="lazy"
               className={styles.heroImage}
@@ -194,7 +194,7 @@ export const TaxiPage = () => {
           </div>
           <div className={styles.heroSplit}>
             <img
-              src="https://cdn.prod.website-filestyles.com/6464c7692ca8b8c075cd4223/64a9768448fbf45c6d1c7d34_sticker%201.png"
+              src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/64a9768448fbf45c6d1c7d34_sticker%201.png"
               alt="Sticker"
               loading="lazy"
               className={styles.sticker}
