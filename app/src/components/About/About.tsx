@@ -126,7 +126,7 @@ export const About = () => {
             <div className={styles.cvBlock}>
               <div className={styles.label}>CV:</div>
               <div className={styles.cvInner}>
-                <Icon name="drive" size={18} />
+                <Icon name="drive" size="sm" />
                 <a
                   href="https://drive.google.com/file/d/1mGUrUfwG9Sgmn57VYVrz6PI0KoskK2LL/view?usp=sharing"
                   target="_blank"
