@@ -57,19 +57,19 @@
   }
 }
 
-@media screen and (max-width: var(--breakpoint-md)) {
+@media screen and (max-width: $breakpoint-md) {
   .container {
     padding: 16px 40px;
   }
 }
 
-@media screen and (max-width: var(--breakpoint-sm)) {
+@media screen and (max-width: $breakpoint-sm) {
   .container {
     padding: 16px 24px;
   }
 }
 
-@media screen and (max-width: var(--breakpoint-xs)) {
+@media screen and (max-width: $breakpoint-xs) {
   .container {
     padding: 16px 24px;
   }

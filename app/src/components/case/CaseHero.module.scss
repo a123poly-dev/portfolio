@@ -51,7 +51,7 @@
   background-size: 1010px, auto;
 }
 
-@media screen and (max-width: var(--breakpoint-md)) {
+@media screen and (max-width: $breakpoint-md) {
   .hero {
     padding-left: 40px;
     padding-right: 40px;
@@ -63,7 +63,7 @@
   }
 }
 
-@media screen and (max-width: var(--breakpoint-sm)) {
+@media screen and (max-width: $breakpoint-sm) {
   .hero {
     padding-left: 24px;
     padding-right: 24px;
@@ -75,7 +75,7 @@
   }
 }
 
-@media screen and (max-width: var(--breakpoint-xs)) {
+@media screen and (max-width: $breakpoint-xs) {
   .cover {
     background-size: 260px, auto;
     height: 130px;

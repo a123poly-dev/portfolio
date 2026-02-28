@@ -22,7 +22,7 @@
   color: var(--footer-color);
 }
 
-@media screen and (max-width: var(--breakpoint-sm)) {
+@media screen and (max-width: $breakpoint-sm) {
   .footer {
     padding-left: 15px;
     padding-right: 15px;

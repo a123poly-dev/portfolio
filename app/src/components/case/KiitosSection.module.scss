@@ -46,7 +46,7 @@
   max-width: 200px;
 }
 
-@media screen and (max-width: var(--breakpoint-md)) {
+@media screen and (max-width: $breakpoint-md) {
   .section {
     padding-left: 40px;
     padding-right: 40px;
@@ -64,7 +64,7 @@
   }
 }
 
-@media screen and (max-width: var(--breakpoint-sm)) {
+@media screen and (max-width: $breakpoint-sm) {
   .section {
     padding-left: 24px;
     padding-right: 24px;

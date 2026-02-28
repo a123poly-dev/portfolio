@@ -46,21 +46,21 @@
   line-height: 140%;
 }
 
-@media screen and (max-width: var(--breakpoint-md)) {
+@media screen and (max-width: $breakpoint-md) {
   .header {
     padding-left: 40px;
     padding-right: 40px;
   }
 }
 
-@media screen and (max-width: var(--breakpoint-sm)) {
+@media screen and (max-width: $breakpoint-sm) {
   .header {
     padding-left: 24px;
     padding-right: 24px;
   }
 }
 
-@media screen and (max-width: var(--breakpoint-xs)) {
+@media screen and (max-width: $breakpoint-xs) {
   .content {
     margin-top: 0;
     margin-bottom: 0;

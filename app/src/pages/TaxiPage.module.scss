@@ -9,7 +9,7 @@
   grid-template-areas: "area area" ". .";
   gap: 32px;
 
-  @media screen and (max-width: var(--breakpoint-sm)) {
+  @media screen and (max-width: $breakpoint-sm) {
     grid-template-columns: 1fr;
     grid-template-areas: "area" "." ".";
     padding: 80px 24px;
@@ -32,7 +32,7 @@
   width: 80%;
   margin-bottom: 40px;
 
-  @media screen and (max-width: var(--breakpoint-sm)) {
+  @media screen and (max-width: $breakpoint-sm) {
     font-size: 36px;
     width: 100%;
   }
@@ -64,7 +64,7 @@
   align-items: center;
   justify-content: center;
 
-  @media screen and (max-width: var(--breakpoint-sm)) {
+  @media screen and (max-width: $breakpoint-sm) {
     flex-direction: column;
   }
 }
@@ -73,7 +73,7 @@
   flex: 1;
   max-width: 46%;
 
-  @media screen and (max-width: var(--breakpoint-sm)) {
+  @media screen and (max-width: $breakpoint-sm) {
     max-width: 100%;
   }
 }

@@ -139,7 +139,7 @@
   }
 }
 
-@media screen and (max-width: var(--breakpoint-md)) {
+@media screen and (max-width: $breakpoint-md) {
   .about {
     padding-left: 40px;
     padding-right: 40px;
@@ -158,14 +158,14 @@
   }
 }
 
-@media screen and (max-width: var(--breakpoint-sm)) {
+@media screen and (max-width: $breakpoint-sm) {
   .about {
     padding-left: 24px;
     padding-right: 24px;
   }
 }
 
-@media screen and (max-width: var(--breakpoint-xs)) {
+@media screen and (max-width: $breakpoint-xs) {
   .heading {
     font-family: var(--font-family);
     letter-spacing: 0.5px;
