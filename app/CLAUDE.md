@@ -29,8 +29,8 @@ app/
 ├── .storybook/          # Storybook config (main.ts, preview.ts)
 ├── src/
 │   ├── design-system/   # Reusable UI components
-│   │   ├── common/      # Heading, Tag
-│   │   └── features/    # Header, Footer, Navbar
+│   │   ├── common/      # Heading, Tag, Icons, IconButton, ButtonLink
+│   │   └── features/    # Header, Footer, Navbar, BurgerButton, CaseImage
 │   ├── components/      # App-specific components
 │   │   ├── About/
 │   │   ├── WorkCard/
@@ -75,9 +75,14 @@ import { Tag, Navbar } from "@design-system"
 
 - **common/Heading** — polymorphic heading (h1–h6), supports `as` tag override and visual `type`
 - **common/Tag** — colored label (`blue | orange | green | yellow | purple | red`), optional `href` makes it a link
+- **common/Icons** — компонент Icon (`linkedin`, `telegram`, `instagram`), рендерит SVG как `<img>`
+- **common/IconButton** — иконка-ссылка (`<a>` с Icon внутри), props: `icon`, `href`, `label`, `size`
+- **common/ButtonLink** — pill-shaped ссылка с hover-эффектом, props: `href`, `children`, `isExternal`
 - **features/Header** — hero section with title, avatar, subtitle
 - **features/Footer** — copyright footer
 - **features/Navbar** — fixed navbar with mobile burger menu, `isMainPage` prop toggles full/minimal links
+- **features/BurgerButton** — кнопка-бургер с анимацией в X, props: `isOpen`, `onClick`
+- **features/CaseImage** — `<figure>` с изображением и опциональной подписью (`caption`)
 
 ### Stories
 
