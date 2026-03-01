@@ -1,19 +1,20 @@
 import { Icon } from "../Icons"
-import type { TIconName } from "../Icons"
+import type { TIconName, TIconSize } from "../Icons"
+
 import styles from "./IconButton.module.scss"
 
 type TIconButtonProps = {
   icon: TIconName
   href: string
   label: string
-  size?: number
+  size?: TIconSize
 }
 
 export const IconButton = ({
   icon,
   href,
   label,
-  size = 24,
+  size = "md",
 }: TIconButtonProps) => (
   <a
     href={href}
