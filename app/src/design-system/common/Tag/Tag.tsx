@@ -2,9 +2,15 @@ import cn from "classnames"
 
 import styles from "./Tag.module.scss"
 
-export type TTagColor = "blue" | "orange" | "green" | "yellow" | "purple" | "red"
+export type TTagColor =
+  | "blue"
+  | "orange"
+  | "green"
+  | "yellow"
+  | "purple"
+  | "red"
 
-type TTagProps = {
+export type TTagProps = {
   label: string
   color: TTagColor
   href?: string
