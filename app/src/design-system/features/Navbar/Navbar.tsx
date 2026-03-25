@@ -9,6 +9,7 @@ import { ButtonLink } from "@design-system/common/ButtonLink"
 import { BurgerButton } from "@design-system/features/BurgerButton"
 import styles from "./Navbar.module.scss"
 import { MobileMenu } from "./MobileMenu"
+import logo from "./assets/logo.svg"
 
 type TNavbarProps = {
   isMainPage?: boolean
@@ -46,7 +47,7 @@ export const Navbar = ({ isMainPage = false }: TNavbarProps) => {
         <div className={styles.wrapper}>
           <a href={ROOT_PATH} className={styles.logo}>
             <img
-              src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65ca4aabc8b3698a1fb75d27_logo.svg"
+              src={logo}
               width={138}
               alt="Polina's Portfolio"
               className={styles.logo}

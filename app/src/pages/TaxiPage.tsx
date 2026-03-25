@@ -1,10 +1,16 @@
 import { useEffect } from "react"
 import { useLocation } from "react-router-dom"
+import { Heading } from "@design-system/common/Heading"
+import { CaseImage } from "@design-system/features/CaseImage"
 import { Navbar } from "@design-system/features/Navbar"
 import { Footer } from "@design-system/features/Footer"
+
 import { VideoEmbed } from "../components/case/VideoEmbed"
 import { KiitosSection } from "../components/case/KiitosSection"
-import { Heading } from "@design-system/common/Heading"
+import photo01 from "./assets/taxi/01.png"
+import photo02 from "./assets/taxi/02.png"
+import photo03 from "./assets/taxi/03.png"
+import photo04 from "./assets/taxi/04.png"
 
 import caseStyles from "../components/case/case.module.scss"
 import styles from "./TaxiPage.module.scss"
@@ -72,10 +78,9 @@ export const TaxiPage = () => {
       <div className={styles.heroSection}>
         <div className={styles.heroFlex}>
           <div className={styles.heroSplit}>
-            <img
-              src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/64a97685c8b96cd400e1aaad_Frame%2034064.png"
+            <CaseImage
+              src={photo01}
               alt="About concept"
-              loading="lazy"
               className={styles.heroImage}
             />
           </div>
@@ -112,10 +117,9 @@ export const TaxiPage = () => {
             </p>
           </div>
           <div className={styles.heroSplit}>
-            <img
-              src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/64a976853bb2957738a84f8e_Frame%2034064-1.png"
+            <CaseImage
+              src={photo02}
               alt="Easy to run"
-              loading="lazy"
               className={styles.heroImage}
             />
           </div>
@@ -126,10 +130,9 @@ export const TaxiPage = () => {
       <div className={styles.heroSection}>
         <div className={styles.heroFlex}>
           <div className={styles.heroSplit}>
-            <img
-              src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/64a97685e6d7f48c1fceb256_Frame%2034064-2.png"
+            <CaseImage
+              src={photo03}
               alt="Recommendations"
-              loading="lazy"
               className={styles.heroImage}
             />
           </div>
@@ -173,10 +176,9 @@ export const TaxiPage = () => {
             </p>
           </div>
           <div className={styles.heroSplit}>
-            <img
-              src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/64a9d24737b580eded798cf2_Frame%2034064.png"
+            <CaseImage
+              src={photo04}
               alt="Demand forecast"
-              loading="lazy"
               className={styles.heroImage}
             />
           </div>

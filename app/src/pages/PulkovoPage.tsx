@@ -1,9 +1,26 @@
 import cn from "classnames"
+import { CaseImage } from "@design-system/features/CaseImage"
+
 import { CaseLayout } from "../components/case/CaseLayout"
 import { CaseHero } from "../components/case/CaseHero"
 import { SectionBlock } from "../components/case/SectionBlock"
 import { TwoColumn } from "../components/case/TwoColumn"
-import { CaseImage } from "@design-system/features/CaseImage"
+
+import photo01 from "./assets/pulkovo/01.png"
+import photo02 from "./assets/pulkovo/02.png"
+import photo03 from "./assets/pulkovo/03.png"
+import photo04 from "./assets/pulkovo/04.png"
+import photo05 from "./assets/pulkovo/05.png"
+import photo06 from "./assets/pulkovo/06.png"
+import photo07 from "./assets/pulkovo/07.png"
+import photo08 from "./assets/pulkovo/08.png"
+import photo09 from "./assets/pulkovo/09.png"
+import photo10 from "./assets/pulkovo/10.png"
+import photo11 from "./assets/pulkovo/11.png"
+import photo12 from "./assets/pulkovo/12.png"
+import photo13 from "./assets/pulkovo/13.png"
+import photo14 from "./assets/pulkovo/14.png"
+
 import heroStyles from "../components/case/CaseHero.module.scss"
 import styles from "../components/case/case.module.scss"
 
@@ -110,21 +127,13 @@ export const PulkovoPage = () => {
             </p>
           }
         />
-        <CaseImage
-          src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65e5ccb58e6e264cb91cc8ab_01.png"
-          alt="Research"
-        />
+        <CaseImage src={photo01} alt="Research" />
       </SectionBlock>
 
       {/* Half-Low-Fidelity Designs */}
       <SectionBlock>
         <TwoColumn
-          left={
-            <CaseImage
-              src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65e5d6a61beb2a11689166d0_02.png"
-              alt="Low-fidelity designs"
-            />
-          }
+          left={<CaseImage src={photo02} alt="Low-fidelity designs" />}
           right={
             <div className={styles.vflex}>
               <h2 className={styles.h4}>Half-Low-Fidelity Designs</h2>
@@ -139,10 +148,7 @@ export const PulkovoPage = () => {
             </div>
           }
         />
-        <CaseImage
-          src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65e5d6a762c0d7f4028ad7fd_03.png"
-          alt="Low-fidelity wireframes"
-        />
+        <CaseImage src={photo03} alt="Low-fidelity wireframes" />
       </SectionBlock>
 
       {/* High-Fidelity Designs */}
@@ -173,10 +179,7 @@ export const PulkovoPage = () => {
                 </p>
               }
             />
-            <CaseImage
-              src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65e5d6a71566b922478a8df5_04.png"
-              alt="High-fidelity timeliner"
-            />
+            <CaseImage src={photo04} alt="High-fidelity timeliner" />
           </div>
 
           <div className={cn(styles.vflex, styles.gap24)}>
@@ -187,46 +190,34 @@ export const PulkovoPage = () => {
               These settings provide flexibility and enable users to personalize
               their experience with the timeliner.
             </p>
-            <CaseImage
-              src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65e5d6a7201251d291a25a11_05.png"
-              alt="Timeline customization light"
-            />
-            <CaseImage
-              src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65e5d6a7ab015425dd4bb7bc_06.png"
-              alt="Timeline customization dark"
-            />
-            <CaseImage
-              src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65e5d6a7e3854b0ccfbc88ba_07.png"
-              alt="Timeline zoom levels"
-            />
+            <CaseImage src={photo05} alt="Timeline customization light" />
+            <CaseImage src={photo06} alt="Timeline customization dark" />
+            <CaseImage src={photo07} alt="Timeline zoom levels" />
           </div>
 
           <div className={cn(styles.vflex, styles.gap24)}>
             <h3 className={styles.h5}>Other states and screens</h3>
             <CaseImage
-              src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65e5d6aa17ad9a70d359b27c_08.png"
+              src={photo08}
               alt="Drag and drop a task to another employee"
               caption="Drag and drop a task to another employee"
             />
             <CaseImage
-              src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65e5d6a8609ac9326e953ca3_09.png"
+              src={photo09}
               alt="Shift planning light theme"
               caption="Shift planning. Light theme"
             />
             <CaseImage
-              src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65e5d6a8c04ed8dbfea760eb_10.png"
+              src={photo10}
               alt="Shift planning dark theme"
               caption="Shift planning. Dark theme"
             />
             <CaseImage
-              src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65e5d6a82d408f05fcf055cc_11.png"
+              src={photo11}
               alt="Right drawer with flight information"
               caption="Right drawer with flight information."
             />
-            <CaseImage
-              src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65e5d6a9f32aeb74ed4e408e_12.png"
-              alt="Additional states"
-            />
+            <CaseImage src={photo12} alt="Additional states" />
           </div>
         </div>
       </SectionBlock>
@@ -257,14 +248,8 @@ export const PulkovoPage = () => {
           }
         />
         <div className={cn(styles.vflex, styles.gap24)}>
-          <CaseImage
-            src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65e5d6a9ea7cc03c1f192da1_13.png"
-            alt="Component details"
-          />
-          <CaseImage
-            src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65e5d6a95c163d696e1e6d7c_14.png"
-            alt="Component documentation"
-          />
+          <CaseImage src={photo13} alt="Component details" />
+          <CaseImage src={photo14} alt="Component documentation" />
         </div>
       </SectionBlock>
 

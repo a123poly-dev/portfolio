@@ -1,9 +1,24 @@
+import { CaseImage } from "@design-system/features/CaseImage"
+import { Heading } from "@design-system/common/Heading"
+
 import { CaseLayout } from "../components/case/CaseLayout"
 import { CaseHero } from "../components/case/CaseHero"
 import { SectionBlock } from "../components/case/SectionBlock"
 import { TwoColumn } from "../components/case/TwoColumn"
-import { CaseImage } from "@design-system/features/CaseImage"
-import { Heading } from "@design-system/common/Heading"
+
+import photo02 from "./assets/ya-calls/02.png"
+import photo03 from "./assets/ya-calls/03.png"
+import photo04 from "./assets/ya-calls/04.png"
+import photo051 from "./assets/ya-calls/05_1.png"
+import photo052 from "./assets/ya-calls/05_2.png"
+import photo06 from "./assets/ya-calls/06_1.png"
+import photo071 from "./assets/ya-calls/07_1.png"
+import photo072 from "./assets/ya-calls/07_2.png"
+import photo08 from "./assets/ya-calls/08_1.png"
+import photo09 from "./assets/ya-calls/09_1.png"
+import photo10 from "./assets/ya-calls/10_1.png"
+import photo11 from "./assets/ya-calls/11_1.png"
+
 import heroStyles from "../components/case/CaseHero.module.scss"
 import styles from "../components/case/case.module.scss"
 
@@ -87,10 +102,7 @@ export function YaCallsPage() {
             </p>
           }
         />
-        <CaseImage
-          src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65cd111eaf7a1e31195654a3_02.png"
-          alt="Research"
-        />
+        <CaseImage src={photo02} alt="Research" />
       </SectionBlock>
 
       {/* High-Fidelity Designs */}
@@ -118,10 +130,7 @@ export function YaCallsPage() {
             </p>
           }
         />
-        <CaseImage
-          src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65cd19194ce3e19d9dfa800f_03.png"
-          alt="Information Architecture"
-        />
+        <CaseImage src={photo03} alt="Information Architecture" />
 
         <div
           className={`${styles.vflex} ${styles.gap56}`}
@@ -136,34 +145,22 @@ export function YaCallsPage() {
               by focusing solely on essential information presented in
               simplified tables.
             </p>
-            <CaseImage
-              src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65cd1919f4844ba234b5da18_04.png"
-              alt="Simplified tables"
-            />
+            <CaseImage src={photo04} alt="Simplified tables" />
           </div>
 
           <div>
             <Heading type="heading-h5" as="h3" className={styles.h5}>
               Units
             </Heading>
-            <CaseImage
-              src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65cd1919b3658c56d9ad26ea_05_1.png"
-              alt="Units overview"
-            />
-            <CaseImage
-              src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65cd1919e2dc78a04c5572c1_05_2.png"
-              alt="Units detail"
-            />
+            <CaseImage src={photo051} alt="Units overview" />
+            <CaseImage src={photo052} alt="Units detail" />
           </div>
 
           <div>
             <Heading type="heading-h5" as="h3" className={styles.h5}>
               Operators
             </Heading>
-            <CaseImage
-              src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65cd1919887f7eeb84ba85ae_06_1.png"
-              alt="Operators"
-            />
+            <CaseImage src={photo06} alt="Operators" />
           </div>
 
           <div>
@@ -174,14 +171,8 @@ export function YaCallsPage() {
               We adapted the routing functionality directly from the
               Ya.Telephony project.
             </p>
-            <CaseImage
-              src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65cd19197f432918531ef0f8_07_1.png"
-              alt="Routing overview"
-            />
-            <CaseImage
-              src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65cd19195cc5a22ac242d93b_07_2.png"
-              alt="Routing detail"
-            />
+            <CaseImage src={photo071} alt="Routing overview" />
+            <CaseImage src={photo072} alt="Routing detail" />
           </div>
 
           <div>
@@ -194,10 +185,7 @@ export function YaCallsPage() {
               determined that it would be more advantageous to utilize familiar
               patterns instead.
             </p>
-            <CaseImage
-              src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65cd191ab48431250e02f97a_08_1.png"
-              alt="Dashboard"
-            />
+            <CaseImage src={photo08} alt="Dashboard" />
           </div>
 
           <div>
@@ -209,10 +197,7 @@ export function YaCallsPage() {
               project to fulfill the objectives of Ya.Calls. We streamlined the
               original version and its scenarios to better align with our goals.
             </p>
-            <CaseImage
-              src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65cd191acb150d278a036a10_09_1.png"
-              alt="Webphone"
-            />
+            <CaseImage src={photo09} alt="Webphone" />
           </div>
 
           <div>
@@ -226,20 +211,14 @@ export function YaCallsPage() {
                 a single call through the use of filters.
               </strong>
             </p>
-            <CaseImage
-              src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65cd191be498f2448cfdcb5d_10_1.png"
-              alt="Calls"
-            />
+            <CaseImage src={photo10} alt="Calls" />
           </div>
 
           <div>
             <Heading type="heading-h5" as="h3" className={styles.h5}>
               Reports
             </Heading>
-            <CaseImage
-              src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65cd191a4d1b2e4bfa518fe4_11_1.png"
-              alt="Reports"
-            />
+            <CaseImage src={photo11} alt="Reports" />
           </div>
         </div>
       </SectionBlock>

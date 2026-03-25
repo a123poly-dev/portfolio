@@ -1,4 +1,6 @@
 import { Heading } from "../../common/Heading"
+import photo from "./assets/photo_1.png"
+
 import styles from "./Header.module.scss"
 
 export const Header = () => (
@@ -10,7 +12,7 @@ export const Header = () => (
             Hey,👋 I&apos;m Polina
           </Heading>
           <img
-            src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65cb9b9ec4f1412179327ea4_photo_1.png"
+            src={photo}
             loading="lazy"
             width={92}
             alt=""

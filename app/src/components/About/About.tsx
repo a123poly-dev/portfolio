@@ -2,39 +2,17 @@ import cn from "classnames"
 import { useScrollReveal } from "../../hooks/useScrollReveal"
 import { Heading } from "@design-system/common/Heading"
 import { Tag } from "@design-system/common/Tag"
-import type { TTagColor } from "@design-system/common/Tag"
 import { IconButton } from "@design-system/common/IconButton"
 import { Icon } from "@design-system/common/Icons"
+import photo from "./assets/photo_2.png"
+import {
+  SKILLS,
+  TOOLS,
+  SOCIAL_URLS,
+  CV_DOWNLOAD_URL,
+} from "./constants/constants"
 
 import styles from "./About.module.scss"
-
-type TTagItem = {
-  label: string
-  color: TTagColor
-}
-
-const skills: TTagItem[] = [
-  { label: "Product design", color: "green" },
-  { label: "Research", color: "green" },
-  { label: "UX", color: "green" },
-  { label: "UI", color: "red" },
-  { label: "HIG", color: "blue" },
-  { label: "Material design", color: "blue" },
-  { label: "Graphic Design", color: "red" },
-  { label: "Prototyping", color: "purple" },
-  { label: "Animation", color: "purple" },
-  { label: "B2B", color: "orange" },
-  { label: "B2C", color: "orange" },
-]
-
-const tools: TTagItem[] = [
-  { label: "Figma", color: "purple" },
-  { label: "Adobe Cloud", color: "purple" },
-  { label: "Miro", color: "green" },
-  { label: "Git", color: "blue" },
-  { label: "HTML", color: "blue" },
-  { label: "CSS", color: "blue" },
-]
 
 export const About = () => {
   const ref = useScrollReveal<HTMLDivElement>()
@@ -63,16 +41,24 @@ export const About = () => {
               <div>
                 <div className={styles.label}>Skills:</div>
                 <div className={styles.tagsWrap}>
-                  {skills.map((s) => (
-                    <Tag key={s.label} label={s.label} color={s.color} />
+                  {SKILLS.map((skill) => (
+                    <Tag
+                      key={skill.label}
+                      label={skill.label}
+                      color={skill.color}
+                    />
                   ))}
                 </div>
               </div>
               <div>
                 <div className={styles.label}>Tools:</div>
                 <div className={styles.tagsWrap}>
-                  {tools.map((t) => (
-                    <Tag key={t.label} label={t.label} color={t.color} />
+                  {TOOLS.map((tool) => (
+                    <Tag
+                      key={tool.label}
+                      label={tool.label}
+                      color={tool.color}
+                    />
                   ))}
                 </div>
               </div>
@@ -99,28 +85,21 @@ export const About = () => {
           <div className={styles.contactCell}>
             <div className={styles.photoBlock}>
               <img
-                src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65cb9b9ede7072b7a60c5f87_photo_2.png"
+                src={photo}
                 loading="lazy"
                 alt=""
                 className={styles.photo}
                 width={251}
               />
               <div className={styles.socials}>
-                <IconButton
-                  icon="linkedin"
-                  href="https://www.linkedin.com/in/apolina/"
-                  label="LinkedIn"
-                />
-                <IconButton
-                  icon="telegram"
-                  href="https://t.me/aapoly"
-                  label="Telegram"
-                />
-                <IconButton
-                  icon="instagram"
-                  href="https://www.instagram.com/polinakzz/"
-                  label="Instagram"
-                />
+                {SOCIAL_URLS.map((social) => (
+                  <IconButton
+                    key={social.label}
+                    icon={social.icon}
+                    href={social.href}
+                    label={social.label}
+                  />
+                ))}
               </div>
             </div>
             <div className={styles.cvBlock}>
@@ -128,7 +107,7 @@ export const About = () => {
               <div className={styles.cvInner}>
                 <Icon name="drive" size="sm" />
                 <a
-                  href="https://drive.google.com/file/d/1mGUrUfwG9Sgmn57VYVrz6PI0KoskK2LL/view?usp=sharing"
+                  href={CV_DOWNLOAD_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.cvLink}

@@ -1,10 +1,33 @@
 import cn from "classnames"
+import { Heading } from "@design-system/common/Heading"
+
 import { CaseLayout } from "../components/case/CaseLayout"
 import { SectionBlock } from "../components/case/SectionBlock"
 import { TwoColumn } from "../components/case/TwoColumn"
 import { CaseImage } from "@design-system/features/CaseImage"
 import { VideoEmbed } from "../components/case/VideoEmbed"
-import { Heading } from "@design-system/common/Heading"
+
+import cover from "./assets/okey-app/cover_1.png"
+import photo21 from "./assets/okey-app/02_1.png"
+import photo22 from "./assets/okey-app/02_2.png"
+import photo2 from "./assets/okey-app/02.png"
+import photo3 from "./assets/okey-app/03.png"
+import photo4 from "./assets/okey-app/04.png"
+import photo6 from "./assets/okey-app/06.png"
+import photo7 from "./assets/okey-app/07.png"
+import photo8 from "./assets/okey-app/08.png"
+import photo9 from "./assets/okey-app/09.png"
+import photo10 from "./assets/okey-app/10.png"
+import photo11 from "./assets/okey-app/11.png"
+import photo12 from "./assets/okey-app/12.png"
+import photo13 from "./assets/okey-app/13.png"
+import photo14 from "./assets/okey-app/14.png"
+import photo15 from "./assets/okey-app/15.png"
+import photo16 from "./assets/okey-app/16.png"
+import photo17 from "./assets/okey-app/17.png"
+import photo18 from "./assets/okey-app/18.png"
+import photo19 from "./assets/okey-app/19.png"
+import photo20 from "./assets/okey-app/20.png"
 
 import styles from "../components/case/case.module.scss"
 
@@ -20,10 +43,7 @@ export const OkeyAppPage = () => (
         New mobile app for food retailer &quot;O&apos;key&quot;
       </Heading>
 
-      <CaseImage
-        src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/64c2d56046e7c8df4c80ef2b_01.png"
-        alt="O'key mobile app cover"
-      />
+      <CaseImage src={cover} alt="O'key mobile app cover" />
 
       <Heading type="heading-h5" as="h3" className={styles.mt40}>
         O&apos;KEY Group is a major Russian supermarket chain with stores in
@@ -109,7 +129,7 @@ export const OkeyAppPage = () => (
         Research
       </Heading>
       <CaseImage
-        src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/64c2d55d3f3a95657ceeed62_02.png"
+        src={photo2}
         alt="Customer Journey Map"
         caption="CJM have created before starting project"
       />
@@ -138,7 +158,7 @@ export const OkeyAppPage = () => (
         right={
           <div>
             <CaseImage
-              src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/64c2d55dd6d587f67ecf6b08_03.png"
+              src={photo3}
               alt="Old app version since 2015"
               caption="Version since 2015"
             />
@@ -187,28 +207,15 @@ export const OkeyAppPage = () => (
             </div>
           </div>
         }
-        right={
-          <CaseImage
-            src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65e7894c84a63ca700287ca2_02_1.png"
-            alt="Dividing screen concept"
-          />
-        }
+        right={<CaseImage src={photo21} alt="Dividing screen concept" />}
       />
-      <CaseImage
-        src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/65e7894ae29d143b915b3739_02_2.png"
-        alt="Dividing screen designs"
-      />
+      <CaseImage src={photo22} alt="Dividing screen designs" />
     </SectionBlock>
 
     {/* Usability Study */}
     <SectionBlock>
       <TwoColumn
-        left={
-          <CaseImage
-            src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/64c2d55f421289816f0ab990_04.png"
-            alt="Usability study"
-          />
-        }
+        left={<CaseImage src={photo4} alt="Usability study" />}
         right={
           <div>
             <Heading type="heading-h5" as="h3" className={styles.h5}>
@@ -272,12 +279,7 @@ export const OkeyAppPage = () => (
             </strong>
           </p>
         }
-        right={
-          <CaseImage
-            src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/64c2d55c4c80d0d902635b48_06.png"
-            alt="Component libraries"
-          />
-        }
+        right={<CaseImage src={photo6} alt="Component libraries" />}
       />
     </SectionBlock>
 
@@ -288,112 +290,70 @@ export const OkeyAppPage = () => (
           <Heading type="heading-h5" as="h3" className={styles.h5}>
             Main screen of online shop &amp; offline functionality
           </Heading>
-          <CaseImage
-            src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/64c2d55feacc0e64c601b81a_07.png"
-            alt="Main screen"
-          />
+          <CaseImage src={photo7} alt="Main screen" />
         </div>
         <div>
           <Heading type="heading-h5" as="h3" className={styles.h5}>
             Booking a delivery time in advance
           </Heading>
-          <CaseImage
-            src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/64c2d562f426f043548f056a_08.png"
-            alt="Booking delivery"
-          />
+          <CaseImage src={photo8} alt="Booking delivery" />
         </div>
         <div>
           <Heading type="heading-h5" as="h3" className={styles.h5}>
             Login &amp; Sign up
           </Heading>
-          <CaseImage
-            src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/64c2d55e3c418fcfa367d207_09.png"
-            alt="Login"
-          />
-          <CaseImage
-            src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/64c2d55ed97c9b1a685b5df7_10.png"
-            alt="Sign up"
-          />
+          <CaseImage src={photo9} alt="Login" />
+          <CaseImage src={photo10} alt="Sign up" />
         </div>
         <div>
           <Heading type="heading-h5" as="h3" className={styles.h5}>
             Catalog. Different type of products
           </Heading>
-          <CaseImage
-            src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/64c2d55ffb4555c9c6b92779_11.png"
-            alt="Catalog"
-          />
-          <CaseImage
-            src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/64c2d55e0cdf353667d089b3_12.png"
-            alt="Product types"
-          />
+          <CaseImage src={photo11} alt="Catalog" />
+          <CaseImage src={photo12} alt="Product types" />
         </div>
         <div>
           <Heading type="heading-h5" as="h3" className={styles.h5}>
             My goods. Favorites &amp; Shopping lists
           </Heading>
-          <CaseImage
-            src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/64c2d55f8ae2fbad54f50ee4_13.png"
-            alt="Favorites"
-          />
-          <CaseImage
-            src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/64c2d55eeacc0e64c601b70d_14.png"
-            alt="Shopping lists"
-          />
+          <CaseImage src={photo13} alt="Favorites" />
+          <CaseImage src={photo14} alt="Shopping lists" />
         </div>
         <div>
           <Heading type="heading-h5" as="h3" className={styles.h5}>
             Cart with personal discounts
           </Heading>
-          <CaseImage
-            src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/64c2d55e1cfc3a7a94fc353b_15.png"
-            alt="Cart"
-          />
+          <CaseImage src={photo15} alt="Cart" />
         </div>
         <div>
           <Heading type="heading-h5" as="h3" className={styles.h5}>
             Profile
           </Heading>
-          <CaseImage
-            src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/64c2d55e58c1180ab11ceccf_16.png"
-            alt="Profile"
-          />
+          <CaseImage src={photo16} alt="Profile" />
         </div>
         <div>
           <Heading type="heading-h5" as="h3" className={styles.h5}>
             My orders
           </Heading>
-          <CaseImage
-            src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/64c2d55e91bab8e99c68df5e_17.png"
-            alt="My orders"
-          />
+          <CaseImage src={photo17} alt="My orders" />
         </div>
         <div>
           <Heading type="heading-h5" as="h3" className={styles.h5}>
             Personal discount
           </Heading>
-          <CaseImage
-            src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/64c2d55ed36247b6a37f5df1_18.png"
-            alt="Personal discount"
-          />
+          <CaseImage src={photo18} alt="Personal discount" />
         </div>
         <div>
           <Heading type="heading-h5" as="h3" className={styles.h5}>
             Statistics
           </Heading>
-          <CaseImage
-            src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/64c2d55e395078c0e43217db_19.png"
-            alt="Statistics"
-          />
+          <CaseImage src={photo19} alt="Statistics" />
         </div>
         <div>
           <Heading type="heading-h5" as="h3" className={styles.h5}>
             Help &amp; Onbordings
           </Heading>
-          <CaseImage
-            src="https://cdn.prod.website-files.com/6464c7692ca8b8c075cd4223/64c2d55f27a3bbe0191c28d1_20.png"
-            alt="Help and onboarding"
-          />
+          <CaseImage src={photo20} alt="Help and onboarding" />
         </div>
       </div>
     </SectionBlock>
