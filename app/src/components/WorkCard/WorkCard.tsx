@@ -58,6 +58,19 @@ export const WorkCard = ({ project }: TWorkCardProps) => {
     </div>
   )
 
+if (project.externalLink) {
+  return (
+    
+      href={project.externalLink}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={styles.card}
+    >
+      {content}
+    </a>
+  )
+}
+
   if (project.comingSoon) {
     return <div className={styles.card}>{content}</div>
   }
