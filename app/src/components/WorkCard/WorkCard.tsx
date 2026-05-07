@@ -15,6 +15,7 @@ const coverClassMap: Record<string, string> = {
   okeySiteCover: styles.okeySiteCover,
   pbxyaCover: styles.pbxyaCover,
   gpnCover: styles.gpnCover,
+  aiCover: styles.aiCover,
 }
 
 type TWorkCardProps = {
