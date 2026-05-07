@@ -85,6 +85,23 @@ export const projects: TProject[] = [
     size: "medium",
   },
   
+    {
+    id: "voiceSaaS",
+    title: "Cloud-based communications system through API",
+    date: "11.2025 - 05.2026",
+    tags: [
+      { label: "Web", color: "blue" },
+      { label: "B2B", color: "orange" },
+      { label: "UX", color: "purple" },
+      { label: "Design System", color: "yellow" },
+    ],
+    coverClass: "VCover",
+    link: "",
+    size: "medium",
+    comingSoon: true,
+  },
+
+
   {
     id: "taxi",
     title: "Driver taxi app",
@@ -111,6 +128,7 @@ export const projects: TProject[] = [
     link: "/okey-site",
     size: "small",
   },
+
   {
     id: "pbx-ya",
     title: "Yandex Control system hosted PBX",
@@ -126,19 +144,19 @@ export const projects: TProject[] = [
     size: "small",
     comingSoon: true,
   },
-  {
-    id: "gpn",
-    title: "Document management system for GPN",
-    date: "2021",
-    tags: [
-      { label: "Web", color: "blue" },
-      { label: "UX", color: "purple" },
-      { label: "UI", color: "purple" },
-      { label: "Design System", color: "yellow" },
-    ],
-    coverClass: "gpnCover",
-    link: "",
-    size: "small",
-    comingSoon: true,
-  },
+//   {
+//     id: "gpn",
+//     title: "Document management system for GPN",
+//     date: "2021",
+//     tags: [
+//       { label: "Web", color: "blue" },
+//       { label: "UX", color: "purple" },
+//       { label: "UI", color: "purple" },
+//       { label: "Design System", color: "yellow" },
+//     ],
+//     coverClass: "gpnCover",
+//     link: "",
+//     size: "small",
+//     comingSoon: true,
+//   },
 ]

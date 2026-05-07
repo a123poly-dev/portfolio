@@ -16,6 +16,7 @@ const coverClassMap: Record<string, string> = {
   pbxyaCover: styles.pbxyaCover,
   gpnCover: styles.gpnCover,
   aiCover: styles.aiCover,
+  VCover: styles.VCover,
 }
 
 type TWorkCardProps = {
