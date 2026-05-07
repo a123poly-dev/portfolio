@@ -87,7 +87,7 @@ export const projects: TProject[] = [
   
   {
     id: "taxi",
-    title: "Concept for driver taxi app",
+    title: "Driver taxi app",
     date: "2020",
     tags: [
       { label: "Android", color: "blue" },
@@ -100,7 +100,7 @@ export const projects: TProject[] = [
   },
   {
     id: "okey-site",
-    title: 'Concept for site "O\'key"',
+    title: 'Site for food retailer "O\'key"',
     date: "2020",
     tags: [
       { label: "Web", color: "blue" },
