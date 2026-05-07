@@ -51,6 +51,16 @@
   background-size: 742px, auto;
 }
 
+.aiCover {
+  background-image:
+    url("./assets/AiCover.png"), linear-gradient(127deg, #C1F05A, #95C73C);
+//position?
+    background-position:
+    30% -5%,
+    0 0;
+  background-size: 742px, auto;
+}
+
 .taxiCover {
   background-image:
     url("./assets/img_taxi.png"), linear-gradient(130deg, #fae369, #f6c249);
