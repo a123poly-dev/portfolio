@@ -61,7 +61,7 @@ export const WorkCard = ({ project }: TWorkCardProps) => {
 
 if (project.externalLink) {
   return (
-    
+    <a
       href={project.externalLink}
       target="_blank"
       rel="noopener noreferrer"
