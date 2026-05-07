@@ -14,6 +14,7 @@ export type TProject = {
   link: string
   size: "large" | "medium" | "small"
   comingSoon?: boolean
+  externalLink?: string
 }
 
 export const projects: TProject[] = [
@@ -34,6 +35,39 @@ export const projects: TProject[] = [
     size: "large",
   },
   {
+    id: "ya-calls",
+    title: "Yandex Control system hosted PBX — internal product",
+    date: "06.2019 - 09.2019",
+    tags: [
+      { label: "Web", color: "blue" },
+      { label: "B2B", color: "orange" },
+      { label: "UX", color: "purple" },
+      { label: "UI", color: "purple" },
+    ],
+    coverClass: "pbhCover",
+    link: "/ya-calls",
+    size: "medium",
+  },
+
+// New one
+   {
+    id: "ai-case",
+    title: "AI Stock Analysis Web App",
+    date: "2024",
+    tags: [
+      { label: "Web", color: "blue" },
+      { label: "B2C", color: "orange" },
+      { label: "UX", color: "purple" },
+      { label: "UI", color: "purple" },
+    ],
+    coverClass: "aiCover",
+    link: "",
+    externalLink: "https://www.behance.net/gallery/244853723/AI-Stock-Analysis-Web-App-Case-Study",
+    size: "medium",
+  },
+
+
+  {
     id: "okey-app",
     title: 'New mobile app for food retailer "O\'key"',
     date: "09.2019 - 12.2021",
@@ -50,20 +84,7 @@ export const projects: TProject[] = [
     link: "/okey-app",
     size: "medium",
   },
-  {
-    id: "ya-calls",
-    title: "Yandex Control system hosted PBX — internal product",
-    date: "06.2019 - 09.2019",
-    tags: [
-      { label: "Web", color: "blue" },
-      { label: "B2B", color: "orange" },
-      { label: "UX", color: "purple" },
-      { label: "UI", color: "purple" },
-    ],
-    coverClass: "pbhCover",
-    link: "/ya-calls",
-    size: "medium",
-  },
+  
   {
     id: "taxi",
     title: "Concept for driver taxi app",
