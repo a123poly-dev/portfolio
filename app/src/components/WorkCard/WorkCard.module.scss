@@ -51,6 +51,16 @@
   background-size: 742px, auto;
 }
 
+.aiCover {
+  background-image:
+    url("./assets/AICover.png"), linear-gradient(127deg, #C1F05A, #95C73C);
+//position?
+    background-position:
+    75% bottom,
+    0 0;
+  background-size: 92%, auto;
+}
+
 .taxiCover {
   background-image:
     url("./assets/img_taxi.png"), linear-gradient(130deg, #fae369, #f6c249);
@@ -72,6 +82,15 @@
 .pbxyaCover {
   background-image:
     url("./assets/CS_1.png"), linear-gradient(135deg, #b98eff, #a073ff);
+  background-position:
+    50%,
+    0 0;
+  background-size: cover, auto;
+}
+
+.VCover {
+  background-image:
+    url("./assets/CS_3.png"), linear-gradient(135deg, #b98eff, #a073ff);
   background-position:
     50%,
     0 0;

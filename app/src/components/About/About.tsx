@@ -112,7 +112,7 @@ export const About = () => {
                   rel="noopener noreferrer"
                   className={styles.cvLink}
                 >
-                  Polina_CV_2025.pdf
+                  CV-Polina Abdula.pdf
                 </a>
               </div>
             </div>

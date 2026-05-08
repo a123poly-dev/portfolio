@@ -15,6 +15,8 @@ const coverClassMap: Record<string, string> = {
   okeySiteCover: styles.okeySiteCover,
   pbxyaCover: styles.pbxyaCover,
   gpnCover: styles.gpnCover,
+  aiCover: styles.aiCover,
+  VCover: styles.VCover,
 }
 
 type TWorkCardProps = {
@@ -57,6 +59,19 @@ export const WorkCard = ({ project }: TWorkCardProps) => {
       </Heading>
     </div>
   )
+
+if (project.externalLink) {
+  return (
+    <a
+      href={project.externalLink}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={styles.card}
+    >
+      {content}
+    </a>
+  )
+}
 
   if (project.comingSoon) {
     return <div className={styles.card}>{content}</div>

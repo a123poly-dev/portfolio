@@ -14,6 +14,7 @@ export type TProject = {
   link: string
   size: "large" | "medium" | "small"
   comingSoon?: boolean
+  externalLink?: string
 }
 
 export const projects: TProject[] = [
@@ -25,30 +26,13 @@ export const projects: TProject[] = [
       { label: "Web", color: "blue" },
       { label: "B2B", color: "orange" },
       { label: "Research", color: "green" },
-      { label: "Library", color: "yellow" },
+      { label: "Design System", color: "yellow" },
       { label: "UX", color: "purple" },
       { label: "UI", color: "purple" },
     ],
     coverClass: "pulkovoCover",
     link: "/pulkovo",
     size: "large",
-  },
-  {
-    id: "okey-app",
-    title: 'New mobile app for food retailer "O\'key"',
-    date: "09.2019 - 12.2021",
-    tags: [
-      { label: "Android", color: "blue" },
-      { label: "iOS", color: "blue" },
-      { label: "B2C", color: "orange" },
-      { label: "Research", color: "green" },
-      { label: "Library", color: "yellow" },
-      { label: "UX", color: "purple" },
-      { label: "UI", color: "purple" },
-    ],
-    coverClass: "okeyAppCover",
-    link: "/okey-app",
-    size: "medium",
   },
   {
     id: "ya-calls",
@@ -64,9 +48,63 @@ export const projects: TProject[] = [
     link: "/ya-calls",
     size: "medium",
   },
+
+// New one
+   {
+    id: "ai-case",
+    title: "AI Stock Analysis Web App",
+    date: "2024",
+    tags: [
+      { label: "Web", color: "blue" },
+      { label: "B2C", color: "orange" },
+      { label: "UX", color: "purple" },
+      { label: "UI", color: "purple" },
+    ],
+    coverClass: "aiCover",
+    link: "",
+    externalLink: "https://www.behance.net/gallery/244853723/AI-Stock-Analysis-Web-App-Case-Study",
+    size: "medium",
+  },
+
+
+  {
+    id: "okey-app",
+    title: 'New mobile app for food retailer "O\'key"',
+    date: "09.2019 - 12.2021",
+    tags: [
+      { label: "Android", color: "blue" },
+      { label: "iOS", color: "blue" },
+      { label: "B2C", color: "orange" },
+      { label: "Research", color: "green" },
+      { label: "Design System", color: "yellow" },
+      { label: "UX", color: "purple" },
+      { label: "UI", color: "purple" },
+    ],
+    coverClass: "okeyAppCover",
+    link: "/okey-app",
+    size: "medium",
+  },
+  
+    {
+    id: "voiceSaaS",
+    title: "Cloud-based communications system through API",
+    date: "11.2025 - 05.2026",
+    tags: [
+      { label: "Web", color: "blue" },
+      { label: "B2B", color: "orange" },
+      { label: "UX", color: "purple" },
+      { label: "Design System", color: "yellow" },
+    ],
+    coverClass: "VCover",
+    link: "",
+    size: "medium",
+    comingSoon: true,
+  },
+
+
   {
     id: "taxi",
-    title: "Concept for driver taxi app",
+    title: "Driver taxi app",
     date: "2020",
     tags: [
       { label: "Android", color: "blue" },
@@ -79,7 +117,7 @@ export const projects: TProject[] = [
   },
   {
     id: "okey-site",
-    title: 'Concept for site "O\'key"',
+    title: 'Site for food retailer "O\'key"',
     date: "2020",
     tags: [
       { label: "Web", color: "blue" },
@@ -90,6 +128,7 @@ export const projects: TProject[] = [
     link: "/okey-site",
     size: "small",
   },
+
   {
     id: "pbx-ya",
     title: "Yandex Control system hosted PBX",
@@ -105,19 +144,19 @@ export const projects: TProject[] = [
     size: "small",
     comingSoon: true,
   },
-  {
-    id: "gpn",
-    title: "Document management system for GPN",
-    date: "2021",
-    tags: [
-      { label: "Web", color: "blue" },
-      { label: "UX", color: "purple" },
-      { label: "UI", color: "purple" },
-      { label: "Library", color: "yellow" },
-    ],
-    coverClass: "gpnCover",
-    link: "",
-    size: "small",
-    comingSoon: true,
-  },
+//   {
+//     id: "gpn",
+//     title: "Document management system for GPN",
+//     date: "2021",
+//     tags: [
+//       { label: "Web", color: "blue" },
+//       { label: "UX", color: "purple" },
+//       { label: "UI", color: "purple" },
+//       { label: "Design System", color: "yellow" },
+//     ],
+//     coverClass: "gpnCover",
+//     link: "",
+//     size: "small",
+//     comingSoon: true,
+//   },
 ]
