@@ -1,0 +1,416 @@
+// SynthUX case pages: light, fluid layout.
+// Layout and spacing scale with the viewport. Type uses only 12, 14, 16, 18, 24 and 28 px.
+
+.page {
+  // Type scale
+  --sx-fs-12: 12px;
+  --sx-fs-14: 14px;
+  --sx-fs-16: 16px;
+  --sx-fs-18: 18px;
+  --sx-fs-24: 24px;
+  --sx-fs-28: 28px;
+  --sx-lh-12: 16px;
+  --sx-lh-14: 20px;
+  --sx-lh-16: 24px;
+  --sx-lh-18: 28px;
+  --sx-lh-24: 32px;
+  --sx-lh-28: 36px;
+
+  // Fluid layout
+  --sx-max: 1280px;
+  --sx-measure: 720px;
+  --sx-gutter: clamp(16px, 5vw, 80px);
+  --sx-space-section: clamp(64px, 9vw, 128px);
+  --sx-space-block: clamp(24px, 3vw, 40px);
+  --sx-space-inner: clamp(16px, 2vw, 24px);
+  --sx-radius: clamp(12px, 1.6vw, 24px);
+
+  // Light colours
+  --sx-text: #1a1b1f;
+  --sx-muted: #5c5f66;
+  --sx-line: #e4e4ea;
+  --sx-surface: #ffffff;
+  --sx-surface-2: #f3f2f7;
+  --sx-accent: #6a3fe0;
+
+  color: var(--sx-text);
+  font-family: var(--font-family);
+  font-size: var(--sx-fs-16);
+  line-height: var(--sx-lh-16);
+  overflow-x: clip;
+}
+
+// Fluid container: full width minus gutters, up to a max
+.container {
+  width: min(100% - 2 * var(--sx-gutter), var(--sx-max));
+  margin-inline: auto;
+}
+
+.measure {
+  max-width: var(--sx-measure);
+}
+
+// Type
+.label {
+  font-size: var(--sx-fs-12);
+  line-height: var(--sx-lh-12);
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--sx-accent);
+}
+
+.title {
+  font-family: var(--font-family-display);
+  font-size: var(--sx-fs-28);
+  line-height: var(--sx-lh-28);
+  letter-spacing: 0.2px;
+  color: var(--sx-text);
+}
+
+.heading {
+  font-family: var(--font-family-display);
+  font-size: var(--sx-fs-24);
+  line-height: var(--sx-lh-24);
+  color: var(--sx-text);
+}
+
+.subheading {
+  font-size: var(--sx-fs-18);
+  line-height: var(--sx-lh-18);
+  font-weight: 600;
+  color: var(--sx-text);
+}
+
+.lead {
+  font-size: var(--sx-fs-18);
+  line-height: var(--sx-lh-18);
+  color: var(--sx-text);
+}
+
+.body {
+  font-size: var(--sx-fs-16);
+  line-height: var(--sx-lh-16);
+  color: var(--sx-muted);
+
+  p + p {
+    margin-top: 16px;
+  }
+
+  ul {
+    list-style: disc;
+    padding-left: 20px;
+  }
+
+  li + li {
+    margin-top: 8px;
+  }
+}
+
+.small {
+  font-size: var(--sx-fs-14);
+  line-height: var(--sx-lh-14);
+  color: var(--sx-muted);
+}
+
+// Intro
+.intro {
+  padding-top: clamp(120px, 14vw, 176px);
+}
+
+.introText {
+  display: grid;
+  gap: 16px;
+}
+
+.meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+  gap: var(--sx-space-inner) var(--sx-space-block);
+  margin-top: var(--sx-space-block);
+  padding-top: var(--sx-space-inner);
+  border-top: 1px solid var(--sx-line);
+
+  dt {
+    font-size: var(--sx-fs-12);
+    line-height: var(--sx-lh-12);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--sx-muted);
+  }
+
+  dd {
+    margin: 4px 0 0;
+    font-size: var(--sx-fs-14);
+    line-height: var(--sx-lh-14);
+    color: var(--sx-text);
+  }
+}
+
+.cover {
+  margin-top: var(--sx-space-block);
+}
+
+.coverPlain {
+  aspect-ratio: 16 / 9;
+  border-radius: var(--sx-radius);
+  background: linear-gradient(135deg, #f3f6ff, #f4f1ff);
+  border: 1px solid var(--sx-line);
+}
+
+// Section
+.section {
+  margin-top: var(--sx-space-section);
+}
+
+.sectionHead {
+  display: grid;
+  gap: 8px;
+  margin-bottom: var(--sx-space-block);
+}
+
+.stack {
+  display: grid;
+  gap: var(--sx-space-block);
+}
+
+// Fluid split: two columns when there is room, one when there is not. No breakpoints.
+.split {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
+  gap: var(--sx-space-block);
+  align-items: start;
+}
+
+// Figure
+.figure {
+  margin: 0;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--sx-radius);
+  border: 1px solid var(--sx-line);
+  background: var(--sx-surface);
+}
+
+.caption {
+  margin-top: 12px;
+  font-size: var(--sx-fs-14);
+  line-height: var(--sx-lh-14);
+  color: var(--sx-muted);
+}
+
+// Decision: options, choice, why, cost
+.decision {
+  background: var(--sx-surface);
+  border: 1px solid var(--sx-line);
+  border-radius: var(--sx-radius);
+  padding: var(--sx-space-block);
+}
+
+.decisionGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: var(--sx-space-inner) var(--sx-space-block);
+  margin-top: var(--sx-space-inner);
+
+  > div {
+    display: grid;
+    gap: 6px;
+    align-content: start;
+  }
+}
+
+.decisionLabel {
+  font-size: var(--sx-fs-12);
+  line-height: var(--sx-lh-12);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--sx-muted);
+}
+
+.decisionChoice {
+  color: var(--sx-text);
+  font-weight: 600;
+}
+
+// Stats
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr));
+  gap: var(--sx-space-inner);
+}
+
+.stat {
+  display: grid;
+  gap: 4px;
+  padding: var(--sx-space-inner);
+  border-radius: var(--sx-radius);
+  background: var(--sx-surface);
+  border: 1px solid var(--sx-line);
+}
+
+.statValue {
+  font-family: var(--font-family-display);
+  font-size: var(--sx-fs-28);
+  line-height: var(--sx-lh-28);
+  color: var(--sx-text);
+  font-variant-numeric: tabular-nums;
+}
+
+// Compare slider
+.compare {
+  position: relative;
+  border-radius: var(--sx-radius);
+  overflow: hidden;
+  border: 1px solid var(--sx-line);
+  background: var(--sx-surface);
+  user-select: none;
+  touch-action: pan-y;
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+    pointer-events: none;
+  }
+}
+
+.compareAfter {
+  position: absolute;
+  inset: 0;
+  clip-path: inset(0 0 0 var(--sx-pos));
+}
+
+.compareHandle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--sx-pos);
+  width: 2px;
+  margin-left: -1px;
+  background: var(--sx-accent);
+  pointer-events: none;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--sx-surface);
+    border: 2px solid var(--sx-accent);
+    box-shadow: 0 2px 8px rgb(0 0 0 / 12%);
+  }
+}
+
+.compareRange {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: ew-resize;
+}
+
+.compare:has(.compareRange:focus-visible) {
+  outline: 2px solid var(--sx-accent);
+  outline-offset: 4px;
+}
+
+.compareTag {
+  position: absolute;
+  top: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: var(--sx-fs-12);
+  line-height: var(--sx-lh-12);
+  background: rgb(255 255 255 / 90%);
+  border: 1px solid var(--sx-line);
+  color: var(--sx-text);
+  pointer-events: none;
+}
+
+.compareTagBefore {
+  left: 12px;
+}
+
+.compareTagAfter {
+  right: 12px;
+}
+
+// Next cases
+.next {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: var(--sx-space-inner);
+}
+
+.nextCard {
+  display: grid;
+  gap: 8px;
+  padding: var(--sx-space-block);
+  border-radius: var(--sx-radius);
+  background: var(--sx-surface);
+  border: 1px solid var(--sx-line);
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
+
+  &:hover {
+    border-color: var(--sx-accent);
+    transform: translateY(-2px);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--sx-accent);
+    outline-offset: 4px;
+  }
+}
+
+// Motion: fade up on scroll
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--sx-delay, 0ms);
+}
+
+.isVisible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .nextCard {
+    transition: none;
+
+    &:hover {
+      transform: none;
+    }
+  }
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
