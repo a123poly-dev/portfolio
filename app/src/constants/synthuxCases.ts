@@ -1,6 +1,6 @@
 // Publish switch for the SynthUX cases.
 // A case shows on the live site only when it is set to true here.
-// When running locally (npm run dev) every case shows, so it can be reviewed.
+// Locally (npm run dev) and on Vercel preview links every case shows, so it can be reviewed.
 export const SYNTHUX_PUBLISHED = {
   endToEnd: false,
   designSystem: false,
@@ -9,8 +9,10 @@ export const SYNTHUX_PUBLISHED = {
 
 export type TSynthuxCase = keyof typeof SYNTHUX_PUBLISHED
 
+const showDrafts = import.meta.env.DEV || import.meta.env.VITE_SHOW_DRAFTS === true
+
 export const isCaseVisible = (key: TSynthuxCase) =>
-  import.meta.env.DEV || SYNTHUX_PUBLISHED[key]
+  showDrafts || SYNTHUX_PUBLISHED[key]
 
 // The layout preview page is for local review only.
-export const isPreviewVisible = () => import.meta.env.DEV
+export const isPreviewVisible = () => showDrafts
