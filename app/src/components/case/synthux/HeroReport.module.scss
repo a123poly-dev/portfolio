@@ -1,0 +1,138 @@
+// Report hero motion. Timings from the Figma motion: shimmer 1.6 s linear (DS Skeleton),
+// sections fade up 8 px over 0.4 s with cubic-out, 0.12 s apart.
+// Product type inside the screen is exempt from the case type scale.
+
+.hero {
+  display: grid;
+  gap: 12px;
+  justify-items: end;
+}
+
+.viewport {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--sx-radius);
+  border: 1px solid var(--sx-line);
+  background: #f1f2ef;
+}
+
+.stage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1440px;
+  height: 2178px;
+  transform-origin: 0 0;
+
+  img {
+    display: block;
+    max-width: none;
+  }
+}
+
+.shell {
+  position: absolute;
+  inset: 0;
+}
+
+.slice {
+  position: absolute;
+  left: 288px;
+  width: 1088px;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-size: 1216px 1842px;
+  transition: opacity 0.2s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.skeleton {
+  position: absolute;
+  inset: 0;
+  mask-size: 1216px 1842px;
+  mask-repeat: no-repeat;
+}
+
+// 40% of the 1440 screen, as in the DS Skeleton spec
+.band {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 576px;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgb(255 255 255 / 0%) 0%,
+    rgb(255 255 255 / 60%) 50%,
+    rgb(255 255 255 / 0%) 100%
+  );
+  animation: sweep 1.6s linear infinite;
+}
+
+@keyframes sweep {
+  from {
+    transform: translateX(-640px);
+  }
+
+  to {
+    transform: translateX(1152px);
+  }
+}
+
+.section {
+  position: absolute;
+  left: 288px;
+  width: 1088px;
+  transition:
+    opacity 0.4s cubic-bezier(0.33, 1, 0.68, 1),
+    transform 0.4s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+// Same font, size and position as the numbers in the approved screen
+.value {
+  position: absolute;
+  top: 40px;
+  font: 500 24px/28px "Geist", ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: -0.24px;
+  color: #0d0d0c;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.replay {
+  font-family: var(--font-family);
+  font-size: var(--sx-fs-14);
+  line-height: var(--sx-lh-14);
+  color: var(--sx-muted);
+  background: none;
+  border: 1px solid var(--sx-line);
+  border-radius: 999px;
+  padding: 6px 14px;
+  cursor: pointer;
+
+  &:hover:not(:disabled) {
+    color: var(--sx-text);
+    border-color: var(--sx-text);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--sx-accent);
+    outline-offset: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .band {
+    animation: none;
+  }
+
+  .slice,
+  .section {
+    transition: none;
+  }
+}
