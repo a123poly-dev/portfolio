@@ -28,14 +28,9 @@ import specImg from "../assets/synthux/case-1/spec-vs-figma.webp"
 const bodyClass = caseStyles.body
 // Marker inks. Marker = highlight, underline = pen.
 const PURPLE = "#9453FF"
-const GREEN = "#8cb841"
-const YELLOW = "#facc15"
 
 const PurpleMarker = ({ children }: { children: ReactNode }) => (
   <Mark color={PURPLE} opacity={0.2}>{children}</Mark>
-)
-const YellowMarker = ({ children }: { children: ReactNode }) => (
-  <Mark color={YELLOW}>{children}</Mark>
 )
 const Underline = ({ color, children }: { color: string; children: ReactNode }) => (
   <Mark type="underline" color={color} opacity={1}>{children}</Mark>
@@ -55,12 +50,12 @@ export const SynthuxEndToEndPage = () => (
     title={
       <Marked>
         A UX lab with AI participants “SynthUX”.{" "}
-        <YellowMarker>End to end</YellowMarker>
+        <PurpleMarker>End to end</PurpleMarker>
       </Marked>
     }
     timeline={
       <Marked>
-        <YellowMarker>34 days</YellowMarker> of active work
+        <PurpleMarker>34 days</PurpleMarker> of active work
       </Marked>
     }
   >
@@ -109,7 +104,7 @@ export const SynthuxEndToEndPage = () => (
                 execution.
               </p>
               <MarkerText as="p">
-                <Underline color={GREEN}>
+                <Underline color={PURPLE}>
                   SynthUX is a B2B subscription with per-seat pricing:
                 </Underline>{" "}
                 a self-serve plan for small teams, a sales-led plan for larger
@@ -168,7 +163,7 @@ export const SynthuxEndToEndPage = () => (
       <DecisionBlock
         title={
           <Marked>
-            <Underline color={GREEN}>1. Findings are hypotheses, not proof</Underline>
+            <Underline color={PURPLE}>1. Findings are hypotheses, not proof</Underline>
           </Marked>
         }
         options={[
@@ -183,7 +178,7 @@ export const SynthuxEndToEndPage = () => (
       <DecisionBlock
         title={
           <Marked>
-            <Underline color={GREEN}>2. No personas</Underline>
+            <Underline color={PURPLE}>2. No personas</Underline>
           </Marked>
         }
         options={[
@@ -205,7 +200,7 @@ export const SynthuxEndToEndPage = () => (
       <DecisionBlock
         title={
           <Marked>
-            <Underline color={GREEN}>3. No single accessibility score</Underline>
+            <Underline color={PURPLE}>3. No single accessibility score</Underline>
           </Marked>
         }
         options={[
@@ -227,7 +222,7 @@ export const SynthuxEndToEndPage = () => (
       <DecisionBlock
         title={
           <Marked>
-            <Underline color={GREEN}>4. Desktop only</Underline>
+            <Underline color={PURPLE}>4. Desktop only</Underline>
           </Marked>
         }
         options={[
