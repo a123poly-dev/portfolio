@@ -27,7 +27,11 @@ export const WorkCard = ({ project }: TWorkCardProps) => {
   const ref = useScrollReveal<HTMLDivElement>()
 
   const isSmall = project.size === "small"
-  const coverSizeClass = isSmall ? styles.coverSmall : styles.coverLarge
+  const coverSizeClass = isSmall
+    ? styles.coverSmall
+    : project.compactCover
+      ? styles.coverCompact
+      : styles.coverLarge
 
   const content = (
     <div ref={ref} className="scroll-reveal">

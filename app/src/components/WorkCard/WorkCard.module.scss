@@ -28,6 +28,11 @@
   height: 360px;
 }
 
+// SynthUX half cards, Figma "DS cover-smaller" / "Process cover - smaller" (534×277)
+.coverCompact {
+  height: 277px;
+}
+
 .coverSmall {
   height: 250px;
 }
@@ -97,7 +102,7 @@
   background-size: cover;
 }
 
-// Cover 2: Figma 249:64432. Content sits on the left, so the crop is anchored left.
+// Cover 2: Figma 272:66982 (smaller). Content sits on the left, so the crop is anchored left.
 .synthuxDesignSystemCover {
   background-color: #111;
   background-image: url("./assets/synthux/cover-design-system.webp");
@@ -105,11 +110,11 @@
   background-size: cover;
 }
 
-// Cover 3: Figma 249:64447. Crop keeps the start of both agent cards in view.
+// Cover 3: Figma 272:66994 (smaller). Agent cards sit in the middle, so the crop is centred.
 .synthuxAiProcessCover {
   background-color: #111;
   background-image: url("./assets/synthux/cover-ai-process.webp");
-  background-position: 25% 0;
+  background-position: 50% 0;
   background-size: cover;
 }
 

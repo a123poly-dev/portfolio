@@ -20,6 +20,8 @@ export type TProject = {
   link: string
   size: "large" | "medium" | "small"
   externalLink?: string
+  // Shorter cover (277 px), used by the SynthUX half cards
+  compactCover?: boolean
   // Hidden on the live site until the case is approved (see synthuxCases.ts)
   hidden?: boolean
 }
@@ -53,6 +55,7 @@ const allProjects: TProject[] = [
     coverClass: "synthuxDesignSystemCover",
     link: SYNTHUX_DESIGN_SYSTEM_PATH,
     size: "medium",
+    compactCover: true,
     hidden: !isCaseVisible("designSystem"),
   },
   {
@@ -66,6 +69,7 @@ const allProjects: TProject[] = [
     coverClass: "synthuxAiProcessCover",
     link: SYNTHUX_AI_PROCESS_PATH,
     size: "medium",
+    compactCover: true,
     hidden: !isCaseVisible("aiProcess"),
   },
   {
