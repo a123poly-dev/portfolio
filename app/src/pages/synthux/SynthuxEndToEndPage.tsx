@@ -26,7 +26,7 @@ import a11yImg from "../assets/synthux/case-1/a11y-report.webp"
 import specImg from "../assets/synthux/case-1/spec-vs-figma.webp"
 
 const bodyClass = caseStyles.body
-// Marker inks chosen by Polina. Marker = highlight, underline = pen.
+// Marker inks. Marker = highlight, underline = pen.
 const PURPLE = "#9453FF"
 const GREEN = "#8cb841"
 const YELLOW = "#facc15"
