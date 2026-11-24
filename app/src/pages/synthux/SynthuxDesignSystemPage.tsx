@@ -12,12 +12,12 @@ import {
   SyncLoop,
   TokenPipeline,
   TokenPlayground,
+  ContrastChecker,
 } from "../../components/case/synthux";
 import { SynthuxCasePage } from "./SynthuxCasePage";
 import caseStyles from "../../components/case/synthux/Synthux.module.scss";
 import gapImg from "../assets/synthux/case-2/hifi-gap.webp";
 import rulesImg from "../assets/synthux/case-2/rules-with-reasons.webp";
-import contrastImg from "../assets/synthux/case-2/contrast-checker.webp";
 
 const bodyClass = caseStyles.body;
 // Marker inks, the same as Case 1. Marker = highlight, underline = pen.
@@ -260,13 +260,7 @@ export const SynthuxDesignSystemPage = () => (
           </li>
         </ul>
       </CaseText>
-      <CaseFigure
-        src={contrastImg}
-        alt="Contrast checker: text and background token pairs with their ratios, and text/secondary on surface/default at 5.64:1, a pass"
-        width={2880}
-        height={1600}
-        caption="Every text and background pair, with its ratio, in both themes."
-      />
+      <ContrastChecker caption="Every text and background pair, with its ratio, in both themes. Pick a pair or switch the theme." />
     </CaseSection>
 
     <CaseSection
