@@ -14,7 +14,10 @@ export const Header = () => (
       <div className={styles.content}>
         <div className={styles.banner} role="status">
           <img src={warningIcon} width={16} height={16} alt="" />
-          <span>Portfolio under construction, but all cases available</span>
+          <span>
+            Updated 24.11.2026 · The site is being redesigned, all case
+            studies are open
+          </span>
         </div>
 
         <h1 className={styles.title}>
