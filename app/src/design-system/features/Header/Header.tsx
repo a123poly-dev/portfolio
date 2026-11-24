@@ -1,7 +1,6 @@
-import { SOCIAL_URLS } from "../../../constants/socials"
 import avatar from "./assets/avatar-hero.webp"
 import warningIcon from "./assets/triangle-warning.svg"
-import { HERO_SOCIAL_ICONS } from "./socialIcons"
+import { HERO_SOCIAL_ICONS, HERO_SOCIALS } from "./socialIcons"
 
 import styles from "./Header.module.scss"
 
@@ -34,9 +33,8 @@ export const Header = () => (
         </p>
 
         <div className={styles.socials}>
-          {SOCIAL_URLS.map((social) => {
-            const SocialIcon =
-              HERO_SOCIAL_ICONS[social.icon as keyof typeof HERO_SOCIAL_ICONS]
+          {HERO_SOCIALS.map((social) => {
+            const SocialIcon = HERO_SOCIAL_ICONS[social.icon]
             return (
               <a
                 key={social.label}
