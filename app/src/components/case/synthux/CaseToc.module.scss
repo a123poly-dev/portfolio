@@ -28,10 +28,15 @@
   align-items: center;
   gap: 6px;
   justify-self: start;
-  font-size: var(--sx-fs-16);
-  line-height: var(--sx-lh-16);
+  font-size: var(--sx-fs-14);
+  line-height: var(--sx-lh-14);
   color: var(--sx-muted);
   text-decoration: none;
+  background: none;
+  border: 0;
+  padding: 0;
+  font-family: inherit;
+  cursor: pointer;
   transition: color 150ms ease;
 
   svg {
@@ -51,8 +56,8 @@
 
 .title {
   margin-top: 40px;
-  font-size: var(--sx-fs-16);
-  line-height: var(--sx-lh-16);
+  font-size: var(--sx-fs-14);
+  line-height: var(--sx-lh-14);
   color: var(--sx-muted);
 }
 
@@ -67,8 +72,8 @@
 .item {
   display: block;
   padding: 4px 0;
-  font-size: var(--sx-fs-16);
-  line-height: var(--sx-lh-16);
+  font-size: var(--sx-fs-14);
+  line-height: var(--sx-lh-14);
   color: #9a9ca3;
   text-decoration: none;
   transition: color 150ms ease;

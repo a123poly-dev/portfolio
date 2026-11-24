@@ -1,7 +1,7 @@
 import cn from "classnames";
 import { useEffect, useState } from "react";
 import type { RefObject } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import styles from "./CaseToc.module.scss";
 
@@ -29,11 +29,20 @@ export const CaseToc = ({
   contentRef,
   title,
   backTo,
-  backLabel = "All work",
+  backLabel = "Back",
 }: TCaseTocProps) => {
   const [items, setItems] = useState<TTocItem[]>([]);
   const [active, setActive] = useState<string | null>(null);
   const [ended, setEnded] = useState(false);
+  const navigate = useNavigate();
+
+  // Back goes to the previous page, like the browser's back button.
+  // Opened directly (no history in this tab), it goes to backTo instead.
+  const goBack = () => {
+    const idx = (window.history.state as { idx?: number } | null)?.idx ?? 0;
+    if (idx > 0) navigate(-1);
+    else navigate(backTo);
+  };
 
   // Read the headings once the case has rendered and give each one an id
   useEffect(() => {
@@ -101,12 +110,12 @@ export const CaseToc = ({
       className={cn(styles.toc, ended && styles.ended)}
       aria-label="On this page"
     >
-      <Link to={backTo} className={styles.back}>
+      <button type="button" onClick={goBack} className={styles.back}>
         <svg viewBox="0 0 16 16" aria-hidden="true">
           <path d="M6 4 2.5 7.5 6 11M3 7.5h7a3.5 3.5 0 0 1 3.5 3.5v1" />
         </svg>
         {backLabel}
-      </Link>
+      </button>
       <p className={styles.title}>{title}</p>
       <ol className={styles.list}>
         {items.map((item) => (
