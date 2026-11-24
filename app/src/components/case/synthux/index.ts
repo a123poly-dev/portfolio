@@ -1,7 +1,7 @@
 export { SynthuxLayout, SynthuxTokens } from "./SynthuxLayout"
 export { CaseIntro } from "./CaseIntro"
 export type { TCaseMeta } from "./CaseIntro"
-export { CaseSection, CaseText, CaseSplit } from "./CaseSection"
+export { CaseSection, CaseSectionPair, CaseText, CaseSplit } from "./CaseSection"
 export { CaseFigure } from "./CaseFigure"
 export { DecisionBlock } from "./DecisionBlock"
 export { CountUp, StatGrid } from "./CountUp"

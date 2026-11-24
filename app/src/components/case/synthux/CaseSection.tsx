@@ -55,3 +55,21 @@ export const CaseSplit = ({ left, right }: TCaseSplitProps) => (
     <Reveal delay={120}>{right}</Reveal>
   </div>
 )
+
+type TCaseSectionPairProps = {
+  items: { title: ReactNode; content: ReactNode }[]
+}
+
+// Two short sections side by side, each with its own heading. One column when narrow.
+export const CaseSectionPair = ({ items }: TCaseSectionPairProps) => (
+  <section className={styles.section}>
+    <div className={cn(styles.container, styles.pair)}>
+      {items.map((item, index) => (
+        <Reveal key={index} delay={index * 120} className={styles.pairItem}>
+          <h2 className={styles.heading}>{item.title}</h2>
+          <div className={styles.body}>{item.content}</div>
+        </Reveal>
+      ))}
+    </div>
+  </section>
+)

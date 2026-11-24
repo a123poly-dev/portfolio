@@ -2,6 +2,8 @@ import {
   BreakpointScrubber,
   CaseFigure,
   CaseSection,
+  CaseSectionPair,
+  CaseSplit,
   CaseText,
   CompareSlider,
   DecisionBlock,
@@ -9,61 +11,98 @@ import {
   HeroReport,
   ProcessGantt,
 } from "../../components/case/synthux"
+import { Link } from "react-router-dom"
 import { SynthuxCasePage } from "./SynthuxCasePage"
+import { isCaseVisible } from "../../constants/synthuxCases"
+import { SYNTHUX_DESIGN_SYSTEM_PATH } from "../../constants/routePathConstants"
+import caseStyles from "../../components/case/synthux/Synthux.module.scss"
 import wireImg from "../assets/synthux/case-1/wire-4-1.webp"
 import hifiImg from "../assets/synthux/case-1/hifi-4-1.webp"
 import segmentsImg from "../assets/synthux/case-1/audience-segments.webp"
 import a11yImg from "../assets/synthux/case-1/a11y-report.webp"
 import specImg from "../assets/synthux/case-1/spec-vs-figma.webp"
 
+const bodyClass = caseStyles.body
+
 const STORYBOOK_URL = "https://synthetic-users-lab-eight.vercel.app/"
 
 // Case 1: the overview. Text trimmed from drafts/case-1-overview.md to the agreed brief.
 export const SynthuxEndToEndPage = () => (
   <SynthuxCasePage caseKey="endToEnd" cover={<HeroReport />}>
-    <CaseSection label="At a glance" title="A UX lab with AI participants">
-      <CaseText>
-        <p>
-          SynthUX is a B2B SaaS where design teams run UX tests with AI
-          (synthetic) participants: a usability task with SUS, and an
-          accessibility check.
-        </p>
-        <ul>
-          <li>Concept brief on Day 1, dev-ready specs on Day 33.</li>
-          <li>0 unstyled text and 0 raw colours on product hi-fi pages.</li>
-          <li>No questions from the developer about flows or states.</li>
-        </ul>
-      </CaseText>
+    <CaseSection label="At a glance" title="Overview">
+      <CaseSplit
+        left={
+          <div className={bodyClass}>
+            <p>
+              SynthUX is a B2B SaaS where design teams run UX tests with AI
+              (synthetic) participants: a usability task with SUS, and an
+              accessibility check.
+            </p>
+          </div>
+        }
+        right={
+          <div className={bodyClass}>
+            <ul>
+              <li>Concept brief on Day 1, dev-ready specs on Day 33.</li>
+              <li>0 unstyled text and 0 raw colours on product hi-fi pages.</li>
+              <li>No questions from the developer about flows or states.</li>
+            </ul>
+          </div>
+        }
+      />
       <FlowPlayer caption="A new study, from review to report. Click Run study to play it." />
     </CaseSection>
 
-    <CaseSection label="Problem" title="A fast answer is easy to over-trust">
-      <CaseText>
-        <p>
-          Design teams want a fast read on usability before they pay for real
-          research. AI participants are fast. But an AI finding is a
-          hypothesis, not proof.
-        </p>
-        <p>
-          The product has two users. Designers run the tests. Managers read the
-          reports and buy. SynthUX had to earn trust from both, without
-          overselling what synthetic results can show.
-        </p>
-      </CaseText>
-    </CaseSection>
+    <CaseSectionPair
+      items={[
+        {
+          title: "Context and constraints",
+          content: (
+            <>
+              <p>
+                I led design and the{" "}
+                {isCaseVisible("designSystem") ? (
+                  <Link to={SYNTHUX_DESIGN_SYSTEM_PATH}>design system</Link>
+                ) : (
+                  "design system"
+                )}
+                . A frontend developer advised as a consultant, and a product
+                developer is building SynthUX with me. AI agents did much of the
+                execution.
+              </p>
+              <p>
+                SynthUX is a B2B subscription with per-seat pricing: a
+                self-serve plan for small teams, a sales-led plan for larger
+                teams, and a free trial (one free study) before upgrading. The
+                first release covers a usability task with the System Usability
+                Scale (SUS) and an accessibility check. Tree tests and A/B tests
+                come later.
+              </p>
+            </>
+          ),
+        },
+        {
+          title: "Problem: A fast answer is easy to over-trust",
+          content: (
+            <>
+              <p>
+                Design teams want a fast read on usability before they pay for
+                real research. AI participants are fast. But an AI finding is a
+                hypothesis, not proof.
+              </p>
+              <p>
+                The business problem sits on two users. Designers run the
+                tests. Managers read the reports and buy. The product had to
+                earn trust from both, without overselling what the synthetic
+                results can show.
+              </p>
+            </>
+          ),
+        },
+      ]}
+    />
 
-    <CaseSection label="My role" title="Product calls, UX and UI, specs">
-      <CaseText>
-        <p>
-          I owned the product scope, the UX and UI, the design system direction
-          and the dev specs, and I approved every frame. A frontend developer
-          consulted, and a product developer builds SynthUX with me. AI agents
-          did research, copy and code under my review; Case 3 shows how.
-        </p>
-      </CaseText>
-    </CaseSection>
-
-    <CaseSection label="Process" title="One step, one Figma page, one review">
+    <CaseSection label="Process" title="Timeline">
       <ProcessGantt />
       <CompareSlider
         before={{
@@ -82,7 +121,7 @@ export const SynthuxEndToEndPage = () => (
       />
     </CaseSection>
 
-    <CaseSection label="Key decisions" title="Four bets, and what they cost">
+    <CaseSection label="Key decisions" title="Key decisions with trade-offs">
       <DecisionBlock
         title="1. Findings are hypotheses, not proof"
         options={[
@@ -189,10 +228,6 @@ export const SynthuxEndToEndPage = () => (
           <li>
             All 9 hi-fi steps are done, with responsive layouts and the skeleton
             loading state. Dark mode is in progress.
-          </li>
-          <li>
-            I don’t claim WCAG 2.2 AA compliance. The known gaps are listed in
-            Case 2.
           </li>
         </ul>
         <p>

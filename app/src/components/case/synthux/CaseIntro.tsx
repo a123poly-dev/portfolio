@@ -11,7 +11,7 @@ export type TCaseMeta = {
 type TCaseIntroProps = {
   eyebrow: string
   title: string
-  lead: ReactNode
+  lead?: ReactNode
   meta?: TCaseMeta[]
   // Cover image or motion. Leave empty for a plain light cover.
   cover?: ReactNode
@@ -26,10 +26,10 @@ export const CaseIntro = ({
 }: TCaseIntroProps) => (
   <header className={styles.intro}>
     <div className={styles.container}>
-      <Reveal className={`${styles.introText} ${styles.measure}`}>
+      <Reveal className={styles.introText}>
         <span className={styles.label}>{eyebrow}</span>
         <h1 className={styles.title}>{title}</h1>
-        <p className={styles.lead}>{lead}</p>
+        {lead && <p className={styles.lead}>{lead}</p>}
       </Reveal>
 
       <Reveal delay={120} className={styles.cover}>

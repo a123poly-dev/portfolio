@@ -60,17 +60,18 @@
   color: var(--sx-accent);
 }
 
+// Case title: the one size outside the type scale, as in the Figma case layout (49 px at desktop)
 .title {
   font-family: var(--font-family-display);
-  font-size: var(--sx-fs-28);
-  line-height: var(--sx-lh-28);
+  font-size: clamp(28px, 3.5vw + 4px, 49px);
+  line-height: 1.2;
   letter-spacing: 0.2px;
   color: var(--sx-text);
 }
 
 .heading {
-  font-family: var(--font-family-display);
   font-size: var(--sx-fs-24);
+  font-weight: 500;
   line-height: var(--sx-lh-24);
   color: var(--sx-text);
 }
@@ -83,6 +84,7 @@
 }
 
 .lead {
+  max-width: var(--sx-measure);
   font-size: var(--sx-fs-18);
   line-height: var(--sx-lh-18);
   color: var(--sx-text);
@@ -176,7 +178,21 @@
 }
 
 .cover {
-  margin-top: var(--sx-space-inner);
+  margin-top: var(--sx-space-block);
+}
+
+// Two sections side by side (Context and Problem), stacked when narrow
+.pair {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+  gap: var(--sx-space-block) clamp(24px, 3vw, 40px);
+  align-items: start;
+}
+
+.pairItem {
+  display: grid;
+  gap: 12px;
+  align-content: start;
 }
 
 .coverPlain {

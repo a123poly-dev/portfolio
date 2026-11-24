@@ -13,6 +13,10 @@ export type TSynthuxCaseInfo = {
   // The agreed one line from the case brief
   lead: string
   timeline?: string
+  // Page-only overrides from the case layout in Figma
+  pageTitle?: string
+  team?: string
+  hideLead?: boolean
 }
 
 export const SYNTHUX_ROLE = "Lead product designer and design engineer"
@@ -29,6 +33,9 @@ export const SYNTHUX_CASES: TSynthuxCaseInfo[] = [
     title: "SynthUX, end to end",
     lead: "I led SynthUX from a research question to dev-ready specs in 34 days, and made the AI's limits part of the product.",
     timeline: "34 days of active work",
+    pageTitle: "A UX lab with AI participants “SynthUX”. End to end",
+    team: "me, frontend developer (consultant), product developer, AI agents for research, copy and code.",
+    hideLead: true,
   },
   {
     key: "designSystem",

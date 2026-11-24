@@ -30,7 +30,7 @@ export const SynthuxCasePage = ({
 
   const meta: TCaseMeta[] = [
     { label: "Role", value: SYNTHUX_ROLE },
-    { label: "Team", value: SYNTHUX_TEAM },
+    { label: "Team", value: info.team ?? SYNTHUX_TEAM },
     ...(info.timeline ? [{ label: "Timeline", value: info.timeline }] : []),
     { label: "Status", value: SYNTHUX_STATUS },
   ]
@@ -48,8 +48,8 @@ export const SynthuxCasePage = ({
     <SynthuxLayout>
       <CaseIntro
         eyebrow={info.eyebrow}
-        title={info.title}
-        lead={info.lead}
+        title={info.pageTitle ?? info.title}
+        lead={info.hideLead ? undefined : info.lead}
         meta={meta}
         cover={cover}
       />
