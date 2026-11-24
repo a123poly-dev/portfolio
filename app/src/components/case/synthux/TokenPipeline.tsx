@@ -210,25 +210,28 @@ const Line = ({ text, muted, hl, tall }: TLine) => (
 
 const Arrow = ({ index }: { index: number }) => (
   <span className={cn(styles.connector, styles[`connector${index}`])}>
-    <svg viewBox="0 0 36 16" width="36" height="16" aria-hidden="true">
-      <path
-        className={styles.arrowBase}
-        d="M1 8H33M28 3L33 8L28 13"
-        fill="none"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeDasharray="4 4"
-      />
-      <path
+    <svg
+      viewBox="0 0 36 16"
+      width="36"
+      height="16"
+      fill="none"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      {/* Dashed line, solid straight arrowhead */}
+      <g className={styles.arrowBase}>
+        <path d="M1 8H33" strokeDasharray="3 4" />
+        <path d="M29 2.5L34.5 8L29 13.5" />
+      </g>
+      <g
         className={cn(styles.arrowActive, styles.anim)}
         style={run(`tp-conn-${index}`)}
-        d="M1 8H33M28 3L33 8L28 13"
-        fill="none"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+      >
+        <path d="M1 8H34" />
+        <path d="M29 2.5L34.5 8L29 13.5" />
+      </g>
     </svg>
   </span>
 );
