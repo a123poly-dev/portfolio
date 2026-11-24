@@ -25,6 +25,8 @@ type TSynthuxCasePageProps = {
   // Optional rich versions of the title and timeline, for example with marks
   title?: ReactNode;
   timeline?: ReactNode;
+  // Case name in the side menu
+  tocTitle?: string;
 } & { children?: ReactNode };
 
 // Shared frame for the three SynthUX cases: intro, the case body, then links to the other cases.
@@ -33,6 +35,7 @@ export const SynthuxCasePage = ({
   cover,
   title,
   timeline,
+  tocTitle,
   children,
 }: TSynthuxCasePageProps) => {
   const info = SYNTHUX_CASES.find((item) => item.key === caseKey)!;
@@ -58,7 +61,11 @@ export const SynthuxCasePage = ({
 
   return (
     <SynthuxLayout className={caseStyles.withToc}>
-      <CaseToc contentRef={contentRef} title={info.title} backTo={ROOT_PATH} />
+      <CaseToc
+        contentRef={contentRef}
+        title={tocTitle ?? info.title}
+        backTo={ROOT_PATH}
+      />
       <div ref={contentRef}>
         <CaseIntro
           eyebrow={info.eyebrow}

@@ -53,8 +53,8 @@ export const CaseToc = ({
     );
     const used = new Set<string>();
     const next = headings.map((h) => {
-      const label = (h.textContent ?? "").trim();
-      let id = h.id || slug(label);
+      const label = (h.dataset.toc ?? h.textContent ?? "").trim();
+      let id = h.id || slug(h.textContent ?? label);
       while (used.has(id)) id += "-2";
       used.add(id);
       h.id = id;

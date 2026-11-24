@@ -58,6 +58,7 @@ const STORYBOOK_URL = "https://synthetic-users-lab-eight.vercel.app/";
 export const SynthuxEndToEndPage = () => (
   <SynthuxCasePage
     caseKey="endToEnd"
+    tocTitle="SynthUX, end to end"
     cover={<HeroReport />}
     title={
       <Marked>
@@ -78,7 +79,7 @@ export const SynthuxEndToEndPage = () => (
             <MarkerText as="p">
               SynthUX is a B2B SaaS where{" "}
               <Underline color={PURPLE}>
-                design teams run UX tests with AI
+                teams or indie-builders run UX tests with AI
               </Underline>{" "}
               (synthetic) participants: a usability task with SUS, and an
               accessibility check.
@@ -102,6 +103,7 @@ export const SynthuxEndToEndPage = () => (
       items={[
         {
           title: "Context and constraints",
+          tocLabel: "Context and constraints",
           content: (
             <>
               <p>
@@ -130,6 +132,7 @@ export const SynthuxEndToEndPage = () => (
         },
         {
           title: "Problem: A fast answer is easy to over-trust",
+          tocLabel: "Problem",
           content: (
             <>
               <MarkerText as="p">
@@ -173,7 +176,11 @@ export const SynthuxEndToEndPage = () => (
       )}
     </CaseSection>
 
-    <CaseSection label="Key decisions" title="Key decisions with trade-offs">
+    <CaseSection
+      label="Key decisions"
+      title="Key decisions with trade-offs"
+      tocLabel="Key decisions"
+    >
       <DecisionBlock
         title={
           <Marked>
@@ -266,6 +273,7 @@ export const SynthuxEndToEndPage = () => (
     <CaseSection
       label="Handoff"
       title="Specs a developer and their agents can build from"
+      tocLabel="Specs for Dev and Agents"
     >
       <CaseText>
         <MarkerText as="p">
@@ -296,7 +304,11 @@ export const SynthuxEndToEndPage = () => (
       />
     </CaseSection>
 
-    <CaseSection label="Outcome" title="In development, honestly">
+    <CaseSection
+      label="Outcome"
+      title="In development, honestly"
+      tocLabel="Status"
+    >
       <CaseText>
         <ul>
           <li>
@@ -320,6 +332,7 @@ export const SynthuxEndToEndPage = () => (
 
     <CaseSection
       label="Reflections"
+      tocLabel="Reflections"
       title={
         <Marked>
           <PurpleMarker>What I’d keep and change</PurpleMarker>
