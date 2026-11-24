@@ -1,4 +1,3 @@
-import { TIconName } from "@design-system/common/Icons"
 import type { TTagProps } from "@design-system/common/Tag"
 
 export const SKILLS: TTagProps[] = [
@@ -28,24 +27,3 @@ export const TOOLS: TTagProps[] = [
   { label: "Claude", color: "red" },
   { label: "ChatGPT", color: "red" },
 ]
-
-export const SOCIAL_URLS: { icon: TIconName; href: string; label: string }[] = [
-  {
-    icon: "linkedin",
-    href: "https://www.linkedin.com/in/apolina/",
-    label: "LinkedIn",
-  },
-  {
-    icon: "telegram",
-    href: "https://t.me/aapoly",
-    label: "Telegram",
-  },
-  {
-    icon: "instagram",
-    href: "https://www.instagram.com/polinakzz/",
-    label: "Instagram",
-  },
-]
-
-export const CV_DOWNLOAD_URL =
-  "https://drive.google.com/file/d/1ZaqmSMeXuD9PbIjfN5TxWLkOe4pCB2kP/view?usp=sharing"
