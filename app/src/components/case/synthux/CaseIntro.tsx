@@ -32,8 +32,12 @@ export const CaseIntro = ({
         <p className={styles.lead}>{lead}</p>
       </Reveal>
 
+      <Reveal delay={120} className={styles.cover}>
+        {cover ?? <div className={styles.coverPlain} aria-hidden="true" />}
+      </Reveal>
+
       {meta.length > 0 && (
-        <Reveal delay={120}>
+        <Reveal delay={240}>
           <dl className={styles.meta}>
             {meta.map((item) => (
               <div key={item.label}>
@@ -44,10 +48,6 @@ export const CaseIntro = ({
           </dl>
         </Reveal>
       )}
-
-      <Reveal delay={240} className={styles.cover}>
-        {cover ?? <div className={styles.coverPlain} aria-hidden="true" />}
-      </Reveal>
     </div>
   </header>
 )

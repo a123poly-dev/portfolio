@@ -55,7 +55,7 @@ export const SynthuxCasePage = ({
       />
       {children}
       {others.length > 0 && (
-        <CaseSection label="More from SynthUX">
+        <CaseSection title="More from SynthUX">
           <CaseNext items={others} />
         </CaseSection>
       )}
