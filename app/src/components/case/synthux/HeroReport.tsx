@@ -324,13 +324,13 @@ export const ReportMotionLayers = () => (
   </>
 );
 
-// Lucide icons at 24 px with a 2 px stroke, as named in the Figma controls (Pause, Moon)
+// Lucide icons at 16 px with a 1.5 px stroke (the DS size), as named in the Figma controls
 const LucideIcon = ({ children }: { children: ReactNode }) => (
   <svg
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
-    strokeWidth={2}
+    strokeWidth={1.5}
     strokeLinecap="round"
     strokeLinejoin="round"
     aria-hidden="true"

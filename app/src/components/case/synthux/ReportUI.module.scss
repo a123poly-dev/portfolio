@@ -902,14 +902,10 @@ $page: var(--r-page);
 // Wrapper and hero controls (Figma 249:56492): two 40 px icon buttons above the screen's
 // top-right corner, 8 px above it. They sit outside the product screen and stay light.
 
-// As in Figma, the controls sit in 48 px of space above the screen (40 px button + 8 px gap)
+// The controls sit in 40 px of space above the screen (32 px button + 8 px gap)
 .hero {
   position: relative;
-  padding-top: 48px;
-
-  @media (max-width: 639px) {
-    padding-top: 40px;
-  }
+  padding-top: 40px;
 }
 
 .controls {
@@ -925,8 +921,8 @@ $page: var(--r-page);
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   padding: 0;
   color: #0d0d0c;
   background: #fff;
@@ -938,8 +934,8 @@ $page: var(--r-page);
 
   svg {
     display: block;
-    width: 24px;
-    height: 24px;
+    width: 16px;
+    height: 16px;
   }
 
   &:hover {
@@ -949,16 +945,5 @@ $page: var(--r-page);
   &:focus-visible {
     outline: 2px solid var(--sx-accent);
     outline-offset: 2px;
-  }
-
-  // Phone: smaller buttons, 8 px above the screen
-  @media (max-width: 639px) {
-    width: 32px;
-    height: 32px;
-
-    svg {
-      width: 20px;
-      height: 20px;
-    }
   }
 }
