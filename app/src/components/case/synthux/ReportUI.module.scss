@@ -1,5 +1,6 @@
-// Report hero: SynthUX product UI at 1440 x 900, values from the Figma frame 21:2317 and its DS tokens.
-// Product type inside the screen is exempt from the case type scale.
+// SynthUX Report screen (Report 4.1) for the hero and the breakpoint scrubber. Values come from
+// the Figma frames 21:2317 and 41:7676 and their DS tokens. Product type inside the screen is
+// exempt from the case type scale.
 
 $ink: #0d0d0c;
 $secondary: #6a6b66;
@@ -24,6 +25,11 @@ $page: #f1f2ef;
   height: 900px;
   overflow: hidden;
   transform-origin: 0 0;
+}
+
+// Product base: page colour and Geist type, for any screen built from these parts
+.screen,
+.product {
   background: $page;
   color: $ink;
   font-family: "Geist", ui-sans-serif, system-ui, sans-serif;
@@ -48,17 +54,22 @@ $page: #f1f2ef;
 // Sidebar (224, ink)
 
 .sidebar {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 224px;
-  height: 900px;
+  flex-shrink: 0;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 8px;
   background: $ink;
   color: #e5e6e3;
+}
+
+.heroSidebar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 900px;
 }
 
 .sidebarTop {
@@ -68,9 +79,8 @@ $page: #f1f2ef;
 }
 
 .workspace {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  position: relative;
+  height: 26px;
   padding: 4px 0 4px 8px;
 }
 
@@ -78,6 +88,25 @@ $page: #f1f2ef;
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+// The panel icon sits at the right end when open and under the logo when collapsed
+.panelToggle {
+  position: absolute;
+  top: 5px;
+  left: 192px;
+  width: 16px;
+  height: 16px;
+}
+
+.panelClose,
+.panelOpen {
+  position: absolute;
+  inset: 0;
+}
+
+.panelOpen {
+  opacity: 0;
 }
 
 .navGroup {
@@ -111,6 +140,7 @@ $page: #f1f2ef;
 
 .navLabel {
   flex: 1 0 0;
+  white-space: nowrap;
   min-width: 0;
   overflow: hidden;
   font-weight: 500;
@@ -121,7 +151,6 @@ $page: #f1f2ef;
 .project {
   display: flex;
   flex-direction: column;
-  gap: 8px;
 }
 
 .sectionLabel {
@@ -145,6 +174,7 @@ $page: #f1f2ef;
   align-items: center;
   justify-content: center;
   gap: 8px;
+  white-space: nowrap;
   height: 32px;
   padding: 4px 8px;
   border: 1px solid #779a39;
@@ -162,7 +192,83 @@ $page: #f1f2ef;
 
 .accountName {
   flex: 1 0 0;
+  min-width: 0;
   font-weight: 500;
+  white-space: nowrap;
+}
+
+// Folds a sidebar row away; the 0fr to 1fr grid row animates its height
+.fold {
+  display: grid;
+  grid-template-rows: 1fr;
+}
+
+.foldInner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.foldClosed {
+  grid-template-rows: 0fr;
+  opacity: 0;
+}
+
+.project .sectionLabel {
+  display: block;
+  padding-bottom: 8px;
+}
+
+.project .navGroup {
+  padding-top: 4px;
+}
+
+// Collapsed: 56 px icon rail (Figma sidebar "Collapsed=true")
+.sidebarCollapsed {
+  width: 56px;
+
+  .workspace {
+    height: 54px;
+    padding-left: 13px;
+  }
+
+  .logoName,
+  .panelClose,
+  .navLabel,
+  .accountName,
+  .accountChevron {
+    opacity: 0;
+  }
+
+  .panelToggle {
+    top: 34px;
+    left: 12px;
+  }
+
+  .panelOpen {
+    opacity: 1;
+  }
+
+  .navItem {
+    padding-left: 12px;
+  }
+
+  .upgrade {
+    gap: 0;
+  }
+
+  .upgradeLabel {
+    max-width: 0;
+    opacity: 0;
+  }
+
+  .account {
+    padding-left: 6px;
+  }
+}
+
+.upgradeLabel {
+  max-width: 120px;
+  overflow: hidden;
 }
 
 .avatar {
@@ -405,9 +511,14 @@ $page: #f1f2ef;
   gap: 4px;
 }
 
-// The value text is hidden in the approved screen; the rolling counter sits on top of it
+// In the hero the value row stays empty and the rolling counter sits on top of it
 .valueRow {
   height: 28px;
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 500;
+  letter-spacing: -0.24px;
+  white-space: nowrap;
 }
 
 .caption {
