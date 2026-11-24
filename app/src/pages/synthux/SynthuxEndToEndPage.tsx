@@ -9,6 +9,7 @@ import {
   DecisionBlock,
   FlowPlayer,
   HeroReport,
+  Mark,
   ProcessGantt,
 } from "../../components/case/synthux"
 import { Link } from "react-router-dom"
@@ -128,7 +129,7 @@ export const SynthuxEndToEndPage = () => (
           "AI results as findings a team can act on",
           "AI results as hypotheses to check with real research",
         ]}
-        choice="Hypotheses: a fast check before real research."
+        choice={<Mark>Hypotheses: a fast check before real research.</Mark>}
         why="An AI participant is not a real user. The product should name that risk."
         cost="A less exciting sales pitch, and copy that states the limit every time."
       />
@@ -139,7 +140,7 @@ export const SynthuxEndToEndPage = () => (
           "Persona cards for each study",
           "Segments with 8 fixed traits",
         ]}
-        choice="Segments, each with the same 8 traits."
+        choice={<Mark>Segments, each with the same 8 traits.</Mark>}
         why="Personas look real but are invented. Fixed traits define every audience the same way."
         cost="No vivid persona to show a buyer."
       />
@@ -157,7 +158,7 @@ export const SynthuxEndToEndPage = () => (
           "One score from 0 to 100",
           "WCAG 2.2 AA failures, led by “Controls blocked”",
         ]}
-        choice="The failures list."
+        choice={<Mark>The failures list.</Mark>}
         why="A score hides which control blocks a person, and can read as a compliance claim."
         cost="No single number for a dashboard."
       />
@@ -175,7 +176,7 @@ export const SynthuxEndToEndPage = () => (
           "A responsive app for phones and tablets",
           "A desktop app that shows “Use desktop” below 1024 px",
         ]}
-        choice="Desktop only, from 1024 px up."
+        choice={<Mark>Desktop only, from 1024 px up.</Mark>}
         why="I kept the first release to one layout I could review properly."
         cost="People on a phone or tablet are blocked."
       />
@@ -222,8 +223,8 @@ export const SynthuxEndToEndPage = () => (
       <CaseText>
         <ul>
           <li>
-            Design, specs and the design system code are done, and the build is
-            in progress. There are no users or measured results yet.
+            <Mark>Design, specs and the design system code are done</Mark>, and
+            the build is in progress. There are no users or measured results yet.
           </li>
           <li>
             All 9 hi-fi steps are done, with responsive layouts and the skeleton
