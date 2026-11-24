@@ -7,13 +7,13 @@ import {
   DecisionBlock,
   FlowPlayer,
   HeroReport,
+  ProcessGantt,
 } from "../../components/case/synthux"
 import { SynthuxCasePage } from "./SynthuxCasePage"
 import wireImg from "../assets/synthux/case-1/wire-4-1.webp"
 import hifiImg from "../assets/synthux/case-1/hifi-4-1.webp"
 import segmentsImg from "../assets/synthux/case-1/audience-segments.webp"
 import a11yImg from "../assets/synthux/case-1/a11y-report.webp"
-import trustImg from "../assets/synthux/case-1/trust.webp"
 import specImg from "../assets/synthux/case-1/spec-vs-figma.webp"
 
 const STORYBOOK_URL = "https://synthetic-users-lab-eight.vercel.app/"
@@ -64,17 +64,7 @@ export const SynthuxEndToEndPage = () => (
     </CaseSection>
 
     <CaseSection label="Process" title="One step, one Figma page, one review">
-      <CaseText>
-        <ol>
-          <li><strong>Day 1:</strong> concept brief and benchmark.</li>
-          <li><strong>Day 4:</strong> design tokens in Figma and the design system repo.</li>
-          <li><strong>Days 9 to 10:</strong> 10 wireframe steps.</li>
-          <li><strong>Days 15 to 17:</strong> core design system components.</li>
-          <li><strong>Days 18 to 32:</strong> hi-fi in 9 steps.</li>
-          <li><strong>Days 32 to 34:</strong> responsive layouts and the skeleton loading state.</li>
-          <li><strong>Day 33:</strong> the 9 dev specs in the repo.</li>
-        </ol>
-      </CaseText>
+      <ProcessGantt />
       <CompareSlider
         before={{
           src: wireImg,
@@ -159,28 +149,6 @@ export const SynthuxEndToEndPage = () => (
         initial={1440}
         description="At 1024 the sidebar folds into an icon rail. At 1920 the content stops at 1200 px and sits centred."
         caption="One desktop layout at three widths."
-      />
-    </CaseSection>
-
-    <CaseSection label="Designing for AI" title="Results change on every run">
-      <CaseText>
-        <p>
-          Participants are generated again for each run, so two runs never
-          match. The compare view says so: “A change of 1 participant or a few
-          SUS points can be noise. Look at fixed and new issues first.”
-        </p>
-        <p>
-          Trust is a design decision. An agent icon marks AI-made content, with
-          details in a keyboard-friendly tooltip. “How this run was made” lists
-          the model, settings and audience.
-        </p>
-      </CaseText>
-      <CaseFigure
-        src={trustImg}
-        alt="Three approved screens: the agent icon tooltip, the compare banner about noise between runs, and the How this run was made section"
-        width={1440}
-        height={756}
-        caption="Agent icon tooltip, compare banner, “How this run was made”."
       />
     </CaseSection>
 
