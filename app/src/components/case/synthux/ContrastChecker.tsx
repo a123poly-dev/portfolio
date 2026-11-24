@@ -308,9 +308,6 @@ export const ContrastChecker = ({ caption }: { caption?: ReactNode }) => {
                       <span className={styles.card}>
                         <span className={styles.cardText}>
                           <span className={styles.fg}>{p.fg}</span>
-                          {on && (
-                            <span className={styles.on}>on {p.on}</span>
-                          )}
                           <span className={styles.use}>{p.use}</span>
                         </span>
                         <span className={styles.cardRatio}>
