@@ -1,4 +1,5 @@
 import {
+  BreakpointScrubber,
   CaseFigure,
   CaseSection,
   CaseText,
@@ -13,6 +14,9 @@ import segmentsImg from "../assets/synthux/case-1/audience-segments.webp"
 import a11yImg from "../assets/synthux/case-1/a11y-report.webp"
 import trustImg from "../assets/synthux/case-1/trust.webp"
 import specImg from "../assets/synthux/case-1/spec-vs-figma.webp"
+import bp1024 from "../assets/synthux/case-1/bp-1024.webp"
+import bp1440 from "../assets/synthux/case-1/bp-1440.webp"
+import bp1920 from "../assets/synthux/case-1/bp-1920.webp"
 
 const STORYBOOK_URL = "https://synthetic-users-lab-eight.vercel.app/"
 
@@ -146,6 +150,15 @@ export const SynthuxEndToEndPage = () => (
         choice="Desktop only, from 1024 px up."
         why="I kept the first release to one layout I could review properly."
         cost="People on a phone or tablet are blocked."
+      />
+      <BreakpointScrubber
+        ratio={16 / 10}
+        items={[
+          { width: 1024, label: "1024 · Compact", src: bp1024, alt: "Report at 1024 px: compact layout with a collapsed sidebar" },
+          { width: 1440, label: "1440 · Standard", src: bp1440, alt: "Report at 1440 px: standard layout" },
+          { width: 1920, label: "1920 · Wide", src: bp1920, alt: "Report at 1920 px: wide layout with content capped at 1200 px" },
+        ]}
+        caption="One desktop layout at three widths."
       />
     </CaseSection>
 
