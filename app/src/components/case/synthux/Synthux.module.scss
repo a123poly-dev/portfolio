@@ -46,6 +46,25 @@
   margin-inline: auto;
 }
 
+// With the side menu (1200 px and up) the content moves right of it
+.withToc {
+  --sx-toc-w: clamp(180px, 15vw, 240px);
+  --sx-toc-gap: clamp(32px, 4vw, 64px);
+
+  @media (min-width: 1200px) {
+    .container {
+      width: auto;
+      max-width: var(--sx-max);
+      margin-left: calc(var(--sx-gutter) + var(--sx-toc-w) + var(--sx-toc-gap));
+      margin-right: var(--sx-gutter);
+    }
+
+    h2[id] {
+      scroll-margin-top: 120px;
+    }
+  }
+}
+
 .measure {
   max-width: var(--sx-measure);
 }
@@ -255,7 +274,7 @@
 
 .decisionGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
   gap: 12px var(--sx-space-inner);
   margin-top: 12px;
 
