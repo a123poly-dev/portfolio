@@ -1,4 +1,4 @@
-import type { ReactNode } from "react"
+import type { ReactNode } from "react";
 import {
   BreakpointScrubber,
   CaseFigure,
@@ -13,34 +13,46 @@ import {
   Mark,
   MarkerText,
   ProcessGantt,
-} from "../../components/case/synthux"
-import { Link } from "react-router-dom"
-import { SynthuxCasePage } from "./SynthuxCasePage"
-import { isCaseVisible } from "../../constants/synthuxCases"
-import { SYNTHUX_DESIGN_SYSTEM_PATH } from "../../constants/routePathConstants"
-import caseStyles from "../../components/case/synthux/Synthux.module.scss"
-import wireImg from "../assets/synthux/case-1/wire-4-1.webp"
-import hifiImg from "../assets/synthux/case-1/hifi-4-1.webp"
-import segmentsImg from "../assets/synthux/case-1/audience-segments.webp"
-import a11yImg from "../assets/synthux/case-1/a11y-report.webp"
-import specImg from "../assets/synthux/case-1/spec-vs-figma.webp"
+} from "../../components/case/synthux";
+import { Link } from "react-router-dom";
+import { SynthuxCasePage } from "./SynthuxCasePage";
+import { isCaseVisible } from "../../constants/synthuxCases";
+import { SYNTHUX_DESIGN_SYSTEM_PATH } from "../../constants/routePathConstants";
+import caseStyles from "../../components/case/synthux/Synthux.module.scss";
+import wireImg from "../assets/synthux/case-1/wire-4-1.webp";
+import hifiImg from "../assets/synthux/case-1/hifi-4-1.webp";
+import segmentsImg from "../assets/synthux/case-1/audience-segments.webp";
+import a11yImg from "../assets/synthux/case-1/a11y-report.webp";
+import specImg from "../assets/synthux/case-1/spec-vs-figma.webp";
 
-const bodyClass = caseStyles.body
+const bodyClass = caseStyles.body;
+// Wireframe vs hi-fi slider under the timeline: hidden for now, set true to show it again
+const SHOW_WIREFRAME_COMPARE = false;
 // Marker inks. Marker = highlight, underline = pen.
-const PURPLE = "#9453FF"
+const PURPLE = "#9453FF";
 
 const PurpleMarker = ({ children }: { children: ReactNode }) => (
-  <Mark color={PURPLE} opacity={0.2}>{children}</Mark>
-)
-const Underline = ({ color, children }: { color: string; children: ReactNode }) => (
-  <Mark type="underline" color={color} opacity={1}>{children}</Mark>
-)
+  <Mark color={PURPLE} opacity={0.2}>
+    {children}
+  </Mark>
+);
+const Underline = ({
+  color,
+  children,
+}: {
+  color: string;
+  children: ReactNode;
+}) => (
+  <Mark type="underline" color={color} opacity={1}>
+    {children}
+  </Mark>
+);
 // A heading or short line whose whole text is marked
 const Marked = ({ children }: { children: ReactNode }) => (
   <MarkerText as="span">{children}</MarkerText>
-)
+);
 
-const STORYBOOK_URL = "https://synthetic-users-lab-eight.vercel.app/"
+const STORYBOOK_URL = "https://synthetic-users-lab-eight.vercel.app/";
 
 // Case 1: the overview. Text trimmed from drafts/case-1-overview.md to the agreed brief.
 export const SynthuxEndToEndPage = () => (
@@ -129,10 +141,10 @@ export const SynthuxEndToEndPage = () => (
                 not proof.
               </MarkerText>
               <p>
-                The business problem sits on two users. Designers run the
-                tests. Managers read the reports and buy. The product had to
-                earn trust from both, without overselling what the synthetic
-                results can show.
+                The business problem sits on two users. Designers run the tests.
+                Managers read the reports and buy. The product had to earn trust
+                from both, without overselling what the synthetic results can
+                show.
               </p>
             </>
           ),
@@ -142,28 +154,32 @@ export const SynthuxEndToEndPage = () => (
 
     <CaseSection label="Process" title="Timeline">
       <ProcessGantt />
-      <CompareSlider
-        before={{
-          src: wireImg,
-          alt: "Report wireframe 4.1, version 0.5",
-          label: "Wireframe",
-        }}
-        after={{
-          src: hifiImg,
-          alt: "Report 4.1, approved hi-fi",
-          label: "Hi-fi",
-        }}
-        width={1440}
-        height={1100}
-        caption="Report 4.1, from wireframe to approved hi-fi. Drag, tap or use the arrow keys."
-      />
+      {SHOW_WIREFRAME_COMPARE && (
+        <CompareSlider
+          before={{
+            src: wireImg,
+            alt: "Report wireframe 4.1, version 0.5",
+            label: "Wireframe",
+          }}
+          after={{
+            src: hifiImg,
+            alt: "Report 4.1, approved hi-fi",
+            label: "Hi-fi",
+          }}
+          width={1440}
+          height={1100}
+          caption="Report 4.1, from wireframe to approved hi-fi. Drag, tap or use the arrow keys."
+        />
+      )}
     </CaseSection>
 
     <CaseSection label="Key decisions" title="Key decisions with trade-offs">
       <DecisionBlock
         title={
           <Marked>
-            <Underline color={PURPLE}>1. Findings are hypotheses, not proof</Underline>
+            <Underline color={PURPLE}>
+              1. Findings are hypotheses, not proof
+            </Underline>
           </Marked>
         }
         options={[
@@ -200,7 +216,9 @@ export const SynthuxEndToEndPage = () => (
       <DecisionBlock
         title={
           <Marked>
-            <Underline color={PURPLE}>3. No single accessibility score</Underline>
+            <Underline color={PURPLE}>
+              3. No single accessibility score
+            </Underline>
           </Marked>
         }
         options={[
@@ -245,7 +263,10 @@ export const SynthuxEndToEndPage = () => (
       />
     </CaseSection>
 
-    <CaseSection label="Handoff" title="Specs a developer and their agents can build from">
+    <CaseSection
+      label="Handoff"
+      title="Specs a developer and their agents can build from"
+    >
       <CaseText>
         <MarkerText as="p">
           I wrote <PurpleMarker>9 dev specs, one per product area</PurpleMarker>
@@ -254,7 +275,10 @@ export const SynthuxEndToEndPage = () => (
         <ul>
           <li>A states table for every component on every screen.</li>
           <li>Corner cases in the area they belong to, each with an id.</li>
-          <li>Messages and failure states as their own sections, with the exact copy.</li>
+          <li>
+            Messages and failure states as their own sections, with the exact
+            copy.
+          </li>
           <li>Every open question decided before handoff.</li>
           <li>The same section order in all 9 specs.</li>
         </ul>
@@ -294,11 +318,14 @@ export const SynthuxEndToEndPage = () => (
       </CaseText>
     </CaseSection>
 
-    <CaseSection label="Reflections" title={
+    <CaseSection
+      label="Reflections"
+      title={
         <Marked>
           <PurpleMarker>What I’d keep and change</PurpleMarker>
         </Marked>
-      }>
+      }
+    >
       <CaseText>
         <p>
           <strong>Check the research.</strong> AI built the benchmark fast, and
@@ -316,4 +343,4 @@ export const SynthuxEndToEndPage = () => (
       </CaseText>
     </CaseSection>
   </SynthuxCasePage>
-)
+);
