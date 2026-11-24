@@ -101,9 +101,8 @@ export const SynthuxDesignSystemPage = () => (
                 component before it was published.
               </p>
               <p>
-                The limit was cost. Figma Professional has no Variables REST
-                API and no Code Connect, so no script can read the variables in
-                Figma. Every sync had to be designed as a process.
+                No script reads the variables in Figma, so every sync between
+                Figma and code had to be designed as a process.
               </p>
             </>
           ),
@@ -194,7 +193,7 @@ export const SynthuxDesignSystemPage = () => (
           "A tokens file both sides are built from",
         ]}
         choice="The JSON file holds the values. Figma stays the visual truth."
-        why="A script can read and build the JSON. On this plan, no script can read Figma variables."
+        why="A script can read and build the JSON. No script reads the Figma variables."
         cost="Figma variables are set by hand, so drift is caught in sync rounds. That is why there are nine."
       />
       <CaseFigure
