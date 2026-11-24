@@ -7,7 +7,7 @@
   }
 }
 
-// Below the hero, every text size is 4 px smaller, with 12 px as the floor.
+// Below the hero, headings, tags and dates are 4 px smaller (12 px floor). Body text stays 16 px.
 .belowHero {
   --heading-h1-size: 57px;
   --heading-h2-size: 45px;
@@ -16,9 +16,5 @@
   --heading-h5-size: 21px;
   --heading-h6-size: 16px;
   --tag-font-size: 12px;
-  --text-size: 12px;
   --small-text-size: 12px;
-  --footer-copyright-mobile-size: 12px;
-
-  font-size: 12px;
 }
