@@ -43,6 +43,10 @@ export const SYNTHUX_CASES: TSynthuxCaseInfo[] = [
     eyebrow: "SynthUX · Case 2 of 3",
     title: "One design system in Figma and in code",
     lead: "I built one design system that lives in Figma and in code, and a sync loop that keeps them the same.",
+    timeline: "31 days of active work",
+    pageTitle: "The SynthUX design system – Figma and code as one",
+    team: "me, frontend developer (consultant), AI agents for the component code.",
+    hideLead: true,
   },
   {
     key: "aiProcess",
