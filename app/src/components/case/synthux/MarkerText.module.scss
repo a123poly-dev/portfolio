@@ -1,0 +1,34 @@
+// Styles for the Marker Text port (Kokonut UI, MIT). Same rules as the
+// original Tailwind classes.
+
+.root {
+  display: block;
+  position: relative;
+  isolation: isolate;
+}
+
+.mark {
+  color: inherit;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.under {
+  z-index: -1;
+}
+
+.over {
+  z-index: 1;
+}

@@ -1,0 +1,949 @@
+// SynthUX Report screen (Report 4.1) for the hero and the breakpoint scrubber. Values come from
+// the Figma frames 21:2317 and 41:7676 and their DS tokens. Product type inside the screen is
+// exempt from the case type scale.
+
+// Colours are CSS variables so the hero can switch to the DS Dark mode
+// ("SynthUX - Semantic colors", Light and Dark).
+$ink: var(--r-ink);
+$secondary: var(--r-secondary);
+$border: var(--r-border);
+$skeleton: var(--r-skeleton);
+$page: var(--r-page);
+
+.frame,
+.screen,
+.product {
+  --r-page: #f1f2ef;
+  --r-ink: #0d0d0c;
+  --r-on-ink: #fff;
+  --r-secondary: #6a6b66;
+  --r-border: #e0e2db;
+  --r-skeleton: rgb(34 34 33 / 8%);
+  --r-surface: #fff;
+  --r-raised: #fff;
+  --r-button-border: rgb(34 34 33 / 12%);
+  --r-neutral-bg: rgb(105 110 102 / 10%);
+  --r-positive-bg: rgb(137 186 80 / 16%);
+  --r-positive: #516b39;
+  --r-error-bg: rgb(207 45 64 / 8%);
+  --r-error: #cf2d40;
+  --r-warning-bg: rgb(255 157 0 / 12%);
+  --r-warning: #a64f1d;
+  --r-info-bg: rgb(46 102 231 / 6%);
+  --r-info: #1e5ae5;
+  --r-icon-filter: none;
+}
+
+// DS Dark mode values
+.dark .frame,
+.dark .screen {
+  --r-page: #121211;
+  --r-ink: #e5e6e3;
+  --r-on-ink: #0d0d0c;
+  --r-secondary: #93948f;
+  --r-border: #30322f;
+  --r-skeleton: rgb(229 230 227 / 8%);
+  --r-surface: #1b1b1a;
+  --r-raised: #222221;
+  --r-button-border: rgb(229 230 227 / 12%);
+  --r-neutral-bg: rgb(105 110 102 / 16%);
+  --r-positive-bg: rgb(137 186 80 / 12%);
+  --r-positive: #96c45f;
+  --r-error-bg: rgb(207 45 64 / 12%);
+  --r-error: #e26764;
+  --r-warning-bg: rgb(255 157 0 / 8%);
+  --r-warning: #d08a46;
+  --r-info-bg: rgb(46 102 231 / 12%);
+  --r-info: #7fa4ff;
+  // Icons in the main area are drawn in light-mode ink; flip their lightness, keep their hue
+  --r-icon-filter: invert(1) hue-rotate(180deg);
+}
+
+.topBar img,
+.block img {
+  filter: var(--r-icon-filter);
+}
+
+.frame {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--sx-radius);
+  border: 1px solid var(--sx-line);
+  background: $page;
+}
+
+.screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1440px;
+  height: 900px;
+  overflow: hidden;
+  transform-origin: 0 0;
+}
+
+// Product base: page colour and Geist type, for any screen built from these parts
+.screen,
+.product {
+  background: $page;
+  color: $ink;
+  font-family: "Geist", ui-sans-serif, system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+
+  img {
+    display: block;
+    max-width: none;
+  }
+}
+
+.icon {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+}
+
+// Sidebar (224, ink)
+
+.sidebar {
+  width: 224px;
+  flex-shrink: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 8px;
+  background: #0d0d0c; // surface/navigation, the same in Light and Dark
+  color: #e5e6e3;
+}
+
+.heroSidebar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+}
+
+.sidebarTop {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.workspace {
+  position: relative;
+  height: 26px;
+  padding: 4px 0 4px 8px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+// The panel icon sits at the right end when open and under the logo when collapsed
+.panelToggle {
+  position: absolute;
+  top: 5px;
+  left: 192px;
+  width: 16px;
+  height: 16px;
+}
+
+.panelClose,
+.panelOpen {
+  position: absolute;
+  inset: 0;
+}
+
+.panelOpen {
+  opacity: 0;
+}
+
+.navGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.navItem {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 36px;
+  padding: 8px 8px 8px 24px;
+  border-radius: 8px;
+}
+
+.navLevel2 {
+  padding-left: 40px;
+}
+
+.navActive {
+  overflow: hidden;
+  background: #1b1b1a;
+  border-left: 1px solid #a9d953;
+  box-shadow:
+    inset 12px 0 10.6px -9px #beff46,
+    inset 38px 0 24px -18px rgb(190 255 70 / 18%);
+}
+
+.navLabel {
+  flex: 1 0 0;
+  white-space: nowrap;
+  min-width: 0;
+  overflow: hidden;
+  font-weight: 500;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.project {
+  display: flex;
+  flex-direction: column;
+}
+
+.sectionLabel {
+  padding-left: 8px;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
+  color: #93948f;
+}
+
+.sidebarFooter {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.upgrade {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  white-space: nowrap;
+  height: 32px;
+  padding: 4px 8px;
+  border: 1px solid #779a39;
+  border-radius: 8px;
+  background: #1b1b1a;
+  color: #8cb841;
+}
+
+.account {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 4px 8px 8px;
+}
+
+.accountName {
+  flex: 1 0 0;
+  min-width: 0;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+// Folds a sidebar row away; the 0fr to 1fr grid row animates its height
+.fold {
+  display: grid;
+  grid-template-rows: 1fr;
+}
+
+.foldInner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.foldClosed {
+  grid-template-rows: 0fr;
+  opacity: 0;
+}
+
+.project .sectionLabel {
+  display: block;
+  padding-bottom: 8px;
+}
+
+.project .navGroup {
+  padding-top: 4px;
+}
+
+// Collapsed: 56 px icon rail (Figma sidebar "Collapsed=true")
+.sidebarCollapsed {
+  width: 56px;
+
+  .workspace {
+    height: 54px;
+    padding-left: 13px;
+  }
+
+  .logoName,
+  .panelClose,
+  .navLabel,
+  .accountName,
+  .accountChevron {
+    opacity: 0;
+  }
+
+  .panelToggle {
+    top: 34px;
+    left: 12px;
+  }
+
+  .panelOpen {
+    opacity: 1;
+  }
+
+  .navItem {
+    padding-left: 12px;
+  }
+
+  .upgrade {
+    gap: 0;
+  }
+
+  .upgradeLabel {
+    max-width: 0;
+    opacity: 0;
+  }
+
+  .account {
+    padding-left: 6px;
+  }
+}
+
+.upgradeLabel {
+  max-width: 120px;
+  overflow: hidden;
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: var(--r-raised);
+  font-weight: 600;
+  color: $ink;
+  box-shadow:
+    0 5px 13px -5px rgb(34 34 33 / 8%),
+    0 2px 4px -1px rgb(34 34 33 / 6%);
+}
+
+.avatarDark {
+  background: #222221;
+  color: #e5e6e3;
+  box-shadow: none;
+}
+
+// Top bar
+
+.main {
+  position: absolute;
+  top: 0;
+  left: 224px;
+  width: 1216px;
+}
+
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+  padding: 12px 24px;
+  background: var(--r-surface);
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.crumb {
+  color: $secondary;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+%button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  height: 32px;
+  padding: 0 12px;
+  border-radius: 8px;
+}
+
+.buttonSecondary {
+  @extend %button;
+
+  border: 1px solid var(--r-button-border);
+}
+
+.buttonPrimary {
+  @extend %button;
+
+  background: $ink;
+  color: var(--r-on-ink);
+}
+
+.buttonLabel {
+  padding: 0 4px;
+  font-weight: 600;
+}
+
+.buttonLabelPlain {
+  font-weight: 600;
+}
+
+// Content column: x 288, 1088 wide
+
+.block {
+  position: absolute;
+  left: 288px;
+  width: 1088px;
+}
+
+.card {
+  background: var(--r-surface);
+  border-radius: 16px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.titleGroup {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.h2 {
+  font-size: 28px;
+  line-height: 32px;
+  font-weight: 500;
+  letter-spacing: -0.28px;
+  white-space: nowrap;
+}
+
+.h4 {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 500;
+}
+
+.createdBy {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.secondary {
+  color: $secondary;
+}
+
+.uiLabel {
+  font-weight: 600;
+}
+
+.aiLine {
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.metaLine {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.dot {
+  width: 20px;
+  text-align: center;
+}
+
+.dotCaption {
+  width: 16px;
+  text-align: center;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 28px;
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.badgePositive {
+  background: var(--r-positive-bg);
+  color: var(--r-positive);
+}
+
+.badgeCritical {
+  background: var(--r-error-bg);
+  color: var(--r-error);
+}
+
+.badgeMajor {
+  background: var(--r-warning-bg);
+  color: var(--r-warning);
+}
+
+.badgeMinor {
+  background: var(--r-info-bg);
+  color: var(--r-info);
+}
+
+// Key numbers
+
+.metrics {
+  display: flex;
+  align-items: flex-start;
+  padding: 8px 0;
+}
+
+.metric {
+  flex: 1 0 0;
+  min-width: 0;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 8px 24px;
+  overflow: hidden;
+}
+
+.metricDivided {
+  border-left: 1px solid $border;
+}
+
+.eyebrow {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
+  color: $secondary;
+  white-space: nowrap;
+}
+
+.eyebrowRow {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+// In the hero the value row stays empty and the rolling counter sits on top of it
+.valueRow {
+  height: 28px;
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 500;
+  letter-spacing: -0.24px;
+  white-space: nowrap;
+}
+
+.caption {
+  font-size: 12px;
+  line-height: 18px;
+  color: $secondary;
+  white-space: nowrap;
+}
+
+.captionPrimary {
+  font-size: 12px;
+  line-height: 18px;
+  color: $ink;
+}
+
+.captionLine {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: 12px;
+  line-height: 18px;
+  color: $secondary;
+  white-space: nowrap;
+}
+
+.progress {
+  display: flex;
+  gap: 4px;
+  width: 176px;
+  height: 6px;
+}
+
+%bar {
+  height: 6px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.progressFill {
+  @extend %bar;
+
+  background: $ink;
+}
+
+.progressTrack {
+  @extend %bar;
+
+  flex: 1 0 0;
+  min-width: 1px;
+  background: $border;
+}
+
+.grades {
+  position: relative;
+  display: flex;
+  gap: 4px;
+  width: 100%;
+  min-width: 136px;
+  max-width: 191px;
+}
+
+.grade {
+  flex: 1 0 0;
+  min-width: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  overflow: hidden;
+}
+
+.gradeBar {
+  @extend %bar;
+
+  width: 35px;
+  background: $border;
+}
+
+.gradeMarker {
+  @extend %bar;
+
+  position: absolute;
+  top: 0;
+  left: 78px;
+  width: 35px;
+  background: $ink;
+}
+
+.severity {
+  display: flex;
+  gap: 4px;
+  width: 176px;
+  height: 6px;
+}
+
+.sevCritical {
+  @extend %bar;
+
+  background: #9e1d2c;
+}
+
+.sevMajor {
+  @extend %bar;
+
+  background: #ff9d00;
+}
+
+.sevMinor {
+  @extend %bar;
+
+  background: #2e66e7;
+}
+
+// Rolling counters (Geist Medium 24/28, -1%)
+
+.counter {
+  position: absolute;
+  top: 228px;
+  display: flex;
+  height: 28px;
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 500;
+  letter-spacing: -0.24px;
+  white-space: pre;
+}
+
+.digit {
+  position: relative;
+  width: 17px;
+  height: 28px;
+  overflow: hidden;
+}
+
+.strip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 17px;
+  text-align: center;
+  white-space: pre-line;
+}
+
+.counterText {
+  white-space: pre;
+}
+
+// Summary
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  overflow: hidden;
+}
+
+.summaryContent {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.iconRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bullets {
+  margin: 0;
+  padding: 0;
+  list-style: disc;
+
+  li {
+    margin-left: 21px;
+  }
+}
+
+// Issues
+
+.issues {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.filters {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+%filter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+  padding: 0 8px 0 12px;
+  border-radius: 8px;
+}
+
+.filter {
+  @extend %filter;
+
+  border: 1px solid $border;
+}
+
+.filterSelected {
+  @extend %filter;
+
+  background: $ink;
+  color: var(--r-on-ink);
+
+  .count {
+    color: var(--r-on-ink);
+  }
+}
+
+.count {
+  min-width: 20px;
+  padding: 0 4px;
+  border-radius: 4px;
+  background: var(--r-neutral-bg);
+  color: $secondary;
+  text-align: center;
+}
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0;
+  background: var(--r-surface);
+  border-radius: 16px;
+}
+
+.accordionItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.headerRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 24px;
+  overflow: hidden;
+}
+
+.issueHeader {
+  flex: 1 0 0;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.issueLeft {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.tagSlot {
+  display: flex;
+  flex-direction: column;
+  width: 83px;
+}
+
+.issueText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 537px;
+}
+
+.divider {
+  height: 1px;
+  background: $border;
+}
+
+// Loading state L3
+
+.sk {
+  display: block;
+  flex-shrink: 0;
+  border-radius: 4px;
+  background: $skeleton;
+}
+
+.skBox {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.skLine {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2px 8px;
+}
+
+.skMeta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+}
+
+.skParagraph {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  height: 80px;
+}
+
+// Wrapper and hero controls (Figma 249:56492): two 40 px icon buttons above the screen's
+// top-right corner, 8 px above it. They sit outside the product screen and stay light.
+
+// The controls sit in 40 px of space above the screen (32 px button + 8 px gap)
+.hero {
+  position: relative;
+  padding-top: 40px;
+}
+
+.controls {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  display: flex;
+  gap: 8px;
+}
+
+.control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  color: #0d0d0c;
+  background: #fff;
+  border: 1px solid rgb(34 34 33 / 12%);
+  border-radius: 8px;
+  filter: drop-shadow(0 4px 6px rgb(0 0 0 / 12%));
+  cursor: pointer;
+  transition: border-color 150ms ease;
+
+  svg {
+    display: block;
+    width: 16px;
+    height: 16px;
+  }
+
+  &:hover {
+    border-color: rgb(34 34 33 / 40%);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--sx-accent);
+    outline-offset: 2px;
+  }
+}

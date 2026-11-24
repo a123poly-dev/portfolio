@@ -1,0 +1,335 @@
+// Review and run (19:24140) and Running (36:5706): SynthUX DS components at 1440 x 1001.
+
+$ink: #0d0d0c;
+$secondary: #6a6b66;
+$border: #e0e2db;
+
+.shell {
+  display: flex;
+  width: 1440px;
+  height: 1001px;
+  overflow: hidden;
+}
+
+.main {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 40px 64px 64px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.badgeNeutral {
+  background: rgb(105 110 102 / 10%);
+  color: #525350;
+}
+
+// Card, padding 24; content gap 32
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 24px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+// Stepper
+.steps {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.stepper,
+.stepGroup {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+  padding: 4px 8px;
+}
+
+%marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 8px;
+}
+
+.markerDone {
+  @extend %marker;
+
+  background: rgb(137 186 80 / 16%);
+}
+
+.markerCurrent {
+  @extend %marker;
+
+  background: $ink;
+  color: #fff;
+  font-weight: 600;
+}
+
+.divider {
+  align-self: stretch;
+  height: 1px;
+  background: $border;
+}
+
+// Banner, info
+.banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 16px;
+  background: rgb(46 102 231 / 6%);
+}
+
+.bannerIcon {
+  display: flex;
+  align-items: center;
+  height: 24px;
+}
+
+.bannerText {
+  flex: 1 0 0;
+  padding: 2px 0;
+}
+
+// List items: leading 88, title, optional trailing icon button
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 0;
+
+  &:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    background: $border;
+  }
+}
+
+.rowLabel {
+  flex-shrink: 0;
+  width: 88px;
+  white-space: nowrap;
+}
+
+.rowText {
+  flex: 1 0 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.iconButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+}
+
+// Text field
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 640px;
+}
+
+.fieldLabel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.label {
+  font-weight: 500;
+  color: $secondary;
+}
+
+.counter {
+  font-size: 12px;
+  line-height: 18px;
+  color: $secondary;
+}
+
+.input {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid #8b8c88;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footerActions {
+  display: flex;
+  gap: 8px;
+}
+
+.run {
+  cursor: pointer;
+
+  &:hover {
+    background: #292a28;
+  }
+}
+
+// Start cue for the case page, not part of the product: the case accent purple. Sizes are in
+// screen px (1440 wide), so the ring stays visible when the screen is scaled down.
+.cue {
+  position: relative;
+  background: var(--sx-accent);
+  box-shadow: 0 0 0 4px rgb(106 63 224 / 35%);
+
+  &:hover {
+    background: #5a32c8;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border-radius: 12px;
+    border: 4px solid var(--sx-accent);
+    animation: cue-pulse 1.6s ease-out infinite;
+    pointer-events: none;
+  }
+}
+
+@keyframes cue-pulse {
+  from {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(1.35);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cue::after {
+    animation: none;
+    opacity: 0;
+  }
+}
+
+// Run progress: "N of 10 done" (85 wide), the bar, the time left
+.progressGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.progressRow {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.progressLeft {
+  flex: 1 0 0;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.doneSlot {
+  position: relative;
+  flex-shrink: 0;
+  width: 85px;
+  height: 20px;
+}
+
+.done {
+  position: absolute;
+  inset: 0;
+  white-space: nowrap;
+  opacity: 0;
+
+  // At rest (and before the run plays) the last step shows
+  &:last-child {
+    opacity: 1;
+  }
+}
+
+.track {
+  position: relative;
+  flex: 1 0 0;
+  height: 6px;
+  border-radius: 3px;
+  background: $border;
+}
+
+.fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: $ink;
+}
