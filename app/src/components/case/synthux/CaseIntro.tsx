@@ -10,7 +10,7 @@ export type TCaseMeta = {
 
 type TCaseIntroProps = {
   eyebrow: string
-  title: string
+  title: ReactNode
   lead?: ReactNode
   meta?: TCaseMeta[]
   // Cover image or motion. Leave empty for a plain light cover.

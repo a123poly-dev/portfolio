@@ -18,12 +18,17 @@ import {
 type TSynthuxCasePageProps = {
   caseKey: TSynthuxCase
   cover?: ReactNode
+  // Optional rich versions of the title and timeline, for example with marks
+  title?: ReactNode
+  timeline?: ReactNode
 } & { children?: ReactNode }
 
 // Shared frame for the three SynthUX cases: intro, the case body, then links to the other cases.
 export const SynthuxCasePage = ({
   caseKey,
   cover,
+  title,
+  timeline,
   children,
 }: TSynthuxCasePageProps) => {
   const info = SYNTHUX_CASES.find((item) => item.key === caseKey)!
@@ -31,7 +36,9 @@ export const SynthuxCasePage = ({
   const meta: TCaseMeta[] = [
     { label: "Role", value: SYNTHUX_ROLE },
     { label: "Team", value: info.team ?? SYNTHUX_TEAM },
-    ...(info.timeline ? [{ label: "Timeline", value: info.timeline }] : []),
+    ...(info.timeline
+      ? [{ label: "Timeline", value: timeline ?? info.timeline }]
+      : []),
     { label: "Status", value: SYNTHUX_STATUS },
   ]
 
@@ -48,7 +55,7 @@ export const SynthuxCasePage = ({
     <SynthuxLayout>
       <CaseIntro
         eyebrow={info.eyebrow}
-        title={info.pageTitle ?? info.title}
+        title={title ?? info.pageTitle ?? info.title}
         lead={info.hideLead ? undefined : info.lead}
         meta={meta}
         cover={cover}

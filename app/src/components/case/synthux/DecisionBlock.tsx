@@ -4,7 +4,7 @@ import { Reveal } from "./Reveal"
 import styles from "./Synthux.module.scss"
 
 type TDecisionBlockProps = {
-  title: string
+  title: ReactNode
   options: ReactNode[]
   choice: ReactNode
   why: ReactNode
