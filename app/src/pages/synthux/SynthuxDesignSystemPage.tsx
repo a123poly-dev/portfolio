@@ -206,19 +206,7 @@ export const SynthuxDesignSystemPage = () => (
       <DecisionBlock
         title={
           <Marked>
-            <Underline>3. My own icon set</Underline>
-          </Marked>
-        }
-        options={["An open icon library", "My own set"]}
-        choice="My own set: 1.5 px stroke at 16 px, 2 px at 24 px."
-        why="Tying the stroke to the two sizes keeps the icons in one family."
-        cost="I maintain every icon. Figma holds 88 icon sets and code 68 icons, so sync keeps the lists aligned."
-      />
-
-      <DecisionBlock
-        title={
-          <Marked>
-            <Underline>4. Keep all table columns</Underline>
+            <Underline>3. Keep all table columns</Underline>
           </Marked>
         }
         options={[
