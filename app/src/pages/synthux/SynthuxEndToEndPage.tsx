@@ -10,6 +10,7 @@ import {
   FlowPlayer,
   HeroReport,
   Mark,
+  MarkerText,
   ProcessGantt,
 } from "../../components/case/synthux"
 import { Link } from "react-router-dom"
@@ -24,6 +25,8 @@ import a11yImg from "../assets/synthux/case-1/a11y-report.webp"
 import specImg from "../assets/synthux/case-1/spec-vs-figma.webp"
 
 const bodyClass = caseStyles.body
+// Marker ink: the case accent purple
+const MARK_COLOR = "#6a3fe0"
 
 const STORYBOOK_URL = "https://synthetic-users-lab-eight.vercel.app/"
 
@@ -129,7 +132,13 @@ export const SynthuxEndToEndPage = () => (
           "AI results as findings a team can act on",
           "AI results as hypotheses to check with real research",
         ]}
-        choice={<Mark>Hypotheses: a fast check before real research.</Mark>}
+        choice={
+          <MarkerText as="span">
+            <Mark type="underline" color={MARK_COLOR}>
+              Hypotheses: a fast check before real research.
+            </Mark>
+          </MarkerText>
+        }
         why="An AI participant is not a real user. The product should name that risk."
         cost="A less exciting sales pitch, and copy that states the limit every time."
       />
@@ -140,7 +149,13 @@ export const SynthuxEndToEndPage = () => (
           "Persona cards for each study",
           "Segments with 8 fixed traits",
         ]}
-        choice={<Mark>Segments, each with the same 8 traits.</Mark>}
+        choice={
+          <MarkerText as="span">
+            <Mark type="underline" color={MARK_COLOR}>
+              Segments, each with the same 8 traits.
+            </Mark>
+          </MarkerText>
+        }
         why="Personas look real but are invented. Fixed traits define every audience the same way."
         cost="No vivid persona to show a buyer."
       />
@@ -158,7 +173,13 @@ export const SynthuxEndToEndPage = () => (
           "One score from 0 to 100",
           "WCAG 2.2 AA failures, led by “Controls blocked”",
         ]}
-        choice={<Mark>The failures list.</Mark>}
+        choice={
+          <MarkerText as="span">
+            <Mark type="underline" color={MARK_COLOR}>
+              The failures list.
+            </Mark>
+          </MarkerText>
+        }
         why="A score hides which control blocks a person, and can read as a compliance claim."
         cost="No single number for a dashboard."
       />
@@ -176,7 +197,13 @@ export const SynthuxEndToEndPage = () => (
           "A responsive app for phones and tablets",
           "A desktop app that shows “Use desktop” below 1024 px",
         ]}
-        choice={<Mark>Desktop only, from 1024 px up.</Mark>}
+        choice={
+          <MarkerText as="span">
+            <Mark type="underline" color={MARK_COLOR}>
+              Desktop only, from 1024 px up.
+            </Mark>
+          </MarkerText>
+        }
         why="I kept the first release to one layout I could review properly."
         cost="People on a phone or tablet are blocked."
       />
@@ -223,8 +250,13 @@ export const SynthuxEndToEndPage = () => (
       <CaseText>
         <ul>
           <li>
-            <Mark>Design, specs and the design system code are done</Mark>, and
-            the build is in progress. There are no users or measured results yet.
+            <MarkerText as="span">
+              <Mark color={MARK_COLOR}>
+                Design, specs and the design system code are done
+              </Mark>
+              , and the build is in progress. There are no users or measured
+              results yet.
+            </MarkerText>
           </li>
           <li>
             All 9 hi-fi steps are done, with responsive layouts and the skeleton
