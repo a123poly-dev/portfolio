@@ -27,8 +27,3 @@ export const TOOLS: TTagProps[] = [
   { label: "Claude", color: "red" },
   { label: "ChatGPT", color: "red" },
 ]
-
-export { SOCIAL_URLS } from "../../../constants/socials"
-
-export const CV_DOWNLOAD_URL =
-  "https://drive.google.com/file/d/1ZaqmSMeXuD9PbIjfN5TxWLkOe4pCB2kP/view?usp=sharing"
