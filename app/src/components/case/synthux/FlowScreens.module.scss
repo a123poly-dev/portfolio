@@ -235,6 +235,47 @@ $border: #e0e2db;
   }
 }
 
+// Start cue for the case page, not part of the product: the case accent purple. Sizes are in
+// screen px (1440 wide), so the ring stays visible when the screen is scaled down.
+.cue {
+  position: relative;
+  background: var(--sx-accent);
+  box-shadow: 0 0 0 4px rgb(106 63 224 / 35%);
+
+  &:hover {
+    background: #5a32c8;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border-radius: 12px;
+    border: 4px solid var(--sx-accent);
+    animation: cue-pulse 1.6s ease-out infinite;
+    pointer-events: none;
+  }
+}
+
+@keyframes cue-pulse {
+  from {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(1.35);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cue::after {
+    animation: none;
+    opacity: 0;
+  }
+}
+
 // Run progress: "N of 10 done" (85 wide), the bar, the time left
 .progressGroup {
   display: flex;

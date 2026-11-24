@@ -101,12 +101,15 @@ const Stepper = () => (
 );
 
 // runRef: the Run study button, so the flow can start from it
+// highlight: a purple pulsing ring on Run study, the cue to start the flow
 export const ReviewScreen = ({
   runRef,
   onRun,
+  highlight = false,
 }: {
   runRef?: Ref<HTMLSpanElement>;
   onRun?: () => void;
+  highlight?: boolean;
 }) => (
   <Shell current="New usability study">
     <div className={styles.header}>
@@ -149,7 +152,11 @@ export const ReviewScreen = ({
           {/* Clickable with a mouse; the accessible control sits outside the screen */}
           <span
             ref={runRef}
-            className={cx(ui.buttonPrimary, styles.run)}
+            className={cx(
+              ui.buttonPrimary,
+              styles.run,
+              highlight && styles.cue,
+            )}
             onClick={onRun}
           >
             <span className={ui.buttonLabel}>Run study</span>

@@ -179,7 +179,10 @@ export const FlowPlayer = ({ caption }: { caption?: ReactNode }) => {
             aria-label={LABEL[phase]}
           >
             <div className={layer(0)} style={screenStyle} aria-hidden="true">
-              <ReviewScreen onRun={phase === "review" ? start : undefined} />
+              <ReviewScreen
+                onRun={phase === "review" ? start : undefined}
+                highlight={phase === "review"}
+              />
             </div>
             <div
               ref={runningRef}
