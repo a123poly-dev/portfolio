@@ -6,12 +6,12 @@ import {
   CaseSplit,
   CaseText,
   DecisionBlock,
+  DsBento,
   Mark,
   MarkerText,
 } from "../../components/case/synthux";
 import { SynthuxCasePage } from "./SynthuxCasePage";
 import caseStyles from "../../components/case/synthux/Synthux.module.scss";
-import coverImg from "../assets/synthux/case-2/cover-bento.webp";
 import gapImg from "../assets/synthux/case-2/hifi-gap.webp";
 import pipelineImg from "../assets/synthux/case-2/token-pipeline.webp";
 import loopImg from "../assets/synthux/case-2/sync-loop.webp";
@@ -47,15 +47,7 @@ export const SynthuxDesignSystemPage = () => (
   <SynthuxCasePage
     caseKey="designSystem"
     tocTitle="SynthUX design system"
-    cover={
-      <CaseFigure
-        src={coverImg}
-        alt="The SynthUX design system components in Light and Dark: breadcrumbs, tabs, select, metrics, alerts, a dialog, badges, buttons, switch, checkbox and skeleton"
-        width={2740}
-        height={736}
-        priority
-      />
-    }
+    cover={<DsBento />}
     title={
       <Marked>
         The SynthUX design system –{" "}
