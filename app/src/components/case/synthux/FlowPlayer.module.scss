@@ -1,96 +1,93 @@
+// "New study to Report" player. Screens are the SynthUX product UI at 1440 x 1001, scaled to fit.
+
 .figure {
   margin: 0;
   display: grid;
   gap: 12px;
 }
 
-.stage {
+.player {
+  position: relative;
+}
+
+.frame {
   position: relative;
   width: 100%;
+  overflow: hidden;
   border-radius: var(--sx-radius);
   border: 1px solid var(--sx-line);
-  background: var(--sx-surface);
-  overflow: hidden;
+  background: #f1f2ef;
 }
 
-.screen {
+// Each screen sits on top of the one before it and dissolves in (Figma: Dissolve, 0.3 s, ease-out)
+.layer {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-  object-position: top left;
-  transition: opacity 0.4s cubic-bezier(0.33, 1, 0.68, 1);
+  top: 0;
+  left: 0;
+  width: 1440px;
+  height: 1001px;
+  transform-origin: 0 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-out;
 }
 
-.steps {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 140px), 1fr));
-  gap: 8px var(--sx-space-inner);
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.shown {
+  opacity: 1;
+  pointer-events: auto;
 }
 
-.step {
-  width: 100%;
-  display: grid;
-  gap: 8px;
-  padding: 4px 0;
-  text-align: left;
+.instant {
+  transition: none;
+}
+
+.reportScreen {
+  height: 1001px;
+}
+
+// The accessible control and hint: floats over the bottom-right corner, like the hero's
+.control {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  z-index: 1;
   font-family: var(--font-family);
-  background: none;
-  border: 0;
+  font-size: var(--sx-fs-14);
+  line-height: var(--sx-lh-14);
+  color: var(--sx-text);
+  background: rgb(255 255 255 / 90%);
+  border: 1px solid var(--sx-line);
+  border-radius: 999px;
+  padding: 6px 14px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 8%);
+  backdrop-filter: blur(4px);
   cursor: pointer;
+
+  @media (max-width: 639px) {
+    right: 8px;
+    bottom: 8px;
+    font-size: var(--sx-fs-12);
+    line-height: var(--sx-lh-12);
+    padding: 4px 10px;
+  }
+
+  &:hover {
+    border-color: var(--sx-text);
+  }
 
   &:focus-visible {
     outline: 2px solid var(--sx-accent);
-    outline-offset: 4px;
-    border-radius: 4px;
+    outline-offset: 2px;
   }
 }
 
-.bar {
-  position: relative;
-  height: 3px;
-  border-radius: 3px;
-  background: var(--sx-line);
+.status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
   overflow: hidden;
-
-  &::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: var(--sx-text);
-    transform-origin: left;
-    transform: scaleX(0);
-  }
-
-  &[data-state="done"]::after {
-    transform: scaleX(1);
-  }
-
-  &[data-state="playing"]::after {
-    animation: fill var(--flow-ms) linear forwards;
-  }
-}
-
-@keyframes fill {
-  to {
-    transform: scaleX(1);
-  }
-}
-
-.stepLabel {
-  font-size: var(--sx-fs-14);
-  line-height: var(--sx-lh-14);
-  color: var(--sx-muted);
-
-  .step[aria-current="step"] & {
-    color: var(--sx-text);
-    font-weight: 600;
-  }
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 .caption {
@@ -100,12 +97,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .screen {
+  .layer {
     transition: none;
-  }
-
-  .bar[data-state="playing"]::after {
-    animation: none;
-    transform: scaleX(1);
   }
 }

@@ -15,9 +15,6 @@ import segmentsImg from "../assets/synthux/case-1/audience-segments.webp"
 import a11yImg from "../assets/synthux/case-1/a11y-report.webp"
 import trustImg from "../assets/synthux/case-1/trust.webp"
 import specImg from "../assets/synthux/case-1/spec-vs-figma.webp"
-import flowReview from "../assets/synthux/case-1/j2-review.webp"
-import flowRunning from "../assets/synthux/case-1/j2-running.webp"
-import flowReport from "../assets/synthux/case-1/j2-report.webp"
 
 const STORYBOOK_URL = "https://synthetic-users-lab-eight.vercel.app/"
 
@@ -37,16 +34,7 @@ export const SynthuxEndToEndPage = () => (
           <li>No questions from the developer about flows or states.</li>
         </ul>
       </CaseText>
-      <FlowPlayer
-        width={1440}
-        height={1001}
-        steps={[
-          { label: "Review and run", src: flowReview, alt: "New usability study, Review and run step: the study setup and the Run study button", ms: 2600 },
-          { label: "Running", src: flowRunning, alt: "Blue jacket checkout, running: 2 of 10 done, about 4 minutes left", ms: 3000 },
-          { label: "Report", src: flowReport, alt: "Blue jacket checkout, Run 2 report: task success 7 of 10, SUS 68, 5 issues to check, average time 4m 20s", ms: 3400 },
-        ]}
-        caption="A new study, from review to report. Pick a step to stop."
-      />
+      <FlowPlayer caption="A new study, from review to report. Click Run study to play it." />
     </CaseSection>
 
     <CaseSection label="Problem" title="A fast answer is easy to over-trust">

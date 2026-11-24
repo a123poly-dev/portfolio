@@ -301,6 +301,29 @@ const Counters = () => (
   </>
 );
 
+// Every layer of the motion frame: the loaded report, the loading state on top of it and the
+// rolling counters. The hero loops them; the flow section plays them once.
+export const ReportMotionLayers = () => (
+  <>
+    <Sidebar className={styles.heroSidebar} />
+    <div className={styles.main}>
+      <TopBar />
+    </div>
+
+    <ReportHeader className={styles.block} style={{ top: 96, height: 60 }} />
+    <KeyNumbers className={styles.block} style={{ top: 188, height: 146 }} />
+    <Summary className={styles.block} style={{ top: 366, height: 224 }} />
+    <Issues className={styles.block} style={{ top: 622 }} />
+
+    <LoadingHeader />
+    <LoadingKeyNumbers />
+    <LoadingSummary />
+    <LoadingIssues />
+
+    <Counters />
+  </>
+);
+
 export const HeroReport = () => {
   const reduced = usePrefersReducedMotion();
   const frameRef = useRef<HTMLDivElement>(null);
@@ -365,28 +388,7 @@ export const HeroReport = () => {
           }
           aria-hidden="true"
         >
-          <Sidebar className={styles.heroSidebar} />
-          <div className={styles.main}>
-            <TopBar />
-          </div>
-
-          <ReportHeader
-            className={styles.block}
-            style={{ top: 96, height: 60 }}
-          />
-          <KeyNumbers
-            className={styles.block}
-            style={{ top: 188, height: 146 }}
-          />
-          <Summary className={styles.block} style={{ top: 366, height: 224 }} />
-          <Issues className={styles.block} style={{ top: 622 }} />
-
-          <LoadingHeader />
-          <LoadingKeyNumbers />
-          <LoadingSummary />
-          <LoadingIssues />
-
-          <Counters />
+          <ReportMotionLayers />
         </div>
       </div>
       <button

@@ -88,9 +88,12 @@ const Fold = ({ open, children }: { open: boolean; children: ReactNode }) => (
 // Expanded: 224 px. Collapsed (1024 layout): a 56 px icon rail, as in the Figma "Collapsed=true" sidebar.
 export const Sidebar = ({
   collapsed = false,
+  active = "reports",
   className,
 }: {
   collapsed?: boolean;
+  // Current page inside the project
+  active?: "studies" | "reports";
   className?: string;
 }) => (
   <div
@@ -129,8 +132,18 @@ export const Sidebar = ({
         <NavItem icon={folderIcon} label="Online shop redesign" />
         <Fold open={!collapsed}>
           <div className={styles.navGroup}>
-            <NavItem icon={laboratoryIcon} label="Studies" level={2} />
-            <NavItem icon={fileTextIcon} label="Reports" level={2} active />
+            <NavItem
+              icon={laboratoryIcon}
+              label="Studies"
+              level={2}
+              active={active === "studies"}
+            />
+            <NavItem
+              icon={fileTextIcon}
+              label="Reports"
+              level={2}
+              active={active === "reports"}
+            />
           </div>
         </Fold>
       </div>
@@ -149,25 +162,34 @@ export const Sidebar = ({
   </div>
 );
 
-export const TopBar = () => (
+// current: the last breadcrumb. actions: the Compare and Share buttons of the Report page.
+export const TopBar = ({
+  current = "Reports",
+  actions = true,
+}: {
+  current?: string;
+  actions?: boolean;
+}) => (
   <div className={styles.topBar}>
     <div className={styles.breadcrumb}>
       <span className={styles.crumb}>Projects</span>
       <Icon src={chevronRightIcon} />
       <span className={styles.crumb}>Online shop redesign</span>
       <Icon src={chevronRightIcon} />
-      <span className={styles.crumbCurrent}>Reports</span>
+      <span className={styles.crumbCurrent}>{current}</span>
     </div>
-    <div className={styles.actions}>
-      <span className={styles.buttonSecondary}>
-        <Icon src={filesIcon} />
-        <span className={styles.buttonLabel}>Compare with Run 1</span>
-      </span>
-      <span className={styles.buttonPrimary}>
-        <Icon src={shareIcon} />
-        <span className={styles.buttonLabel}>Share</span>
-      </span>
-    </div>
+    {actions && (
+      <div className={styles.actions}>
+        <span className={styles.buttonSecondary}>
+          <Icon src={filesIcon} />
+          <span className={styles.buttonLabel}>Compare with Run 1</span>
+        </span>
+        <span className={styles.buttonPrimary}>
+          <Icon src={shareIcon} />
+          <span className={styles.buttonLabel}>Share</span>
+        </span>
+      </div>
+    )}
   </div>
 );
 
