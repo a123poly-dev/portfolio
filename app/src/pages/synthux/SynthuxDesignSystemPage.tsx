@@ -16,6 +16,7 @@ import {
 } from "../../components/case/synthux";
 import { SynthuxCasePage } from "./SynthuxCasePage";
 import caseStyles from "../../components/case/synthux/Synthux.module.scss";
+import componentsImg from "../assets/synthux/case-2/components-overview.webp";
 import gapImg from "../assets/synthux/case-2/hifi-gap.webp";
 import rulesImg from "../assets/synthux/case-2/rules-with-reasons.webp";
 
@@ -77,6 +78,12 @@ export const SynthuxDesignSystemPage = () => (
           </div>
         }
       />
+      <CaseFigure
+        src={componentsImg}
+        alt="The Components overview page in the Figma DS file: 31 component pages in 6 groups, with live previews of Button, Link, Icons, Badge and Divider"
+        width={1840}
+        height={1246}
+      />
     </CaseSection>
 
     <CaseSectionPair
@@ -135,7 +142,7 @@ export const SynthuxDesignSystemPage = () => (
       tocLabel="How it works"
     >
       <CaseText>
-        <ol>
+        <ul>
           <li>
             <strong>Tokens.</strong> One W3C DTCG JSON file. Style Dictionary v5
             builds it into CSS for light, dark and reduced motion.
@@ -154,7 +161,7 @@ export const SynthuxDesignSystemPage = () => (
             <strong>Sync rounds.</strong> Compare Figma with code, fix the spec,
             update the code, verify, save a baseline.
           </li>
-        </ol>
+        </ul>
       </CaseText>
       <TokenPipeline caption="One token, from JSON to the Button." />
       <SyncLoop caption="One sync round. A re-check compares Figma structure with code, not only props with the spec." />
