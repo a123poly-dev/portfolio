@@ -2,39 +2,31 @@ import { TIconName } from "@design-system/common/Icons"
 import type { TTagProps } from "@design-system/common/Tag"
 
 export const SKILLS: TTagProps[] = [
-  { label: "Product Design", color: "green" },
+  { label: "Product design", color: "green" },
+  { label: "Research", color: "green" },
   { label: "UX", color: "green" },
-  { label: "UI", color: "green" },
-  { label: "Design System", color: "green" },
-  { label: "Accessibility (WCAG 2.1)", color: "green" },
-  { label: "Prototyping", color: "green" },
-  { label: "Information Architecture", color: "green" },
-  { label: "Responsive Design", color: "green" },
-  { label: "Data Visualization", color: "green" },
-  { label: "Design Specifications", color: "green" },
+  { label: "UI", color: "red" },
+  { label: "HIG", color: "blue" },
+  { label: "Material design", color: "blue" },
+  { label: "Graphic Design", color: "red" },
+  { label: "Prototyping", color: "purple" },
+  { label: "Animation", color: "purple" },
+  { label: "B2B", color: "orange" },
+  { label: "B2C", color: "orange" },
 ]
 
 export const TOOLS: TTagProps[] = [
-  { label: "Figma", color: "blue" },
-  { label: "Claude Code", color: "blue" },
-  { label: "Cursor", color: "blue" },
-  { label: "Claude", color: "blue" },
-  { label: "ChatGPT", color: "blue" },
-  { label: "Miro", color: "blue" },
-  { label: "GitHub", color: "blue" },
+  { label: "Figma", color: "purple" },
+  { label: "Adobe Cloud", color: "purple" },
+  { label: "Miro", color: "green" },
+  { label: "Git", color: "blue" },
   { label: "HTML", color: "blue" },
   { label: "CSS", color: "blue" },
-]
-
-export const METHODS: TTagProps[] = [
-  { label: "User Interviews", color: "orange" },
-  { label: "Usability Testing", color: "orange" },
-  { label: "JTBD", color: "orange" },
-  { label: "CJM", color: "orange" },
-  { label: "A/B Testing", color: "orange" },
-  { label: "Card Sorting", color: "orange" },
-  { label: "Workshop Facilitation", color: "orange" },
-  { label: "Agile/Scrum", color: "orange" },
+  // AI tools
+  { label: "Claude Code", color: "red" },
+  { label: "Cursor", color: "red" },
+  { label: "Claude", color: "red" },
+  { label: "ChatGPT", color: "red" },
 ]
 
 export const SOCIAL_URLS: { icon: TIconName; href: string; label: string }[] = [

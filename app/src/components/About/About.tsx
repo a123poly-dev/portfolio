@@ -8,7 +8,6 @@ import photo from "./assets/photo_2.png"
 import {
   SKILLS,
   TOOLS,
-  METHODS,
   SOCIAL_URLS,
   CV_DOWNLOAD_URL,
 } from "./constants/constants"
@@ -59,18 +58,6 @@ export const About = () => {
                       key={tool.label}
                       label={tool.label}
                       color={tool.color}
-                    />
-                  ))}
-                </div>
-              </div>
-              <div>
-                <div className={styles.label}>Methods:</div>
-                <div className={styles.tagsWrap}>
-                  {METHODS.map((method) => (
-                    <Tag
-                      key={method.label}
-                      label={method.label}
-                      color={method.color}
                     />
                   ))}
                 </div>
