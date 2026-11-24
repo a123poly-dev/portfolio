@@ -17,35 +17,30 @@ type TTheme = "light" | "dark" | "system";
 const TOKENS: {
   id: TTokenId;
   name: string;
-  use: string;
   light: string;
   dark: string;
 }[] = [
   {
     id: "action",
     name: "action/primary/background",
-    use: "Button.css - primary fill",
     light: "#0d0d0c",
     dark: "#e5e6e3",
   },
   {
     id: "error",
     name: "status/error/text",
-    use: "Badge.css - error tone text",
-    light: "#9e1d2c",
+    light: "#c62437",
     dark: "#ff676a",
   },
   {
     id: "border",
     name: "border/default",
-    use: "Table.css - row dividers",
     light: "#e0e2db",
     dark: "#30322f",
   },
   {
     id: "secondary",
     name: "text/secondary",
-    use: "Table.css - column headers",
     light: "#6a6b66",
     dark: "#93948f",
   },
@@ -211,7 +206,6 @@ export const TokenPlayground = ({ caption }: { caption?: ReactNode }) => {
               Semantic tokens: change one value, every component follows
             </span>
             <span className={styles.themeRow}>
-              <span className={styles.themeLabel}>Preview theme</span>
               <span
                 className={styles.themeSwitch}
                 role="radiogroup"
@@ -260,9 +254,6 @@ export const TokenPlayground = ({ caption }: { caption?: ReactNode }) => {
               }
             >
               <div className={styles.tokens}>
-                <span className={styles.file}>
-                  tokens/semantic.light + dark.tokens.json
-                </span>
                 <div
                   className={styles.tokenList}
                   role="radiogroup"
@@ -282,7 +273,6 @@ export const TokenPlayground = ({ caption }: { caption?: ReactNode }) => {
                         <span className={cn(tp.glow, styles.glow)} />
                         <span className={styles.tokenCard}>
                           <span className={styles.tokenName}>{t.name}</span>
-                          <span className={styles.tokenUse}>{t.use}</span>
                           <span className={styles.values}>
                             {(["light", "dark"] as const).map((mode) => (
                               <span

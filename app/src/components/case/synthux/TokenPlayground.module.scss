@@ -4,12 +4,12 @@
   font-family: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
+// Title, with the theme switch under it
 .head {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px 24px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
 }
 
 .themeRow {
@@ -92,8 +92,6 @@
   transform-origin: 0 0;
 
   .preview {
-    margin-top: 32px;
-    min-height: 520px;
     padding: 72px 32px 32px;
   }
 }
@@ -234,7 +232,7 @@
   --p-action-bg: #0d0d0c;
   --p-action-text: #fff;
   --p-error-bg: rgb(207 45 64 / 8%);
-  --p-error: #9e1d2c;
+  --p-error: #c62437;
   --p-track: #e0e2db;
 
   position: relative;

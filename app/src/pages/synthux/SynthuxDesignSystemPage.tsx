@@ -173,6 +173,7 @@ export const SynthuxDesignSystemPage = () => (
       tocLabel="Key decisions"
     >
       <DecisionBlock
+        layout="pairs"
         title={
           <Marked>
             <Underline>1. Where the truth lives</Underline>
@@ -187,9 +188,10 @@ export const SynthuxDesignSystemPage = () => (
         why="A script can read and build the JSON. No script reads the Figma variables."
         cost="Figma variables are set by hand, so drift is caught in sync rounds. That is why there are nine."
       />
-      <TokenPlayground caption="Change one semantic token, and every component that uses it follows. Pick a token or switch the preview theme." />
+      <TokenPlayground caption="Pick a token or switch the preview theme." />
 
       <DecisionBlock
+        layout="pairs"
         title={
           <Marked>
             <Underline>2. Hovers as translucent washes</Underline>
@@ -205,6 +207,7 @@ export const SynthuxDesignSystemPage = () => (
       />
 
       <DecisionBlock
+        layout="pairs"
         title={
           <Marked>
             <Underline>3. Keep all table columns</Underline>

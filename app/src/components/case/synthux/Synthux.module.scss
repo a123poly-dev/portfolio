@@ -296,6 +296,26 @@
   }
 }
 
+// Two columns: Options + Choice, then Why + Cost (Case 2 Figma)
+.decisionPairs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: 24px var(--sx-space-inner);
+  margin-top: 24px;
+
+  > div {
+    display: grid;
+    gap: 24px;
+    align-content: start;
+  }
+
+  > div > div {
+    display: grid;
+    gap: 4px;
+    max-width: 300px;
+  }
+}
+
 .decisionLabel {
   font-size: var(--sx-fs-12);
   line-height: var(--sx-lh-12);
