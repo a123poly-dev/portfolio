@@ -3,7 +3,7 @@ import type { RefObject } from "react"
 import { HERO_LOOP_MS, HERO_TIMELINE } from "./heroTimeline"
 import type { THeroTrack } from "./heroTimeline"
 
-// When the motion is off, the screen rests at this point of the loop: every layer has settled
+// With reduced motion, the screen starts at this point of the loop: every layer has settled
 // and the fade-out (at 92.5%) has not started.
 const REST_MS = 5000
 
@@ -39,7 +39,7 @@ const keyframes = (track: THeroTrack): Keyframe[] =>
 // All layers share one 8 s loop, so they start together and stay in sync.
 export const useHeroTimeline = (
   rootRef: RefObject<HTMLElement | null>,
-  { playing, reduced }: { playing: boolean; reduced: boolean },
+  { playing, startAtRest }: { playing: boolean; startAtRest: boolean },
 ) => {
   const animations = useRef<Animation[]>([])
 
@@ -57,7 +57,7 @@ export const useHeroTimeline = (
           fill: "both",
         })
         animation.pause()
-        animation.currentTime = 0
+        animation.currentTime = startAtRest ? REST_MS : 0
         list.push(animation)
       })
     })
@@ -67,17 +67,12 @@ export const useHeroTimeline = (
       list.forEach((animation) => animation.cancel())
       animations.current = []
     }
+    // Only the first render decides where the loop starts
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [rootRef])
 
   useEffect(() => {
     const list = animations.current
-    if (reduced) {
-      list.forEach((animation) => {
-        animation.pause()
-        animation.currentTime = REST_MS
-      })
-      return
-    }
     if (playing) {
       // Start every layer from the same moment so the loop stays in sync
       const startTime = document.timeline.currentTime
@@ -89,5 +84,5 @@ export const useHeroTimeline = (
     } else {
       list.forEach((animation) => animation.pause())
     }
-  }, [playing, reduced])
+  }, [playing])
 }
