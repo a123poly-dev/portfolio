@@ -54,10 +54,10 @@
   position: absolute;
   top: 0;
   left: 0;
-  height: 640px;
-  padding: 40px;
+  height: 427px;
+  padding: 27px;
   display: flex;
-  justify-content: space-between;
+  gap: 23px;
   transform-origin: 0 0;
   background: var(--b-surface);
   color: var(--b-text);
@@ -198,21 +198,27 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 560px;
+  align-items: flex-start;
+  height: 373px;
   flex-shrink: 0;
 }
 
 .col1 {
-  width: 240px;
+  width: 434px;
 }
 
 .col2 {
-  width: 367px;
-  align-items: flex-start;
+  flex: 1 0 0;
+  min-width: 0;
 }
 
-.col3 {
-  width: 560px;
+.stats {
+  display: flex;
+  width: 100%;
+
+  .metric {
+    flex: 1 0 0;
+  }
 }
 
 .breadcrumb {
@@ -226,13 +232,14 @@
 .selectWrap {
   position: relative;
   z-index: 2;
+  width: 100%;
 }
 
 .select {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 240px;
+  width: 100%;
   height: 40px;
   padding: 0 15px !important;
   border: 1px solid var(--b-input) !important;
@@ -259,7 +266,7 @@
   position: absolute;
   top: 44px;
   left: 0;
-  width: 240px;
+  width: 100%;
   margin: 0;
   padding: 4px;
   list-style: none;
@@ -422,7 +429,7 @@
 
 .sevCritical {
   width: 34px;
-  background: #9e1d2c;
+  background: #cf2d40;
 }
 
 .sevMajor {
@@ -450,7 +457,7 @@
   padding: 0 6px 0 11px !important;
   border: 1px solid var(--b-btn-border) !important;
   border-radius: 8px;
-  font-weight: 600;
+  font-weight: 400;
   transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 
   &:hover:not(.tabOn) {
@@ -536,7 +543,7 @@
   display: flex;
   align-items: flex-start;
   gap: 16px;
-  width: 367px;
+  width: 100%;
   padding: 15px 15px 15px 16px !important;
   border: 1px solid var(--b-border) !important;
   border-radius: 16px;

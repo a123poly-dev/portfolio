@@ -4,13 +4,13 @@ import cn from "classnames";
 import { usePrefersReducedMotion } from "./usePrefersReducedMotion";
 import styles from "./DsBento.module.scss";
 
-// Case 2 cover: the Figma "Bento v3" light panel (59:15098), rebuilt with the DS tokens.
-// Every part works as in the Figma prototype, with its Smart Animate timing.
-// The intro (counters and bars) comes from the frame's own keyframes and plays once.
-const PANEL_W = 1312;
-const PANEL_H = 640;
-// On narrow screens show the first two columns only, so text stays larger
-const CROP_W = 720;
+// Case 2 cover: the two-column DS panel from the portfolio Figma (285:21848),
+// rebuilt with the DS tokens. Every part works as in the Figma prototype.
+// The intro (counters and bars) comes from the Bento v3 keyframes and plays once.
+const PANEL_W = 875;
+const PANEL_H = 427;
+// On narrow screens show the first column only, so text stays larger
+const CROP_W = 488;
 const CROP_BELOW = 640;
 
 // The Figma spring, sampled into a CSS linear() easing
@@ -26,7 +26,7 @@ const SPRING = `linear(${Array.from({ length: 41 }, (_, i) =>
   spring(i / 40).toFixed(4),
 ).join(", ")})`;
 
-// DS icons: 16 px with a 1.5 px stroke, 24 px with a 2 px stroke
+// DS icons: 16 px with a 1.5 px stroke
 const PATHS = {
   chevronRight: "M6.66667 10.6667L9.33333 8L6.66667 5.33333",
   chevronDown: "M4 6L8 10L12 6",
@@ -48,12 +48,6 @@ const PATHS = {
   monitor:
     "M6 13.3333H10M2.66667 4C2.66667 3.26667 3.26667 2.66667 4 2.66667H12C12.7333 2.66667 13.3333 3.26667 13.3333 4V10C13.3333 10.7333 12.7333 11.3333 12 11.3333H4C3.26667 11.3333 2.66667 10.7333 2.66667 10V4Z",
 };
-const PATHS_24 = {
-  close: "M6 6L18 18M18 6L6 18",
-  circleInfo:
-    "M12 8H12.01M12 11V16M3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z",
-};
-
 const Icon = ({
   name,
   className,
@@ -73,25 +67,6 @@ const Icon = ({
       d={PATHS[name]}
       stroke="currentColor"
       strokeWidth={1.5}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
-
-const Icon24 = ({ name }: { name: keyof typeof PATHS_24 }) => (
-  <svg
-    className={styles.icon}
-    width={24}
-    height={24}
-    viewBox="0 0 24 24"
-    fill="none"
-    aria-hidden="true"
-  >
-    <path
-      d={PATHS_24[name]}
-      stroke="currentColor"
-      strokeWidth={2}
       strokeLinecap="round"
       strokeLinejoin="round"
     />
@@ -258,28 +233,28 @@ const GradeScale = () => {
   );
 };
 
-const ColumnOne = () => (
-  <div className={cn(styles.col, styles.col1)}>
-    <nav className={styles.breadcrumb} aria-label="Breadcrumb">
-      <span className={styles.secondary}>Projects</span>
-      <Icon name="chevronRight" className={styles.secondary} />
-      <span>Run 2</span>
-    </nav>
-    <Select />
+const Stats = () => (
+  <div className={styles.stats}>
     <div className={styles.metric}>
-      <span className={styles.eyebrow}>Task success</span>
+      <span className={styles.eyebrow}>Issues to check</span>
       <Value>
-        <Digit to={7} delay={0.3} />
-        &nbsp;of 10
+        <Digit to={5} delay={0.3} />
       </Value>
-      <span className={styles.progress}>
+      <span className={styles.severity}>
         <span
-          className={cn(styles.fill, styles.anim)}
-          style={{ width: 120, ...anim("dsb-grow", 0.3, 1.8) }}
+          className={cn(styles.sevCritical, styles.anim)}
+          style={anim("dsb-grow", 0.3, 0.132, "linear")}
         />
-        <span className={styles.track} />
+        <span
+          className={cn(styles.sevMajor, styles.anim)}
+          style={anim("dsb-grow", 0.432, 0.342, "linear")}
+        />
+        <span
+          className={cn(styles.sevMinor, styles.anim)}
+          style={anim("dsb-grow", 0.774, 1.326)}
+        />
       </span>
-      <span className={styles.caption}>3 gave up</span>
+      <span className={styles.caption}>1 critical, 2 major, 2 minor</span>
     </div>
     <div className={styles.metric}>
       <span className={styles.eyebrow}>
@@ -292,27 +267,6 @@ const ColumnOne = () => (
       </Value>
       <GradeScale />
       <span className={styles.caption}>Grade C - average is 68</span>
-    </div>
-    <div className={styles.metric}>
-      <span className={styles.eyebrow}>Issues to check</span>
-      <Value>
-        <Digit to={5} delay={0.498} />
-      </Value>
-      <span className={styles.severity}>
-        <span
-          className={cn(styles.sevCritical, styles.anim)}
-          style={anim("dsb-grow", 0.498, 0.132, "linear")}
-        />
-        <span
-          className={cn(styles.sevMajor, styles.anim)}
-          style={anim("dsb-grow", 0.63, 0.342, "linear")}
-        />
-        <span
-          className={cn(styles.sevMinor, styles.anim)}
-          style={anim("dsb-grow", 0.972, 1.326)}
-        />
-      </span>
-      <span className={styles.caption}>1 critical, 2 major, 2 minor</span>
     </div>
   </div>
 );
@@ -342,7 +296,7 @@ const FilterTabs = () => {
   );
 };
 
-const Banners = () => {
+const InfoBanner = () => {
   const [hidden, setHidden] = useState(false);
   // The banner hides, then comes back after 1.2 s so it can be tried again
   useEffect(() => {
@@ -352,32 +306,33 @@ const Banners = () => {
   }, [hidden]);
 
   return (
-    <div className={styles.banners}>
-      <div className={cn(styles.banner, styles.bannerError)}>
-        <Icon name="circleClose" className={styles.errorText} />
-        Email or password is wrong.
-      </div>
-      <div
-        className={cn(
-          styles.banner,
-          styles.bannerInfo,
-          hidden && styles.bannerHidden,
-        )}
+    <div
+      className={cn(
+        styles.banner,
+        styles.bannerInfo,
+        hidden && styles.bannerHidden,
+      )}
+    >
+      <Icon name="circleInfo" className={styles.infoText} />
+      <span className={styles.grow1}>Free trial: 1 study left.</span>
+      <button
+        type="button"
+        className={styles.bannerClose}
+        aria-label="Close banner"
+        onClick={() => setHidden(true)}
       >
-        <Icon name="circleInfo" className={styles.infoText} />
-        <span className={styles.grow1}>Free trial: 1 study left.</span>
-        <button
-          type="button"
-          className={styles.bannerClose}
-          aria-label="Close banner"
-          onClick={() => setHidden(true)}
-        >
-          <Icon name="close" />
-        </button>
-      </div>
+        <Icon name="close" />
+      </button>
     </div>
   );
 };
+
+const ErrorBanner = () => (
+  <div className={cn(styles.banner, styles.bannerError)}>
+    <Icon name="circleClose" className={styles.errorText} />
+    Email or password is wrong.
+  </div>
+);
 
 const SelectableCard = () => {
   const [on, setOn] = useState(false);
@@ -413,37 +368,16 @@ const Badge = ({ label, tone, icon }: TBadge) => (
   </span>
 );
 
-const ColumnTwo = () => (
-  <div className={cn(styles.col, styles.col2)}>
+const ColumnOne = () => (
+  <div className={cn(styles.col, styles.col1)}>
+    <InfoBanner />
+    <Stats />
     <FilterTabs />
-    <Banners />
     <SelectableCard />
-    <div className={styles.row8}>
-      <Badge label="Done" tone="positive" icon="circleCheck" />
-      <Badge label="Running" tone="info" icon="circleInfo" />
-      <Badge label="Major" tone="warning" icon="triangleWarning" />
-    </div>
-    <div className={styles.row8}>
-      <Badge label="Critical" tone="error" icon="circleClose" />
-      <Badge label="Draft" tone="neutral" icon="file" />
-      <span className={cn(styles.count, styles.countBadge)}>1</span>
-    </div>
-    <div className={styles.avatars}>
-      <span className={cn(styles.avatar, styles.avatar32)}>A</span>
-      <span className={cn(styles.avatar, styles.avatar22)}>A</span>
-      <span className={cn(styles.avatar, styles.avatar28)}>A</span>
-      <a
-        className={styles.link}
-        href="#view-all-reports"
-        onClick={(e) => e.preventDefault()}
-      >
-        View all reports
-      </a>
-    </div>
   </div>
 );
 
-// Column 3
+// Column 2
 
 const Switch = () => {
   const [on, setOn] = useState(false);
@@ -478,69 +412,6 @@ const Checkbox = () => {
       </span>
       Add SUS questionnaire
     </button>
-  );
-};
-
-// Progress cycles 30, 70, 100, as the Figma variants do
-const PROGRESS = [
-  { value: 30, md: 52, sm: 38 },
-  { value: 70, md: 120, sm: 106 },
-  { value: 100, md: 220, sm: 220 },
-];
-
-const ProgressPair = () => {
-  const [step, setStep] = useState(0);
-  const p = PROGRESS[step];
-  return (
-    <button
-      type="button"
-      className={styles.progressPair}
-      aria-label={`Progress ${p.value}%. Click to change`}
-      onClick={() => setStep((s) => (s + 1) % PROGRESS.length)}
-    >
-      <span className={cn(styles.progress, styles.progressMd)}>
-        <span className={styles.fill} style={{ width: p.md }} />
-        {p.value < 100 && <span className={styles.track} />}
-      </span>
-      <span className={cn(styles.progress, styles.progressSm)}>
-        <span className={styles.fill} style={{ width: p.sm }} />
-        {p.value < 100 && <span className={styles.track} />}
-      </span>
-    </button>
-  );
-};
-
-const SaveStudy = () => {
-  const [shown, setShown] = useState(false);
-  // The toast hides after 2 s
-  useEffect(() => {
-    if (!shown) return;
-    const id = window.setTimeout(() => setShown(false), 2000);
-    return () => window.clearTimeout(id);
-  }, [shown]);
-
-  return (
-    <div className={styles.toastWrap}>
-      <div
-        className={cn(styles.toast, shown && styles.toastShown)}
-        role="status"
-      >
-        {shown && (
-          <>
-            <Icon name="circleCheck" className={styles.toastIcon} />
-            <span>Study saved.</span>
-            <Icon name="close" className={styles.toastClose} />
-          </>
-        )}
-      </div>
-      <button
-        type="button"
-        className={cn(styles.button, styles.secondaryBtn, styles.small)}
-        onClick={() => setShown(true)}
-      >
-        Save study
-      </button>
-    </div>
   );
 };
 
@@ -583,102 +454,25 @@ const ThemeSwitch = ({
   );
 };
 
-const ColumnThree = ({
+const ColumnTwo = ({
   theme,
   onTheme,
 }: {
   theme: TTheme;
   onTheme: (t: TTheme) => void;
 }) => (
-  <div className={cn(styles.col, styles.col3)}>
-    <div className={styles.modal} role="dialog" aria-label="Delete study">
-      <div className={styles.modalHead}>
-        <span className={styles.h4}>Delete “Checkout test”?</span>
-        <button
-          type="button"
-          className={cn(styles.iconBtn, styles.ghost, styles.icon32)}
-          aria-label="Close"
-        >
-          <Icon24 name="close" />
-        </button>
-      </div>
-      <p className={styles.modalText}>
-        This deletes the study and its reports. This can’t be undone.
-      </p>
-      <div className={styles.modalActions}>
-        <button
-          type="button"
-          className={cn(styles.button, styles.secondaryBtn, styles.small)}
-        >
-          Cancel
-        </button>
-        <button
-          type="button"
-          className={cn(styles.button, styles.destructiveBtn, styles.small)}
-        >
-          Delete study
-        </button>
-      </div>
-    </div>
-
-    <div className={styles.issue}>
+  <div className={cn(styles.col, styles.col2)}>
+    <ErrorBanner />
+    <Select />
+    <div className={styles.row8}>
+      <Badge label="Done" tone="positive" icon="circleCheck" />
+      <Badge label="Running" tone="info" icon="circleInfo" />
+      <Badge label="Major" tone="warning" icon="triangleWarning" />
       <Badge label="Critical" tone="error" icon="circleClose" />
-      <span className={styles.issueText}>
-        <span className={styles.label}>Size guide is hard to find</span>
-        <span className={styles.caption}>
-          Product page&nbsp;&nbsp;·&nbsp;&nbsp;link under the size picker
-        </span>
-      </span>
     </div>
-
-    <div className={styles.buttons}>
-      <button type="button" className={cn(styles.button, styles.secondaryBtn)}>
-        Cancel
-      </button>
-      <button type="button" className={cn(styles.button, styles.primaryBtn)}>
-        Run study
-      </button>
-      <button type="button" className={cn(styles.button, styles.brandBtn)}>
-        Upgrade
-      </button>
-      <button
-        type="button"
-        className={cn(styles.iconBtn, styles.ghost, styles.icon32)}
-        aria-label="Delete"
-      >
-        <Icon name="trash" />
-      </button>
-      <button
-        type="button"
-        className={cn(styles.iconBtn, styles.secondaryBtn, styles.icon32)}
-        aria-label="Info"
-      >
-        <Icon24 name="circleInfo" />
-      </button>
-      <span className={styles.tooltipWrap}>
-        <button
-          type="button"
-          className={cn(styles.iconBtn, styles.secondaryBtn, styles.icon40)}
-          aria-label="What is SUS?"
-        >
-          <Icon24 name="circleInfo" />
-        </button>
-        <span className={styles.tooltip} aria-hidden="true">
-          What is SUS?
-        </span>
-      </span>
-    </div>
-
-    <div className={styles.controls}>
-      <Switch />
-      <Checkbox />
-    </div>
-
-    <div className={styles.lastRow}>
-      <ProgressPair />
-      <SaveStudy />
-      <ThemeSwitch theme={theme} onChange={onTheme} />
-    </div>
+    <Switch />
+    <Checkbox />
+    <ThemeSwitch theme={theme} onChange={onTheme} />
   </div>
 );
 
@@ -762,11 +556,10 @@ export const DsBento = () => {
           visibility: scale ? "visible" : "hidden",
         }}
         role="group"
-        aria-label="SynthUX design system components, live. Try them: the select, tabs, banner, card, buttons, switch, checkbox, progress, toast, grade scale and theme switch all work."
+        aria-label="SynthUX design system components, live. Try them: the select, tabs, banner, card, switch, checkbox, grade scale and theme switch all work."
       >
         <ColumnOne />
-        <ColumnTwo />
-        {!cropped && <ColumnThree theme={theme} onTheme={setTheme} />}
+        {!cropped && <ColumnTwo theme={theme} onTheme={setTheme} />}
       </div>
     </div>
   );
