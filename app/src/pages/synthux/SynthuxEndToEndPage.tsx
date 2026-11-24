@@ -62,7 +62,7 @@ export const SynthuxEndToEndPage = () => (
     cover={<HeroReport />}
     title={
       <Marked>
-        A UX lab with AI participants “SynthUX”.{" "}
+        A UX lab with AI participants – SynthUX.{" "}
         <PurpleMarker>End to end</PurpleMarker>
       </Marked>
     }

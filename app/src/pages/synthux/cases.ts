@@ -33,7 +33,7 @@ export const SYNTHUX_CASES: TSynthuxCaseInfo[] = [
     title: "SynthUX, end to end",
     lead: "I led SynthUX from a research question to dev-ready specs in 34 days, and made the AI's limits part of the product.",
     timeline: "34 days of active work",
-    pageTitle: "A UX lab with AI participants “SynthUX”. End to end",
+    pageTitle: "A UX lab with AI participants – SynthUX. End to end",
     team: "me, frontend developer (consultant), product developer, AI agents for research, copy and code.",
     hideLead: true,
   },
