@@ -55,7 +55,7 @@
 }
 
 .title {
-  margin-top: 40px;
+  margin-top: 16px;
   font-size: var(--sx-fs-14);
   line-height: var(--sx-lh-14);
   color: var(--sx-muted);
@@ -63,7 +63,7 @@
 
 .list {
   display: grid;
-  gap: 4px;
+  gap: 0;
   margin: 16px 0 0;
   padding: 0;
   list-style: none;

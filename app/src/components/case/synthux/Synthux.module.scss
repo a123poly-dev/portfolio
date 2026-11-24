@@ -20,7 +20,7 @@
   --sx-max: 1280px;
   --sx-measure: 720px;
   --sx-gutter: clamp(16px, 5vw, 80px);
-  --sx-space-section: clamp(64px, 9vw, 128px);
+  --sx-space-section: clamp(64px, 7.72vw, 100px);
   --sx-space-block: clamp(24px, 3vw, 40px);
   --sx-space-inner: clamp(16px, 2vw, 24px);
   --sx-radius: clamp(12px, 1.6vw, 24px);
@@ -197,7 +197,7 @@
 }
 
 .cover {
-  margin-top: var(--sx-space-block);
+  margin-top: var(--sx-space-inner);
 }
 
 // Two sections side by side (Context and Problem), stacked when narrow
