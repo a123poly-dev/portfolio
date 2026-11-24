@@ -1,0 +1,154 @@
+// Sync loop figure. Shares the dark frame, cards, ring and glow with the token pipeline.
+
+.flowWrap {
+  margin-top: 32px;
+}
+
+// Phones: one column, arrows point down
+.flow {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 320px);
+  justify-content: center;
+  gap: 72px;
+}
+
+.cell {
+  position: relative;
+}
+
+.step {
+  position: relative;
+  isolation: isolate;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  min-height: 160px;
+  padding: 17px 19px;
+  border: 1px solid #30322f;
+  border-radius: 16px;
+  background: #1b1b1a;
+}
+
+.text {
+  max-width: 280px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #93948f;
+}
+
+.done {
+  position: absolute;
+  top: 22px;
+  right: 20px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #89ba50;
+  opacity: 0;
+}
+
+.arrow {
+  position: absolute;
+  top: -44px;
+  left: 50%;
+  display: flex;
+  transform: translateX(-50%) rotate(90deg);
+}
+
+.arrow5,
+.dotY {
+  display: none;
+}
+
+// From 640 px of room: the Figma 3 x 2 grid (1120 x 440), scaled to fit.
+// Steps run 1 2 3 on top and 4 5 6 right to left below.
+.grid {
+  grid-template-columns: repeat(3, 320px);
+  grid-template-rows: repeat(2, 160px);
+  gap: 120px 80px;
+  width: 1120px;
+  justify-content: start;
+  transform-origin: 0 0;
+
+  .cell0 {
+    grid-area: 1 / 1;
+  }
+  .cell1 {
+    grid-area: 1 / 2;
+  }
+  .cell2 {
+    grid-area: 1 / 3;
+  }
+  .cell3 {
+    grid-area: 2 / 3;
+  }
+  .cell4 {
+    grid-area: 2 / 2;
+  }
+  .cell5 {
+    grid-area: 2 / 1;
+  }
+
+  .arrow {
+    top: 72px;
+    left: -72px;
+    transform: none;
+  }
+
+  // Row 2 runs right to left
+  .arrow3,
+  .arrow4 {
+    left: 328px;
+    transform: rotate(180deg);
+  }
+
+  // 104 px arrows between the rows: down on the right, back up on the left
+  .arrow2,
+  .arrow5 {
+    top: -68px;
+    left: 108px;
+  }
+
+  .arrow2 {
+    transform: rotate(90deg);
+  }
+
+  .arrow5 {
+    display: flex;
+    transform: rotate(-90deg);
+  }
+
+  .dotY {
+    position: absolute;
+    top: 74px;
+    left: 321px;
+    display: block;
+    width: 12px;
+    height: 12px;
+  }
+}
+
+.dot {
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #89ba50;
+  box-shadow: 0 0 6px rgb(150 196 94 / 50%);
+  opacity: 0;
+}
+
+.anim {
+  animation-duration: 7.2s !important;
+}
+
+// Reduced motion rests near the end of a round: five steps done, Baseline active
+.atRest .anim {
+  animation-delay: -6.85s;
+}
