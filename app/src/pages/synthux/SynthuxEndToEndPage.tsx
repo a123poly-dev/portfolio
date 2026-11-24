@@ -25,8 +25,8 @@ import a11yImg from "../assets/synthux/case-1/a11y-report.webp"
 import specImg from "../assets/synthux/case-1/spec-vs-figma.webp"
 
 const bodyClass = caseStyles.body
-// Marker ink: the case accent purple
-const MARK_COLOR = "#6a3fe0"
+// Marker ink: highlight at 20%, underline at 100%
+const MARK_COLOR = "#9453FF"
 
 const STORYBOOK_URL = "https://synthetic-users-lab-eight.vercel.app/"
 
@@ -134,7 +134,7 @@ export const SynthuxEndToEndPage = () => (
         ]}
         choice={
           <MarkerText as="span">
-            <Mark type="underline" color={MARK_COLOR}>
+            <Mark type="underline" color={MARK_COLOR} opacity={1}>
               Hypotheses: a fast check before real research.
             </Mark>
           </MarkerText>
@@ -151,7 +151,7 @@ export const SynthuxEndToEndPage = () => (
         ]}
         choice={
           <MarkerText as="span">
-            <Mark type="underline" color={MARK_COLOR}>
+            <Mark type="underline" color={MARK_COLOR} opacity={1}>
               Segments, each with the same 8 traits.
             </Mark>
           </MarkerText>
@@ -175,7 +175,7 @@ export const SynthuxEndToEndPage = () => (
         ]}
         choice={
           <MarkerText as="span">
-            <Mark type="underline" color={MARK_COLOR}>
+            <Mark type="underline" color={MARK_COLOR} opacity={1}>
               The failures list.
             </Mark>
           </MarkerText>
@@ -199,7 +199,7 @@ export const SynthuxEndToEndPage = () => (
         ]}
         choice={
           <MarkerText as="span">
-            <Mark type="underline" color={MARK_COLOR}>
+            <Mark type="underline" color={MARK_COLOR} opacity={1}>
               Desktop only, from 1024 px up.
             </Mark>
           </MarkerText>
@@ -251,7 +251,7 @@ export const SynthuxEndToEndPage = () => (
         <ul>
           <li>
             <MarkerText as="span">
-              <Mark color={MARK_COLOR}>
+              <Mark color={MARK_COLOR} opacity={0.2}>
                 Design, specs and the design system code are done
               </Mark>
               , and the build is in progress. There are no users or measured

@@ -8,7 +8,7 @@
  * @github: https://github.com/kokonut-labs/kokonutui
  *
  * Ported to this site: Tailwind classes moved to MarkerText.module.scss,
- * demo and lucide-react removed. Drawing logic unchanged.
+ * demo and lucide-react removed, `opacity` prop added. Drawing logic unchanged.
  */
 
 import {
@@ -37,6 +37,8 @@ export interface MarkProps {
   color?: string;
   /** Pen width in px. Defaults to a width that suits the font size. */
   strokeWidth?: number;
+  /** Ink opacity, 0 to 1. Highlights default to 0.42, pens to 1. */
+  opacity?: number;
   className?: string;
 }
 
@@ -86,6 +88,7 @@ interface Entry {
   type: MarkType;
   color?: string;
   strokeWidth?: number;
+  opacity?: number;
 }
 
 const DEFAULT_COLOR: Record<MarkType, string> = {
@@ -271,7 +274,7 @@ function strokesFor(
         length: lengthOf(pen),
         color,
         under: true,
-        alpha: 0.42,
+        alpha: entry.opacity ?? 0.42,
       };
     });
   }
@@ -293,7 +296,7 @@ function strokesFor(
         x0 + (x1 - x0) * t,
         y + Math.sin(t * Math.PI) * bow + slope * (t - 0.5) + wave(t),
       ]);
-      return penStroke(points, width, `${index}-${i}`, color);
+      return { ...penStroke(points, width, `${index}-${i}`, color), alpha: entry.opacity ?? 1 };
     });
   }
 
@@ -401,6 +404,7 @@ export function Mark({
   type = "highlight",
   color,
   strokeWidth,
+  opacity,
   className,
 }: MarkProps) {
   const registry = useContext(MarkerContext);
@@ -411,8 +415,8 @@ export function Mark({
     if (!(registry && ref.current)) {
       return;
     }
-    return registry.add(id, { el: ref.current, type, color, strokeWidth });
-  }, [registry, id, type, color, strokeWidth]);
+    return registry.add(id, { el: ref.current, type, color, strokeWidth, opacity });
+  }, [registry, id, type, color, strokeWidth, opacity]);
 
   const Tag = (() => {
     if (type === "highlight") {
