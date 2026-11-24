@@ -31,14 +31,24 @@ export const WorkCard = ({ project }: TWorkCardProps) => {
 
   const content = (
     <div ref={ref} className="scroll-reveal">
-      <div
-        className={cn(
-          styles.cover,
-          coverSizeClass,
-          coverClassMap[project.coverClass] ?? "",
-        )}
-      >
-        <div className={styles.overlay}>Let&apos;s see</div>
+      <div className={cn(styles.cover, coverSizeClass)}>
+        <div
+          className={cn(
+            styles.coverImage,
+            coverClassMap[project.coverClass] ?? "",
+          )}
+        />
+        <span className={styles.arrow} aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path
+              d="M6 14L14 6M14 6H7M14 6V13"
+              stroke="currentColor"
+              strokeWidth="1.75"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </span>
       </div>
       <div className={styles.tags}>
         {project.tags.map((tag) => (
