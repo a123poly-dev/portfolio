@@ -174,18 +174,14 @@
   font-family: var(--font-family);
   color: var(--grey-4);
   font-size: var(--small-text-size);
-  margin-top: 20px;
+  margin-top: 8px;
+  margin-bottom: 32px;
   font-weight: 400;
   line-height: 120%;
 }
 
 .title {
-  margin-top: 8px;
-  margin-bottom: 32px;
+  margin-top: 20px;
 }
 
-@media screen and (max-width: $breakpoint-md) {
-  .overlay {
-    display: none;
-  }
-}
+

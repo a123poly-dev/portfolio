@@ -55,7 +55,6 @@ export const WorkCard = ({ project }: TWorkCardProps) => {
           <Tag key={tag.label} label={tag.label} color={tag.color} />
         ))}
       </div>
-      <div className={styles.date}>{project.date}</div>
       <Heading
         type={isSmall ? "heading-h5" : "heading-h4"}
         as="h4"
@@ -63,6 +62,7 @@ export const WorkCard = ({ project }: TWorkCardProps) => {
       >
         {project.title}
       </Heading>
+      <div className={styles.date}>{project.date}</div>
     </div>
   )
 

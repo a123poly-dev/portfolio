@@ -29,7 +29,7 @@ export const About = () => {
 
           <div className={styles.experienceCell}>
             <Heading type="heading-h3" className={styles.heading}>
-              Experience &amp;Skills
+              Experience &amp; Skills
             </Heading>
             <p className={styles.description}>
               I thrive on creating seamless user experiences that delight and
