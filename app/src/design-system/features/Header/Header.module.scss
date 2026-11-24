@@ -22,6 +22,12 @@
   margin-bottom: 8px;
 }
 
+// "Hey, I'm Polina" keeps the display font; everything else on the home page is DM Sans
+.titleRow .title {
+  font-family: "Clashdisplay", sans-serif;
+  font-weight: 600;
+}
+
 .title {
   color: var(--purple);
   text-align: center;

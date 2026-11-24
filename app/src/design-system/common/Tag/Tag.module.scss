@@ -2,7 +2,7 @@
 
 .tag {
   font-family: var(--font-family);
-  font-size: 16px;
+  font-size: var(--tag-font-size, 16px);
   font-weight: 400;
   line-height: 140%;
   border-radius: 12px;

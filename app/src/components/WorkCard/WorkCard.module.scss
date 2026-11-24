@@ -113,7 +113,7 @@
   background-size: cover;
 }
 
-// Hover: gentle zoom, arrow chip in the corner, title turns green.
+// Hover: gentle zoom and an arrow chip in the corner.
 // Only on devices with a real hover, so touch screens keep the plain card.
 .arrow {
   position: absolute;
@@ -146,11 +146,6 @@
   .card:focus-visible .arrow {
     opacity: 1;
     transform: translate(0, 0) scale(1);
-  }
-
-  .card:hover .title,
-  .card:focus-visible .title {
-    color: #6f9238;
   }
 }
 
@@ -187,7 +182,6 @@
 .title {
   margin-top: 8px;
   margin-bottom: 32px;
-  transition: color 0.3s ease;
 }
 
 @media screen and (max-width: $breakpoint-md) {
