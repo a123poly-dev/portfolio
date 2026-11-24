@@ -721,17 +721,22 @@ export const DsBento = () => {
   useEffect(() => {
     const el = frameRef.current;
     if (!el) return;
+    let timer = 0;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setPlay(true);
+          // Wait for the cover's fade-in, so the counters start rolling in view
+          timer = window.setTimeout(() => setPlay(true), 500);
           observer.disconnect();
         }
       },
       { threshold: 0.3 },
     );
     observer.observe(el);
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      window.clearTimeout(timer);
+    };
   }, []);
 
   const cropped = width > 0 && width < CROP_BELOW;

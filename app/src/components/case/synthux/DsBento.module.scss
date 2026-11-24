@@ -1053,35 +1053,33 @@
   animation: none !important;
 }
 
-:global {
-  @keyframes dsb-roll {
-    from {
-      transform: translateY(0);
-    }
+@keyframes :global(dsb-roll) {
+  from {
+    transform: translateY(0);
   }
+}
 
-  @keyframes dsb-fade-up {
-    from {
-      opacity: 0;
-      transform: translateY(12px);
-    }
+@keyframes :global(dsb-fade-up) {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
   }
+}
 
-  @keyframes dsb-grow {
-    from {
-      width: 0;
-    }
+@keyframes :global(dsb-grow) {
+  from {
+    width: 0;
   }
+}
 
-  @keyframes dsb-fade-in {
-    from {
-      opacity: 0;
-    }
+@keyframes :global(dsb-fade-in) {
+  from {
+    opacity: 0;
   }
+}
 
-  @keyframes dsb-slide-in {
-    from {
-      transform: translateX(-78px);
-    }
+@keyframes :global(dsb-slide-in) {
+  from {
+    transform: translateX(-78px);
   }
 }
