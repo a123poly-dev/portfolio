@@ -2,8 +2,8 @@
 // A case shows on the live site only when it is set to true here.
 // Locally (npm run dev) and on Vercel preview links every case shows, so it can be reviewed.
 export const SYNTHUX_PUBLISHED = {
-  endToEnd: false,
-  designSystem: false,
+  endToEnd: true,
+  designSystem: true,
   aiProcess: false,
 } as const
 
