@@ -164,7 +164,7 @@ export const SynthuxDesignSystemPage = () => (
         </ul>
       </CaseText>
       <TokenPipeline caption="One token, from JSON to the Button." />
-      <SyncLoop caption="One sync round. A re-check compares Figma structure with code, not only props with the spec." />
+      <SyncLoop caption="One sync round." />
     </CaseSection>
 
     <CaseSection

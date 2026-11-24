@@ -308,11 +308,6 @@ export const SyncLoop = ({ caption }: { caption?: ReactNode }) => {
             <span className={tp.title}>
               The sync loop: one round, every time
             </span>
-            <span className={tp.chips}>
-              <span className={tp.chip}>9 sync rounds</span>
-              <span className={tp.chip}>PR #86 to PR #118</span>
-              <span className={tp.chip}>DS 0.2.0 to 0.5.0</span>
-            </span>
           </div>
 
           <div

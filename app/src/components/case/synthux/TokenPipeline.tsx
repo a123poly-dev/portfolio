@@ -308,11 +308,6 @@ export const TokenPipeline = ({ caption }: { caption?: ReactNode }) => {
             <span className={styles.title}>
               Tokens as code: one value, from JSON to the component
             </span>
-            <span className={styles.chips}>
-              <span className={styles.chip}>W3C DTCG JSON</span>
-              <span className={styles.chip}>Style Dictionary v5</span>
-              <span className={styles.chip}>Contrast check in CI</span>
-            </span>
           </div>
 
           <div
