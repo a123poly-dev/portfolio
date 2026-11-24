@@ -11,11 +11,11 @@ import {
   MarkerText,
   SyncLoop,
   TokenPipeline,
+  TokenPlayground,
 } from "../../components/case/synthux";
 import { SynthuxCasePage } from "./SynthuxCasePage";
 import caseStyles from "../../components/case/synthux/Synthux.module.scss";
 import gapImg from "../assets/synthux/case-2/hifi-gap.webp";
-import playgroundImg from "../assets/synthux/case-2/token-playground.webp";
 import rulesImg from "../assets/synthux/case-2/rules-with-reasons.webp";
 import contrastImg from "../assets/synthux/case-2/contrast-checker.webp";
 
@@ -180,13 +180,7 @@ export const SynthuxDesignSystemPage = () => (
         why="A script can read and build the JSON. No script reads the Figma variables."
         cost="Figma variables are set by hand, so drift is caught in sync rounds. That is why there are nine."
       />
-      <CaseFigure
-        src={playgroundImg}
-        alt="Semantic tokens with their Light and Dark values, and the Button, Badge and Table that use them"
-        width={2880}
-        height={1600}
-        caption="Change one semantic token, and every component that uses it follows."
-      />
+      <TokenPlayground caption="Change one semantic token, and every component that uses it follows. Pick a token or switch the preview theme." />
 
       <DecisionBlock
         title={

@@ -1,0 +1,436 @@
+// Token playground. Dark frame and ring/glow come from the token pipeline styles.
+
+%mono {
+  font-family: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 24px;
+}
+
+.themeRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.themeLabel {
+  font-size: 14px;
+  line-height: 20px;
+  color: #93948f;
+}
+
+.themeSwitch {
+  position: relative;
+  display: flex;
+  padding: 2px;
+  border-radius: 8px;
+  background: rgb(229 230 227 / 4%);
+}
+
+.themeIndicator {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: #0d0d0c;
+  transition: transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.themeOption {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  background: none;
+  color: rgb(229 230 227 / 60%);
+  cursor: pointer;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #e5e6e3;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #89ba50;
+    outline-offset: 2px;
+  }
+}
+
+.themeOn {
+  color: #e5e6e3;
+}
+
+.bodyWrap {
+  margin-top: 32px;
+}
+
+// Phones: tokens above the preview; the table scrolls sideways
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.wide {
+  display: grid;
+  grid-template-columns: 400px 896px;
+  gap: 32px;
+  align-items: start;
+  width: 1328px;
+  transform-origin: 0 0;
+
+  .preview {
+    margin-top: 32px;
+    min-height: 520px;
+    padding: 72px 32px 32px;
+  }
+}
+
+.tokens {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.file {
+  @extend %mono;
+
+  font-size: 12px;
+  line-height: 16px;
+  color: #93948f;
+}
+
+.tokenList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.token {
+  position: relative;
+  isolation: isolate;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+
+  &:focus-visible {
+    outline: 2px solid #89ba50;
+    outline-offset: 4px;
+    border-radius: 16px;
+  }
+
+  &:hover .tokenCard {
+    border-color: #4a4c48;
+  }
+}
+
+.glow,
+.ring {
+  transition: opacity 0.3s ease;
+}
+
+.tokenOn {
+  .glow {
+    opacity: 0.3;
+  }
+
+  .ring {
+    opacity: 1;
+  }
+}
+
+.tokenCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 17px 19px;
+  border: 1px solid #30322f;
+  border-radius: 16px;
+  background: #1b1b1a;
+  transition: border-color 0.2s ease;
+}
+
+.tokenName {
+  @extend %mono;
+
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.tokenUse {
+  font-size: 12px;
+  line-height: 16px;
+  color: #93948f;
+}
+
+.values {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 2px;
+}
+
+.value {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 28px;
+  padding: 0 8px;
+  border-radius: 6px;
+  background: rgb(229 230 227 / 4%);
+  font-size: 12px;
+  line-height: 16px;
+  opacity: 0.45;
+  transition: opacity 0.3s ease, background-color 0.3s ease;
+}
+
+.valueOn {
+  background: rgb(229 230 227 / 8%);
+  opacity: 1;
+}
+
+.swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  box-shadow: inset 0 0 0 1px rgb(229 230 227 / 16%);
+}
+
+.valueLabel {
+  color: #93948f;
+}
+
+.hex {
+  @extend %mono;
+}
+
+// Preview: the product's own Light and Dark tokens
+
+.preview {
+  --p-page: #f1f2ef;
+  --p-surface: #fff;
+  --p-text: #0d0d0c;
+  --p-secondary: #6a6b66;
+  --p-border: #e0e2db;
+  --p-action-bg: #0d0d0c;
+  --p-action-text: #fff;
+  --p-error-bg: rgb(207 45 64 / 8%);
+  --p-error: #9e1d2c;
+  --p-track: #e0e2db;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 16px;
+  border: 1px solid transparent;
+  border-radius: 16px;
+  background: var(--p-page);
+  color: var(--p-text);
+  overflow-x: auto;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease;
+
+  * {
+    transition:
+      background-color 0.3s ease,
+      border-color 0.3s ease,
+      color 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+}
+
+.previewDark {
+  --p-page: #121211;
+  --p-surface: #1b1b1a;
+  --p-text: #e5e6e3;
+  --p-secondary: #93948f;
+  --p-border: #30322f;
+  --p-action-bg: #e5e6e3;
+  --p-action-text: #0d0d0c;
+  --p-error-bg: rgb(207 45 64 / 12%);
+  --p-error: #ff676a;
+  --p-track: #2e2e2e;
+
+  border-color: #30322f;
+}
+
+// The part that uses the picked token gets a green outline
+.mark {
+  box-shadow: 0 0 0 0 transparent;
+}
+
+.marked {
+  box-shadow:
+    0 0 0 3px var(--p-page),
+    0 0 0 5px #89ba50;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  min-width: max-content;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+  padding: 0 15px;
+  border-radius: 8px;
+  background: var(--p-action-bg);
+  color: var(--p-action-text);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 28px;
+  padding: 0 8px;
+  border-radius: 8px;
+  background: var(--p-error-bg);
+  color: var(--p-error);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+}
+
+.tag {
+  @extend %mono;
+
+  display: none;
+  padding: 4px 8px;
+  border: 1px solid #89ba50;
+  border-radius: 6px;
+  background: #0d0d0c;
+  color: #96c45f;
+  font-size: 12px;
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+.tagOn {
+  display: inline-block;
+  animation: tag-in 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+@keyframes tag-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}
+
+.tableTags {
+  display: flex;
+  justify-content: flex-end;
+  min-width: 830px;
+  height: 26px;
+  margin: 14px 0 8px;
+}
+
+.table {
+  min-width: 830px;
+  border-radius: 16px;
+  background: var(--p-surface);
+  overflow: hidden;
+}
+
+.tableHead,
+.tableRow {
+  display: grid;
+  grid-template-columns: 220px 64px 168px 104px 162px;
+  gap: 16px;
+  align-items: center;
+  padding: 0 24px;
+}
+
+.tableHead {
+  height: 40px;
+  border-radius: 16px 16px 0 0;
+  color: var(--p-secondary);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--p-border);
+}
+
+.tableRow {
+  min-height: 56px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 14px;
+  line-height: 20px;
+  border-bottom: 1px solid var(--p-border);
+
+  &:last-child {
+    border-bottom: 0;
+  }
+}
+
+.segment,
+.sus {
+  font-weight: 600;
+}
+
+.people {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.success {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bar {
+  display: block;
+  width: 80px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--p-track);
+  overflow: hidden;
+}
+
+.barFill {
+  display: block;
+  height: 100%;
+  border-radius: 2px;
+  background: var(--p-text);
+}
+
+// The head row sits inside the table, so its outline is drawn inside
+.tableHead.marked {
+  box-shadow: inset 0 0 0 2px #89ba50;
+}
