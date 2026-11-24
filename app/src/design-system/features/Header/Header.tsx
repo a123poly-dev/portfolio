@@ -1,5 +1,7 @@
-import { Heading } from "../../common/Heading"
-import photo from "./assets/photo_1.png"
+import { SOCIAL_URLS } from "../../../constants/socials"
+import avatar from "./assets/avatar-hero.webp"
+import warningIcon from "./assets/triangle-warning.svg"
+import { HERO_SOCIAL_ICONS } from "./socialIcons"
 
 import styles from "./Header.module.scss"
 
@@ -7,23 +9,50 @@ export const Header = () => (
   <section className={styles.header}>
     <div className={styles.container}>
       <div className={styles.content}>
-        <div className={styles.titleRow}>
-          <Heading type="heading-h1" className={styles.title}>
-            Hey,👋 I&apos;m Polina
-          </Heading>
-          <img
-            src={photo}
-            loading="lazy"
-            width={92}
-            alt=""
-            className={styles.avatar}
-          />
+        <div className={styles.banner} role="status">
+          <img src={warningIcon} width={16} height={16} alt="" />
+          <span>Portfolio under construction, but all cases available</span>
         </div>
-        <Heading type="heading-h3" as="h5" className={styles.subtitle}>
-          I&apos;m a Product Designer with ✨6+ years of experience in
-          e-commerce, CRM and more🔥
-        </Heading>
-        <div className={styles.location}>📍Helsinki</div>
+
+        <h1 className={styles.title}>
+          <span>Hey,</span>
+          <span className={styles.switcher} aria-hidden="true">
+            <img
+              src={avatar}
+              width={64}
+              height={64}
+              alt=""
+              className={styles.avatar}
+            />
+          </span>
+          <span>I&apos;m Polina&nbsp;—</span>
+        </h1>
+
+        <p className={styles.subtitle}>
+          a holistic product designer who speaks code and data. From research to
+          shipped, measured product.
+        </p>
+
+        <div className={styles.socials}>
+          {SOCIAL_URLS.map((social) => {
+            const SocialIcon =
+              HERO_SOCIAL_ICONS[social.icon as keyof typeof HERO_SOCIAL_ICONS]
+            return (
+              <a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={social.label}
+                className={styles.socialLink}
+              >
+                <SocialIcon />
+              </a>
+            )
+          })}
+        </div>
+
+        <div className={styles.location}>Helsinki</div>
       </div>
     </div>
   </section>
