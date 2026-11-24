@@ -96,8 +96,12 @@
   background-size: cover;
 }
 
+// Cover 3: Figma 249:64447. Crop keeps the start of both agent cards in view.
 .synthuxAiProcessCover {
-  background-image: linear-gradient(135deg, #fff6ec, #f4f1ff);
+  background-color: #111;
+  background-image: url("./assets/synthux/cover-ai-process.webp");
+  background-position: 25% 0;
+  background-size: cover;
 }
 
 // Hover overlay
