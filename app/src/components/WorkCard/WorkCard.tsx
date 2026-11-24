@@ -1,8 +1,6 @@
 import cn from "classnames"
 import { Link } from "react-router-dom"
 import { useScrollReveal } from "../../hooks/useScrollReveal"
-import { Heading } from "@design-system/common/Heading"
-import { Tag } from "@design-system/common/Tag"
 import type { TProject } from "../WorksGrid/works-data"
 
 import styles from "./WorkCard.module.scss"
@@ -11,50 +9,36 @@ const coverClassMap: Record<string, string> = {
   pulkovoCover: styles.pulkovoCover,
   okeyAppCover: styles.okeyAppCover,
   pbhCover: styles.pbhCover,
-  taxiCover: styles.taxiCover,
-  okeySiteCover: styles.okeySiteCover,
   aiCover: styles.aiCover,
   synthuxEndToEndCover: styles.synthuxEndToEndCover,
   synthuxDesignSystemCover: styles.synthuxDesignSystemCover,
   synthuxAiProcessCover: styles.synthuxAiProcessCover,
 }
 
+const coverSizeClassMap: Record<TProject["cover"], string> = {
+  tall: styles.coverTall,
+  compact: styles.coverCompact,
+  regular: styles.coverRegular,
+}
+
 type TWorkCardProps = {
   project: TProject
 }
 
+// Image-only card. The meta line, title and arrow sit in a dark panel that
+// slides up on hover (Figma 290:54602); on touch screens it is always shown.
 export const WorkCard = ({ project }: TWorkCardProps) => {
   const ref = useScrollReveal<HTMLDivElement>()
 
-  const isSmall = project.size === "small"
-  const coverSizeClass = isSmall
-    ? styles.coverSmall
-    : project.compactCover
-      ? styles.coverCompact
-      : styles.coverLarge
-
   const content = (
-    <div ref={ref} className="scroll-reveal">
-      <div className={cn(styles.cover, coverSizeClass)}>
-        <div
-          className={cn(
-            styles.coverImage,
-            coverClassMap[project.coverClass] ?? "",
-          )}
-        />
-        <span className={styles.arrow} aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path
-              d="M4 10H16M16 10L11 5M16 10L11 15"
-              stroke="currentColor"
-              strokeWidth="1.75"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </span>
-      </div>
-      {project.meta ? (
+    <div
+      ref={ref}
+      className={cn("scroll-reveal", styles.cover, coverSizeClassMap[project.cover])}
+    >
+      <div
+        className={cn(styles.coverImage, coverClassMap[project.coverClass])}
+      />
+      <div className={styles.panel}>
         <div className={styles.meta}>
           {project.meta.map((item, i) => (
             <span key={item} className={styles.metaItem}>
@@ -67,36 +51,34 @@ export const WorkCard = ({ project }: TWorkCardProps) => {
             </span>
           ))}
         </div>
-      ) : (
-        <div className={styles.tags}>
-          {project.tags.map((tag) => (
-            <Tag key={tag.label} label={tag.label} color={tag.color} />
-          ))}
-        </div>
-      )}
-      <Heading
-        type={isSmall ? "heading-h5" : "heading-h4"}
-        as="h4"
-        className={cn(styles.title, project.meta && styles.titleAfterMeta)}
-      >
-        {project.title}
-      </Heading>
-      {!project.meta && <div className={styles.date}>{project.date}</div>}
+        <h3 className={styles.title}>{project.title}</h3>
+        <span className={styles.arrow} aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M7 17L17 7M17 15V7H9"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </span>
+      </div>
     </div>
   )
 
-if (project.externalLink) {
-  return (
-    <a
-      href={project.externalLink}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={styles.card}
-    >
-      {content}
-    </a>
-  )
-}
+  if (project.externalLink) {
+    return (
+      <a
+        href={project.externalLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={styles.card}
+      >
+        {content}
+      </a>
+    )
+  }
 
   return (
     <Link to={project.link} className={styles.card}>

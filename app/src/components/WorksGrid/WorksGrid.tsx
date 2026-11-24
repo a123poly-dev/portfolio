@@ -5,12 +5,6 @@ import { WorkCard } from "../WorkCard/WorkCard"
 import styles from "./WorksGrid.module.scss"
 import { projects, WORK_CATEGORIES, type TWorkCategory } from "./works-data"
 
-const sizeClassMap: Record<string, string> = {
-  large: styles.fullWidth,
-  medium: styles.halfWidth,
-  small: styles.quarterWidth,
-}
-
 type TFilter = "All" | TWorkCategory
 
 const countFor = (filter: TFilter) =>
@@ -52,7 +46,10 @@ export function WorksGrid() {
 
         <div ref={ref} className={`${styles.grid} scroll-reveal`}>
           {visible.map((project) => (
-            <div key={project.id} className={sizeClassMap[project.size]}>
+            <div
+              key={project.id}
+              className={cn(project.cover === "tall" && styles.tallItem)}
+            >
               <WorkCard project={project} />
             </div>
           ))}

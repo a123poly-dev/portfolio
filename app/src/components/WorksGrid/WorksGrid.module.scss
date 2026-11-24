@@ -81,23 +81,16 @@
   opacity: 0.8;
 }
 
+// Two columns, 32 px gaps (Figma 290:54920). The tall card spans two rows,
+// so the two compact SynthUX cards stack beside it.
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: auto auto auto;
-  gap: 40px 32px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px;
 }
 
-.fullWidth {
-  grid-column: span 4;
-}
-
-.halfWidth {
-  grid-column: span 2;
-}
-
-.quarterWidth {
-  grid-column: span 1;
+.tallItem {
+  grid-row: span 2;
 }
 
 @media screen and (max-width: $breakpoint-md) {
