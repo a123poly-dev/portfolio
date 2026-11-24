@@ -1,89 +1,107 @@
-import { useEffect, useState } from "react"
-import type { CSSProperties, ReactNode } from "react"
-import { Reveal } from "./Reveal"
-import { useInView } from "./useInView"
-import { usePrefersReducedMotion } from "./usePrefersReducedMotion"
+import { useEffect, useRef, useState } from "react";
+import type { CSSProperties, ReactNode } from "react";
+import { Reveal } from "./Reveal";
+import { ReportScreen } from "./ReportScreen";
 
-import styles from "./BreakpointScrubber.module.scss"
+import styles from "./BreakpointScrubber.module.scss";
 
 export type TBreakpoint = {
-  // Screen width in px; the window is drawn at this width relative to the widest one
-  width: number
-  label: string
-  src: string
-  alt: string
-}
+  // Screen width in px
+  width: number;
+  label: string;
+};
 
 type TBreakpointScrubberProps = {
-  items: TBreakpoint[]
-  // Shared aspect ratio of the exports, e.g. 16 / 10
-  ratio: number
-  caption?: ReactNode
-}
+  items: TBreakpoint[];
+  // Width selected at first
+  initial?: number;
+  // Text for screen readers: what changes between the widths
+  description: string;
+  caption?: ReactNode;
+};
 
-const STEP_MS = 2400
+// Figma "Breakpoint scrubber" (41:7676), 1312 x 760: the widest screen (1920) fills 1264 px,
+// every width uses that same zoom, and the window shows the top 1040 px of the page.
+const STAGE_W = 1312;
+const WIDEST = 1920;
+const WIDEST_ON_STAGE = 1264;
+const VIEW_H = 680;
+const SCREEN_H = 1040;
 
-// One screen at several widths. The window resizes to each width in turn,
-// the way the Figma breakpoint scrubber does. Tabs let people pick a width;
-// picking one stops the autoplay. Reduced motion: no autoplay, no transitions.
-export const BreakpointScrubber = ({ items, ratio, caption }: TBreakpointScrubberProps) => {
-  const [active, setActive] = useState(0)
-  const [touched, setTouched] = useState(false)
-  const { ref, inView } = useInView<HTMLDivElement>(0.4)
-  const reduced = usePrefersReducedMotion()
-  const widest = Math.max(...items.map((item) => item.width))
+// The Report at several widths. Picking a tab resizes the window over 0.5 s (the Figma Smart
+// Animate), and the page inside reflows live because it is real layout, not a picture.
+export const BreakpointScrubber = ({
+  items,
+  initial,
+  description,
+  caption,
+}: TBreakpointScrubberProps) => {
+  const stageRef = useRef<HTMLDivElement>(null);
+  const [stageW, setStageW] = useState(0);
+  const [width, setWidth] = useState(initial ?? items[0].width);
 
   useEffect(() => {
-    if (!inView || reduced || touched) return
-    const timer = window.setInterval(
-      () => setActive((index) => (index + 1) % items.length),
-      STEP_MS,
-    )
-    return () => window.clearInterval(timer)
-  }, [inView, reduced, touched, items.length])
+    const el = stageRef.current;
+    if (!el) return;
+    const observer = new ResizeObserver(([entry]) =>
+      setStageW(entry.contentRect.width),
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
-  const current = items[active]
+  const scale = (stageW * WIDEST_ON_STAGE) / STAGE_W / WIDEST;
+  const current = items.find((item) => item.width === width);
 
   return (
     <Reveal>
       <figure className={styles.figure}>
-        <div ref={ref} className={styles.stage} style={{ aspectRatio: `${ratio}` }}>
-          <div
-            className={styles.window}
-            style={{ "--bp-w": `${(current.width / widest) * 100}%` } as CSSProperties}
-          >
-            {items.map((item, index) => (
-              <img
+        <div ref={stageRef} className={styles.stage}>
+          <div className={styles.tabs} role="group" aria-label="Screen width">
+            {items.map((item) => (
+              <button
                 key={item.width}
-                src={item.src}
-                alt={index === active ? item.alt : ""}
-                aria-hidden={index !== active}
-                loading="lazy"
-                className={styles.screen}
-                style={{ opacity: index === active ? 1 : 0 }}
-              />
+                type="button"
+                className={styles.tab}
+                aria-pressed={item.width === width}
+                onClick={() => setWidth(item.width)}
+              >
+                <span className={styles.tabName}>{item.label} </span>
+                {item.width}
+              </button>
             ))}
           </div>
-        </div>
-
-        <div className={styles.tabs} role="group" aria-label="Screen width">
-          {items.map((item, index) => (
-            <button
-              key={item.width}
-              type="button"
-              className={styles.tab}
-              aria-pressed={index === active}
-              onClick={() => {
-                setTouched(true)
-                setActive(index)
-              }}
+          <div
+            className={styles.view}
+            style={{ height: (stageW * VIEW_H) / STAGE_W }}
+            role="img"
+            aria-label={`SynthUX Report at ${current?.label ?? ""} ${width} px. ${description}`}
+          >
+            <div
+              className={styles.window}
+              style={
+                {
+                  "--scale": scale,
+                  width: width * scale,
+                  height: SCREEN_H * scale,
+                  visibility: scale ? "visible" : "hidden",
+                } as CSSProperties
+              }
+              aria-hidden="true"
             >
-              {item.label}
-            </button>
-          ))}
+              <div
+                className={styles.screen}
+                style={{ transform: `scale(${scale})` }}
+              >
+                <ReportScreen width={width} />
+              </div>
+            </div>
+          </div>
         </div>
-        {caption && <figcaption className={styles.caption}>{caption}</figcaption>}
+        {caption && (
+          <figcaption className={styles.caption}>{caption}</figcaption>
+        )}
       </figure>
     </Reveal>
-  )
-}
+  );
+};

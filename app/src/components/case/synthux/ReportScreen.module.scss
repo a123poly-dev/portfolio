@@ -4,6 +4,8 @@
 
 .shell {
   display: flex;
+  // Resizes together with the scrubber window, so the page reflows on every frame
+  transition: width 0.5s ease-in-out;
   // As tall as the full Figma page (1445), so the sidebar footer sits below the window's fold
   min-height: 1445px;
 }
