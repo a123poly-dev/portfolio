@@ -9,11 +9,11 @@ import {
   DsBento,
   Mark,
   MarkerText,
+  TokenPipeline,
 } from "../../components/case/synthux";
 import { SynthuxCasePage } from "./SynthuxCasePage";
 import caseStyles from "../../components/case/synthux/Synthux.module.scss";
 import gapImg from "../assets/synthux/case-2/hifi-gap.webp";
-import pipelineImg from "../assets/synthux/case-2/token-pipeline.webp";
 import loopImg from "../assets/synthux/case-2/sync-loop.webp";
 import playgroundImg from "../assets/synthux/case-2/token-playground.webp";
 import rulesImg from "../assets/synthux/case-2/rules-with-reasons.webp";
@@ -152,13 +152,7 @@ export const SynthuxDesignSystemPage = () => (
           </li>
         </ol>
       </CaseText>
-      <CaseFigure
-        src={pipelineImg}
-        alt="Token pipeline: action/primary/background in the JSON tokens, built by Style Dictionary v5 into CSS variables, used by the Button in Light and Dark"
-        width={2880}
-        height={1600}
-        caption="One token, from JSON to the Button."
-      />
+      <TokenPipeline caption="One token, from JSON to the Button." />
       <CaseFigure
         src={loopImg}
         alt="The sync loop in six steps: diff Figma, fix the spec, brief, code, verify, baseline"
