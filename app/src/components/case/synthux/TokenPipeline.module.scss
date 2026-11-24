@@ -1,0 +1,335 @@
+// Token pipeline figure: dark, as in the Figma visual. Fluid: 4, 2 or 1 stages per row.
+
+.root {
+  --tp-page: #121211;
+  --tp-surface: #1b1b1a;
+  --tp-border: #30322f;
+  --tp-text: #e5e6e3;
+  --tp-muted: #93948f;
+  --tp-inset: rgb(229 230 227 / 4%);
+  --tp-green: #89ba50;
+
+  position: relative;
+  container-type: inline-size;
+  padding: clamp(20px, 4vw, 48px);
+  border-radius: var(--sx-radius);
+  background-color: var(--tp-page);
+  background-image: radial-gradient(circle, rgb(229 230 227 / 10%) 1px, transparent 1.2px);
+  background-size: 24px 24px;
+  color: var(--tp-text);
+  font-family: "Geist", ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 24px;
+  padding-right: 48px;
+}
+
+.title {
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 600;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  padding: 5px 9px;
+  border: 1px solid var(--tp-border);
+  border-radius: 8px;
+  background: var(--tp-surface);
+  color: var(--tp-muted);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+// Stages
+
+.flow {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 296px);
+  justify-content: center;
+  gap: 64px 48px;
+  padding-top: 56px;
+}
+
+.flowWrap {
+  margin-top: 16px;
+}
+
+.cell {
+  position: relative;
+}
+
+.stage {
+  position: relative;
+  isolation: isolate;
+}
+
+.glow {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: 16px;
+  background: var(--tp-green);
+  filter: blur(12px);
+  opacity: 0;
+}
+
+.ring {
+  position: absolute;
+  inset: 0;
+  border: 2px solid var(--tp-green);
+  border-radius: 16px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  min-height: 320px;
+  padding: 17px 19px;
+  border: 1px solid var(--tp-border);
+  border-radius: 16px;
+  background: var(--tp-surface);
+  overflow: hidden;
+}
+
+.step {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  color: var(--tp-muted);
+}
+
+.cardTitle {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+%mono {
+  font-family: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px;
+}
+
+.file {
+  @extend %mono;
+
+  line-height: 16px;
+  color: var(--tp-muted);
+}
+
+.code {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  background: var(--tp-inset);
+}
+
+.line {
+  position: relative;
+  display: block;
+  height: 20px;
+}
+
+.lineTall {
+  height: 36px;
+}
+
+.lineText {
+  @extend %mono;
+
+  position: relative;
+  display: block;
+  padding-top: 3px;
+  line-height: 15px;
+  white-space: pre;
+}
+
+.muted {
+  color: var(--tp-muted);
+}
+
+.highlight {
+  position: absolute;
+  inset: 0 -6px;
+  border-radius: 4px;
+  background: rgb(137 186 80 / 18%);
+  opacity: 0;
+}
+
+.themes {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+.theme {
+  flex: 1 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  padding: 13px 8px;
+  border-radius: 8px;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+}
+
+.light {
+  background: #f1f2ef;
+  border: 1px solid #e0e2db;
+  color: #6a6b66;
+
+  .button {
+    background: #0d0d0c;
+    color: #fff;
+  }
+}
+
+.dark {
+  background: #121211;
+  border: 1px solid #30322f;
+  color: #93948f;
+
+  .button {
+    background: #e5e6e3;
+    color: #0d0d0c;
+  }
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+// The token chip sits centred above the first stage and travels to the others
+
+.tokenTrack {
+  position: absolute;
+  top: calc(var(--y0, 0px) - 44px);
+  left: var(--x0, 0px);
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  width: var(--w, 296px);
+  opacity: 0;
+}
+
+.token {
+  @extend %mono;
+
+  padding: 6px 10px;
+  border-radius: 14px;
+  background: var(--tp-green);
+  color: #0d0f0a;
+  line-height: 16px;
+  white-space: nowrap;
+  box-shadow: 0 0 6px rgb(150 196 94 / 18%);
+}
+
+// Connectors sit in the gap before a stage: down arrows in one column, right arrows in a row
+
+.connector {
+  position: absolute;
+  display: flex;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%) rotate(90deg);
+}
+
+.arrowBase {
+  stroke: #4a4c48;
+}
+
+.arrowActive {
+  stroke: var(--tp-green);
+  opacity: 0;
+}
+
+.row {
+  grid-template-columns: repeat(4, 296px);
+  width: 1328px;
+  transform-origin: 0 0;
+
+  .connector {
+    top: 152px;
+    left: -42px;
+    transform: none;
+  }
+}
+
+// Controls
+
+.control {
+  position: absolute;
+  top: clamp(20px, 4vw, 48px);
+  right: clamp(20px, 4vw, 48px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--tp-border);
+  border-radius: 8px;
+  background: var(--tp-surface);
+  color: var(--tp-text);
+  cursor: pointer;
+
+  &:hover {
+    background-image: linear-gradient(rgb(229 230 227 / 8%), rgb(229 230 227 / 8%));
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--tp-green);
+    outline-offset: 2px;
+  }
+}
+
+// Motion: one 8 s loop, paused off screen or when the reader pauses it.
+// With reduced motion it rests on the late frame: every line lit, the chip at the Button.
+
+.anim {
+  animation-duration: 8s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+  animation-play-state: paused;
+}
+
+.playing .anim {
+  animation-play-state: running;
+}
+
+.atRest .anim {
+  animation-delay: -7.4s;
+}

@@ -118,9 +118,20 @@
     margin-top: 12px;
   }
 
+  // Small text bullets, as in the portfolio Figma
   ul {
-    list-style: disc;
+    list-style: none;
     padding-left: 20px;
+
+    > li {
+      position: relative;
+    }
+
+    > li::before {
+      content: "•";
+      position: absolute;
+      left: -12px;
+    }
   }
 
   ol {
