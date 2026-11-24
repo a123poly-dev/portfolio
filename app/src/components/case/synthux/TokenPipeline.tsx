@@ -5,25 +5,14 @@ import { Reveal } from "./Reveal";
 import { usePrefersReducedMotion } from "./usePrefersReducedMotion";
 import caseStyles from "./Synthux.module.scss";
 import styles from "./TokenPipeline.module.scss";
+import { IO, OUT, PlayPauseIcon, keyframes } from "./loopMotion";
+import type { TStop } from "./loopMotion";
 
 // Figma "2.3 Token pipeline (motion)" (79:15001), rebuilt as a fluid layout.
 // One 8 s loop from the frame's keyframes: the token chip moves from stage to stage,
 // each stage lifts with a green ring and glow, and its code lines light up.
 // Four 296 px stages with 48 px gaps, as in the Figma frame
 const ROW_W = 4 * 296 + 3 * 48;
-const OUT = "cubic-bezier(0.215, 0.61, 0.355, 1)";
-const IO = "ease-in-out";
-
-type TStop = [at: number, value: string, ease?: string];
-
-const keyframes = (name: string, prop: string, stops: TStop[]) =>
-  `@keyframes ${name}{${stops
-    .map(
-      ([at, value, ease]) =>
-        `${(at * 100).toFixed(2)}%{${prop}:${value};${ease ? `animation-timing-function:${ease};` : ""}}`,
-    )
-    .join("")}}`;
-
 // Times from the Figma timeline, as a fraction of the loop
 const STAGE_START = [0, 0.2, 0.4, 0.6];
 const HIGHLIGHTS = [
@@ -234,29 +223,6 @@ const Arrow = ({ index }: { index: number }) => (
       </g>
     </svg>
   </span>
-);
-
-const PlayPauseIcon = ({ paused }: { paused: boolean }) => (
-  <svg
-    viewBox="0 0 24 24"
-    width="16"
-    height="16"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth={1.5}
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    aria-hidden="true"
-  >
-    {paused ? (
-      <polygon points="6 3 20 12 6 21 6 3" />
-    ) : (
-      <>
-        <rect x="14" y="4" width="4" height="16" rx="1" />
-        <rect x="6" y="4" width="4" height="16" rx="1" />
-      </>
-    )}
-  </svg>
 );
 
 export const TokenPipeline = ({ caption }: { caption?: ReactNode }) => {

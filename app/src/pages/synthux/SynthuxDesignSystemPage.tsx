@@ -9,12 +9,12 @@ import {
   DsBento,
   Mark,
   MarkerText,
+  SyncLoop,
   TokenPipeline,
 } from "../../components/case/synthux";
 import { SynthuxCasePage } from "./SynthuxCasePage";
 import caseStyles from "../../components/case/synthux/Synthux.module.scss";
 import gapImg from "../assets/synthux/case-2/hifi-gap.webp";
-import loopImg from "../assets/synthux/case-2/sync-loop.webp";
 import playgroundImg from "../assets/synthux/case-2/token-playground.webp";
 import rulesImg from "../assets/synthux/case-2/rules-with-reasons.webp";
 import contrastImg from "../assets/synthux/case-2/contrast-checker.webp";
@@ -129,12 +129,16 @@ export const SynthuxDesignSystemPage = () => (
       />
     </CaseSection>
 
-    <CaseSection label="How it works" title="How it works" tocLabel="How it works">
+    <CaseSection
+      label="How it works"
+      title="How it works"
+      tocLabel="How it works"
+    >
       <CaseText>
         <ol>
           <li>
-            <strong>Tokens.</strong> One W3C DTCG JSON file. Style Dictionary
-            v5 builds it into CSS for light, dark and reduced motion.
+            <strong>Tokens.</strong> One W3C DTCG JSON file. Style Dictionary v5
+            builds it into CSS for light, dark and reduced motion.
           </li>
           <li>
             <strong>Contrast.</strong> A script in CI checks every colour pair.
@@ -147,19 +151,13 @@ export const SynthuxDesignSystemPage = () => (
             <strong>Storybook.</strong> Every component ships with its stories.
           </li>
           <li>
-            <strong>Sync rounds.</strong> Compare Figma with code, fix the
-            spec, update the code, verify, save a baseline.
+            <strong>Sync rounds.</strong> Compare Figma with code, fix the spec,
+            update the code, verify, save a baseline.
           </li>
         </ol>
       </CaseText>
       <TokenPipeline caption="One token, from JSON to the Button." />
-      <CaseFigure
-        src={loopImg}
-        alt="The sync loop in six steps: diff Figma, fix the spec, brief, code, verify, baseline"
-        width={2880}
-        height={1600}
-        caption="One sync round. A re-check compares Figma structure with code, not only props with the spec."
-      />
+      <SyncLoop caption="One sync round. A re-check compares Figma structure with code, not only props with the spec." />
     </CaseSection>
 
     <CaseSection
@@ -264,9 +262,9 @@ export const SynthuxDesignSystemPage = () => (
         <p>WCAG 2.2 AA is the target for the product and the system.</p>
         <ul>
           <li>
-            <strong>Contrast in CI.</strong> After the round 9 palette (Day
-            41), all 313 checks pass AA in both themes, plus 39 info-only
-            pairs. It closed the 8 AA fails an earlier audit found.
+            <strong>Contrast in CI.</strong> After the round 9 palette (Day 41),
+            all 313 checks pass AA in both themes, plus 39 info-only pairs. It
+            closed the 8 AA fails an earlier audit found.
           </li>
           <li>
             <strong>Gaps kept on purpose.</strong>
@@ -289,7 +287,11 @@ export const SynthuxDesignSystemPage = () => (
       />
     </CaseSection>
 
-    <CaseSection label="Outcome" title="Where the system is today" tocLabel="Status">
+    <CaseSection
+      label="Outcome"
+      title="Where the system is today"
+      tocLabel="Status"
+    >
       <CaseText>
         <ul>
           <li>
