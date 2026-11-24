@@ -1,8 +1,12 @@
+import { Mark, MarkerText } from "../../../components/case/synthux/MarkerText"
 import avatar from "./assets/avatar-hero.webp"
 import warningIcon from "./assets/triangle-warning.svg"
 import { HERO_SOCIAL_ICONS, HERO_SOCIALS } from "./socialIcons"
 
 import styles from "./Header.module.scss"
+
+// Same purple marks as the Case 1 page: underline at full ink, marker at 20%
+const PURPLE = "#9453FF"
 
 export const Header = () => (
   <section className={styles.header}>
@@ -27,10 +31,17 @@ export const Header = () => (
           <span>I&apos;m Polina&nbsp;—</span>
         </h1>
 
-        <p className={styles.subtitle}>
-          a holistic product designer who speaks code and data. From research to
-          shipped, measured product.
-        </p>
+        <MarkerText as="p" className={styles.subtitle}>
+          a{" "}
+          <Mark type="underline" color={PURPLE} opacity={1}>
+            holistic product designer
+          </Mark>{" "}
+          who speaks{" "}
+          <Mark color={PURPLE} opacity={0.2}>
+            code and data
+          </Mark>
+          . From research to shipped, measured product.
+        </MarkerText>
 
         <div className={styles.socials}>
           {HERO_SOCIALS.map((social) => {
