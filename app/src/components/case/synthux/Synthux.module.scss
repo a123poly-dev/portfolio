@@ -20,7 +20,7 @@
   --sx-max: 1280px;
   --sx-measure: 720px;
   --sx-gutter: clamp(16px, 5vw, 80px);
-  --sx-space-section: clamp(64px, 9vw, 128px);
+  --sx-space-section: clamp(64px, 7.72vw, 100px);
   --sx-space-block: clamp(24px, 3vw, 40px);
   --sx-space-inner: clamp(16px, 2vw, 24px);
   --sx-radius: clamp(12px, 1.6vw, 24px);
@@ -46,6 +46,25 @@
   margin-inline: auto;
 }
 
+// With the side menu (1200 px and up) the content moves right of it
+.withToc {
+  --sx-toc-w: clamp(180px, 15vw, 240px);
+  --sx-toc-gap: clamp(32px, 4vw, 64px);
+
+  @media (min-width: 1200px) {
+    .container {
+      width: auto;
+      max-width: var(--sx-max);
+      margin-left: calc(var(--sx-gutter) + var(--sx-toc-w) + var(--sx-toc-gap));
+      margin-right: var(--sx-gutter);
+    }
+
+    h2[id] {
+      scroll-margin-top: 120px;
+    }
+  }
+}
+
 .measure {
   max-width: var(--sx-measure);
 }
@@ -60,17 +79,18 @@
   color: var(--sx-accent);
 }
 
+// Case title: the one size outside the type scale, as in the Figma case layout (49 px at desktop)
 .title {
   font-family: var(--font-family-display);
-  font-size: var(--sx-fs-28);
-  line-height: var(--sx-lh-28);
+  font-size: clamp(28px, 3.5vw + 4px, 49px);
+  line-height: 1.2;
   letter-spacing: 0.2px;
   color: var(--sx-text);
 }
 
 .heading {
-  font-family: var(--font-family-display);
   font-size: var(--sx-fs-24);
+  font-weight: 500;
   line-height: var(--sx-lh-24);
   color: var(--sx-text);
 }
@@ -83,6 +103,7 @@
 }
 
 .lead {
+  max-width: var(--sx-measure);
   font-size: var(--sx-fs-18);
   line-height: var(--sx-lh-18);
   color: var(--sx-text);
@@ -102,8 +123,36 @@
     padding-left: 20px;
   }
 
+  ol {
+    list-style: decimal;
+    padding-left: 20px;
+  }
+
+  ul + p,
+  ol + p,
+  p + ul,
+  p + ol {
+    margin-top: 16px;
+  }
+
   li + li {
     margin-top: 4px;
+  }
+
+  strong {
+    font-weight: 600;
+    color: var(--sx-text);
+  }
+
+  a {
+    color: var(--sx-accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+
+    &:focus-visible {
+      outline: 2px solid var(--sx-accent);
+      outline-offset: 2px;
+    }
   }
 }
 
@@ -149,6 +198,20 @@
 
 .cover {
   margin-top: var(--sx-space-inner);
+}
+
+// Two sections side by side (Context and Problem), stacked when narrow
+.pair {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+  gap: var(--sx-space-block) clamp(24px, 3vw, 40px);
+  align-items: start;
+}
+
+.pairItem {
+  display: grid;
+  gap: 12px;
+  align-content: start;
 }
 
 .coverPlain {
@@ -211,14 +274,22 @@
 
 .decisionGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
-  gap: 12px var(--sx-space-inner);
-  margin-top: 12px;
+  // Figma 285:22600: two columns, Options and Choice on the left, Why and Cost on the right
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px 24px;
+  margin-top: 24px;
+
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: auto auto;
+    grid-auto-flow: column;
+  }
 
   > div {
     display: grid;
     gap: 4px;
     align-content: start;
+    max-width: 265px;
   }
 }
 

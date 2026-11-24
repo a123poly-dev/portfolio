@@ -27,32 +27,61 @@ export const WorkCard = ({ project }: TWorkCardProps) => {
   const ref = useScrollReveal<HTMLDivElement>()
 
   const isSmall = project.size === "small"
-  const coverSizeClass = isSmall ? styles.coverSmall : styles.coverLarge
+  const coverSizeClass = isSmall
+    ? styles.coverSmall
+    : project.compactCover
+      ? styles.coverCompact
+      : styles.coverLarge
 
   const content = (
     <div ref={ref} className="scroll-reveal">
-      <div
-        className={cn(
-          styles.cover,
-          coverSizeClass,
-          coverClassMap[project.coverClass] ?? "",
-        )}
-      >
-        <div className={styles.overlay}>Let&apos;s see</div>
+      <div className={cn(styles.cover, coverSizeClass)}>
+        <div
+          className={cn(
+            styles.coverImage,
+            coverClassMap[project.coverClass] ?? "",
+          )}
+        />
+        <span className={styles.arrow} aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path
+              d="M4 10H16M16 10L11 5M16 10L11 15"
+              stroke="currentColor"
+              strokeWidth="1.75"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </span>
       </div>
-      <div className={styles.tags}>
-        {project.tags.map((tag) => (
-          <Tag key={tag.label} label={tag.label} color={tag.color} />
-        ))}
-      </div>
-      <div className={styles.date}>{project.date}</div>
+      {project.meta ? (
+        <div className={styles.meta}>
+          {project.meta.map((item, i) => (
+            <span key={item} className={styles.metaItem}>
+              {i > 0 && (
+                <span className={styles.metaDot} aria-hidden="true">
+                  ·
+                </span>
+              )}
+              {item}
+            </span>
+          ))}
+        </div>
+      ) : (
+        <div className={styles.tags}>
+          {project.tags.map((tag) => (
+            <Tag key={tag.label} label={tag.label} color={tag.color} />
+          ))}
+        </div>
+      )}
       <Heading
         type={isSmall ? "heading-h5" : "heading-h4"}
         as="h4"
-        className={styles.title}
+        className={cn(styles.title, project.meta && styles.titleAfterMeta)}
       >
         {project.title}
       </Heading>
+      {!project.meta && <div className={styles.date}>{project.date}</div>}
     </div>
   )
 

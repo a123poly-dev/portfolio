@@ -1,0 +1,94 @@
+// Side menu: fixed in the left column on wide screens, hidden below 1200 px.
+// Colours and type come from the case tokens (.page in Synthux.module.scss).
+
+.toc {
+  display: none;
+
+  @media (min-width: 1200px) {
+    position: fixed;
+    top: clamp(120px, 14vw, 176px);
+    left: var(--sx-gutter);
+    z-index: 2;
+    display: grid;
+    align-content: start;
+    width: var(--sx-toc-w);
+    max-height: calc(100vh - clamp(120px, 14vw, 176px) - 24px);
+    overflow-y: auto;
+    transition: opacity 250ms ease;
+  }
+}
+
+.ended {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  justify-self: start;
+  font-size: var(--sx-fs-14);
+  line-height: var(--sx-lh-14);
+  color: var(--sx-muted);
+  text-decoration: none;
+  background: none;
+  border: 0;
+  padding: 0;
+  font-family: inherit;
+  cursor: pointer;
+  transition: color 150ms ease;
+
+  svg {
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  &:hover {
+    color: var(--sx-text);
+  }
+}
+
+.title {
+  margin-top: 16px;
+  font-size: var(--sx-fs-14);
+  line-height: var(--sx-lh-14);
+  color: var(--sx-muted);
+}
+
+.list {
+  display: grid;
+  gap: 0;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  display: block;
+  padding: 4px 0;
+  font-size: var(--sx-fs-14);
+  line-height: var(--sx-lh-14);
+  color: #9a9ca3;
+  text-decoration: none;
+  transition: color 150ms ease;
+
+  &:hover {
+    color: var(--sx-text);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--sx-accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+.active {
+  color: var(--sx-text);
+}

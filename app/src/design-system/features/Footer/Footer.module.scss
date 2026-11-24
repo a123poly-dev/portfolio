@@ -34,7 +34,7 @@
   }
 
   .copyright {
-    font-size: 14px;
+    font-size: var(--footer-copyright-mobile-size, 14px);
     line-height: 20px;
   }
 

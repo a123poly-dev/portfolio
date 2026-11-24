@@ -1,8 +1,21 @@
 @use "../../../styles/variables" as *;
 
+// Hero from portfolio Figma 272:67070
 .header {
-  margin-top: 100px;
+  --hero-text: #2c2930;
+  --hero-muted: #717171;
+  --hero-pill-bg: #eae9ed;
+  --hero-banner-bg: rgba(46, 102, 231, 0.06);
+
+  margin-top: 124px; // 76 px nav + 48 px
   margin-bottom: 0;
+}
+
+:global([data-theme="dark"]) .header {
+  --hero-text: #fff;
+  --hero-muted: #bdbdbd;
+  --hero-pill-bg: #4a4850;
+  --hero-banner-bg: rgba(83, 147, 255, 0.16);
 }
 
 .container {
@@ -12,38 +25,121 @@
 
 .content {
   max-width: 765px;
-  margin: 206px auto 60px;
-}
-
-.titleRow {
+  margin: 0 auto;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  margin-bottom: 8px;
+  text-align: center;
 }
 
-.title {
-  color: var(--purple);
-  text-align: center;
-  margin-bottom: 24px;
+.banner {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 10px 16px;
+  margin-bottom: 16px;
+  border-radius: 16px;
+  background: var(--hero-banner-bg);
+  color: var(--hero-text);
+  font-family: "Geist", var(--font-family);
+  font-size: 14px;
+  line-height: 20px;
+
+  img {
+    flex-shrink: 0;
+  }
+}
+
+// "HEY, [avatar] I'M POLINA —": Open Sans Bold at 75% width stands in for Open Sans Hebrew Condensed.
+// Sizes are in em so the whole row scales down together on small screens.
+// .content .title beats the home page's h1 weight/letter-spacing override.
+.content .title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  min-height: 97px;
+  margin: 0;
+  color: var(--hero-text);
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  font-stretch: 75%;
+  font-variation-settings: "wdth" 75;
+  font-size: clamp(30px, 8vw, 56px);
+  line-height: 1.2;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+// 124 × 72 pill, 4 px padding, 64 px avatar, 16 px each side (at 56 px type)
+.switcher {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  width: 2.2143em;
+  padding: 0.0714em;
+  margin: 0 0.2857em;
+  border-radius: 999px;
+  background: var(--hero-pill-bg);
 }
 
 .avatar {
-  width: 92px;
-  margin-left: 16px;
+  display: block;
+  width: 1.1429em;
+  height: 1.1429em;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow:
+    0 4px 40px rgba(13, 13, 12, 0.05),
+    0 3px 20px rgba(13, 13, 12, 0.05),
+    0 3px 12px rgba(13, 13, 12, 0.05),
+    0 2px 8px rgba(13, 13, 12, 0.05),
+    0 1px 1px rgba(13, 13, 12, 0.05);
 }
 
 .subtitle {
-  text-align: center;
-  margin-bottom: 24px;
+  margin: 0;
+  padding-top: 8px;
+  color: var(--hero-text);
+  font-family: var(--font-family);
+  font-weight: 300;
+  font-size: 28px;
+  line-height: 120%;
+  letter-spacing: 0;
+}
+
+.socials {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  padding: 24px 0;
+  opacity: 0.8;
+}
+
+.socialLink {
+  display: inline-flex;
+  color: var(--black);
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.6;
+  }
+}
+
+:global([data-theme="dark"]) .socialLink {
+  color: var(--white);
 }
 
 .location {
-  color: var(--link-color);
+  padding-top: 8px;
+  color: var(--hero-muted);
   font-family: var(--font-family);
-  font-size: var(--text-size);
-  text-align: center;
-  line-height: 140%;
+  font-size: 16px;
+  line-height: 22.4px;
 }
 
 @media screen and (max-width: $breakpoint-md) {
@@ -55,20 +151,29 @@
 
 @media screen and (max-width: $breakpoint-sm) {
   .header {
+    margin-top: 100px;
     padding-left: 24px;
     padding-right: 24px;
+  }
+
+  .subtitle {
+    font-size: 22px;
   }
 }
 
 @media screen and (max-width: $breakpoint-xs) {
-  .content {
-    margin-top: 0;
-    margin-bottom: 0;
+  .header {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .banner {
+    font-size: 13px;
+    line-height: 18px;
+    gap: 8px;
   }
 
   .subtitle {
-    font-family: var(--font-family);
-    letter-spacing: 0.5px;
-    font-size: 25px;
+    font-size: 20px;
   }
 }
