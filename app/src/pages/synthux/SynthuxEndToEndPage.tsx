@@ -166,7 +166,7 @@ export const SynthuxEndToEndPage = () => (
         src={trustImg}
         alt="Three approved screens: the agent icon tooltip, the compare banner about noise between runs, and the How this run was made section"
         width={1440}
-        height={898}
+        height={756}
         caption="Agent icon tooltip, compare banner, “How this run was made”."
       />
     </CaseSection>
