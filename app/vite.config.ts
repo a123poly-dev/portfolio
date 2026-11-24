@@ -10,6 +10,11 @@ const dirname = typeof __dirname !== 'undefined' ? __dirname : path.dirname(file
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
   plugins: [react()],
+  define: {
+    // True only on Vercel preview builds (pull requests), so draft SynthUX cases can be reviewed there.
+    // Production (apoly.pro) stays false.
+    "import.meta.env.VITE_SHOW_DRAFTS": JSON.stringify(process.env.VERCEL_ENV === "preview"),
+  },
   resolve: {
     alias: {
       "@design-system": path.resolve(dirname, "src/design-system"),

@@ -13,10 +13,10 @@ const coverClassMap: Record<string, string> = {
   pbhCover: styles.pbhCover,
   taxiCover: styles.taxiCover,
   okeySiteCover: styles.okeySiteCover,
-  pbxyaCover: styles.pbxyaCover,
-  gpnCover: styles.gpnCover,
   aiCover: styles.aiCover,
-  VCover: styles.VCover,
+  synthuxEndToEndCover: styles.synthuxEndToEndCover,
+  synthuxDesignSystemCover: styles.synthuxDesignSystemCover,
+  synthuxAiProcessCover: styles.synthuxAiProcessCover,
 }
 
 type TWorkCardProps = {
@@ -38,11 +38,7 @@ export const WorkCard = ({ project }: TWorkCardProps) => {
           coverClassMap[project.coverClass] ?? "",
         )}
       >
-        {project.comingSoon ? (
-          <div className={styles.comingSoonOverlay}>Coming soon</div>
-        ) : (
-          <div className={styles.overlay}>Let&apos;s see</div>
-        )}
+        <div className={styles.overlay}>Let&apos;s see</div>
       </div>
       <div className={styles.tags}>
         {project.tags.map((tag) => (
@@ -72,10 +68,6 @@ if (project.externalLink) {
     </a>
   )
 }
-
-  if (project.comingSoon) {
-    return <div className={styles.card}>{content}</div>
-  }
 
   return (
     <Link to={project.link} className={styles.card}>

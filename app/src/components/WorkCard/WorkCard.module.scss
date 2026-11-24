@@ -79,31 +79,23 @@
   background-size: 686px, auto;
 }
 
-.pbxyaCover {
+// SynthUX covers (light). Cases 2 and 3 get their image when it is exported.
+.synthuxEndToEndCover {
   background-image:
-    url("./assets/CS_1.png"), linear-gradient(135deg, #b98eff, #a073ff);
+    url("../../pages/assets/synthux/case-1/hifi-4-1.webp"),
+    linear-gradient(135deg, #f4f1ff, #e6f0ff);
   background-position:
-    50%,
+    50% 12%,
     0 0;
-  background-size: cover, auto;
+  background-size: 86%, auto;
 }
 
-.VCover {
-  background-image:
-    url("./assets/CS_3.png"), linear-gradient(135deg, #b98eff, #a073ff);
-  background-position:
-    50%,
-    0 0;
-  background-size: cover, auto;
+.synthuxDesignSystemCover {
+  background-image: linear-gradient(135deg, #f3f6ff, #e9f7f1);
 }
 
-.gpnCover {
-  background-image:
-    url("./assets/CS_2.png"), linear-gradient(138deg, #65edff, #7ec1ff);
-  background-position:
-    50%,
-    0 0;
-  background-size: cover, auto;
+.synthuxAiProcessCover {
+  background-image: linear-gradient(135deg, #fff6ec, #f4f1ff);
 }
 
 // Hover overlay
@@ -131,14 +123,6 @@
     opacity: 1;
     transition: opacity 0.3s ease-in-out;
   }
-}
-
-.comingSoonOverlay {
-  composes: overlay;
-  background-color: transparent;
-  opacity: 1;
-  font-family: var(--font-family);
-  font-size: 25px;
 }
 
 // Tags
