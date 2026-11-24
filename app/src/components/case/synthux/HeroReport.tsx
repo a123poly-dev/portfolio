@@ -324,6 +324,54 @@ export const ReportMotionLayers = () => (
   </>
 );
 
+// Lucide icons at 24 px with a 2 px stroke, as named in the Figma controls (Pause, Moon)
+const LucideIcon = ({ children }: { children: ReactNode }) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={2}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    {children}
+  </svg>
+);
+
+const PauseIcon = () => (
+  <LucideIcon>
+    <rect x="14" y="4" width="4" height="16" rx="1" />
+    <rect x="6" y="4" width="4" height="16" rx="1" />
+  </LucideIcon>
+);
+
+const PlayIcon = () => (
+  <LucideIcon>
+    <polygon points="6 3 20 12 6 21 6 3" />
+  </LucideIcon>
+);
+
+const MoonIcon = () => (
+  <LucideIcon>
+    <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+  </LucideIcon>
+);
+
+const SunIcon = () => (
+  <LucideIcon>
+    <circle cx="12" cy="12" r="4" />
+    <path d="M12 2v2" />
+    <path d="M12 20v2" />
+    <path d="m4.93 4.93 1.41 1.41" />
+    <path d="m17.66 17.66 1.41 1.41" />
+    <path d="M2 12h2" />
+    <path d="M20 12h2" />
+    <path d="m6.34 17.66-1.41 1.41" />
+    <path d="m19.07 4.93-1.41 1.41" />
+  </LucideIcon>
+);
+
 export const HeroReport = () => {
   const reduced = usePrefersReducedMotion();
   const frameRef = useRef<HTMLDivElement>(null);
@@ -359,6 +407,8 @@ export const HeroReport = () => {
   // A loop longer than 5 s needs a pause control (WCAG 2.2.2). With reduced motion it starts paused
   // on the finished report, and Play starts it.
   const [paused, setPaused] = useState(reduced);
+  // The product's Dark mode, from the DS "SynthUX - Semantic colors" collection
+  const [dark, setDark] = useState(false);
   useHeroTimeline(screenRef, {
     playing: visible && !paused,
     startAtRest: reduced,
@@ -369,7 +419,7 @@ export const HeroReport = () => {
   const scale = width > 0 ? width / viewW : 0;
 
   return (
-    <div className={styles.hero}>
+    <div className={`${styles.hero} ${dark ? styles.dark : ""}`}>
       <div
         ref={frameRef}
         className={styles.frame}
@@ -391,14 +441,27 @@ export const HeroReport = () => {
           <ReportMotionLayers />
         </div>
       </div>
-      <button
-        type="button"
-        className={styles.toggle}
-        aria-pressed={!paused}
-        onClick={() => setPaused((p) => !p)}
-      >
-        {paused ? "Play animation" : "Pause animation"}
-      </button>
+      <div className={styles.controls}>
+        <button
+          type="button"
+          className={styles.control}
+          aria-label={paused ? "Play animation" : "Pause animation"}
+          title={paused ? "Play animation" : "Pause animation"}
+          onClick={() => setPaused((p) => !p)}
+        >
+          {paused ? <PlayIcon /> : <PauseIcon />}
+        </button>
+        <button
+          type="button"
+          className={styles.control}
+          aria-label="Dark theme"
+          aria-pressed={dark}
+          title={dark ? "Light theme" : "Dark theme"}
+          onClick={() => setDark((d) => !d)}
+        >
+          {dark ? <SunIcon /> : <MoonIcon />}
+        </button>
+      </div>
     </div>
   );
 };

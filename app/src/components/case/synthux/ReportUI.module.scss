@@ -2,11 +2,67 @@
 // the Figma frames 21:2317 and 41:7676 and their DS tokens. Product type inside the screen is
 // exempt from the case type scale.
 
-$ink: #0d0d0c;
-$secondary: #6a6b66;
-$border: #e0e2db;
-$skeleton: rgb(34 34 33 / 8%);
-$page: #f1f2ef;
+// Colours are CSS variables so the hero can switch to the DS Dark mode
+// ("SynthUX - Semantic colors", Light and Dark).
+$ink: var(--r-ink);
+$secondary: var(--r-secondary);
+$border: var(--r-border);
+$skeleton: var(--r-skeleton);
+$page: var(--r-page);
+
+.frame,
+.screen,
+.product {
+  --r-page: #f1f2ef;
+  --r-ink: #0d0d0c;
+  --r-on-ink: #fff;
+  --r-secondary: #6a6b66;
+  --r-border: #e0e2db;
+  --r-skeleton: rgb(34 34 33 / 8%);
+  --r-surface: #fff;
+  --r-raised: #fff;
+  --r-button-border: rgb(34 34 33 / 12%);
+  --r-neutral-bg: rgb(105 110 102 / 10%);
+  --r-positive-bg: rgb(137 186 80 / 16%);
+  --r-positive: #516b39;
+  --r-error-bg: rgb(207 45 64 / 8%);
+  --r-error: #cf2d40;
+  --r-warning-bg: rgb(255 157 0 / 12%);
+  --r-warning: #a64f1d;
+  --r-info-bg: rgb(46 102 231 / 6%);
+  --r-info: #1e5ae5;
+  --r-icon-filter: none;
+}
+
+// DS Dark mode values
+.dark .frame,
+.dark .screen {
+  --r-page: #121211;
+  --r-ink: #e5e6e3;
+  --r-on-ink: #0d0d0c;
+  --r-secondary: #93948f;
+  --r-border: #30322f;
+  --r-skeleton: rgb(229 230 227 / 8%);
+  --r-surface: #1b1b1a;
+  --r-raised: #222221;
+  --r-button-border: rgb(229 230 227 / 12%);
+  --r-neutral-bg: rgb(105 110 102 / 16%);
+  --r-positive-bg: rgb(137 186 80 / 12%);
+  --r-positive: #96c45f;
+  --r-error-bg: rgb(207 45 64 / 12%);
+  --r-error: #e26764;
+  --r-warning-bg: rgb(255 157 0 / 8%);
+  --r-warning: #d08a46;
+  --r-info-bg: rgb(46 102 231 / 12%);
+  --r-info: #7fa4ff;
+  // Icons in the main area are drawn in light-mode ink; flip their lightness, keep their hue
+  --r-icon-filter: invert(1) hue-rotate(180deg);
+}
+
+.topBar img,
+.block img {
+  filter: var(--r-icon-filter);
+}
 
 .frame {
   position: relative;
@@ -61,7 +117,7 @@ $page: #f1f2ef;
   flex-direction: column;
   justify-content: space-between;
   padding: 8px;
-  background: $ink;
+  background: #0d0d0c; // surface/navigation, the same in Light and Dark
   color: #e5e6e3;
 }
 
@@ -279,7 +335,7 @@ $page: #f1f2ef;
   height: 28px;
   flex-shrink: 0;
   border-radius: 8px;
-  background: #fff;
+  background: var(--r-raised);
   font-weight: 600;
   color: $ink;
   box-shadow:
@@ -308,7 +364,7 @@ $page: #f1f2ef;
   justify-content: space-between;
   height: 56px;
   padding: 12px 24px;
-  background: #fff;
+  background: var(--r-surface);
 }
 
 .breadcrumb {
@@ -339,14 +395,14 @@ $page: #f1f2ef;
 .buttonSecondary {
   @extend %button;
 
-  border: 1px solid rgb(34 34 33 / 12%);
+  border: 1px solid var(--r-button-border);
 }
 
 .buttonPrimary {
   @extend %button;
 
   background: $ink;
-  color: #fff;
+  color: var(--r-on-ink);
 }
 
 .buttonLabel {
@@ -367,7 +423,7 @@ $page: #f1f2ef;
 }
 
 .card {
-  background: #fff;
+  background: var(--r-surface);
   border-radius: 16px;
 }
 
@@ -452,23 +508,23 @@ $page: #f1f2ef;
 }
 
 .badgePositive {
-  background: rgb(137 186 80 / 16%);
-  color: #516b39;
+  background: var(--r-positive-bg);
+  color: var(--r-positive);
 }
 
 .badgeCritical {
-  background: rgb(207 45 64 / 8%);
-  color: #cf2d40;
+  background: var(--r-error-bg);
+  color: var(--r-error);
 }
 
 .badgeMajor {
-  background: rgb(255 157 0 / 12%);
-  color: #a64f1d;
+  background: var(--r-warning-bg);
+  color: var(--r-warning);
 }
 
 .badgeMinor {
-  background: rgb(46 102 231 / 6%);
-  color: #1e5ae5;
+  background: var(--r-info-bg);
+  color: var(--r-info);
 }
 
 // Key numbers
@@ -736,10 +792,10 @@ $page: #f1f2ef;
   @extend %filter;
 
   background: $ink;
-  color: #fff;
+  color: var(--r-on-ink);
 
   .count {
-    color: #fff;
+    color: var(--r-on-ink);
   }
 }
 
@@ -747,7 +803,7 @@ $page: #f1f2ef;
   min-width: 20px;
   padding: 0 4px;
   border-radius: 4px;
-  background: rgb(105 110 102 / 10%);
+  background: var(--r-neutral-bg);
   color: $secondary;
   text-align: center;
 }
@@ -756,7 +812,7 @@ $page: #f1f2ef;
   display: flex;
   flex-direction: column;
   padding: 8px 0;
-  background: #fff;
+  background: var(--r-surface);
   border-radius: 16px;
 }
 
@@ -843,45 +899,66 @@ $page: #f1f2ef;
   height: 80px;
 }
 
-// Wrapper and pause control (outside the product screen, so it uses the case type scale).
-// The control floats over the screen's bottom-right corner, outside the layout.
+// Wrapper and hero controls (Figma 249:56492): two 40 px icon buttons above the screen's
+// top-right corner, 8 px above it. They sit outside the product screen and stay light.
 
+// As in Figma, the controls sit in 48 px of space above the screen (40 px button + 8 px gap)
 .hero {
   position: relative;
+  padding-top: 48px;
+
+  @media (max-width: 639px) {
+    padding-top: 40px;
+  }
 }
 
-.toggle {
+.controls {
   position: absolute;
-  right: 12px;
-  bottom: 12px;
+  top: 0;
+  right: 0;
   z-index: 1;
-  font-family: var(--font-family);
-  font-size: var(--sx-fs-14);
-  line-height: var(--sx-lh-14);
-  color: var(--sx-text);
-  background: rgb(255 255 255 / 90%);
-  border: 1px solid var(--sx-line);
-  border-radius: 999px;
-  padding: 6px 14px;
-  box-shadow: 0 2px 8px rgb(0 0 0 / 8%);
-  backdrop-filter: blur(4px);
-  cursor: pointer;
+  display: flex;
+  gap: 8px;
+}
 
-  // Phone: the hero is small, so the control shrinks and hugs the corner
-  @media (max-width: 639px) {
-    right: 8px;
-    bottom: 8px;
-    font-size: var(--sx-fs-12);
-    line-height: var(--sx-lh-12);
-    padding: 4px 10px;
+.control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  color: #0d0d0c;
+  background: #fff;
+  border: 1px solid rgb(34 34 33 / 12%);
+  border-radius: 8px;
+  filter: drop-shadow(0 4px 6px rgb(0 0 0 / 12%));
+  cursor: pointer;
+  transition: border-color 150ms ease;
+
+  svg {
+    display: block;
+    width: 24px;
+    height: 24px;
   }
 
   &:hover {
-    border-color: var(--sx-text);
+    border-color: rgb(34 34 33 / 40%);
   }
 
   &:focus-visible {
     outline: 2px solid var(--sx-accent);
     outline-offset: 2px;
+  }
+
+  // Phone: smaller buttons, 8 px above the screen
+  @media (max-width: 639px) {
+    width: 32px;
+    height: 32px;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
   }
 }
