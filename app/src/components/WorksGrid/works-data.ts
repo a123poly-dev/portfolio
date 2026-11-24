@@ -11,8 +11,20 @@ export type TTag = {
   color: TTagColor
 }
 
+// Filter tabs above the grid (Figma 290:54881), in display order
+export const WORK_CATEGORIES = [
+  "B2B",
+  "B2C",
+  "AI",
+  "Mobile",
+  "Design System",
+] as const
+
+export type TWorkCategory = (typeof WORK_CATEGORIES)[number]
+
 export type TProject = {
   id: string
+  categories: TWorkCategory[]
   title: string
   date: string
   tags: TTag[]
@@ -31,6 +43,7 @@ export type TProject = {
 const allProjects: TProject[] = [
   {
     id: "synthux-end-to-end",
+    categories: ["B2B", "AI"],
     title: "A UX lab with AI participants – SynthUX. End to end",
     date: "In development",
     tags: [
@@ -48,6 +61,7 @@ const allProjects: TProject[] = [
   },
   {
     id: "synthux-design-system",
+    categories: ["AI", "Design System"],
     title: "SynthUX design system: one source in Figma and in code",
     date: "In development",
     tags: [
@@ -64,6 +78,7 @@ const allProjects: TProject[] = [
   },
   {
     id: "synthux-ai-process",
+    categories: ["AI"],
     title: "SynthUX: a design process run with AI agents",
     date: "In development",
     tags: [
@@ -79,6 +94,7 @@ const allProjects: TProject[] = [
   },
   {
     id: "pulkovo",
+    categories: ["B2B", "Design System"],
     title: "Airport Resource Management System, Timeliner",
     date: "2022",
     tags: [
@@ -95,6 +111,7 @@ const allProjects: TProject[] = [
   },
   {
     id: "ya-calls",
+    categories: ["B2B"],
     title: "Yandex Control system hosted PBX — internal product",
     date: "2019",
     tags: [
@@ -109,6 +126,7 @@ const allProjects: TProject[] = [
   },
   {
     id: "ai-case",
+    categories: ["B2C", "AI"],
     title: "AI Stock Analysis Web App",
     date: "2024",
     tags: [
@@ -124,6 +142,7 @@ const allProjects: TProject[] = [
   },
   {
     id: "okey-app",
+    categories: ["B2C", "Mobile", "Design System"],
     title: 'New mobile app for food retailer "O\'key"',
     date: "2021",
     tags: [

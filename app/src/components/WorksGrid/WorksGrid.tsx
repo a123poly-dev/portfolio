@@ -1,7 +1,9 @@
-import { useScrollReveal } from '../../hooks/useScrollReveal'
-import { WorkCard } from '../WorkCard/WorkCard'
-import styles from './WorksGrid.module.scss'
-import { projects } from './works-data'
+import { useState } from "react"
+import cn from "classnames"
+import { useScrollReveal } from "../../hooks/useScrollReveal"
+import { WorkCard } from "../WorkCard/WorkCard"
+import styles from "./WorksGrid.module.scss"
+import { projects, WORK_CATEGORIES, type TWorkCategory } from "./works-data"
 
 const sizeClassMap: Record<string, string> = {
   large: styles.fullWidth,
@@ -9,14 +11,47 @@ const sizeClassMap: Record<string, string> = {
   small: styles.quarterWidth,
 }
 
+type TFilter = "All" | TWorkCategory
+
+const countFor = (filter: TFilter) =>
+  filter === "All"
+    ? projects.length
+    : projects.filter((project) => project.categories.includes(filter)).length
+
+// Tabs with no visible case (e.g. while SynthUX cases are unpublished) are hidden
+const FILTERS: TFilter[] = (["All", ...WORK_CATEGORIES] as TFilter[]).filter(
+  (filter) => countFor(filter) > 0,
+)
+
 export function WorksGrid() {
   const ref = useScrollReveal<HTMLDivElement>()
+  const [active, setActive] = useState<TFilter>("All")
+
+  const visible =
+    active === "All"
+      ? projects
+      : projects.filter((project) => project.categories.includes(active))
 
   return (
     <section id="works" className={styles.works}>
       <div className={styles.container}>
+        <div className={styles.filters} role="group" aria-label="Filter cases">
+          {FILTERS.map((filter) => (
+            <button
+              key={filter}
+              type="button"
+              aria-pressed={active === filter}
+              className={cn(styles.filter, active === filter && styles.filterActive)}
+              onClick={() => setActive(filter)}
+            >
+              {filter}
+              <span className={styles.count}>{countFor(filter)}</span>
+            </button>
+          ))}
+        </div>
+
         <div ref={ref} className={`${styles.grid} scroll-reveal`}>
-          {projects.map((project) => (
+          {visible.map((project) => (
             <div key={project.id} className={sizeClassMap[project.size]}>
               <WorkCard project={project} />
             </div>
