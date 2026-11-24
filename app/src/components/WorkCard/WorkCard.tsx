@@ -54,19 +54,34 @@ export const WorkCard = ({ project }: TWorkCardProps) => {
           </svg>
         </span>
       </div>
-      <div className={styles.tags}>
-        {project.tags.map((tag) => (
-          <Tag key={tag.label} label={tag.label} color={tag.color} />
-        ))}
-      </div>
+      {project.meta ? (
+        <div className={styles.meta}>
+          {project.meta.map((item, i) => (
+            <span key={item} className={styles.metaItem}>
+              {i > 0 && (
+                <span className={styles.metaDot} aria-hidden="true">
+                  ·
+                </span>
+              )}
+              {item}
+            </span>
+          ))}
+        </div>
+      ) : (
+        <div className={styles.tags}>
+          {project.tags.map((tag) => (
+            <Tag key={tag.label} label={tag.label} color={tag.color} />
+          ))}
+        </div>
+      )}
       <Heading
         type={isSmall ? "heading-h5" : "heading-h4"}
         as="h4"
-        className={styles.title}
+        className={cn(styles.title, project.meta && styles.titleAfterMeta)}
       >
         {project.title}
       </Heading>
-      <div className={styles.date}>{project.date}</div>
+      {!project.meta && <div className={styles.date}>{project.date}</div>}
     </div>
   )
 

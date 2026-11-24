@@ -20,6 +20,8 @@ export type TProject = {
   link: string
   size: "large" | "medium" | "small"
   externalLink?: string
+  // Grey meta line above the title ("2026 · AI · B2B"), shown instead of tags and date
+  meta?: string[]
   // Shorter cover (277 px), used by the SynthUX half cards
   compactCover?: boolean
   // Hidden on the live site until the case is approved (see synthuxCases.ts)
@@ -29,7 +31,7 @@ export type TProject = {
 const allProjects: TProject[] = [
   {
     id: "synthux-end-to-end",
-    title: "SynthUX: UX tests with AI participants, from research question to dev-ready specs",
+    title: "A UX lab with AI participants – SynthUX. End to end",
     date: "In development",
     tags: [
       { label: "Web", color: "blue" },
@@ -38,6 +40,7 @@ const allProjects: TProject[] = [
       { label: "UX", color: "purple" },
       { label: "UI", color: "purple" },
     ],
+    meta: ["2026", "AI", "B2B"],
     coverClass: "synthuxEndToEndCover",
     link: SYNTHUX_END_TO_END_PATH,
     size: "large",
@@ -52,6 +55,7 @@ const allProjects: TProject[] = [
       { label: "Design System", color: "yellow" },
       { label: "Accessibility", color: "green" },
     ],
+    meta: ["2026", "AI", "Design System", "Accessibility"],
     coverClass: "synthuxDesignSystemCover",
     link: SYNTHUX_DESIGN_SYSTEM_PATH,
     size: "medium",
@@ -66,6 +70,7 @@ const allProjects: TProject[] = [
       { label: "AI", color: "red" },
       { label: "Process", color: "green" },
     ],
+    meta: ["2026", "AI", "Process"],
     coverClass: "synthuxAiProcessCover",
     link: SYNTHUX_AI_PROCESS_PATH,
     size: "medium",

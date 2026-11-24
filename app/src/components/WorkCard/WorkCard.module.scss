@@ -189,4 +189,30 @@
   margin-top: 20px;
 }
 
+// SynthUX cards (Figma 272:67122): grey meta line, then the title, nothing below
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+  font-family: var(--font-family);
+  font-size: 14px;
+  line-height: 14px;
+  font-weight: 400;
+  color: var(--grey-4);
+}
+
+.metaItem {
+  display: inline-flex;
+  gap: 8px;
+}
+
+.metaDot {
+  font-weight: 700;
+}
+
+.title.titleAfterMeta {
+  margin-top: 8px;
+}
+
 
