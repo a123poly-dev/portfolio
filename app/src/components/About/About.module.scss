@@ -39,7 +39,7 @@
   font-family: var(--font-family);
   color: var(--dark-grey);
   letter-spacing: 0.2px;
-  font-size: 16px;
+  font-size: var(--text-size);
   font-weight: 400;
   line-height: 140%;
 }
@@ -81,62 +81,9 @@
 .educationText {
   font-family: var(--font-family);
   color: var(--dark-grey);
-  font-size: 16px;
+  font-size: var(--text-size);
   font-weight: 400;
   line-height: 140%;
-}
-
-// Contact cell
-.contactCell {
-  grid-column: span 1;
-}
-
-.photoBlock {
-  display: block;
-}
-
-.photo {
-  width: 251px;
-}
-
-.socials {
-  display: flex;
-  gap: 16px;
-  margin-top: 24px;
-}
-
-.socialLink {
-  &:hover {
-    opacity: 0.6;
-  }
-}
-
-.socialIcon {
-  width: 24px;
-}
-
-.cvBlock {
-  display: flex;
-  gap: 12px;
-  margin-top: 40px;
-  align-items: center;
-}
-
-.cvInner {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
-
-.cvLink {
-  color: var(--link-color);
-  font-family: var(--font-family);
-  font-size: 16px;
-  line-height: 23px;
-
-  &:hover {
-    color: var(--dark-lime);
-  }
 }
 
 @media screen and (max-width: $breakpoint-md) {
@@ -152,8 +99,7 @@
 
   .titleCell,
   .experienceCell,
-  .educationCell,
-  .contactCell {
+  .educationCell {
     grid-column: span 1;
   }
 }
@@ -169,6 +115,6 @@
   .heading {
     font-family: var(--font-family);
     letter-spacing: 0.5px;
-    font-size: 25px;
+    font-size: 21px;
   }
 }

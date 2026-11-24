@@ -62,7 +62,7 @@ export const Navbar = ({ isMainPage = false }: TNavbarProps) => {
                   <ButtonLink href={MAIN_PAGE_WORKS}>Works</ButtonLink>
                 </li>
                 <li>
-                  <ButtonLink href={MAIN_PAGE_ABOUT}>About &amp;CV</ButtonLink>
+                  <ButtonLink href={MAIN_PAGE_ABOUT}>About</ButtonLink>
                 </li>
               </>
             )}
