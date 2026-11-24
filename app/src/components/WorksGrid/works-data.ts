@@ -80,7 +80,7 @@ const allProjects: TProject[] = [
   {
     id: "pulkovo",
     title: "Airport Resource Management System, Timeliner",
-    date: "01.2021 – 12.2022",
+    date: "2022",
     tags: [
       { label: "Web", color: "blue" },
       { label: "B2B", color: "orange" },
@@ -96,7 +96,7 @@ const allProjects: TProject[] = [
   {
     id: "ya-calls",
     title: "Yandex Control system hosted PBX — internal product",
-    date: "06.2019 - 09.2019",
+    date: "2019",
     tags: [
       { label: "Web", color: "blue" },
       { label: "B2B", color: "orange" },
@@ -107,9 +107,7 @@ const allProjects: TProject[] = [
     link: "/ya-calls",
     size: "medium",
   },
-
-// New one
-   {
+  {
     id: "ai-case",
     title: "AI Stock Analysis Web App",
     date: "2024",
@@ -127,7 +125,7 @@ const allProjects: TProject[] = [
   {
     id: "okey-app",
     title: 'New mobile app for food retailer "O\'key"',
-    date: "09.2019 - 12.2021",
+    date: "2021",
     tags: [
       { label: "Android", color: "blue" },
       { label: "iOS", color: "blue" },
@@ -140,32 +138,6 @@ const allProjects: TProject[] = [
     coverClass: "okeyAppCover",
     link: "/okey-app",
     size: "medium",
-  },
-  {
-    id: "taxi",
-    title: "Driver taxi app",
-    date: "2020",
-    tags: [
-      { label: "Android", color: "blue" },
-      { label: "UX", color: "purple" },
-      { label: "UI", color: "purple" },
-    ],
-    coverClass: "taxiCover",
-    link: "/taxi",
-    size: "small",
-  },
-  {
-    id: "okey-site",
-    title: 'Site for food retailer "O\'key"',
-    date: "2020",
-    tags: [
-      { label: "Web", color: "blue" },
-      { label: "UX", color: "purple" },
-      { label: "UI", color: "purple" },
-    ],
-    coverClass: "okeySiteCover",
-    link: "/okey-site",
-    size: "small",
   },
 ]
 
