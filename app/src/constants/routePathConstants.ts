@@ -3,7 +3,6 @@ export const ROOT_PATH = "/"
 
 // Main page sections
 export const MAIN_PAGE_WORKS = "#works"
-export const MAIN_PAGE_ABOUT = "#about"
 
 // Pages
 export const PULKOVO_PATH = "/pulkovo"

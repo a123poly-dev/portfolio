@@ -3,7 +3,6 @@ import cn from "classnames"
 import styles from "./Navbar.module.scss"
 import {
   ROOT_PATH,
-  MAIN_PAGE_ABOUT,
   MAIN_PAGE_WORKS,
 } from "../../../constants/routePathConstants"
 
@@ -20,22 +19,13 @@ export const MobileMenu = ({
 }: TMobileMenuProps) => (
   <div className={cn(styles.mobileMenu, isOpen && styles.mobileMenuOpen)}>
     {isMainPage ? (
-      <>
-        <a
-          href={ROOT_PATH + MAIN_PAGE_WORKS}
-          className={styles.mobileLink}
-          onClick={handleLinkClick}
-        >
-          Works
-        </a>
-        <a
-          href={ROOT_PATH + MAIN_PAGE_ABOUT}
-          className={styles.mobileLink}
-          onClick={handleLinkClick}
-        >
-          About
-        </a>
-      </>
+      <a
+        href={ROOT_PATH + MAIN_PAGE_WORKS}
+        className={styles.mobileLink}
+        onClick={handleLinkClick}
+      >
+        Works
+      </a>
     ) : (
       <a
         href={ROOT_PATH}

@@ -24,17 +24,17 @@
   transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.coverLarge {
-  height: 360px;
+// Heights from Figma 272:67066
+.coverTall {
+  height: 586px;
 }
 
-// SynthUX half cards, Figma "DS cover-smaller" / "Process cover - smaller" (534×277)
 .coverCompact {
   height: 277px;
 }
 
-.coverSmall {
-  height: 250px;
+.coverRegular {
+  height: 360px;
 }
 
 // Cover variants
@@ -67,38 +67,19 @@
 
 .aiCover {
   background-image:
-    url("./assets/AICover.png"), linear-gradient(127deg, #C1F05A, #95C73C);
-//position?
-    background-position:
+    url("./assets/AICover.png"), linear-gradient(127deg, #c1f05a, #95c73c);
+  background-position:
     75% bottom,
     0 0;
   background-size: 92%, auto;
 }
 
-.taxiCover {
-  background-image:
-    url("./assets/img_taxi.png"), linear-gradient(130deg, #fae369, #f6c249);
-  background-position:
-    43% -11%,
-    0 0;
-  background-size: 385px, auto;
-}
-
-.okeySiteCover {
-  background-image:
-    url("./assets/img_okey_site.png"), linear-gradient(#a1ffa5, #b3ff68);
-  background-position:
-    30% 14%,
-    0 0;
-  background-size: 686px, auto;
-}
-
 // SynthUX covers, exported from Figma "Covers for SynthUX" (249:64756) at 2x.
-// Cover 1: Figma 249:64355. Crop keeps the report title and numbers in view.
+// Cover 1: Figma 290:54873 (534×586), exported at 2x. Anchored top left like in Figma.
 .synthuxEndToEndCover {
   background-color: #111;
   background-image: url("./assets/synthux/cover-end-to-end.webp");
-  background-position: 30% 0;
+  background-position: 0 0;
   background-size: cover;
 }
 
@@ -118,89 +99,34 @@
   background-size: cover;
 }
 
-// Hover: gentle zoom and an arrow chip in the corner.
-// Only on devices with a real hover, so touch screens keep the plain card.
-.arrow {
+// Hover panel: Figma 290:54602. 64% black glass at the bottom of the cover,
+// with the meta line, the title and an up-right arrow.
+.panel {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  right: 0;
+  bottom: 0;
+  left: 0;
   z-index: 1;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background-color: #fff;
-  color: #000;
-  box-shadow: 0 4px 16px rgb(0 0 0 / 16%);
-  opacity: 0;
-  transform: translate(-8px, 8px) scale(0.9);
-  transition:
-    opacity 0.3s ease,
-    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px 16px 40px;
+  background: rgba(0, 0, 0, 0.64);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  text-align: left;
 }
 
-@media (hover: hover) {
-  .card:hover .coverImage,
-  .card:focus-visible .coverImage {
-    transform: scale(1.03);
-  }
-
-  .card:hover .arrow,
-  .card:focus-visible .arrow {
-    opacity: 1;
-    transform: translate(0, 0) scale(1);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .coverImage,
-  .arrow {
-    transition: opacity 0.2s ease;
-  }
-
-  .card:hover .coverImage,
-  .card:focus-visible .coverImage {
-    transform: none;
-  }
-}
-
-// Tags
-.tags {
-  display: flex;
-  flex-direction: row;
-  gap: 8px;
-  margin-top: 16px;
-  flex-wrap: wrap;
-}
-
-.date {
-  font-family: var(--font-family);
-  color: var(--grey-4);
-  font-size: var(--small-text-size);
-  margin-top: 8px;
-  margin-bottom: 0;
-  font-weight: 400;
-  line-height: 120%;
-}
-
-// Spacing from Figma 272:67162: chips +16, title +16, year +8, nothing below
-.title {
-  margin-top: 16px;
-}
-
-// SynthUX cards (Figma 272:67122): grey meta line, then the title, nothing below
 .meta {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: 16px;
   font-family: var(--font-family);
   font-size: 14px;
   line-height: 14px;
   font-weight: 400;
-  color: var(--grey-4);
+  color: rgba(255, 255, 255, 0.64);
+  padding-right: 40px; // clears the arrow
 }
 
 .metaItem {
@@ -212,8 +138,89 @@
   font-weight: 700;
 }
 
-.title.titleAfterMeta {
-  margin-top: 8px;
+// .panel .title beats the home page's heading overrides
+.panel .title {
+  margin: 0;
+  color: #fff;
+  font-family: var(--font-family);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0;
 }
 
+.arrow {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  padding: 8px;
+  color: #fff;
+}
 
+// Real hover: the panel slides up and the cover zooms a little.
+// Touch screens have no hover, so they keep the panel in place.
+@media (hover: hover) {
+  .panel {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.3s ease,
+      transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .card:hover .panel,
+  .card:focus-visible .panel {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .card:hover .coverImage,
+  .card:focus-visible .coverImage {
+    transform: scale(1.03);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .coverImage,
+  .panel {
+    transition: opacity 0.2s ease;
+  }
+
+  .card:hover .coverImage,
+  .card:focus-visible .coverImage {
+    transform: none;
+  }
+
+  .card:hover .panel,
+  .card:focus-visible .panel {
+    transform: none;
+  }
+}
+
+@media screen and (max-width: $breakpoint-md) {
+  .coverTall {
+    height: 480px;
+  }
+
+  .coverCompact {
+    height: 300px;
+  }
+}
+
+@media screen and (max-width: $breakpoint-xs) {
+  .coverTall,
+  .coverCompact,
+  .coverRegular {
+    height: 320px;
+  }
+
+  .panel {
+    padding: 16px 16px 20px;
+    gap: 8px;
+  }
+
+  .panel .title {
+    font-size: 18px;
+  }
+}
