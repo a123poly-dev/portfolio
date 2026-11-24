@@ -56,7 +56,7 @@ export const SynthuxPreviewPage = () => (
             src={trustImg}
             alt="Trust frame"
             width={1440}
-            height={1068}
+            height={756}
             caption="Two columns when there is room, one when there is not."
           />
         }
