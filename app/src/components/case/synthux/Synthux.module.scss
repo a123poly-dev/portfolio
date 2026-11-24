@@ -91,10 +91,10 @@
 .body {
   font-size: var(--sx-fs-16);
   line-height: var(--sx-lh-16);
-  color: var(--sx-muted);
+  color: var(--sx-text);
 
   p + p {
-    margin-top: 16px;
+    margin-top: 12px;
   }
 
   ul {
@@ -115,7 +115,7 @@
   }
 
   li + li {
-    margin-top: 8px;
+    margin-top: 4px;
   }
 
   strong {
@@ -148,7 +148,7 @@
 
 .introText {
   display: grid;
-  gap: 16px;
+  gap: 8px;
 }
 
 .meta {
@@ -176,7 +176,7 @@
 }
 
 .cover {
-  margin-top: var(--sx-space-block);
+  margin-top: var(--sx-space-inner);
 }
 
 .coverPlain {
@@ -192,14 +192,12 @@
 }
 
 .sectionHead {
-  display: grid;
-  gap: 8px;
-  margin-bottom: var(--sx-space-block);
+  margin-bottom: 12px;
 }
 
 .stack {
   display: grid;
-  gap: var(--sx-space-block);
+  gap: var(--sx-space-inner);
 }
 
 // Fluid split: two columns when there is room, one when there is not. No breakpoints.
@@ -225,7 +223,7 @@
 }
 
 .caption {
-  margin-top: 12px;
+  margin-top: 8px;
   font-size: var(--sx-fs-14);
   line-height: var(--sx-lh-14);
   color: var(--sx-muted);
@@ -242,12 +240,12 @@
 .decisionGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
-  gap: var(--sx-space-inner) var(--sx-space-block);
-  margin-top: var(--sx-space-inner);
+  gap: 12px var(--sx-space-inner);
+  margin-top: 12px;
 
   > div {
     display: grid;
-    gap: 6px;
+    gap: 4px;
     align-content: start;
   }
 }

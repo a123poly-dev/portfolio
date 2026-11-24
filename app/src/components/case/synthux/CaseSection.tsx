@@ -5,16 +5,16 @@ import { Reveal } from "./Reveal"
 import styles from "./Synthux.module.scss"
 
 type TCaseSectionProps = {
+  // Kept for reference only. Section eyebrows are not shown.
   label?: string
   title?: ReactNode
   id?: string
   className?: string
 } & PropsWithChildren
 
-// A case section: small label, heading, then content in a stack.
+// A case section: heading, then content in a stack.
 // Text blocks should be wrapped in CaseText to keep a readable line length.
 export const CaseSection = ({
-  label,
   title,
   id,
   className,
@@ -22,10 +22,9 @@ export const CaseSection = ({
 }: TCaseSectionProps) => (
   <section id={id} className={cn(styles.section, className)}>
     <div className={styles.container}>
-      {(label || title) && (
+      {title && (
         <Reveal className={cn(styles.sectionHead, styles.measure)}>
-          {label && <span className={styles.label}>{label}</span>}
-          {title && <h2 className={styles.heading}>{title}</h2>}
+          <h2 className={styles.heading}>{title}</h2>
         </Reveal>
       )}
       <div className={styles.stack}>{children}</div>
