@@ -21,6 +21,10 @@ export function WorksGrid() {
   const ref = useScrollReveal<HTMLDivElement>()
   const [active, setActive] = useState<TFilter>("All")
 
+  // The Figma mosaic (tall card + two compact ones) only fits the full list.
+  // A filtered list mixes sizes unevenly, so every card gets the regular 360 px cover.
+  const isFiltered = active !== "All"
+
   const visible =
     active === "All"
       ? projects
@@ -48,9 +52,11 @@ export function WorksGrid() {
           {visible.map((project) => (
             <div
               key={project.id}
-              className={cn(project.cover === "tall" && styles.tallItem)}
+              className={cn(
+                !isFiltered && project.cover === "tall" && styles.tallItem,
+              )}
             >
-              <WorkCard project={project} />
+              <WorkCard project={project} uniform={isFiltered} />
             </div>
           ))}
         </div>

@@ -23,17 +23,19 @@ const coverSizeClassMap: Record<TProject["cover"], string> = {
 
 type TWorkCardProps = {
   project: TProject
+  // Use the regular cover height whatever the project's own size (filtered grid)
+  uniform?: boolean
 }
 
 // Image-only card. The meta line, title and arrow sit in a dark panel that
 // slides up on hover (Figma 290:54602); on touch screens it is always shown.
-export const WorkCard = ({ project }: TWorkCardProps) => {
+export const WorkCard = ({ project, uniform = false }: TWorkCardProps) => {
   const ref = useScrollReveal<HTMLDivElement>()
 
   const content = (
     <div
       ref={ref}
-      className={cn("scroll-reveal", styles.cover, coverSizeClassMap[project.cover])}
+      className={cn("scroll-reveal", styles.cover, coverSizeClassMap[uniform ? "regular" : project.cover])}
     >
       <div
         className={cn(styles.coverImage, coverClassMap[project.coverClass])}
