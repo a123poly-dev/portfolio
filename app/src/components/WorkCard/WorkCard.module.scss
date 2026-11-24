@@ -10,13 +10,27 @@
 .cover {
   border-radius: var(--work-items-border-radius);
   width: 100%;
-  background-repeat: no-repeat, repeat;
   position: relative;
   overflow: hidden;
+  // Keeps the rounded clip while the image scales (Safari)
+  isolation: isolate;
+}
+
+// Holds the cover background, so the zoom on hover stays inside the rounded frame
+.coverImage {
+  position: absolute;
+  inset: 0;
+  background-repeat: no-repeat, repeat;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .coverLarge {
   height: 360px;
+}
+
+// SynthUX half cards, Figma "DS cover-smaller" / "Process cover - smaller" (534×277)
+.coverCompact {
+  height: 277px;
 }
 
 .coverSmall {
@@ -79,49 +93,76 @@
   background-size: 686px, auto;
 }
 
-// SynthUX covers (light). Cases 2 and 3 get their image when it is exported.
+// SynthUX covers, exported from Figma "Covers for SynthUX" (249:64756) at 2x.
+// Cover 1: Figma 249:64355. Crop keeps the report title and numbers in view.
 .synthuxEndToEndCover {
-  background-image:
-    url("../../pages/assets/synthux/case-1/hifi-4-1.webp"),
-    linear-gradient(135deg, #f4f1ff, #e6f0ff);
-  background-position:
-    50% 12%,
-    0 0;
-  background-size: 86%, auto;
+  background-color: #111;
+  background-image: url("./assets/synthux/cover-end-to-end.webp");
+  background-position: 30% 0;
+  background-size: cover;
 }
 
+// Cover 2: Figma 272:66982 (smaller). Content sits on the left, so the crop is anchored left.
 .synthuxDesignSystemCover {
-  background-image: linear-gradient(135deg, #f3f6ff, #e9f7f1);
+  background-color: #111;
+  background-image: url("./assets/synthux/cover-design-system.webp");
+  background-position: 0 0;
+  background-size: cover;
 }
 
+// Cover 3: Figma 272:66994 (smaller). Agent cards sit in the middle, so the crop is centred.
 .synthuxAiProcessCover {
-  background-image: linear-gradient(135deg, #fff6ec, #f4f1ff);
+  background-color: #111;
+  background-image: url("./assets/synthux/cover-ai-process.webp");
+  background-position: 50% 0;
+  background-size: cover;
 }
 
-// Hover overlay
-.overlay {
-  border-radius: var(--work-items-border-radius);
-  font-family: var(--font-family-display);
-  color: var(--white);
-  text-align: center;
-  letter-spacing: 1px;
-  background-color: #83a548cc;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  font-size: 31px;
-  font-weight: 600;
-  line-height: 140%;
-  opacity: 0;
-  transition: opacity 1.5s ease-in-out;
+// Hover: gentle zoom and an arrow chip in the corner.
+// Only on devices with a real hover, so touch screens keep the plain card.
+.arrow {
   position: absolute;
-  inset: 0;
+  top: 20px;
+  right: 20px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #fff;
+  color: #000;
+  box-shadow: 0 4px 16px rgb(0 0 0 / 16%);
+  opacity: 0;
+  transform: translate(-8px, 8px) scale(0.9);
+  transition:
+    opacity 0.3s ease,
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
 
-  .card:hover & {
+@media (hover: hover) {
+  .card:hover .coverImage,
+  .card:focus-visible .coverImage {
+    transform: scale(1.03);
+  }
+
+  .card:hover .arrow,
+  .card:focus-visible .arrow {
     opacity: 1;
-    transition: opacity 0.3s ease-in-out;
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .coverImage,
+  .arrow {
+    transition: opacity 0.2s ease;
+  }
+
+  .card:hover .coverImage,
+  .card:focus-visible .coverImage {
+    transform: none;
   }
 }
 
@@ -138,18 +179,14 @@
   font-family: var(--font-family);
   color: var(--grey-4);
   font-size: var(--small-text-size);
-  margin-top: 20px;
+  margin-top: 8px;
+  margin-bottom: 32px;
   font-weight: 400;
   line-height: 120%;
 }
 
 .title {
-  margin-top: 8px;
-  margin-bottom: 32px;
+  margin-top: 20px;
 }
 
-@media screen and (max-width: $breakpoint-md) {
-  .overlay {
-    display: none;
-  }
-}
+

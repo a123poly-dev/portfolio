@@ -22,6 +22,11 @@ export const TOOLS: TTagProps[] = [
   { label: "Git", color: "blue" },
   { label: "HTML", color: "blue" },
   { label: "CSS", color: "blue" },
+  // AI tools
+  { label: "Claude Code", color: "red" },
+  { label: "Cursor", color: "red" },
+  { label: "Claude", color: "red" },
+  { label: "ChatGPT", color: "red" },
 ]
 
 export const SOCIAL_URLS: { icon: TIconName; href: string; label: string }[] = [

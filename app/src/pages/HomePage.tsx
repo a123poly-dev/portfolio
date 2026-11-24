@@ -4,12 +4,16 @@ import { WorksGrid } from "../components/WorksGrid/WorksGrid"
 import { About } from "../components/About/About"
 import { Footer } from "@design-system/features/Footer"
 
+import styles from "./HomePage.module.scss"
+
 export const HomePage = () => (
-  <>
+  <div className={styles.home}>
     <Navbar isMainPage />
     <Header />
-    <WorksGrid />
-    <About />
-    <Footer />
-  </>
+    <div className={styles.belowHero}>
+      <WorksGrid />
+      <About />
+      <Footer />
+    </div>
+  </div>
 )

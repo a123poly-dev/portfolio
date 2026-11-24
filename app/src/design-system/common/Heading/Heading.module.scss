@@ -1,45 +1,45 @@
 .headingH1 {
   font-family: var(--font-family-display);
   color: var(--black);
-  font-size: 61px;
-  line-height: 120%;
+  font-size: var(--heading-h1-size, 61px);
+  line-height: var(--heading-h1-line-height, 120%);
   letter-spacing: 1.5px;
 }
 
 .headingH2 {
   font-family: var(--font-family-display);
   color: var(--black);
-  font-size: 49px;
-  line-height: 120%;
+  font-size: var(--heading-h2-size, 49px);
+  line-height: var(--heading-h2-line-height, 120%);
 }
 
 .headingH3 {
   font-family: var(--font-family-display);
   color: var(--black);
-  font-size: 39px;
-  line-height: 140%;
+  font-size: var(--heading-h3-size, 39px);
+  line-height: var(--heading-h3-line-height, 140%);
   letter-spacing: 1px;
 }
 
 .headingH4 {
   font-family: var(--font-family-display);
   color: var(--black);
-  font-size: 31px;
-  line-height: 120%;
+  font-size: var(--heading-h4-size, 31px);
+  line-height: var(--heading-h4-line-height, 120%);
 }
 
 .headingH5 {
   font-family: var(--font-family);
   color: var(--black);
-  font-size: 25px;
-  line-height: 140%;
+  font-size: var(--heading-h5-size, 25px);
+  line-height: var(--heading-h5-line-height, 140%);
   letter-spacing: 0.5px;
 }
 
 .headingH6 {
   font-family: var(--font-family);
   color: var(--black);
-  font-size: 20px;
-  line-height: 120%;
+  font-size: var(--heading-h6-size, 20px);
+  line-height: var(--heading-h6-line-height, 120%);
   letter-spacing: 0.2px;
 }

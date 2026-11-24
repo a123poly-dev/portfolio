@@ -27,25 +27,38 @@ export const WorkCard = ({ project }: TWorkCardProps) => {
   const ref = useScrollReveal<HTMLDivElement>()
 
   const isSmall = project.size === "small"
-  const coverSizeClass = isSmall ? styles.coverSmall : styles.coverLarge
+  const coverSizeClass = isSmall
+    ? styles.coverSmall
+    : project.compactCover
+      ? styles.coverCompact
+      : styles.coverLarge
 
   const content = (
     <div ref={ref} className="scroll-reveal">
-      <div
-        className={cn(
-          styles.cover,
-          coverSizeClass,
-          coverClassMap[project.coverClass] ?? "",
-        )}
-      >
-        <div className={styles.overlay}>Let&apos;s see</div>
+      <div className={cn(styles.cover, coverSizeClass)}>
+        <div
+          className={cn(
+            styles.coverImage,
+            coverClassMap[project.coverClass] ?? "",
+          )}
+        />
+        <span className={styles.arrow} aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path
+              d="M4 10H16M16 10L11 5M16 10L11 15"
+              stroke="currentColor"
+              strokeWidth="1.75"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </span>
       </div>
       <div className={styles.tags}>
         {project.tags.map((tag) => (
           <Tag key={tag.label} label={tag.label} color={tag.color} />
         ))}
       </div>
-      <div className={styles.date}>{project.date}</div>
       <Heading
         type={isSmall ? "heading-h5" : "heading-h4"}
         as="h4"
@@ -53,6 +66,7 @@ export const WorkCard = ({ project }: TWorkCardProps) => {
       >
         {project.title}
       </Heading>
+      <div className={styles.date}>{project.date}</div>
     </div>
   )
 
