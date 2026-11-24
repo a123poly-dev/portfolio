@@ -79,15 +79,13 @@
   background-size: 686px, auto;
 }
 
-// SynthUX covers (light). Cases 2 and 3 get their image when it is exported.
+// SynthUX covers, exported from Figma "Covers for SynthUX" (249:64756) at 2x.
+// Cover 1: Figma 249:64355. Crop keeps the report title and numbers in view.
 .synthuxEndToEndCover {
-  background-image:
-    url("../../pages/assets/synthux/case-1/hifi-4-1.webp"),
-    linear-gradient(135deg, #f4f1ff, #e6f0ff);
-  background-position:
-    50% 12%,
-    0 0;
-  background-size: 86%, auto;
+  background-color: #111;
+  background-image: url("./assets/synthux/cover-end-to-end.webp");
+  background-position: 30% 0;
+  background-size: cover;
 }
 
 .synthuxDesignSystemCover {
