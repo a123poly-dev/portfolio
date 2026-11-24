@@ -1,0 +1,280 @@
+// Contrast checker. Dark frame, theme switch and pair cards reuse the
+// token pipeline and token playground styles.
+
+%mono {
+  font-family: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.mono {
+  @extend %mono;
+}
+
+.headLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+// Phones: pairs above the preview
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.wide {
+  display: grid;
+  grid-template-columns: 400px 896px;
+  gap: 32px;
+  align-items: start;
+  width: 1328px;
+  transform-origin: 0 0;
+
+  .specimen {
+    height: 340px;
+  }
+
+  .result {
+    height: 160px;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 15px 19px;
+  border: 1px solid #30322f;
+  border-radius: 16px;
+  background: #1b1b1a;
+  transition: border-color 0.2s ease;
+}
+
+.cardText {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.fg {
+  @extend %mono;
+
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.on {
+  @extend %mono;
+
+  font-size: 12px;
+  line-height: 16px;
+  color: #93948f;
+}
+
+.use {
+  font-size: 12px;
+  line-height: 16px;
+  color: #93948f;
+}
+
+.cardRatio {
+  @extend %mono;
+
+  flex: none;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.preview {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.specimen {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 280px;
+  padding: 48px 16px 24px;
+  border: 1px solid transparent;
+  border-radius: 16px;
+  background: #fff;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.specimenDark {
+  border-color: #30322f;
+  background: #1b1b1a;
+
+  .specimenLabel {
+    color: #93948f;
+  }
+}
+
+.specimenLabel {
+  @extend %mono;
+
+  position: absolute;
+  top: 20px;
+  left: 24px;
+  font-size: 12px;
+  line-height: 16px;
+  color: #6a6b66;
+  transition: color 0.3s ease;
+}
+
+.sample {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 360px;
+  max-width: 100%;
+  height: 200px;
+  border-radius: 16px;
+  color: var(--c-color);
+  animation: cc-in 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+@keyframes cc-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}
+
+.aa {
+  font-size: 28px;
+  line-height: 36px;
+  font-weight: 600;
+}
+
+// Button and badge samples sit on their own fill
+.aaFilled {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 56px;
+  border-radius: 12px;
+  background: var(--c-fill);
+}
+
+.sampleCaps {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+  letter-spacing: 0.56px;
+  text-transform: uppercase;
+}
+
+.sampleButton {
+  display: inline-flex;
+  align-items: center;
+  height: 32px;
+  padding: 0 15px;
+  border-radius: 8px;
+  background: var(--c-fill);
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 500;
+}
+
+.sampleBadge {
+  display: inline-flex;
+  align-items: center;
+  height: 28px;
+  padding: 0 8px;
+  border-radius: 8px;
+  background: var(--c-fill);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+}
+
+.sampleField {
+  gap: 12px;
+}
+
+.field {
+  display: block;
+  width: 320px;
+  max-width: 100%;
+  height: 40px;
+  border: 1px solid var(--c-color);
+  border-radius: 8px;
+}
+
+.fieldCaption {
+  font-size: 12px;
+  line-height: 16px;
+  color: #93948f;
+}
+
+.result {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  padding: 23px;
+  border: 1px solid #30322f;
+  border-radius: 16px;
+  background: #1b1b1a;
+}
+
+.resultTop {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 16px;
+}
+
+.ratio {
+  @extend %mono;
+
+  font-size: 28px;
+  line-height: 36px;
+  color: #e5e6e3;
+}
+
+.verdict {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 9px;
+  border: 1px solid #89ba50;
+  border-radius: 8px;
+  color: #96c45f;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+}
+
+.pairLine {
+  @extend %mono;
+
+  font-size: 14px;
+  line-height: 20px;
+  color: #93948f;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
