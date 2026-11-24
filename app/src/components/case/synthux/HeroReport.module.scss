@@ -732,27 +732,40 @@ $page: #f1f2ef;
   height: 80px;
 }
 
-// Wrapper and pause control (outside the product screen, so it uses the case type scale)
+// Wrapper and pause control (outside the product screen, so it uses the case type scale).
+// The control floats over the screen's bottom-right corner, outside the layout.
 
 .hero {
-  display: grid;
-  gap: 12px;
-  justify-items: end;
+  position: relative;
 }
 
 .toggle {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  z-index: 1;
   font-family: var(--font-family);
   font-size: var(--sx-fs-14);
   line-height: var(--sx-lh-14);
-  color: var(--sx-muted);
-  background: none;
+  color: var(--sx-text);
+  background: rgb(255 255 255 / 90%);
   border: 1px solid var(--sx-line);
   border-radius: 999px;
   padding: 6px 14px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 8%);
+  backdrop-filter: blur(4px);
   cursor: pointer;
 
+  // Phone: the hero is small, so the control shrinks and hugs the corner
+  @media (max-width: 639px) {
+    right: 8px;
+    bottom: 8px;
+    font-size: var(--sx-fs-12);
+    line-height: var(--sx-lh-12);
+    padding: 4px 10px;
+  }
+
   &:hover {
-    color: var(--sx-text);
     border-color: var(--sx-text);
   }
 
