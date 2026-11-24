@@ -1,9 +1,5 @@
 import { useState, useEffect, useRef } from "react"
-import {
-  ROOT_PATH,
-  MAIN_PAGE_WORKS,
-  MAIN_PAGE_ABOUT,
-} from "../../../constants/routePathConstants"
+import { ROOT_PATH, MAIN_PAGE_WORKS } from "../../../constants/routePathConstants"
 
 import { ButtonLink } from "@design-system/common/ButtonLink"
 import { BurgerButton } from "@design-system/features/BurgerButton"
@@ -57,14 +53,9 @@ export const Navbar = ({ isMainPage = false }: TNavbarProps) => {
           {/* Desktop nav — hidden on mobile */}
           <ul className={styles.navList}>
             {isMainPage && (
-              <>
-                <li>
-                  <ButtonLink href={MAIN_PAGE_WORKS}>Works</ButtonLink>
-                </li>
-                <li>
-                  <ButtonLink href={MAIN_PAGE_ABOUT}>About</ButtonLink>
-                </li>
-              </>
+              <li>
+                <ButtonLink href={MAIN_PAGE_WORKS}>Works</ButtonLink>
+              </li>
             )}
             <li>
               <ButtonLink
