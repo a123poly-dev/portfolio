@@ -232,16 +232,15 @@ export const SynthuxDesignSystemPage = () => (
       <CaseText>
         <p>
           People and AI agents both read the component docs, so every rule
-          carries its reason. The cost: longer docs, and each new rule takes
-          more time to write.
+          carries its reason.
         </p>
       </CaseText>
       <CaseFigure
         src={rulesImg}
-        alt="The Severity bar in the Issues to check metric, its rule with the reason, the matching agent rule, and the same rule without a reason"
-        width={2880}
-        height={1312}
-        caption="The Severity bar rule, with and without its reason."
+        alt="The Severity bar in the Issues to check metric, its rule with the reason from the Storybook docs, and the matching rule for agents"
+        width={1841}
+        height={512}
+        caption="The Severity bar rule"
       />
     </CaseSection>
 
