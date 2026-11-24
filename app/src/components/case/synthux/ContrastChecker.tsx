@@ -237,21 +237,10 @@ export const ContrastChecker = ({ caption }: { caption?: ReactNode }) => {
       <figure className={caseStyles.figure}>
         <div ref={rootRef} className={tp.root}>
           <div className={pg.head}>
-            <span className={styles.headLeft}>
-              <span className={tp.title}>
-                Contrast check in CI: every text and background pair, both
-                themes
-              </span>
-              <span className={styles.chips}>
-                <span className={cn(tp.chip, styles.mono)}>pnpm contrast</span>
-                <span className={tp.chip}>313 checks, Light + Dark</span>
-                <span className={tp.chip}>
-                  Every pair meets its AA ratio
-                </span>
-              </span>
+            <span className={tp.title}>
+              Contrast check in CI: every text and background pair, both themes
             </span>
             <span className={pg.themeRow}>
-              <span className={pg.themeLabel}>Preview theme</span>
               <span
                 className={pg.themeSwitch}
                 role="radiogroup"
@@ -319,7 +308,9 @@ export const ContrastChecker = ({ caption }: { caption?: ReactNode }) => {
                       <span className={styles.card}>
                         <span className={styles.cardText}>
                           <span className={styles.fg}>{p.fg}</span>
-                          <span className={styles.on}>on {p.on}</span>
+                          {on && (
+                            <span className={styles.on}>on {p.on}</span>
+                          )}
                           <span className={styles.use}>{p.use}</span>
                         </span>
                         <span className={styles.cardRatio}>

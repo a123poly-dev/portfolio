@@ -246,19 +246,19 @@ export const SynthuxDesignSystemPage = () => (
 
     <CaseSection
       label="Accessibility"
-      title="Accessibility: a target, not a claim"
+      title="Accessibility"
       tocLabel="Accessibility"
     >
       <CaseText>
         <p>WCAG 2.2 AA is the target for the product and the system.</p>
         <ul>
           <li>
-            <strong>Contrast in CI.</strong> After the round 9 palette (Day 41),
+            <strong>Contrast in CI.</strong> After the round 9 palette,
             all 313 checks pass AA in both themes, plus 39 info-only pairs. It
             closed the 8 AA fails an earlier audit found.
           </li>
           <li>
-            <strong>Gaps kept on purpose.</strong>
+            <strong>Gaps kept on purpose.</strong>{" "}
             Input focus border 2.28:1 in light (WCAG 1.4.11). Light selected
             state 2.28:1. Severity colours on a card are info only, because a
             text label carries the meaning.
