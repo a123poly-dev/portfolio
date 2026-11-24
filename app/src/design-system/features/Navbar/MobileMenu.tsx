@@ -33,7 +33,7 @@ export const MobileMenu = ({
           className={styles.mobileLink}
           onClick={handleLinkClick}
         >
-          About &amp;CV
+          About
         </a>
       </>
     ) : (
