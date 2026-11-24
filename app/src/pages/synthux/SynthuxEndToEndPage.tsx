@@ -137,7 +137,7 @@ export const SynthuxEndToEndPage = () => (
         alt="Accessibility check report: 7 WCAG issues, 4 criteria failed, 6 pages checked, 5 of 48 controls blocked, and the issues grouped by WCAG success criterion"
         width={1440}
         height={1100}
-        caption="The report leads with the controls people could not use."
+        caption="The report shows which controls people could not use, not one score."
       />
 
       <DecisionBlock
