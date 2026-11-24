@@ -63,7 +63,11 @@
   grid-template-columns: minmax(0, 296px);
   justify-content: center;
   gap: 64px 48px;
-  margin-top: 72px;
+  padding-top: 56px;
+}
+
+.flowWrap {
+  margin-top: 16px;
 }
 
 .cell {
@@ -272,30 +276,15 @@
   opacity: 0;
 }
 
-@container (min-width: 640px) {
-  .flow {
-    grid-template-columns: repeat(2, minmax(0, 296px));
-  }
+.row {
+  grid-template-columns: repeat(4, 296px);
+  width: 1328px;
+  transform-origin: 0 0;
 
   .connector {
     top: 152px;
     left: -42px;
     transform: none;
-  }
-
-  // In two rows, stage 3 starts a new row: no arrow from stage 2
-  .connector1 {
-    display: none;
-  }
-}
-
-@container (min-width: 1328px) {
-  .flow {
-    grid-template-columns: repeat(4, 296px);
-  }
-
-  .connector1 {
-    display: flex;
   }
 }
 

@@ -9,6 +9,8 @@ import styles from "./TokenPipeline.module.scss";
 // Figma "2.3 Token pipeline (motion)" (79:15001), rebuilt as a fluid layout.
 // One 8 s loop from the frame's keyframes: the token chip moves from stage to stage,
 // each stage lifts with a green ring and glow, and its code lines light up.
+// Four 296 px stages with 48 px gaps, as in the Figma frame
+const ROW_W = 4 * 296 + 3 * 48;
 const OUT = "cubic-bezier(0.215, 0.61, 0.355, 1)";
 const IO = "ease-in-out";
 
@@ -258,7 +260,10 @@ export const TokenPipeline = ({ caption }: { caption?: ReactNode }) => {
   const reduced = usePrefersReducedMotion();
   const rootRef = useRef<HTMLDivElement>(null);
   const stageRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const flowRef = useRef<HTMLDivElement>(null);
   const [offsets, setOffsets] = useState<CSSProperties>({});
+  // One row, scaled to fit, from 640 px of room; stacked below that
+  const [layout, setLayout] = useState({ row: true, scale: 1, height: 0 });
   const [visible, setVisible] = useState(false);
   const [paused, setPaused] = useState(reduced);
 
@@ -282,9 +287,21 @@ export const TokenPipeline = ({ caption }: { caption?: ReactNode }) => {
         vars[`--y${i + 1}`] = `${el.offsetTop - first.offsetTop}px`;
       });
       setOffsets(vars as CSSProperties);
+
+      const pad = parseFloat(getComputedStyle(root).paddingLeft) || 0;
+      const room = root.clientWidth - pad * 2;
+      const row = room >= 640;
+      const flowH = flowRef.current?.offsetHeight ?? 0;
+      const scale = row ? Math.min(1, room / ROW_W) : 1;
+      setLayout((prev) =>
+        prev.row === row && prev.scale === scale && prev.height === flowH
+          ? prev
+          : { row, scale, height: flowH },
+      );
     };
     const observer = new ResizeObserver(measure);
     observer.observe(root);
+    if (flowRef.current) observer.observe(flowRef.current);
     measure();
     return () => observer.disconnect();
   }, []);
@@ -329,65 +346,89 @@ export const TokenPipeline = ({ caption }: { caption?: ReactNode }) => {
             </span>
           </div>
 
-          <div className={styles.flow} aria-hidden="true">
-            <span
-              className={cn(styles.tokenTrack, styles.anim)}
-              style={run("tp-chip-move", "tp-chip-fade")}
+          <div
+            className={styles.flowWrap}
+            style={
+              layout.row && layout.height
+                ? { height: layout.height * layout.scale }
+                : undefined
+            }
+          >
+            <div
+              ref={flowRef}
+              className={cn(styles.flow, layout.row && styles.row)}
+              style={
+                layout.row ? { transform: `scale(${layout.scale})` } : undefined
+              }
+              aria-hidden="true"
             >
-              <span className={styles.token}>action/primary/background</span>
-            </span>
-            {STAGES.map((stage, i) => (
-              <div
-                key={stage.title}
-                ref={(el) => {
-                  stageRefs.current[i] = el;
-                }}
-                className={styles.cell}
+              <span
+                className={cn(styles.tokenTrack, styles.anim)}
+                style={run("tp-chip-move", "tp-chip-fade")}
               >
-                {i > 0 && <Arrow index={i - 1} />}
+                <span className={styles.token}>action/primary/background</span>
+              </span>
+              {STAGES.map((stage, i) => (
                 <div
-                  className={cn(styles.stage, styles.anim)}
-                  style={run(`tp-lift-${i}`)}
+                  key={stage.title}
+                  ref={(el) => {
+                    stageRefs.current[i] = el;
+                  }}
+                  className={styles.cell}
                 >
-                  <span
-                    className={cn(styles.glow, styles.anim)}
-                    style={run(`tp-glow-${i}`)}
-                  />
-                  <div className={styles.card}>
-                    <span className={styles.step}>0{i + 1}</span>
-                    <span className={styles.cardTitle}>{stage.title}</span>
-                    <span className={styles.file}>{stage.file}</span>
-                    <span className={styles.code}>
-                      {stage.lines.map((line, k) => (
-                        <Line key={k} {...line} />
-                      ))}
-                    </span>
-                    {stage.themes && (
-                      <span className={styles.themes}>
-                        <span
-                          className={cn(styles.theme, styles.light, styles.anim)}
-                          style={run("tp-pop-light")}
-                        >
-                          Light
-                          <span className={styles.button}>Run study</span>
-                        </span>
-                        <span
-                          className={cn(styles.theme, styles.dark, styles.anim)}
-                          style={run("tp-pop-dark")}
-                        >
-                          Dark
-                          <span className={styles.button}>Run study</span>
-                        </span>
+                  {i > 0 && <Arrow index={i - 1} />}
+                  <div
+                    className={cn(styles.stage, styles.anim)}
+                    style={run(`tp-lift-${i}`)}
+                  >
+                    <span
+                      className={cn(styles.glow, styles.anim)}
+                      style={run(`tp-glow-${i}`)}
+                    />
+                    <div className={styles.card}>
+                      <span className={styles.step}>0{i + 1}</span>
+                      <span className={styles.cardTitle}>{stage.title}</span>
+                      <span className={styles.file}>{stage.file}</span>
+                      <span className={styles.code}>
+                        {stage.lines.map((line, k) => (
+                          <Line key={k} {...line} />
+                        ))}
                       </span>
-                    )}
+                      {stage.themes && (
+                        <span className={styles.themes}>
+                          <span
+                            className={cn(
+                              styles.theme,
+                              styles.light,
+                              styles.anim,
+                            )}
+                            style={run("tp-pop-light")}
+                          >
+                            Light
+                            <span className={styles.button}>Run study</span>
+                          </span>
+                          <span
+                            className={cn(
+                              styles.theme,
+                              styles.dark,
+                              styles.anim,
+                            )}
+                            style={run("tp-pop-dark")}
+                          >
+                            Dark
+                            <span className={styles.button}>Run study</span>
+                          </span>
+                        </span>
+                      )}
+                    </div>
+                    <span
+                      className={cn(styles.ring, styles.anim)}
+                      style={run(`tp-ring-${i}`)}
+                    />
                   </div>
-                  <span
-                    className={cn(styles.ring, styles.anim)}
-                    style={run(`tp-ring-${i}`)}
-                  />
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
 
           <button
