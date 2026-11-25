@@ -6,6 +6,7 @@ import {
   CaseSplit,
   CaseText,
   DecisionBlock,
+  JudgementCompare,
   Mark,
   MarkerText,
 } from "../../components/case/synthux";
@@ -14,7 +15,10 @@ import caseStyles from "../../components/case/synthux/Synthux.module.scss";
 import flowImg from "../assets/synthux/case-3/flow.webp";
 import planImg from "../assets/synthux/case-3/plan-round-7.webp";
 import threeWaysImg from "../assets/synthux/case-3/three-ways.webp";
-import judgementImg from "../assets/synthux/case-3/judgement.webp";
+import reportAiImg from "../assets/synthux/case-3/report-ai.webp";
+import reportMineImg from "../assets/synthux/case-3/report-mine.webp";
+import audienceAiImg from "../assets/synthux/case-3/audience-ai.webp";
+import audienceMineImg from "../assets/synthux/case-3/audience-mine.webp";
 
 const bodyClass = caseStyles.body;
 // Marker inks, the same as Cases 1 and 2. Marker = highlight, underline = pen.
@@ -253,19 +257,99 @@ export const SynthuxAiProcessPage = () => (
           weighs every rule the same and can’t see which one to bend. That call
           is mine.
         </p>
-        <p>
-          <strong>The AI label.</strong> The agent kept suggesting the full
-          disclosure sentence under the report title. I moved it into an agent
-          icon with a focusable tooltip, a pattern users know from other
-          products.
-        </p>
+        <p>Select a number to see what I changed.</p>
       </CaseText>
-      <CaseFigure
-        src={judgementImg}
-        alt="Concept stage. Report: the AI direction next to my direction, with notes on the AI disclosure icon, a calmer primary button, the navigation and spacing. Audience step: the AI version next to mine, with notes on the stepper, segment cards, traits and the trait limit"
-        width={2880}
-        height={3452}
-        caption="Concept stage: the AI’s versions and mine, for the Report and the Audience step."
+      <JudgementCompare
+        label="Report"
+        ai={{
+          src: reportAiImg,
+          alt: "The AI direction for the Report: a dark summary block, a bright lime Share button and the AI disclosure as a full sentence under the title",
+          width: 1600,
+          height: 2211,
+          pins: [
+            { n: 1, x: 15.5, y: 7.2 },
+            { n: 2, x: 90.5, y: 4 },
+            { n: 3, x: 2, y: 18.4 },
+          ],
+        }}
+        mine={{
+          src: reportMineImg,
+          alt: "My direction for the Report: light metric cards, a black Share button, an agent icon next to the run details, and a gradient on the selected navigation item",
+          width: 1600,
+          height: 3304,
+          pins: [
+            { n: 1, x: 21.25, y: 5.2 },
+            { n: 2, x: 90.25, y: 1.2 },
+            { n: 3, x: 2, y: 11.9 },
+          ],
+        }}
+        notes={[
+          {
+            n: 1,
+            title: "The AI label became an icon",
+            text: "The AI kept a full sentence under the title. I moved it into an agent icon with a focusable tooltip.",
+          },
+          {
+            n: 2,
+            title: "A calmer primary button",
+            text: "The bright lime button competed with the data.",
+          },
+          {
+            n: 3,
+            title: "Clearer navigation",
+            text: "A gradient now marks the selected item.",
+          },
+        ]}
+      />
+      <JudgementCompare
+        label="New audience, segments step"
+        ai={{
+          src: audienceAiImg,
+          alt: "The AI version of the segments step: a left-aligned stepper, plain segment cards and a Remove link on every trait row",
+          width: 1600,
+          height: 1592,
+          pins: [
+            { n: 1, x: 38.75, y: 16.6 },
+            { n: 2, x: 24.25, y: 27.6 },
+            { n: 3, x: 83, y: 69.1 },
+            { n: 4, x: 25.5, y: 86.4 },
+          ],
+        }}
+        mine={{
+          src: audienceMineImg,
+          alt: "My version of the segments step: a centred stepper, segment cards with a highlighted name, numbered trait rows with delete icons, and a disabled Add trait button at 8 of 8",
+          width: 1600,
+          height: 1808,
+          pins: [
+            { n: 1, x: 54.75, y: 13.9 },
+            { n: 2, x: 24, y: 24.6 },
+            { n: 3, x: 84.5, y: 57.5 },
+            { n: 4, x: 25.5, y: 88.5 },
+          ],
+        }}
+        notes={[
+          {
+            n: 1,
+            title: "A centred stepper",
+            text: "I redesigned the stepper and moved it to the centre.",
+          },
+          {
+            n: 2,
+            title: "Clearer segment cards",
+            text: "The selected segment name got a highlight colour and more contrast.",
+          },
+          {
+            n: 3,
+            title: "More room for traits",
+            text: "Numbered rows with more space, and a delete icon instead of a “Remove” link.",
+          },
+          {
+            n: 4,
+            title: "The limit looks like a limit",
+            text: "At 8 of 8 traits, “Add trait” looks disabled, because it no longer works.",
+          },
+        ]}
+        caption="Concept stage. My versions are not the final hi-fi either: the screens kept changing after this."
       />
     </CaseSection>
 

@@ -1,0 +1,259 @@
+// Inks from the Figma frame 3.5: orange for the AI version, green for mine
+$ai: #f0a35e;
+$mine: #8cb841;
+$phone: 720px;
+
+.root {
+  margin-top: var(--sx-space-block);
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.label {
+  font-size: var(--sx-fs-18);
+  line-height: var(--sx-lh-18);
+  font-weight: 500;
+  color: var(--sx-text);
+}
+
+.tools {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+// AI / Mine switch, only on a phone
+.switch {
+  display: none;
+  padding: 2px;
+  border-radius: 999px;
+  background: var(--sx-surface-2);
+
+  button {
+    min-height: 36px;
+    padding: 0 14px;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    font: inherit;
+    font-size: var(--sx-fs-14);
+    color: var(--sx-muted);
+    cursor: pointer;
+
+    &[aria-pressed="true"] {
+      background: var(--sx-surface);
+      color: var(--sx-text);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+    }
+  }
+
+  @media (max-width: $phone) {
+    display: inline-flex;
+  }
+}
+
+.eye {
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--sx-line);
+  border-radius: 999px;
+  background: var(--sx-surface);
+  color: var(--sx-text);
+  cursor: pointer;
+
+  &:hover {
+    background: var(--sx-surface-2);
+  }
+}
+
+.switch button,
+.eye,
+.pin {
+  &:focus-visible {
+    outline: 2px solid var(--sx-accent);
+    outline-offset: 2px;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(16px, 2vw, 32px);
+  align-items: start;
+
+  @media (max-width: $phone) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.col {
+  min-width: 0;
+
+  @media (max-width: $phone) {
+    &[data-phone-hidden] {
+      display: none;
+    }
+  }
+}
+
+.sideLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: var(--sx-fs-12);
+  line-height: var(--sx-lh-12);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--sx-muted);
+
+  &::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: $ai;
+  }
+
+  &[data-side="mine"]::before {
+    background: $mine;
+  }
+}
+
+.screen {
+  position: relative;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: clamp(8px, 1vw, 16px);
+  box-shadow: 0 0 0 1px var(--sx-line);
+}
+
+.pinWrap {
+  position: absolute;
+  left: clamp(14px, var(--x), calc(100% - 14px));
+  top: var(--y);
+  z-index: 1;
+
+  &:has([aria-expanded="true"]) {
+    z-index: 3;
+  }
+}
+
+.pin {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: $ai;
+  color: #1a1b1f;
+  font: inherit;
+  font-size: var(--sx-fs-14);
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.15s ease;
+
+  &[data-side="mine"] {
+    background: $mine;
+  }
+
+  &:hover,
+  &[aria-expanded="true"] {
+    transform: translate(-50%, -50%) scale(1.12);
+  }
+
+  // Bigger tap target on touch
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -8px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+
+.popover {
+  position: absolute;
+  width: min(280px, 70vw);
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: var(--sx-text);
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  animation: pop 0.16s ease-out;
+
+  &[data-y="below"] {
+    top: 22px;
+  }
+
+  &[data-y="above"] {
+    bottom: 22px;
+  }
+
+  &[data-x="start"] {
+    left: -14px;
+  }
+
+  &[data-x="end"] {
+    right: -14px;
+  }
+
+  &[data-x="center"] {
+    left: 0;
+    translate: -50% 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    scale: 0.96;
+  }
+}
+
+.popTitle {
+  display: block;
+  font-size: var(--sx-fs-16);
+  line-height: var(--sx-lh-16);
+  font-weight: 600;
+}
+
+.popText {
+  margin: 4px 0 0;
+  font-size: var(--sx-fs-14);
+  line-height: var(--sx-lh-14);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.caption {
+  margin: 8px 0 0;
+  font-size: var(--sx-fs-14);
+  line-height: var(--sx-lh-14);
+  color: var(--sx-muted);
+}
