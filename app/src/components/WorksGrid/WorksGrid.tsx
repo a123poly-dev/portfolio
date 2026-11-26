@@ -1,6 +1,12 @@
 import { useState } from "react"
 import cn from "classnames"
 import { WorkCard } from "../WorkCard/WorkCard"
+import {
+  BlobLayer,
+  BlobRoll,
+  blobHostClass,
+  useBlobHover,
+} from "@design-system/common/BlobHover"
 import styles from "./WorksGrid.module.scss"
 import { projects, WORK_CATEGORIES, type TWorkCategory } from "./works-data"
 
@@ -16,6 +22,38 @@ const FILTERS: TFilter[] = (["All", ...WORK_CATEGORIES] as TFilter[]).filter(
   (filter) => countFor(filter) > 0,
 )
 
+// Tab with the nav's blob-fill hover; the active (dark) tab has none
+function FilterTab({
+  filter,
+  isActive,
+  onSelect,
+}: {
+  filter: TFilter
+  isActive: boolean
+  onSelect: () => void
+}) {
+  const ref = useBlobHover<HTMLButtonElement>(isActive)
+  return (
+    <button
+      ref={ref}
+      type="button"
+      aria-pressed={isActive}
+      className={cn(
+        blobHostClass,
+        styles.filter,
+        isActive && styles.filterActive,
+      )}
+      onClick={onSelect}
+    >
+      <BlobLayer />
+      <BlobRoll>
+        {filter}
+        <span className={styles.count}>{countFor(filter)}</span>
+      </BlobRoll>
+    </button>
+  )
+}
+
 export function WorksGrid() {
   const [active, setActive] = useState<TFilter>("All")
 
@@ -29,16 +67,12 @@ export function WorksGrid() {
       <div className={styles.container}>
         <div className={styles.filters} role="group" aria-label="Filter cases">
           {FILTERS.map((filter) => (
-            <button
+            <FilterTab
               key={filter}
-              type="button"
-              aria-pressed={active === filter}
-              className={cn(styles.filter, active === filter && styles.filterActive)}
-              onClick={() => setActive(filter)}
-            >
-              {filter}
-              <span className={styles.count}>{countFor(filter)}</span>
-            </button>
+              filter={filter}
+              isActive={active === filter}
+              onSelect={() => setActive(filter)}
+            />
           ))}
         </div>
 

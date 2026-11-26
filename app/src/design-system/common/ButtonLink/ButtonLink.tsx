@@ -1,6 +1,11 @@
 import cn from "classnames"
+import {
+  BlobLayer,
+  BlobRoll,
+  blobHostClass,
+  useBlobHover,
+} from "@design-system/common/BlobHover"
 import styles from "./ButtonLink.module.scss"
-import { BLOB_NAMES, useBlobHover } from "./useBlobHover"
 
 type TButtonLinkProps = {
   href: string
@@ -15,24 +20,17 @@ export const ButtonLink = ({
   isExternal = false,
   className,
 }: TButtonLinkProps) => {
-  const ref = useBlobHover<HTMLAnchorElement>(styles.filled)
+  const ref = useBlobHover<HTMLAnchorElement>()
 
   return (
     <a
       ref={ref}
       href={href}
-      className={cn(styles.buttonLink, className)}
+      className={cn(blobHostClass, styles.buttonLink, className)}
       {...(isExternal && { target: "_blank", rel: "noopener noreferrer" })}
     >
-      <span className={styles.blobs} aria-hidden="true">
-        {BLOB_NAMES.map((name) => (
-          <i key={name} data-blob={name} className={styles[name]} />
-        ))}
-      </span>
-      <span className={styles.roll} data-roll>
-        <span>{children}</span>
-        <span aria-hidden="true">{children}</span>
-      </span>
+      <BlobLayer />
+      <BlobRoll>{children}</BlobRoll>
     </a>
   )
 }

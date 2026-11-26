@@ -57,11 +57,9 @@
   // Taps show the active state, so skip the grey iOS flash
   -webkit-tap-highlight-color: transparent;
 
-  // Only on real hover, so a tapped tab doesn't keep a dark border on phones
-  @media (hover: hover) {
-    &:hover {
-      border-color: var(--filter-text);
-    }
+  // Hover is the blob fill (common/BlobHover); roll keeps the 8 px label gap
+  > span:last-child {
+    gap: 8px;
   }
 
   &:focus-visible {
@@ -75,6 +73,16 @@
   border-color: var(--filter-active-bg);
   background: var(--filter-active-bg);
   color: var(--filter-active-text);
+
+  // A fill still draining when the tab is picked hides under the dark pill
+  > span:first-child {
+    opacity: 0;
+  }
+}
+
+// On the light tint the label stays dark, also in dark theme
+.filter[data-filled]:not(.filterActive) {
+  color: #2c2930;
 }
 
 .count {

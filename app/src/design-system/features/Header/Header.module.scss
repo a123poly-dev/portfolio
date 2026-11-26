@@ -110,28 +110,37 @@
   letter-spacing: 0;
 }
 
+// 40 px hit circles with no gap keep the icons 16 px apart, as in Figma
 .socials {
   display: flex;
   justify-content: center;
-  gap: 16px;
-  padding: 24px 0;
-  opacity: 0.8;
+  padding: 16px 0;
 }
 
 .socialLink {
   display: inline-flex;
+  padding: 8px;
+  border-radius: 50%;
   color: var(--black);
+  opacity: 0.8;
   transition: opacity 150ms ease-out;
 
-  @media (hover: hover) {
-    &:hover {
-      opacity: 0.6;
-    }
+  &[data-filled] {
+    opacity: 1;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #9453ff;
+    outline-offset: 2px;
   }
 }
 
 :global([data-theme="dark"]) .socialLink {
   color: var(--white);
+
+  &[data-filled] {
+    color: #2c2930;
+  }
 }
 
 .location {

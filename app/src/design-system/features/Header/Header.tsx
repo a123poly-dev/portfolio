@@ -3,7 +3,13 @@ import avatar from "./assets/avatar-hero.webp"
 import warningIcon from "./assets/triangle-warning.svg"
 import { HERO_SOCIAL_ICONS, HERO_SOCIALS } from "./socialIcons"
 
-import type { CSSProperties } from "react"
+import type { CSSProperties, ReactNode } from "react"
+import {
+  BlobLayer,
+  BlobRoll,
+  blobHostClass,
+  useBlobHover,
+} from "@design-system/common/BlobHover"
 
 import styles from "./Header.module.scss"
 
@@ -16,6 +22,32 @@ const enter = (stagger: number, delayMs = 0) => ({
   className: "animate-enter",
   style: { "--stagger": stagger, "--delay": `${delayMs}ms` } as CSSProperties,
 })
+
+// Icon link with the same blob-fill hover as the nav
+const SocialLink = ({
+  href,
+  label,
+  children,
+}: {
+  href: string
+  label: string
+  children: ReactNode
+}) => {
+  const ref = useBlobHover<HTMLAnchorElement>()
+  return (
+    <a
+      ref={ref}
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={label}
+      className={`${blobHostClass} ${styles.socialLink}`}
+    >
+      <BlobLayer />
+      <BlobRoll>{children}</BlobRoll>
+    </a>
+  )
+}
 
 export const Header = () => (
   <section className={styles.header}>
@@ -73,16 +105,13 @@ export const Header = () => (
           {HERO_SOCIALS.map((social) => {
             const SocialIcon = HERO_SOCIAL_ICONS[social.icon]
             return (
-              <a
+              <SocialLink
                 key={social.label}
                 href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={social.label}
-                className={styles.socialLink}
+                label={social.label}
               >
                 <SocialIcon />
-              </a>
+              </SocialLink>
             )
           })}
         </div>

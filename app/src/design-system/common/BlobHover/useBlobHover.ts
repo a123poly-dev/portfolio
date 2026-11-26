@@ -26,8 +26,17 @@ const STEPS: [string, number, number, keyof typeof EASE][] = [
 
 export const BLOB_NAMES = STEPS.map(([name]) => name)
 
-export function useBlobHover<T extends HTMLElement>(filledClass: string) {
+// Toggles data-filled on the host while it is filled, so hosts can restyle text.
+export function useBlobHover<T extends HTMLElement>(disabled = false) {
   const ref = useRef<T>(null)
+  const disabledRef = useRef(disabled)
+  disabledRef.current = disabled
+  const leaveRef = useRef<() => void>(() => {})
+
+  // A host that becomes disabled (e.g. the active filter) drops its fill
+  useEffect(() => {
+    if (disabled) leaveRef.current()
+  }, [disabled])
 
   useEffect(() => {
     const btn = ref.current
@@ -143,7 +152,8 @@ export function useBlobHover<T extends HTMLElement>(filledClass: string) {
     }
 
     const enter = (e: PointerEvent | null, exact = false) => {
-      btn.classList.add(filledClass)
+      if (disabledRef.current) return
+      btn.toggleAttribute("data-filled", true)
       if (reduce.matches) return
       if (time() === 0) origin(e, exact)
       if (time() === 0 || rate < 0) roll()
@@ -151,10 +161,12 @@ export function useBlobHover<T extends HTMLElement>(filledClass: string) {
     }
 
     const leave = () => {
-      btn.classList.remove(filledClass)
+      btn.removeAttribute("data-filled")
       if (reduce.matches) return
       go(-OUT_SPEED)
     }
+
+    leaveRef.current = leave
 
     const onEnter = (e: PointerEvent) => {
       if (e.pointerType !== "mouse" || Date.now() - lastTouch < 1000) return
@@ -193,7 +205,7 @@ export function useBlobHover<T extends HTMLElement>(filledClass: string) {
       btn.removeEventListener("focus", onFocus)
       btn.removeEventListener("blur", onBlur)
     }
-  }, [filledClass])
+  }, [])
 
   return ref
 }

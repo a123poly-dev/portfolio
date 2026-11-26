@@ -1,15 +1,6 @@
-// Nav pill with a blob-fill hover (see useBlobHover.ts).
-// Wave A is our light purple, wave B the light blue of the hero banner.
+// Nav pill with the blob-fill hover (see common/BlobHover)
 .buttonLink {
-  --c1: #eadcff;
-  --c2: #dde7fb;
-  --bx: 0%;
-  --by: 100%;
-
-  position: relative;
-  isolation: isolate;
   display: inline-flex;
-  overflow: hidden;
   color: var(--header-button-color);
   font-family: var(--font-family);
   font-size: 14px;
@@ -19,71 +10,9 @@
   padding: 5px 12px;
   border-radius: 40px;
   text-decoration: none;
-  -webkit-tap-highlight-color: transparent;
   transition: color 150ms ease-out;
-}
 
-.filled {
-  color: var(--header-button-color-hover);
-}
-
-.blobs {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  overflow: hidden;
-  border-radius: inherit;
-  clip-path: inset(0 round 40px);
-  pointer-events: none;
-
-  i {
-    position: absolute;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    transform: translate(-50%, -50%) scale(0);
-  }
-}
-
-.a1, .a2, .a3, .a4, .a5 { background: var(--c1); }
-.b1, .b2, .b3, .b4, .b5 { background: var(--c2); }
-
-.a1 { left: var(--bx); top: var(--by); width: 46%; }
-.a2 { left: calc(var(--bx) + 11%); top: calc(var(--by) + 12%); width: 38%; }
-.a3 { left: calc(var(--bx) - 9%); top: calc(var(--by) - 14%); width: 32%; }
-.a4 { left: calc(var(--bx) + 19%); top: calc(var(--by) - 5%); width: 28%; }
-.a5 { left: var(--bx); top: var(--by); width: 300%; }
-.b1 { left: var(--bx); top: var(--by); width: 48%; }
-.b2 { left: calc(var(--bx) - 11%); top: calc(var(--by) + 14%); width: 40%; }
-.b3 { left: calc(var(--bx) + 10%); top: calc(var(--by) - 15%); width: 34%; }
-.b4 { left: calc(var(--bx) - 19%); top: calc(var(--by) + 4%); width: 30%; }
-.b5 { left: var(--bx); top: var(--by); width: 300%; }
-
-.roll {
-  position: relative;
-  display: inline-flex;
-  overflow: hidden;
-  vertical-align: top;
-
-  > span {
-    display: block;
-  }
-
-  > span + span {
-    position: absolute;
-    inset: 0;
-    transform: translateY(105%);
-  }
-}
-
-// Reduced motion: no blobs or roll, just a quick fade to the tint
-@media (prefers-reduced-motion: reduce) {
-  .buttonLink {
-    transition:
-      color 150ms ease-out,
-      background-color 150ms ease-out;
-  }
-
-  .filled {
-    background-color: var(--c2);
+  &[data-filled] {
+    color: var(--header-button-color-hover);
   }
 }
