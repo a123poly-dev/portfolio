@@ -7,6 +7,7 @@ import {
   blobHostClass,
   useBlobHover,
 } from "@design-system/common/BlobHover"
+import { track } from "../../analytics/track"
 import styles from "./WorksGrid.module.scss"
 import { projects, WORK_CATEGORIES, type TWorkCategory } from "./works-data"
 
@@ -71,19 +72,22 @@ export function WorksGrid() {
               key={filter}
               filter={filter}
               isActive={active === filter}
-              onSelect={() => setActive(filter)}
+              onSelect={() => {
+                setActive(filter)
+                track("works_filter", { filter })
+              }}
             />
           ))}
         </div>
 
         {/* Each card reveals itself; revealing the grid too doubled the rise */}
         <div className={styles.grid}>
-          {visible.map((project) => (
+          {visible.map((project, index) => (
             <div
               key={project.id}
               className={cn(project.cover === "tall" && styles.tallItem)}
             >
-              <WorkCard project={project} />
+              <WorkCard project={project} position={index + 1} />
             </div>
           ))}
         </div>

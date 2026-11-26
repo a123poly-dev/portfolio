@@ -60,7 +60,7 @@ export const CompareSlider = ({
 
   return (
     <Reveal>
-      <figure className={styles.figure}>
+      <figure data-demo="compare_slider" className={styles.figure}>
         <div
           ref={ref}
           className={styles.compare}

@@ -166,7 +166,7 @@ export const FlowPlayer = ({ caption }: { caption?: ReactNode }) => {
 
   return (
     <Reveal>
-      <figure className={styles.figure}>
+      <figure data-demo="flow_player" className={styles.figure}>
         <div className={styles.player}>
           <div
             ref={frameRef}

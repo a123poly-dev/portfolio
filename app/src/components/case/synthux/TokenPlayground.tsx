@@ -199,7 +199,7 @@ export const TokenPlayground = ({ caption }: { caption?: ReactNode }) => {
 
   return (
     <Reveal>
-      <figure className={caseStyles.figure}>
+      <figure data-demo="token_playground" className={caseStyles.figure}>
         <div ref={rootRef} className={tp.root}>
           <div className={styles.head}>
             <span className={tp.title}>

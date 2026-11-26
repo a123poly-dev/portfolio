@@ -19,11 +19,17 @@ export const MobileMenu = ({
   isMainPage,
   cvUrl,
 }: TMobileMenuProps) => (
-  <div className={cn(styles.mobileMenu, isOpen && styles.mobileMenuOpen)}>
+  <div
+    className={cn(styles.mobileMenu, isOpen && styles.mobileMenuOpen)}
+    data-place="mobile_menu"
+  >
     {isMainPage ? (
       <a
         href={ROOT_PATH + MAIN_PAGE_WORKS}
         className={styles.mobileLink}
+        data-track="nav_click"
+        data-track-target="works"
+        data-track-place="mobile"
         onClick={handleLinkClick}
       >
         Works
@@ -32,6 +38,9 @@ export const MobileMenu = ({
       <a
         href={ROOT_PATH}
         className={styles.mobileLink}
+        data-track="nav_click"
+        data-track-target="home"
+        data-track-place="mobile"
         onClick={handleLinkClick}
       >
         Home

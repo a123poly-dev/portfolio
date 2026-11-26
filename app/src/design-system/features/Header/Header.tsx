@@ -106,6 +106,7 @@ export const Header = () => (
 
         <div
           className={`${styles.socials} animate-enter`}
+          data-place="hero"
           style={enter(3, 240).style}
         >
           {HERO_SOCIALS.map((social) => {

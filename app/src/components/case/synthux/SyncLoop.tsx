@@ -292,7 +292,7 @@ export const SyncLoop = ({ caption }: { caption?: ReactNode }) => {
 
   return (
     <Reveal>
-      <figure className={caseStyles.figure}>
+      <figure data-demo="sync_loop" className={caseStyles.figure}>
         <style>{CSS}</style>
         <div
           ref={rootRef}

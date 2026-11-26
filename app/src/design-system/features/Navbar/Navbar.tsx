@@ -12,6 +12,7 @@ import { MobileMenu } from "./MobileMenu"
 import { CvMorphIcon } from "./CvMorphIcon"
 import { LogoMark } from "./LogoMark"
 import { ThemeToggle } from "@design-system/features/ThemeToggle"
+import { track } from "../../../analytics/track"
 
 // How long the CV icon stays a check before turning back into an arrow
 const CV_CHECK_MS = 2000
@@ -60,14 +61,25 @@ export const Navbar = ({ isMainPage = false }: TNavbarProps) => {
     <nav ref={navRef} className={styles.menu}>
       <div className={styles.container}>
         <div className={styles.wrapper}>
-          <a href={ROOT_PATH} className={styles.logo}>
+          <a
+            href={ROOT_PATH}
+            className={styles.logo}
+            aria-label="Home"
+            data-track="nav_click"
+            data-track-target="logo"
+            data-track-place="desktop"
+          >
             <LogoMark />
           </a>
 
           {/* Desktop nav — hidden on mobile */}
-          <ul className={styles.navList}>
+          <ul className={styles.navList} data-place="nav">
             {isMainPage && (
-              <li>
+              <li
+                data-track="nav_click"
+                data-track-target="works"
+                data-track-place="desktop"
+              >
                 <ButtonLink href={MAIN_PAGE_WORKS}>Works</ButtonLink>
               </li>
             )}
@@ -94,7 +106,10 @@ export const Navbar = ({ isMainPage = false }: TNavbarProps) => {
             <div className={styles.burgerWrap}>
               <BurgerButton
                 isOpen={isOpen}
-                onClick={() => setIsOpen((prev) => !prev)}
+                onClick={() => {
+                  if (!isOpen) track("mobile_menu_open")
+                  setIsOpen((prev) => !prev)
+                }}
               />
             </div>
           </div>

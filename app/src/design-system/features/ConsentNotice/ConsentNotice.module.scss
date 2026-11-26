@@ -1,0 +1,282 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/typography" as type;
+
+// Data notice, after Figma UI Concept 507:7647 (554 x 113 card, 14/20 text,
+// 36 px pill buttons), in the portfolio palette and type.
+.notice {
+  position: fixed;
+  left: 24px;
+  bottom: 24px;
+  z-index: 20;
+  width: min(554px, calc(100vw - 48px));
+  max-height: calc(100dvh - 48px);
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding: 16px 18px 10px;
+  border-radius: 20px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow:
+    0 12px 32px rgb(22 23 24 / 12%),
+    0 1px 2px rgb(22 23 24 / 6%);
+  color: var(--text-secondary);
+
+  :global([data-theme="dark"]) & {
+    box-shadow:
+      0 12px 32px rgb(0 0 0 / 45%),
+      0 1px 2px rgb(0 0 0 / 30%);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    animation: enter 320ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    transition:
+      opacity 240ms ease,
+      transform 240ms cubic-bezier(0.4, 0, 1, 1);
+  }
+}
+
+.leaving {
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+
+  @media (prefers-reduced-motion: reduce) {
+    display: none;
+  }
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+.text {
+  @include type.small;
+  margin: 0 0 12px;
+  color: var(--text-secondary);
+}
+
+.more {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--line);
+  text-underline-offset: 3px;
+
+  &:hover {
+    text-decoration-color: currentColor;
+  }
+}
+
+// Settings: the card grows in place to show the categories
+.panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition:
+      grid-template-rows 320ms cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 200ms ease;
+  }
+}
+
+.panelOpen {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.panelInner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.options {
+  list-style: none;
+  margin: 0 0 12px;
+  padding: 0;
+  border-top: 1px solid var(--line);
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.optionText {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  cursor: pointer;
+}
+
+.optionTitle {
+  @include type.small;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.optionHint {
+  @include type.small;
+  color: var(--text-tertiary);
+}
+
+// Switch: a real checkbox, drawn as a 36 x 20 track
+.switch {
+  appearance: none;
+  flex: none;
+  position: relative;
+  width: 36px;
+  height: 20px;
+  margin: 0;
+  border-radius: 10px;
+  background: var(--line);
+  cursor: pointer;
+  transition: background-color 160ms ease;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 1px 2px rgb(22 23 24 / 20%);
+    transition: transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  &:checked {
+    background: var(--ink);
+
+    &::after {
+      transform: translateX(16px);
+      background: var(--page);
+    }
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: default;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: auto 1fr 1fr;
+  gap: 6px;
+}
+
+.button {
+  @include type.small;
+  font-weight: 500;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  padding: 0 18px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    opacity 160ms ease;
+
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+
+.ghost {
+  background: transparent;
+  color: var(--ink);
+
+  &:hover {
+    background: var(--surface-2);
+  }
+}
+
+.outline {
+  background: var(--surface);
+  border-color: var(--line);
+  color: var(--ink);
+
+  &:hover {
+    background: var(--surface-2);
+  }
+}
+
+.primary {
+  background: var(--ink);
+  color: var(--page);
+
+  &:hover {
+    opacity: 0.86;
+  }
+}
+
+// "Settings" turns into "Save choices" in the same button
+.settings {
+  display: grid;
+  overflow: hidden;
+}
+
+.swap {
+  grid-area: 1 / 1;
+  opacity: 0;
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition:
+      opacity 200ms ease,
+      transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  &[data-shown] {
+    opacity: 1;
+    transform: none;
+  }
+
+  &:not([data-shown]) {
+    transform: translateY(-8px);
+  }
+}
+
+// Phone: full width, buttons stacked in one column
+@media screen and (max-width: $breakpoint-xs) {
+  .notice {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    width: auto;
+    max-height: calc(100dvh - 32px);
+    padding: 16px 16px 12px;
+  }
+
+  // One column: Accept all, Settings, Reject all
+  .actions {
+    grid-template-columns: 1fr;
+  }
+
+  .accept {
+    order: -2;
+  }
+
+  .settings {
+    order: -1;
+  }
+}
