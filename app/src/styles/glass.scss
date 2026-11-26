@@ -1,0 +1,78 @@
+// Liquid glass, after the CSS lens button by GreyD097 (uiverse.io), tuned to the
+// Figma nav glass (272:67447): white at 64%, light from the top left (307°).
+// CSS has no real refraction, so the lens is faked in layers:
+//   - a frosted, slightly saturated backdrop
+//   - bright inset rims on the lit corners and a faint dark core
+//   - ::before, a soft dark ring just inside the edge (the lens thickness)
+//   - ::after, a diagonal white sheen across the surface
+// Put `@include glass.surface` with the host's declarations and
+// `@include glass.layers` at the end of the rule. The host's own content must
+// sit above the pseudo layers (position + z-index 1).
+@mixin surface {
+  isolation: isolate;
+  background-color: var(--glass-bg);
+  backdrop-filter: blur(10px) saturate(1.8) brightness(1.04);
+  -webkit-backdrop-filter: blur(10px) saturate(1.8) brightness(1.04);
+  box-shadow:
+    inset 2px 2px 1px -1px rgb(255 255 255 / 95%),
+    inset -2px -2px 1px -1px rgb(255 255 255 / 70%),
+    inset 6px 6px 1px -6px rgb(255 255 255 / 60%),
+    inset -6px -6px 1px -6px rgb(255 255 255 / 45%),
+    inset 0 0 2px rgb(22 23 24 / 14%),
+    0 6px 20px rgb(22 23 24 / 8%),
+    0 1px 2px rgb(22 23 24 / 6%);
+
+  // Dark theme: dimmer rims, a deeper shadow, no extra brightness
+  :global([data-theme="dark"]) & {
+    backdrop-filter: blur(10px) saturate(1.6);
+    -webkit-backdrop-filter: blur(10px) saturate(1.6);
+    box-shadow:
+      inset 2px 2px 1px -1px rgb(255 255 255 / 22%),
+      inset -2px -2px 1px -1px rgb(255 255 255 / 12%),
+      inset 6px 6px 1px -6px rgb(255 255 255 / 14%),
+      inset -6px -6px 1px -6px rgb(255 255 255 / 8%),
+      inset 0 0 2px rgb(0 0 0 / 40%),
+      0 6px 20px rgb(0 0 0 / 35%),
+      0 1px 2px rgb(0 0 0 / 30%);
+  }
+}
+
+@mixin layers {
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  // Lens thickness: a blurred dark line just inside the rim
+  &::before {
+    inset: 6px;
+    border: 1px solid rgb(22 23 24 / 18%);
+    filter: blur(6px);
+  }
+
+  // Sheen: bright at the lit corner and the far edge, clear in the middle
+  &::after {
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgb(255 255 255 / 70%) 0%,
+      rgb(255 255 255 / 0%) 22%,
+      rgb(255 255 255 / 0%) 78%,
+      rgb(255 255 255 / 45%) 100%
+    );
+    filter: blur(6px);
+    opacity: 0.9;
+  }
+
+  :global([data-theme="dark"]) &::before {
+    border-color: rgb(0 0 0 / 50%);
+  }
+
+  :global([data-theme="dark"]) &::after {
+    opacity: 0.18;
+  }
+}

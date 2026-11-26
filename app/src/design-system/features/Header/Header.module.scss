@@ -1,21 +1,14 @@
 @use "../../../styles/variables" as *;
+@use "../../../styles/typography" as type;
 
-// Hero from portfolio Figma 272:67070
+// Hero from portfolio Figma 314:58187 (was 272:67070)
 .header {
-  --hero-text: #2c2930;
-  --hero-muted: #717171;
-  --hero-pill-bg: #eae9ed;
+  --hero-text: var(--ink);
+  --hero-muted: var(--text-tertiary);
   --hero-banner-bg: rgba(46, 102, 231, 0.06);
 
   margin-top: 124px; // 76 px nav + 48 px
   margin-bottom: 0;
-}
-
-:global([data-theme="dark"]) .header {
-  --hero-text: #fff;
-  --hero-muted: #bdbdbd;
-  --hero-pill-bg: #4a4850;
-  --hero-banner-bg: rgba(83, 147, 255, 0.16);
 }
 
 .container {
@@ -43,7 +36,7 @@
   border-radius: 16px;
   background: var(--hero-banner-bg);
   color: var(--hero-text);
-  font-family: "Geist", var(--font-family);
+  font-family: var(--font-family);
   font-size: 14px;
   line-height: 20px;
 
@@ -52,7 +45,7 @@
   }
 }
 
-// "HEY, [avatar] I'M POLINA —": Open Sans Bold at 75% width stands in for Open Sans Hebrew Condensed.
+// "HEY, [avatar] I'M POLINA —": Inter Tight bold, same family as the body text.
 // Sizes are in em so the whole row scales down together on small screens.
 // .content .title beats the home page's h1 weight/letter-spacing override.
 .content .title {
@@ -62,29 +55,31 @@
   flex-wrap: nowrap;
   min-height: 97px;
   margin: 0;
+  @include type.display;
   color: var(--hero-text);
-  font-family: "Open Sans", sans-serif;
-  font-weight: 700;
-  font-stretch: 75%;
-  font-variation-settings: "wdth" 75;
-  font-size: clamp(30px, 8vw, 56px);
+  // Display scales down with the screen so the row fits at 320 px
+  font-size: clamp(20px, 7vw, 56px);
   line-height: 1.2;
-  letter-spacing: 1px;
-  text-transform: uppercase;
   white-space: nowrap;
 }
 
-// 124 × 72 pill, 4 px padding, 64 px avatar, 16 px each side (at 56 px type)
+// "Hey," is semibold in Figma, the rest of the line bold
+.hey {
+  font-weight: 600;
+}
+
+// 72 px round frame, 4 px padding, 64 px avatar, 16 px each side (at 56 px type).
+// The avatar export already holds the green-to-purple gradient behind the photo.
 .switcher {
   display: inline-flex;
   align-items: center;
   flex-shrink: 0;
   box-sizing: border-box;
-  width: 2.2143em;
+  width: 1.2857em;
+  height: 1.2857em;
   padding: 0.0714em;
   margin: 0 0.2857em;
   border-radius: 999px;
-  background: var(--hero-pill-bg);
 }
 
 .avatar {
@@ -94,52 +89,60 @@
   border-radius: 50%;
   object-fit: cover;
   box-shadow:
-    0 4px 40px rgba(13, 13, 12, 0.05),
-    0 3px 20px rgba(13, 13, 12, 0.05),
-    0 3px 12px rgba(13, 13, 12, 0.05),
-    0 2px 8px rgba(13, 13, 12, 0.05),
-    0 1px 1px rgba(13, 13, 12, 0.05);
+    0 4px 40px rgb(22 23 24 / 5%),
+    0 3px 20px rgb(22 23 24 / 5%),
+    0 3px 12px rgb(22 23 24 / 5%),
+    0 2px 8px rgb(22 23 24 / 5%),
+    0 1px 1px rgb(22 23 24 / 5%);
 }
 
 .subtitle {
   margin: 0;
   padding-top: 8px;
+  @include type.lead;
   color: var(--hero-text);
-  font-family: var(--font-family);
-  font-weight: 300;
-  font-size: 28px;
-  line-height: 120%;
-  letter-spacing: 0;
 }
 
+// 20 px icons in 48 px circles, no gap between them
 .socials {
   display: flex;
   justify-content: center;
-  gap: 16px;
-  padding: 24px 0;
-  opacity: 0.8;
+  padding-top: 16px;
 }
 
 .socialLink {
   display: inline-flex;
-  color: var(--black);
-  transition: opacity 0.2s ease;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  // Same colour as the display title, in both themes
+  color: var(--hero-text);
 
-  &:hover {
-    opacity: 0.6;
+  &[data-filled] {
+    color: var(--on-pastel);
   }
-}
 
-:global([data-theme="dark"]) .socialLink {
-  color: var(--white);
+  svg {
+    display: block;
+    width: 20px;
+    height: 20px;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
 }
 
 .location {
   padding-top: 8px;
-  color: var(--hero-muted);
-  font-family: var(--font-family);
-  font-size: 16px;
+  @include type.body;
   line-height: 22.4px;
+  color: var(--hero-muted);
+  // Digits keep their width as the minutes change
+  font-variant-numeric: tabular-nums;
 }
 
 @media screen and (max-width: $breakpoint-md) {

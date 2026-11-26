@@ -1,3 +1,4 @@
+@use "../../../styles/theme";
 // "New study to Report" player. Screens are the SynthUX product UI at 1440 x 1001, scaled to fit.
 
 .figure {
@@ -46,7 +47,9 @@
 }
 
 // The accessible control and hint: floats over the bottom-right corner, like the hero's
+// Sits on the light mockup, so it stays light in the dark theme too
 .control {
+  @include theme.light-island;
   position: absolute;
   right: 12px;
   bottom: 12px;

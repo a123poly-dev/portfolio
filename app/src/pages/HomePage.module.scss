@@ -1,32 +1,5 @@
-// Home page type: everything in DM Sans except the hero title (see Header).
-.home {
-  --font-family-display: var(--font-family);
-  --nav-link-letter-spacing: 0;
-
-  :is(h1, h2, h3, h4, h5, h6) {
-    font-weight: 800;
-    letter-spacing: 0;
-  }
-}
-
-// Below the hero, headings, tags and dates are 4 px smaller (12 px floor). Body text stays 16 px.
+// Home page wrappers; type comes from the shared scale (styles/typography.scss)
+.home,
 .belowHero {
-  --heading-h1-size: 57px;
-  --heading-h2-size: 45px;
-  --heading-h3-size: 35px;
-  // Card titles: 2 px smaller again (h4 31→25, h5 25→19)
-  --heading-h4-size: 25px;
-  --heading-h5-size: 19px;
-  --heading-h6-size: 16px;
-  --tag-font-size: 14px;
-  --small-text-size: 14px;
-
-  // Line heights 20 points tighter than the base styles (120% -> 100%, 140% -> 120%)
-  --heading-h1-line-height: 100%;
-  --heading-h2-line-height: 100%;
-  --heading-h3-line-height: 140%;
-  --heading-h4-line-height: 100%;
-  --heading-h5-line-height: 140%;
-  --heading-h6-line-height: 100%;
-  --tag-line-height: 120%;
+  display: contents;
 }

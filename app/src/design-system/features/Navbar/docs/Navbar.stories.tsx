@@ -50,7 +50,10 @@ export const Mobile: Story = {
           }
           .navbar-mobile-preview .${styles.container} { padding: 16px 24px !important; }
         `}</style>
-        <div className="navbar-mobile-preview" style={{ maxWidth: 375, height: 200 }}>
+        <div
+          className="navbar-mobile-preview"
+          style={{ maxWidth: 375, height: 200 }}
+        >
           <Story />
         </div>
       </>

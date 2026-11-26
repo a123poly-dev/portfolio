@@ -1,3 +1,4 @@
+@use "../../../styles/theme";
 // Figma "Breakpoint scrubber" (41:7676). Tabs are the Figma Tab component (Geist 14/20 600).
 
 .figure {
@@ -7,6 +8,7 @@
 }
 
 .stage {
+  @include theme.light-island;
   overflow: hidden;
   border-radius: var(--sx-radius);
   border: 1px solid var(--sx-line);

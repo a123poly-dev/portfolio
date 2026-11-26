@@ -1,69 +1,51 @@
-:root,
-[data-theme="light"] {
-  --link-color: #717171;
-  --black: #000;
+// Palette (portfolio type and colour audit, 26.11.2026), light and dark.
+// The theme is set on <html data-theme="light|dark"> (see index.html and
+// features/ThemeToggle). Pastel blob fills keep dark text in both themes.
+:root {
+  color-scheme: light;
+
+  --ink: #161718;
+  --text-secondary: #5e6064;
+  --text-tertiary: #9c9da1;
+  --accent: #9453ff;
+  --line: #e5e5e9;
+  --page: #fafafa;
+  --surface: #ffffff;
+  --surface-2: #f3f2f7;
+  --overlay: rgb(22 23 24 / 64%);
+  --critical: #cf2d40;
+
+  // Text on the pastel blob fills (#eadcff / #81fdb8): always dark
+  --on-pastel: #161718;
+
+  // Roles built on the palette
+  --black: var(--ink);
   --white: #fff;
-  --medium-aquamarine: #25cfb1;
-  --dark-lime: #8edb03;
-  --white-smoke-2: #f2f2f2;
-  --gray4: #bdbdbd;
-  --text-color: #555;
-  --lime: #bffd50;
-  --bg: #fafafa;
-  --dim-grey: #646464;
-  --purple: #9453ff;
-  --grey-4: #8e8e8e;
-  --red-ok: #ff000d;
-  --white-smoke: #f0f0f0;
-  --dodger-blue: #3b85f4;
-  --red-txt: #d00;
-  --link-hover: #1a1b1fbf;
-  --header-button-color: #555;
-  --header-button-color-hover: #000;
-  --header-button-bg-hover: #bffd50;
-  --header-bg-color: #ffffffe6;
-  --footer-bg-color: #fafafa;
-  --footer-color: #000;
-
-  // Tag colors
-  --tag-blue-color: #367ef6;
-  --tag-blue-bg: #5393ff29;
-  --tag-blue-border: #5393ff80;
-
-  --tag-orange-color: #ff9453;
-  --tag-orange-bg: #ff945324;
-  --tag-orange-border: #ff945380;
-
-  --tag-green-color: #1cc151;
-  --tag-green-bg: #47c97124;
-  --tag-green-border: #47c97180;
-
-  --tag-yellow-color: #e1c116;
-  --tag-yellow-bg: #ffe31e24;
-  --tag-yellow-border: #ffe31e80;
-
-  --tag-purple-color: #9453ff;
-  --tag-purple-bg: #9453ff24;
-  --tag-purple-border: #9453ff80;
-
-  --tag-red-color: #ff5368;
-  --tag-red-bg: #ff536824;
-  --tag-red-border: #ff536880;
+  --bg: var(--page);
+  --text-color: var(--text-secondary);
+  --header-button-color: var(--text-secondary);
+  --header-button-color-hover: var(--ink);
+  // Glass tints, used by styles/glass.scss
+  --glass-bg: rgb(255 255 255 / 64%); // work card panel
+  --glass-nav-bg: rgb(255 255 255 / 32%); // nav
+  --footer-bg-color: var(--page);
+  --footer-color: var(--ink);
 }
 
-[data-theme="dark"] {
-  --bg: #3c3a40;
-  --text-color: #ffffff;
-  --link-color: #f2f2f2;
-  --lime: #8edb03;
-  --header-button-color: #555;
-  --header-button-color-hover: #000;
-  --header-button-bg-hover: #bffd50;
-  --header-bg-color: #ffffffe6;
-  --footer-bg-color: #fafafa;
-  --footer-color: #000;
+:root[data-theme="dark"] {
+  color-scheme: dark;
 
-  --black: #fff;
-  --white: #000;
-  --white-smoke-2: #f2f2f2;
+  --ink: #f2f2f3;
+  --text-secondary: #a4a6ab;
+  --text-tertiary: #75777c;
+  --accent: #a97bff;
+  --line: #2a2b2e;
+  --page: #0f1011;
+  --surface: #18191b;
+  --surface-2: #1f2023;
+  --overlay: rgb(15 16 17 / 64%);
+  --critical: #ff5a6e;
+
+  --glass-bg: rgb(22 23 24 / 64%);
+  --glass-nav-bg: rgb(22 23 24 / 40%);
 }

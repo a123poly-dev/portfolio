@@ -1,22 +1,29 @@
 @use "../../../styles/variables" as *;
+@use "../../../styles/glass";
 
+// Glass pill nav, Figma 272:67447, 16px from the top. The liquid glass layers
+// come from styles/glass.scss.
 .menu {
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  background-color: var(--header-bg-color);
+  // Clearer than the card panels (user asked for 32% on the nav)
+  --glass-bg: var(--glass-nav-bg);
+  @include glass.surface;
+  position: fixed;
+  top: 16px;
+  right: 0;
+  left: 0;
+  z-index: 10;
+  width: min(var(--container-max-width), calc(100% - 80px));
+  margin: 0 auto;
+  border-radius: 9999px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  position: fixed;
-  inset: 0 0 auto;
-  z-index: 10;
+  @include glass.layers;
 }
 
 .container {
-  width: 100%;
-  max-width: var(--container-max-width);
-  margin: 0 auto;
-  padding: 24px 0;
+  position: relative;
+  z-index: 1;
+  padding: 12px 24px;
 }
 
 .wrapper {
@@ -26,9 +33,20 @@
 }
 
 .logo {
-  max-width: 105px;
   display: block;
-  padding: 4px 0;
+  border-radius: 50%;
+  color: var(--ink);
+
+  svg {
+    display: block;
+  }
+}
+
+// Theme switch (and the burger on mobile) on the right
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
 .navList {
@@ -47,33 +65,36 @@
 }
 
 .mobileLink {
-  color: var(--header-button-color);
+  color: var(--ink);
   font-family: var(--font-family);
   font-size: 16px;
-  font-weight: 400;
-  line-height: 20px;
-  letter-spacing: var(--nav-link-letter-spacing, 0.25px);
-  padding: 8px 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0;
+  padding: 6px 16px;
   border-radius: 40px;
   transition:
-    background-color 0.2s,
-    color 0.2s;
+    background-color 150ms ease-out,
+    color 150ms ease-out;
 
-  &:hover {
-    color: var(--header-button-color-hover);
-    background-color: var(--header-button-bg-hover);
-  }
-}
-
-@media screen and (max-width: $breakpoint-md) {
-  .container {
-    padding: 16px 40px;
+  @media (hover: hover) {
+    &:hover {
+      color: var(--on-pastel);
+      background-color: #81fdb8;
+    }
   }
 }
 
 @media screen and (max-width: $breakpoint-sm) {
+  .menu {
+    width: calc(100% - 32px);
+    top: 12px;
+    // A pill while closed, a rounded panel once the menu opens
+    border-radius: 26px;
+  }
+
   .container {
-    padding: 16px 24px;
+    padding: 12px 12px 12px 16px;
   }
 
   .navList {
@@ -85,6 +106,8 @@
   }
 
   .mobileMenu {
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -93,22 +116,25 @@
     max-height: 0;
     overflow: hidden;
     opacity: 0;
+    filter: blur(4px);
     padding-bottom: 0;
+    // Closing is quicker than opening, and softens into a 4 px blur
     transition:
-      max-height 0.3s ease,
-      opacity 0.3s ease,
-      padding-bottom 0.3s ease;
+      max-height 150ms ease-out,
+      opacity 150ms ease-out,
+      filter 150ms ease-out,
+      padding-bottom 150ms ease-out;
   }
 
   .mobileMenuOpen {
-    max-height: 120px;
+    max-height: 160px;
     opacity: 1;
-    padding-bottom: 30px;
-  }
-}
-
-@media screen and (max-width: $breakpoint-xs) {
-  .container {
-    padding: 16px 24px;
+    filter: none;
+    padding-bottom: 20px;
+    transition:
+      max-height 0.3s ease-out,
+      opacity 0.3s ease-out,
+      filter 0.3s ease-out,
+      padding-bottom 0.3s ease-out;
   }
 }

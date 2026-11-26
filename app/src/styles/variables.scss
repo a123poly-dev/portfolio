@@ -1,23 +1,12 @@
-// Fonts
-@font-face {
-  font-family: "Clashdisplay";
-  src: url("../assets/fonts/ClashDisplay-Semibold.woff2") format("woff2");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
 $breakpoint-md: 991px;
 $breakpoint-sm: 767px;
 $breakpoint-xs: 479px;
 
 // CSS custom properties
 :root {
-  --font-family-display: "Clashdisplay", sans-serif;
-  --font-family: "DM Sans", sans-serif;
-  --text-size: 16px;
+  --font-family-display: var(--font-family);
+  --font-family: "Inter Tight", sans-serif;
   --work-items-border-radius: 24px;
-  --small-text-size: 13px;
 
   --container-max-width: 1100px;
 }

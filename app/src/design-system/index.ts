@@ -1,6 +1,4 @@
 export { Heading } from "./common/Heading"
-export { Tag } from "./common/Tag"
-export type { TTagColor } from "./common/Tag"
 export { Icon } from "./common/Icons"
 export type { TIconName } from "./common/Icons"
 export { IconButton } from "./common/IconButton"

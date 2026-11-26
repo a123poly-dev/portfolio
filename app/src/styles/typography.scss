@@ -1,0 +1,33 @@
+// Shared type scale (Inter Tight), from the type and colour audit.
+// Use with: @use "<path>/styles/typography" as type; then @include type.h2;
+
+@mixin -base($size, $line, $weight: 400) {
+  font-family: var(--font-family);
+  font-size: $size;
+  line-height: $line;
+  font-weight: $weight;
+  letter-spacing: 0;
+}
+
+// Home hero only
+@mixin display {
+  @include -base(56px, 67px, 700);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+@mixin h1 { @include -base(48px, 56px, 600); }
+@mixin h2 { @include -base(32px, 40px, 600); }
+// Home hero subtitle only
+@mixin lead { @include -base(28px, 34px, 300); }
+@mixin h3 { @include -base(24px, 32px, 600); }
+@mixin h4 { @include -base(20px, 28px, 600); }
+@mixin body { @include -base(16px, 24px); }
+@mixin body-bold { @include -base(16px, 24px, 600); }
+@mixin small { @include -base(14px, 20px); }
+
+@mixin label($weight: 400) {
+  @include -base(12px, 16px, $weight);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}

@@ -4,7 +4,7 @@ import { CaseLayout } from "../CaseLayout";
 
 import styles from "./Synthux.module.scss";
 
-// Light, fluid page shell for the SynthUX cases. Reuses the site navbar, Kiitos and footer.
+// Light, fluid page shell for the SynthUX cases. Reuses the site navbar and footer.
 export const SynthuxLayout = ({
   className,
   children,

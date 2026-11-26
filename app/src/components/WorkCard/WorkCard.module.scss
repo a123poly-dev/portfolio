@@ -1,8 +1,12 @@
 @use "../../styles/variables" as *;
+@use "../../styles/typography" as type;
+@use "../../styles/glass";
 
 .card {
   background-color: var(--bg);
   text-decoration: none;
+  // The card draws its own hover/active look, so skip the grey iOS tap flash
+  -webkit-tap-highlight-color: transparent;
   display: block;
   width: 100%;
 }
@@ -99,7 +103,7 @@
   background-size: cover;
 }
 
-// Hover panel: Figma 290:54602. 64% black glass at the bottom of the cover,
+// Hover panel: Figma 290:54602, now in the nav's white glass (--glass-*),
 // with the meta line, the title and an up-right arrow.
 .panel {
   position: absolute;
@@ -111,21 +115,19 @@
   flex-direction: column;
   gap: 12px;
   padding: 24px 16px 40px;
-  background: rgba(0, 0, 0, 0.64);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  @include glass.surface;
   text-align: left;
+  @include glass.layers;
 }
 
 .meta {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  font-family: var(--font-family);
-  font-size: 14px;
-  line-height: 14px;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.64);
+  @include type.small;
+  color: var(--text-secondary);
   padding-right: 40px; // clears the arrow
 }
 
@@ -135,44 +137,47 @@
 }
 
 .metaDot {
-  font-weight: 700;
+  font-weight: 600;
 }
 
 // .panel .title beats the home page's heading overrides
 .panel .title {
+  position: relative;
+  z-index: 1;
   margin: 0;
-  color: #fff;
-  font-family: var(--font-family);
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 1.2;
-  letter-spacing: 0;
+  @include type.h4;
+  color: var(--ink);
 }
 
 .arrow {
   position: absolute;
+  z-index: 1;
   top: 8px;
   right: 8px;
   display: flex;
   padding: 8px;
-  color: #fff;
+  color: var(--ink);
 }
 
 // Real hover: the panel slides up and the cover zooms a little.
 // Touch screens have no hover, so they keep the panel in place.
 @media (hover: hover) {
+  // Hiding (leaving the card) is quicker than showing
   .panel {
     opacity: 0;
     transform: translateY(24px);
     transition:
-      opacity 0.3s ease,
-      transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+      opacity 150ms ease-out,
+      transform 150ms ease-out;
   }
 
   .card:hover .panel,
   .card:focus-visible .panel {
     opacity: 1;
     transform: translateY(0);
+    transition:
+      opacity 0.3s ease-out,
+      transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   .card:hover .coverImage,
@@ -218,9 +223,5 @@
   .panel {
     padding: 16px 16px 20px;
     gap: 8px;
-  }
-
-  .panel .title {
-    font-size: 18px;
   }
 }

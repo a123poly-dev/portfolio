@@ -17,3 +17,6 @@ export const SOCIAL_URLS: { icon: TIconName; href: string; label: string }[] = [
     label: "Instagram",
   },
 ]
+
+export const CV_URL =
+  "https://drive.google.com/file/d/1v7pZ4TZz8aZJBHEvcN_G7YDMBlQ23jLo/view?usp=sharing"
