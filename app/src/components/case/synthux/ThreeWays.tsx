@@ -6,9 +6,11 @@ import { usePrefersReducedMotion } from "./usePrefersReducedMotion";
 import styles from "./ThreeWays.module.scss";
 
 // Figma "3.3 Three ways of working (motion)" (1440 x 800).
-// The three stages build in once, in the Figma order and timing, when the block
-// scrolls into view, then stay. A replay button runs it again. With reduced motion
-// everything is shown at once. Three columns when wide, one column when narrow.
+// Layout from the Figma case frame 314:59257: stages stacked, numbers on the left
+// and notes on the right inside each stage (one column on a phone).
+// The stages build in once, in the Figma order and timing, when the block scrolls
+// into view, then stay. A replay button runs it again. With reduced motion
+// everything is shown at once.
 
 type TTone = "plain" | "warn" | "good";
 
@@ -26,7 +28,7 @@ type TStage = {
 const STAGES: TStage[] = [
   {
     tone: "plain",
-    kicker: "Days 15 to 17, no rule",
+    kicker: "DAYS 15 TO 17, NO RULE",
     title: "One model did everything",
     delay: 0.3,
     big: true,
@@ -50,7 +52,7 @@ const STAGES: TStage[] = [
   },
   {
     tone: "warn",
-    kicker: "Day 18, rule v0.1",
+    kicker: "DAY 18, RULE v0.1",
     title: "Workers did everything, Figma too",
     delay: 1.9,
     big: true,
@@ -71,7 +73,7 @@ const STAGES: TStage[] = [
   },
   {
     tone: "good",
-    kicker: "Day 20, rule v0.4",
+    kicker: "DAY 20, RULE v0.4",
     title: "Work split by kind",
     delay: 3.5,
     metrics: [
@@ -126,17 +128,27 @@ export const ThreeWays = () => {
                 <span className={styles.kicker}>{stage.kicker}</span>
                 <h3 className={styles.stageTitle}>{stage.title}</h3>
               </div>
-              {stage.metrics.map((metric) => (
-                <p key={metric.value} className={cn(styles.metric, styles.anim, styles.fade)} style={delay(metric.delay)}>
-                  <span className={cn(styles.value, stage.big && styles.valueBig)}>{metric.value}</span>
-                  <span className={styles.metricText}>{metric.text}</span>
-                </p>
-              ))}
-              {stage.notes.map((note) => (
-                <p key={note.text} className={cn(styles.note, styles.anim, styles.fade)} style={delay(note.delay)}>
-                  {note.text}
-                </p>
-              ))}
+              <div className={styles.stageBody} data-tone={stage.tone}>
+                <div className={styles.metrics}>
+                  {stage.metrics.map((metric) => (
+                    <p
+                      key={metric.value}
+                      className={cn(styles.metric, styles.anim, styles.fade)}
+                      style={delay(metric.delay)}
+                    >
+                      <span className={cn(styles.value, stage.big && styles.valueBig)}>{metric.value}</span>
+                      <span className={styles.metricText}>{metric.text}</span>
+                    </p>
+                  ))}
+                </div>
+                <div className={styles.notes}>
+                  {stage.notes.map((note) => (
+                    <p key={note.text} className={cn(styles.note, styles.anim, styles.fade)} style={delay(note.delay)}>
+                      {note.text}
+                    </p>
+                  ))}
+                </div>
+              </div>
             </div>
           </li>
         ))}

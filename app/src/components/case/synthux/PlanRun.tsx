@@ -8,6 +8,7 @@ import type { TStop } from "./loopMotion";
 import styles from "./PlanRun.module.scss";
 
 // Figma "3.2 One plan, run step by step (motion)" (1440 x 800), DS sync round 7.
+// Layout from the Figma case frame 314:59257: the PR panel on top, steps below.
 // Plays once in view on the Figma timeline (steps light up every 0.5 s, the rail
 // fills, the PR panel counts the code steps and ends merged), then stays on the
 // final frame. A replay button runs it again. Reduced motion shows the final frame.
@@ -108,8 +109,6 @@ export const PlanRun = () => {
         <p className={styles.title}>One plan, run step by step: DS sync round 7, Day 32</p>
         <div className={styles.chips}>
           <span className={cn(styles.chip, styles.mono)}>Plan file: DS sync round 7</span>
-          <span className={styles.chip}>17:52 to 19:09 UTC</span>
-          <span className={styles.chip}>8 code steps, 4 calls by me</span>
         </div>
       </div>
 
@@ -117,6 +116,30 @@ export const PlanRun = () => {
         key={run}
         className={cn(styles.body, playing && styles.playing, reduced && styles.still)}
       >
+        <div className={styles.panel}>
+          <div className={styles.prLine}>
+            <span className={styles.prNumber}>PR #110</span>
+            {status !== "none" && (
+              <span key={status} className={styles.status} data-status={status}>
+                {STATUS_LABEL[status]}
+              </span>
+            )}
+          </div>
+          <div className={styles.countLine}>
+            <span className={styles.panelLabel}>Code steps on the branch</span>
+            <span className={styles.count}>{done} of 8 done</span>
+          </div>
+          <span className={styles.bar} aria-hidden="true">
+            <span
+              className={cn(styles.barFill, styles.anim)}
+              style={{ "--pr-dur": `${BAR_S}s`, animationName: "pr-bar" } as CSSProperties}
+            />
+          </span>
+          <span key={version} className={styles.version} data-new={version === "0.3.0" || undefined}>
+            Packages {version}
+          </span>
+        </div>
+
         <ol className={styles.steps} ref={stepsRef}>
           <span className={styles.rail} style={{ bottom: railEnd }} aria-hidden="true">
             <span
@@ -143,30 +166,6 @@ export const PlanRun = () => {
           ))}
         </ol>
 
-        <div className={styles.side}>
-          <div className={styles.panel}>
-            <span className={styles.panelLabel}>Pull request</span>
-            <div className={styles.prLine}>
-              <span className={styles.prNumber}>PR #110</span>
-              {status !== "none" && (
-                <span key={status} className={styles.status} data-status={status}>
-                  {STATUS_LABEL[status]}
-                </span>
-              )}
-            </div>
-            <span className={styles.panelLabel}>Code steps on the branch</span>
-            <span className={styles.bar} aria-hidden="true">
-              <span className={cn(styles.barFill, styles.anim)} style={{ "--pr-dur": `${BAR_S}s`, animationName: "pr-bar" } as CSSProperties} />
-            </span>
-            <span className={styles.count}>{done} of 8 done</span>
-            <span key={version} className={styles.version} data-new={version === "0.3.0" || undefined}>
-              Packages {version}
-            </span>
-          </div>
-          <p className={styles.caption}>
-            Each step: worker builds, planning model reviews, I approve. One at a time.
-          </p>
-        </div>
       </div>
 
       {!reduced && (

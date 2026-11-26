@@ -1,5 +1,5 @@
-// One plan, run step by step: dark, as in the Figma visual 3.2. Fluid: steps and
-// the PR panel side by side when wide, the panel above the steps when narrow.
+// One plan, run step by step: dark, as in the Figma case frame 314:59257.
+// The PR panel sits on top, the steps below it, at every width.
 
 .root {
   --pr-page: #121211;
@@ -61,16 +61,9 @@
 
 .body {
   display: flex;
-  flex-direction: column-reverse;
-  gap: 32px;
-  margin-top: 42px;
-
-  @container (min-width: 900px) {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(280px, 0.68fr);
-    gap: 48px;
-    align-items: start;
-  }
+  flex-direction: column;
+  gap: 45px;
+  margin-top: 24px;
 }
 
 // Steps
@@ -174,25 +167,13 @@
 
 // PR panel
 
-.side {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
 .panel {
   display: flex;
   flex-direction: column;
-  padding: 28px;
+  gap: 16px;
+  padding: 16px 28px;
   border-radius: 16px;
   background: var(--pr-surface);
-}
-
-.panelLabel {
-  font-size: 12px;
-  line-height: 16px;
-  font-weight: 500;
-  color: var(--pr-muted);
 }
 
 .prLine {
@@ -201,26 +182,24 @@
   align-items: center;
   justify-content: space-between;
   gap: 8px 16px;
-  min-height: 40px;
-  margin: 16px 0;
+  min-height: 30px;
 }
 
 .prNumber {
-  font-family: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 28px;
-  line-height: 36px;
+  font-size: 18px;
+  line-height: 26px;
   font-weight: 500;
 }
 
 .status {
   --pr-tone: var(--pr-muted);
 
-  padding: 5px 11px;
+  padding: 5px 10px;
   border: 1px solid var(--pr-tone);
   border-radius: 999px;
   background: color-mix(in srgb, var(--pr-tone) 14%, transparent);
-  font-size: 14px;
-  line-height: 18px;
+  font-size: 12px;
+  line-height: 16px;
   font-weight: 500;
   color: var(--pr-tone);
   animation: pr-in 0.2s cubic-bezier(0.5, 0, 0.5, 1);
@@ -234,10 +213,29 @@
   }
 }
 
+.countLine {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.panelLabel {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  color: var(--pr-muted);
+}
+
+.count {
+  font-family: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px;
+  line-height: 16px;
+  font-variant-numeric: tabular-nums;
+}
+
 .bar {
   position: relative;
   height: 8px;
-  margin: 16px 0;
   overflow: hidden;
   border-radius: 4px;
   background: rgb(229 230 227 / 12%);
@@ -251,18 +249,10 @@
   transform-origin: left center;
 }
 
-.count {
-  font-family: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 14px;
-  line-height: 18px;
-  font-variant-numeric: tabular-nums;
-}
-
 .version {
-  margin-top: 16px;
   font-family: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 16px;
-  line-height: 21px;
+  font-size: 12px;
+  line-height: 16px;
   font-weight: 500;
   color: var(--pr-muted);
 
@@ -270,13 +260,6 @@
     color: var(--pr-green);
     animation: pr-in 0.3s cubic-bezier(0, 0, 0.58, 1);
   }
-}
-
-.caption {
-  margin: 0;
-  font-size: 14px;
-  line-height: 18px;
-  color: var(--pr-muted);
 }
 
 // Replay

@@ -1,5 +1,4 @@
-// Three ways of working: dark, as in the Figma visual 3.3. Fluid: three columns
-// when the block is wide enough, one column below that.
+// Three ways of working: dark, as in the Figma case frame 314:59257.
 
 .root {
   --tw-page: #121211;
@@ -37,19 +36,15 @@
   text-wrap: balance;
 }
 
-// Stages
+// Stages: stacked, with a short down arrow between them
 
 .stages {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 40px;
-  margin: 48px 0 0;
+  gap: 32px;
+  margin: 24px 0 0;
   padding: 0;
   list-style: none;
-
-  @container (min-width: 880px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
 }
 
 .stageItem {
@@ -60,30 +55,26 @@
 
 .arrow {
   position: absolute;
-  top: -34px;
+  top: -26px;
   left: 50%;
   width: 2px;
-  height: 28px;
+  height: 20px;
   margin-left: -1px;
   background: rgb(229 230 227 / 30%);
-
-  @container (min-width: 880px) {
-    top: 50%;
-    left: -34px;
-    width: 28px;
-    height: 2px;
-    margin: -1px 0 0;
-  }
 }
 
 .stage {
   display: flex;
   flex: 1;
   flex-direction: column;
-  gap: 18px;
+  gap: 24px;
   padding: 28px;
   border-radius: 16px;
   background: var(--tw-surface);
+
+  &[data-tone="good"] {
+    gap: 14px;
+  }
 }
 
 .stageHead {
@@ -98,7 +89,6 @@
   line-height: 16px;
   font-weight: 500;
   letter-spacing: 0.5px;
-  text-transform: uppercase;
   color: var(--tw-text);
 
   [data-tone="warn"] & {
@@ -118,6 +108,34 @@
   color: var(--tw-text);
 }
 
+// Numbers left, notes right; one column on a phone
+.stageBody {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  align-items: start;
+
+  @container (min-width: 600px) {
+    grid-template-columns: 1fr 1fr;
+
+    &[data-tone="good"] {
+      column-gap: 14px;
+    }
+  }
+}
+
+.metrics {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.notes {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 .metric {
   display: flex;
   flex-direction: column;
@@ -126,7 +144,6 @@
 }
 
 .value {
-  font-family: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 24px;
   line-height: 31px;
   font-weight: 500;
@@ -218,11 +235,6 @@
   animation-duration: 0.4s;
   animation-timing-function: cubic-bezier(0, 0, 0.58, 1);
   transform-origin: center top;
-
-  @container (min-width: 880px) {
-    animation-name: tw-grow-x;
-    transform-origin: left center;
-  }
 }
 
 .still .anim {
@@ -243,17 +255,6 @@
 @keyframes tw-fade {
   from {
     opacity: 0;
-  }
-}
-
-@keyframes tw-grow-x {
-  from {
-    opacity: 0;
-    transform: scaleX(0);
-  }
-
-  25% {
-    opacity: 1;
   }
 }
 
