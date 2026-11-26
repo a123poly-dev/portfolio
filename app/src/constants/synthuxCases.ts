@@ -4,7 +4,7 @@
 export const SYNTHUX_PUBLISHED = {
   endToEnd: true,
   designSystem: true,
-  aiProcess: false,
+  aiProcess: true,
 } as const
 
 export type TSynthuxCase = keyof typeof SYNTHUX_PUBLISHED
