@@ -1115,3 +1115,16 @@
     transform: translateX(-78px);
   }
 }
+
+// Reduced motion: the menu fades without moving, indicators jump
+@media (prefers-reduced-motion: reduce) {
+  .menu,
+  .menuOpen {
+    transform: none;
+  }
+
+  .gradeMarker,
+  .themeIndicator {
+    transition: none;
+  }
+}

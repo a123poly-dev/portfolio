@@ -436,3 +436,20 @@
 .tableHead.marked {
   box-shadow: inset 0 0 0 2px #89ba50;
 }
+
+// Reduced motion: tags fade in place, the theme indicator jumps
+@media (prefers-reduced-motion: reduce) {
+  .tagOn {
+    animation-name: tag-fade;
+  }
+
+  .themeIndicator {
+    transition: none;
+  }
+}
+
+@keyframes tag-fade {
+  from {
+    opacity: 0;
+  }
+}
