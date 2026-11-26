@@ -2,6 +2,7 @@ import { Mark, MarkerText } from "../../../components/case/synthux/MarkerText"
 import avatar from "./assets/avatar-hero.webp"
 import warningIcon from "./assets/triangle-warning.svg"
 import { HERO_SOCIAL_ICONS, HERO_SOCIALS } from "./socialIcons"
+import { HelsinkiTime } from "./HelsinkiTime"
 
 import type { CSSProperties, ReactNode } from "react"
 import {
@@ -66,7 +67,12 @@ export const Header = () => (
         </div>
 
         <h1 className={styles.title}>
-          <span {...enter(1)}>Hey,</span>
+          <span
+            className={`${styles.hey} animate-enter`}
+            style={enter(1).style}
+          >
+            Hey,
+          </span>
           <span
             className={`${styles.switcher} animate-enter`}
             style={enter(1, 80).style}
@@ -120,7 +126,7 @@ export const Header = () => (
           className={`${styles.location} animate-enter`}
           style={enter(4, 240).style}
         >
-          Helsinki
+          <HelsinkiTime /> – Helsinki, Finland
         </div>
       </div>
     </div>

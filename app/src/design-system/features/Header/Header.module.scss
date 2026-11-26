@@ -1,11 +1,10 @@
 @use "../../../styles/variables" as *;
 @use "../../../styles/typography" as type;
 
-// Hero from portfolio Figma 272:67070
+// Hero from portfolio Figma 314:58187 (was 272:67070)
 .header {
   --hero-text: var(--ink);
-  --hero-muted: var(--text-tertiary);
-  --hero-pill-bg: #eae9ed;
+  --hero-muted: #717171;
   --hero-banner-bg: rgba(46, 102, 231, 0.06);
 
   margin-top: 124px; // 76 px nav + 48 px
@@ -37,7 +36,7 @@
   border-radius: 16px;
   background: var(--hero-banner-bg);
   color: var(--hero-text);
-  font-family: "Geist", var(--font-family);
+  font-family: var(--font-family);
   font-size: 14px;
   line-height: 20px;
 
@@ -64,17 +63,23 @@
   white-space: nowrap;
 }
 
-// 124 × 72 pill, 4 px padding, 64 px avatar, 16 px each side (at 56 px type)
+// "Hey," is semibold in Figma, the rest of the line bold
+.hey {
+  font-weight: 600;
+}
+
+// 72 px round frame, 4 px padding, 64 px avatar, 16 px each side (at 56 px type).
+// The avatar export already holds the green-to-purple gradient behind the photo.
 .switcher {
   display: inline-flex;
   align-items: center;
   flex-shrink: 0;
   box-sizing: border-box;
-  width: 2.2143em;
+  width: 1.2857em;
+  height: 1.2857em;
   padding: 0.0714em;
   margin: 0 0.2857em;
   border-radius: 999px;
-  background: var(--hero-pill-bg);
 }
 
 .avatar {
@@ -102,7 +107,7 @@
 .socials {
   display: flex;
   justify-content: center;
-  padding: 12px 0;
+  padding-top: 16px;
 }
 
 .socialLink {
@@ -132,11 +137,13 @@
   }
 }
 
-
 .location {
   padding-top: 8px;
   @include type.body;
+  line-height: 22.4px;
   color: var(--hero-muted);
+  // Digits keep their width as the minutes change
+  font-variant-numeric: tabular-nums;
 }
 
 @media screen and (max-width: $breakpoint-md) {
