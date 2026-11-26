@@ -3,6 +3,8 @@
 .card {
   background-color: var(--bg);
   text-decoration: none;
+  // The card draws its own hover/active look, so skip the grey iOS tap flash
+  -webkit-tap-highlight-color: transparent;
   display: block;
   width: 100%;
 }

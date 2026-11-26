@@ -54,8 +54,14 @@
     border-color 0.2s ease,
     color 0.2s ease;
 
-  &:hover {
-    border-color: var(--filter-text);
+  // Taps show the active state, so skip the grey iOS flash
+  -webkit-tap-highlight-color: transparent;
+
+  // Only on real hover, so a tapped tab doesn't keep a dark border on phones
+  @media (hover: hover) {
+    &:hover {
+      border-color: var(--filter-text);
+    }
   }
 
   &:focus-visible {
@@ -99,84 +105,12 @@
     padding-right: 40px;
   }
 
-  // Filter tabs: Figma 290:54881. 32 px pills, 8 px apart, 32 px above the grid.
-.filters {
-  --filter-text: #2c2930;
-  --filter-border: #d7d7d7;
-  --filter-active-bg: #2c2930;
-  --filter-active-text: #fff;
-  --filter-count-bg: rgba(159, 152, 179, 0.1);
-
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
-  margin-bottom: 32px;
-}
-
-:global([data-theme="dark"]) .filters {
-  --filter-text: #fff;
-  --filter-border: #4a4850;
-  --filter-active-bg: #fff;
-  --filter-active-text: #2c2930;
-}
-
-.filter {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  height: 32px;
-  padding: 0 8px 0 12px;
-  border: 1px solid var(--filter-border);
-  border-radius: 9999px;
-  background: transparent;
-  color: var(--filter-text);
-  font-family: "Geist", var(--font-family);
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 20px;
-  white-space: nowrap;
-  cursor: pointer;
-  transition:
-    background-color 0.2s ease,
-    border-color 0.2s ease,
-    color 0.2s ease;
-
-  &:hover {
-    border-color: var(--filter-text);
-  }
-
-  &:focus-visible {
-    outline: 2px solid #9453ff;
-    outline-offset: 2px;
-  }
-}
-
-.filterActive,
-.filterActive:hover {
-  border-color: var(--filter-active-bg);
-  background: var(--filter-active-bg);
-  color: var(--filter-active-text);
-}
-
-.count {
-  min-width: 20px;
-  padding: 0 4px;
-  border-radius: 9999px;
-  background: var(--filter-count-bg);
-  font-weight: 400;
-  text-align: center;
-  opacity: 0.8;
-}
-
-.grid {
+  .grid {
     grid-template-columns: 1fr;
   }
 
-  .fullWidth,
-  .halfWidth,
-  .quarterWidth {
-    grid-column: span 1;
+  .tallItem {
+    grid-row: auto;
   }
 }
 
