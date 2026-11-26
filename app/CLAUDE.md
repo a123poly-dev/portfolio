@@ -100,7 +100,7 @@ All stories use `tags: ["autodocs"]` for auto-generated Docs pages with code sni
 
 Routes defined in `src/constants/routePathConstants.ts`. Pages: `/`, `/pulkovo`, `/okey-app`, `/okey-site`, `/ya-calls`, `/taxi`.
 
-Case study pages use `CaseLayout` wrapper (Navbar + content + KiitosSection + Footer).
+Case study pages use `CaseLayout` wrapper (Navbar + content + Footer).
 
 ## Deployment
 

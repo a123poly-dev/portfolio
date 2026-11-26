@@ -40,6 +40,8 @@
   font-size: var(--sx-fs-16);
   line-height: var(--sx-lh-16);
   overflow-x: clip;
+  // Room above the footer (the Kiitos block used to give it)
+  padding-bottom: var(--sx-space-section);
 }
 
 // Fluid container: full width minus gutters, up to a max

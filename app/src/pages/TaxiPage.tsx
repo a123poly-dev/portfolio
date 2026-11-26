@@ -6,7 +6,6 @@ import { Navbar } from "@design-system/features/Navbar"
 import { Footer } from "@design-system/features/Footer"
 
 import { VideoEmbed } from "../components/case/VideoEmbed"
-import { KiitosSection } from "../components/case/KiitosSection"
 import photo01 from "./assets/taxi/01.png"
 import photo02 from "./assets/taxi/02.png"
 import photo03 from "./assets/taxi/03.png"
@@ -203,9 +202,6 @@ export const TaxiPage = () => {
           Prototype link in Figma
         </a>
       </div>
-
-      {/* Kiitos dark version */}
-      <KiitosSection />
 
       <Footer />
     </div>
