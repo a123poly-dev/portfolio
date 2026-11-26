@@ -230,8 +230,10 @@ $border: #e0e2db;
 .run {
   cursor: pointer;
 
-  &:hover {
-    background: #292a28;
+  @media (hover: hover) {
+    &:hover {
+      background: #292a28;
+    }
   }
 }
 
@@ -242,8 +244,10 @@ $border: #e0e2db;
   background: var(--sx-accent);
   box-shadow: 0 0 0 4px rgb(106 63 224 / 35%);
 
-  &:hover {
-    background: #5a32c8;
+  @media (hover: hover) {
+    &:hover {
+      background: #5a32c8;
+    }
   }
 
   &::after {

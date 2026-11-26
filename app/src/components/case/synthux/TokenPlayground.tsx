@@ -171,6 +171,14 @@ export const TokenPlayground = ({ caption }: { caption?: ReactNode }) => {
   const systemDark = useSystemDark();
   const dark = theme === "dark" || (theme === "system" && systemDark);
   const [layout, setLayout] = useState({ wide: true, scale: 1, height: 0 });
+  const previewRef = useRef<HTMLDivElement>(null);
+  // Phones: a fade on the right edge while more of the table is off screen
+  const [moreRight, setMoreRight] = useState(false);
+  const checkMoreRight = () => {
+    const el = previewRef.current;
+    setMoreRight(!!el && el.scrollLeft + el.clientWidth < el.scrollWidth - 1);
+  };
+  useEffect(checkMoreRight, [layout.wide, layout.height]);
 
   // Wide layout from 760 px of room, scaled to fit; stacked below that
   useEffect(() => {
@@ -302,79 +310,89 @@ export const TokenPlayground = ({ caption }: { caption?: ReactNode }) => {
               </div>
 
               <div
-                className={cn(styles.preview, dark && styles.previewDark)}
-                aria-label={`Preview in ${dark ? "Dark" : "Light"}, with the parts that use ${TOKENS.find((t) => t.id === token)?.name} outlined`}
-                role="img"
+                className={cn(
+                  styles.previewFrame,
+                  dark && styles.previewFrameDark,
+                  !layout.wide && moreRight && styles.moreRight,
+                )}
               >
-                <div className={styles.actions}>
-                  <span
-                    className={cn(
-                      styles.button,
-                      styles.mark,
-                      token === "action" && styles.marked,
-                    )}
-                  >
-                    <ShareIcon />
-                    Share
-                  </span>
-                  <span
-                    className={cn(
-                      styles.badge,
-                      styles.mark,
-                      token === "error" && styles.marked,
-                    )}
-                  >
-                    <CircleClose />
-                    Critical
-                  </span>
-                  <Tag on={token === "action"}>action/primary/background</Tag>
-                  <Tag on={token === "error"}>status/error/text</Tag>
-                </div>
-
-                <div className={styles.tableTags}>
-                  <Tag on={token === "border"}>border/default</Tag>
-                  <Tag on={token === "secondary"}>text/secondary</Tag>
-                </div>
                 <div
-                  className={cn(
-                    styles.table,
-                    styles.mark,
-                    token === "border" && styles.marked,
-                  )}
+                  ref={previewRef}
+                  onScroll={checkMoreRight}
+                  className={cn(styles.preview, dark && styles.previewDark)}
+                  aria-label={`Preview in ${dark ? "Dark" : "Light"}, with the parts that use ${TOKENS.find((t) => t.id === token)?.name} outlined`}
+                  role="img"
                 >
+                  <div className={styles.actions}>
+                    <span
+                      className={cn(
+                        styles.button,
+                        styles.mark,
+                        token === "action" && styles.marked,
+                      )}
+                    >
+                      <ShareIcon />
+                      Share
+                    </span>
+                    <span
+                      className={cn(
+                        styles.badge,
+                        styles.mark,
+                        token === "error" && styles.marked,
+                      )}
+                    >
+                      <CircleClose />
+                      Critical
+                    </span>
+                    <Tag on={token === "action"}>action/primary/background</Tag>
+                    <Tag on={token === "error"}>status/error/text</Tag>
+                  </div>
+
+                  <div className={styles.tableTags}>
+                    <Tag on={token === "border"}>border/default</Tag>
+                    <Tag on={token === "secondary"}>text/secondary</Tag>
+                  </div>
                   <div
                     className={cn(
-                      styles.tableHead,
+                      styles.table,
                       styles.mark,
-                      token === "secondary" && styles.marked,
+                      token === "border" && styles.marked,
                     )}
                   >
-                    <span>Segment</span>
-                    <span />
-                    <span>Task success</span>
-                    <span>SUS average</span>
-                    <span>Top issue</span>
-                  </div>
-                  {ROWS.map((row) => (
-                    <div key={row.segment} className={styles.tableRow}>
-                      <span className={styles.segment}>{row.segment}</span>
-                      <span className={styles.people}>
-                        <UsersIcon />
-                        {row.people}
-                      </span>
-                      <span className={styles.success}>
-                        {row.done} of {row.of}
-                        <span className={styles.bar}>
-                          <span
-                            className={styles.barFill}
-                            style={{ width: `${(row.done / row.of) * 100}%` }}
-                          />
-                        </span>
-                      </span>
-                      <span className={styles.sus}>{row.sus}</span>
-                      <span>{row.issue}</span>
+                    <div
+                      className={cn(
+                        styles.tableHead,
+                        styles.mark,
+                        token === "secondary" && styles.marked,
+                      )}
+                    >
+                      <span>Segment</span>
+                      <span />
+                      <span>Task success</span>
+                      <span>SUS average</span>
+                      <span>Top issue</span>
                     </div>
-                  ))}
+                    {ROWS.map((row) => (
+                      <div key={row.segment} className={styles.tableRow}>
+                        <span className={styles.segment}>{row.segment}</span>
+                        <span className={styles.people}>
+                          <UsersIcon />
+                          {row.people}
+                        </span>
+                        <span className={styles.success}>
+                          {row.done} of {row.of}
+                          <span className={styles.bar}>
+                            <span
+                              className={styles.barFill}
+                              style={{ width: `${(row.done / row.of) * 100}%` }}
+                            />
+                          </span>
+                        </span>
+                        <span className={styles.sus}>{row.sus}</span>
+                        <span>{row.issue}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>

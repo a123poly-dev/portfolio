@@ -264,7 +264,9 @@
   height: auto;
   display: block;
   border-radius: var(--sx-radius);
-  border: 1px solid var(--sx-line);
+  // Pure black at 10%, inset, so no tinted fringe and no size change
+  outline: 1px solid oklch(0 0 0 / 0.1);
+  outline-offset: -1px;
   background: var(--sx-surface);
 }
 
@@ -444,9 +446,11 @@
     border-color 0.2s ease,
     transform 0.2s ease;
 
-  &:hover {
-    border-color: var(--sx-accent);
-    transform: translateY(-2px);
+  @media (hover: hover) {
+    &:hover {
+      border-color: var(--sx-accent);
+      transform: translateY(-2px);
+    }
   }
 
   &:focus-visible {

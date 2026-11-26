@@ -278,3 +278,16 @@
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
+
+// Reduced motion: the sample fades in place, no rise
+@media (prefers-reduced-motion: reduce) {
+  .sample {
+    animation-name: cc-fade;
+  }
+}
+
+@keyframes cc-fade {
+  from {
+    opacity: 0;
+  }
+}
