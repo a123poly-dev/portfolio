@@ -1,26 +1,25 @@
 import { useEffect, useRef } from "react"
 
-// 16px download icon (Figma 314:58120) that morphs into a check.
-// Same idea as benji.org/morphing-icons-with-claude: the icon is a fixed set of
-// SVG lines, and only their end points move. Lines the check doesn't need shrink
-// to a point and fade out.
+// 16px up-right arrow (Figma 314:58566) that morphs into a check.
+// Same idea as benji.org/morphing-icons-with-claude: the icon is three SVG lines,
+// and only their end points move. The line the check doesn't need shrinks to a
+// point and fades out.
 
 type TLine = [x1: number, y1: number, x2: number, y2: number, opacity: number]
 
-// Tray bar, arrow shaft, left and right arrow head (Figma geometry)
-const DOWNLOAD: TLine[] = [
-  [4, 14, 12, 14, 1],
-  [8, 2, 8, 11.333, 1],
-  [4.667, 8, 8, 11.333, 1],
-  [11.333, 8, 8, 11.333, 1],
+// Shaft, top of the head, right side of the head (Figma geometry)
+const ARROW: TLine[] = [
+  [4.667, 11.333, 11.333, 4.667, 1],
+  [6, 4.667, 11.333, 4.667, 1],
+  [11.333, 10, 11.333, 4.667, 1],
 ]
 
-// The arrow head becomes the check; the bar and shaft collapse into its corner
+// The shaft tilts into the long leg, the top of the head swings down into the
+// short leg, and the right side of the head collapses into the tip
 const CHECK: TLine[] = [
-  [6.5, 11.5, 6.5, 11.5, 0],
-  [6.5, 11.5, 6.5, 11.5, 0],
+  [6.5, 11.5, 12.5, 4.5, 1],
   [3.5, 8.5, 6.5, 11.5, 1],
-  [12.5, 4.5, 6.5, 11.5, 1],
+  [12.5, 4.5, 12.5, 4.5, 0],
 ]
 
 const DURATION = 420
@@ -43,14 +42,14 @@ const apply = (els: (SVGLineElement | null)[], lines: TLine[]) => {
   })
 }
 
-export const DownloadMorphIcon = ({ checked }: { checked: boolean }) => {
+export const CvMorphIcon = ({ checked }: { checked: boolean }) => {
   const lineRefs = useRef<(SVGLineElement | null)[]>([])
   // Where the lines are right now, so a morph can start mid-way
-  const current = useRef<TLine[]>(DOWNLOAD.map((l) => [...l] as TLine))
+  const current = useRef<TLine[]>(ARROW.map((l) => [...l] as TLine))
   const frame = useRef(0)
 
   useEffect(() => {
-    const target = checked ? CHECK : DOWNLOAD
+    const target = checked ? CHECK : ARROW
     cancelAnimationFrame(frame.current)
 
     if (reducedMotion()) {
@@ -87,7 +86,7 @@ export const DownloadMorphIcon = ({ checked }: { checked: boolean }) => {
       strokeWidth="1.5"
       strokeLinecap="round"
     >
-      {DOWNLOAD.map(([x1, y1, x2, y2, o], i) => (
+      {ARROW.map(([x1, y1, x2, y2, o], i) => (
         <line
           key={i}
           ref={(el) => {

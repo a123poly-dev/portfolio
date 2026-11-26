@@ -15,7 +15,7 @@ import {
 import styles from "./Header.module.scss"
 
 // Same purple marks as the Case 1 page: underline at full ink, marker at 20%
-const PURPLE = "#9453FF"
+const PURPLE = "#9453ff" // --accent; MarkerText draws SVG, which needs a plain value
 
 // Soft enter: each block starts 100 ms after the one before (global .animate-enter);
 // title words add 80 ms each on top of the title's own slot.

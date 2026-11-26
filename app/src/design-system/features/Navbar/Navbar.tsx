@@ -9,7 +9,7 @@ import { ButtonLink } from "@design-system/common/ButtonLink"
 import { BurgerButton } from "@design-system/features/BurgerButton"
 import styles from "./Navbar.module.scss"
 import { MobileMenu } from "./MobileMenu"
-import { DownloadMorphIcon } from "./DownloadMorphIcon"
+import { CvMorphIcon } from "./CvMorphIcon"
 import logo from "./assets/logo-mark.svg"
 
 // How long the CV icon stays a check before turning back into an arrow
@@ -81,7 +81,7 @@ export const Navbar = ({ isMainPage = false }: TNavbarProps) => {
             <li>
               <ButtonLink href={CV_URL} isExternal onClick={handleCvClick}>
                 CV Download
-                <DownloadMorphIcon checked={cvDone} />
+                <CvMorphIcon checked={cvDone} />
               </ButtonLink>
             </li>
           </ul>
