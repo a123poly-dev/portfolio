@@ -26,9 +26,6 @@
 }
 
 .head {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
   padding-right: 48px;
 }
 
@@ -38,22 +35,6 @@
   line-height: 30px;
   font-weight: 500;
   text-wrap: balance;
-}
-
-.chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.chip {
-  padding: 7px 11px;
-  border-radius: 8px;
-  background: var(--tw-surface);
-  font-size: 14px;
-  line-height: 18px;
-  font-weight: 500;
-  color: var(--tw-muted);
 }
 
 // Stages
@@ -79,19 +60,19 @@
 
 .arrow {
   position: absolute;
-  top: -21px;
+  top: -34px;
   left: 50%;
-  width: 28px;
-  height: 2px;
-  margin-left: -14px;
+  width: 2px;
+  height: 28px;
+  margin-left: -1px;
   background: rgb(229 230 227 / 30%);
-  rotate: 90deg;
 
   @container (min-width: 880px) {
     top: 50%;
     left: -34px;
-    margin-left: 0;
-    rotate: none;
+    width: 28px;
+    height: 2px;
+    margin: -1px 0 0;
   }
 }
 
@@ -233,10 +214,15 @@
 }
 
 .arrow.anim {
-  animation-name: tw-grow;
+  animation-name: tw-grow-y;
   animation-duration: 0.4s;
   animation-timing-function: cubic-bezier(0, 0, 0.58, 1);
-  transform-origin: left center;
+  transform-origin: center top;
+
+  @container (min-width: 880px) {
+    animation-name: tw-grow-x;
+    transform-origin: left center;
+  }
 }
 
 .still .anim {
@@ -260,10 +246,21 @@
   }
 }
 
-@keyframes tw-grow {
+@keyframes tw-grow-x {
   from {
     opacity: 0;
     transform: scaleX(0);
+  }
+
+  25% {
+    opacity: 1;
+  }
+}
+
+@keyframes tw-grow-y {
+  from {
+    opacity: 0;
+    transform: scaleY(0);
   }
 
   25% {

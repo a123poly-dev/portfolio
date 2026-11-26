@@ -106,13 +106,6 @@ export const ThreeWays = () => {
     <figure className={styles.root} ref={ref}>
       <div className={styles.head}>
         <p className={styles.title}>Three ways of working in 6 days, and why I changed each one</p>
-        <div className={styles.chips} aria-hidden="true">
-          {["Day 15", "Day 18", "Day 20"].map((day) => (
-            <span key={day} className={styles.chip}>
-              {day}
-            </span>
-          ))}
-        </div>
       </div>
 
       <ol
