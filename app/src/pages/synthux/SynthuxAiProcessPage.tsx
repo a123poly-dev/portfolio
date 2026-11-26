@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import {
+  AgentFlow,
   CaseFigure,
   CaseSection,
   CaseSectionPair,
@@ -12,7 +13,6 @@ import {
 } from "../../components/case/synthux";
 import { SynthuxCasePage } from "./SynthuxCasePage";
 import caseStyles from "../../components/case/synthux/Synthux.module.scss";
-import flowImg from "../assets/synthux/case-3/flow.webp";
 import planImg from "../assets/synthux/case-3/plan-round-7.webp";
 import threeWaysImg from "../assets/synthux/case-3/three-ways.webp";
 import reportAiImg from "../assets/synthux/case-3/report-ai.webp";
@@ -47,15 +47,7 @@ export const SynthuxAiProcessPage = () => (
   <SynthuxCasePage
     caseKey="aiProcess"
     tocTitle="SynthUX AI process"
-    cover={
-      <CaseFigure
-        src={flowImg}
-        alt="How the work flows: me at the top, a planning model below, four worker agents under it (researcher, ds-engineer, frontend-dev, metrics-engineer), and my three approval gates: push to main, publish packages, go public"
-        width={2624}
-        height={1280}
-        priority
-      />
-    }
+    cover={<AgentFlow />}
     title={
       <Marked>
         Design work run with AI agents –{" "}
