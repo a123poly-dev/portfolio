@@ -14,6 +14,7 @@
     width: var(--sx-toc-w);
     max-height: calc(100vh - clamp(120px, 14vw, 176px) - 24px);
     overflow-y: auto;
+    overscroll-behavior: contain;
     transition: opacity 250ms ease;
   }
 }
@@ -49,8 +50,10 @@
     stroke-linejoin: round;
   }
 
-  &:hover {
-    color: var(--sx-text);
+  @media (hover: hover) {
+    &:hover {
+      color: var(--sx-text);
+    }
   }
 }
 
@@ -78,8 +81,10 @@
   text-decoration: none;
   transition: color 150ms ease;
 
-  &:hover {
-    color: var(--sx-text);
+  @media (hover: hover) {
+    &:hover {
+      color: var(--sx-text);
+    }
   }
 
   &:focus-visible {

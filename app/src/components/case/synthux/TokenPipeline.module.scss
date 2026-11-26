@@ -306,8 +306,10 @@
   color: var(--tp-text);
   cursor: pointer;
 
-  &:hover {
-    background-image: linear-gradient(rgb(229 230 227 / 8%), rgb(229 230 227 / 8%));
+  @media (hover: hover) {
+    &:hover {
+      background-image: linear-gradient(rgb(229 230 227 / 8%), rgb(229 230 227 / 8%));
+    }
   }
 
   &:focus-visible {

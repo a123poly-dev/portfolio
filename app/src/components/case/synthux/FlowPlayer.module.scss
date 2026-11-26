@@ -71,8 +71,10 @@
     padding: 4px 10px;
   }
 
-  &:hover {
-    border-color: var(--sx-text);
+  @media (hover: hover) {
+    &:hover {
+      border-color: var(--sx-text);
+    }
   }
 
   &:focus-visible {

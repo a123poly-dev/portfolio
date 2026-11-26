@@ -58,8 +58,10 @@
   cursor: pointer;
   transition: color 0.3s ease;
 
-  &:hover {
-    color: #e5e6e3;
+  @media (hover: hover) {
+    &:hover {
+      color: #e5e6e3;
+    }
   }
 
   &:focus-visible {
@@ -135,8 +137,10 @@
     border-radius: 16px;
   }
 
-  &:hover .tokenCard {
-    border-color: #4a4c48;
+  @media (hover: hover) {
+    &:hover .tokenCard {
+      border-color: #4a4c48;
+    }
   }
 }
 

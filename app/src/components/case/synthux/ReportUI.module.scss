@@ -938,8 +938,10 @@ $page: var(--r-page);
     height: 16px;
   }
 
-  &:hover {
-    border-color: rgb(34 34 33 / 40%);
+  @media (hover: hover) {
+    &:hover {
+      border-color: rgb(34 34 33 / 40%);
+    }
   }
 
   &:focus-visible {
