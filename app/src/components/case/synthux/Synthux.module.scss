@@ -455,25 +455,29 @@
   }
 }
 
-// Motion: fade up on scroll
+// Motion: soft enter on scroll (rise 8 px out of an 8 px blur)
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
+  transform: translateY(8px);
+  filter: blur(8px);
   transition:
-    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    filter 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
   transition-delay: var(--sx-delay, 0ms);
 }
 
 .isVisible {
   opacity: 1;
   transform: none;
+  filter: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .reveal {
     opacity: 1;
     transform: none;
+    filter: none;
     transition: none;
   }
 

@@ -95,21 +95,25 @@
     max-height: 0;
     overflow: hidden;
     opacity: 0;
+    filter: blur(4px);
     padding-bottom: 0;
-    // Closing is quicker than opening
+    // Closing is quicker than opening, and softens into a 4 px blur
     transition:
       max-height 150ms ease-out,
       opacity 150ms ease-out,
+      filter 150ms ease-out,
       padding-bottom 150ms ease-out;
   }
 
   .mobileMenuOpen {
     max-height: 120px;
     opacity: 1;
+    filter: none;
     padding-bottom: 30px;
     transition:
       max-height 0.3s ease-out,
       opacity 0.3s ease-out,
+      filter 0.3s ease-out,
       padding-bottom 0.3s ease-out;
   }
 }

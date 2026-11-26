@@ -68,24 +68,55 @@ address {
 
 // Scroll reveal animation. Everyone gets the fade; the 50 px rise only runs
 // when the visitor hasn't asked to reduce motion.
+// Soft enter, after "Details that make interfaces feel better":
+// rise 8 px out of an 8 px blur. Reduced motion keeps only the fade.
+$enter-ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
 .scroll-reveal {
   opacity: 0;
-  transition: opacity 0.6s ease-out;
+  transition: opacity 800ms $enter-ease;
 
   &.is-visible {
     opacity: 1;
   }
 }
 
+@keyframes enter-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+    filter: blur(8px);
+  }
+}
+
+// --stagger: section order (100 ms apart); --delay: extra per-word delay
+.animate-enter {
+  animation: enter-fade 800ms $enter-ease backwards;
+  animation-delay: calc(var(--stagger, 0) * 100ms + var(--delay, 0ms));
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .scroll-reveal {
-    transform: translateY(50px);
+    transform: translateY(8px);
+    filter: blur(8px);
     transition:
-      opacity 0.6s ease-out,
-      transform 0.6s ease-out;
+      opacity 800ms $enter-ease,
+      transform 800ms $enter-ease,
+      filter 800ms $enter-ease;
 
     &.is-visible {
-      transform: translateY(0);
+      transform: none;
+      filter: none;
     }
+  }
+
+  .animate-enter {
+    animation-name: enter;
   }
 }
