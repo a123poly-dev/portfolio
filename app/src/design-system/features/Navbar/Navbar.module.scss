@@ -4,6 +4,8 @@
 // Glass pill nav, Figma 272:67447, 16px from the top. The liquid glass layers
 // come from styles/glass.scss.
 .menu {
+  // Clearer than the card panels (user asked for 32% on the nav)
+  --glass-bg: rgb(255 255 255 / 32%);
   @include glass.surface;
   position: fixed;
   top: 16px;

@@ -19,4 +19,4 @@ export const SOCIAL_URLS: { icon: TIconName; href: string; label: string }[] = [
 ]
 
 export const CV_URL =
-  "https://docs.google.com/document/d/1KP9bpCsLrIKB96GvRvZQWRECfE5DX9qWe4iV93BX178/edit?usp=sharing"
+  "https://drive.google.com/file/d/1v7pZ4TZz8aZJBHEvcN_G7YDMBlQ23jLo/view?usp=sharing"
