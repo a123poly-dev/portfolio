@@ -1,4 +1,4 @@
-// Shared type scale (DM Sans), from the type and colour audit.
+// Shared type scale (Inter Tight), from the type and colour audit.
 // Use with: @use "<path>/styles/typography" as type; then @include type.h2;
 
 @mixin -base($size, $line, $weight: 400) {
@@ -22,7 +22,6 @@
 @mixin lead { @include -base(28px, 34px, 300); }
 @mixin h3 { @include -base(24px, 32px, 600); }
 @mixin h4 { @include -base(20px, 28px, 600); }
-@mixin body-large { @include -base(18px, 28px); }
 @mixin body { @include -base(16px, 24px); }
 @mixin body-bold { @include -base(16px, 24px, 600); }
 @mixin small { @include -base(14px, 20px); }

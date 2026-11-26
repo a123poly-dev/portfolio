@@ -97,7 +97,7 @@
 
 .lead {
   max-width: var(--sx-measure);
-  @include type.body-large;
+  @include type.body;
   color: var(--sx-text);
 }
 

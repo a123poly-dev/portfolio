@@ -91,9 +91,9 @@ All stories use `tags: ["autodocs"]` for auto-generated Docs pages with code sni
 
 - **SCSS Modules**: `*.module.scss` with `@use "../../../styles/variables" as *` for breakpoints
 - **Colours**: one light palette in `colors.scss` (`--ink`, `--text-secondary`, `--text-tertiary`, `--accent`, `--line`, `--page`, `--surface`, `--overlay`, `--critical`); no dark theme
-- **Type**: shared scale as SCSS mixins in `styles/typography.scss` (display, h1–h4, lead, body-large, body, body-bold, small, label); use them instead of raw sizes
+- **Type**: shared scale as SCSS mixins in `styles/typography.scss` (display, h1–h4, lead, body, body-bold, small, label); use them instead of raw sizes
 - **Breakpoints**: `$breakpoint-md: 991px`, `$breakpoint-sm: 767px`, `$breakpoint-xs: 479px`
-- **Fonts**: DM Sans everywhere (headings and body, from Google Fonts); Geist and Geist Mono only in the home banner, filter tabs and SynthUX product mockups
+- **Fonts**: Inter Tight everywhere (headings and body, from Google Fonts); Geist and Geist Mono only in the home banner, filter tabs and SynthUX product mockups
 
 ## Routing
 
