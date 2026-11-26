@@ -1,6 +1,5 @@
 import { Mark, MarkerText } from "../../../components/case/synthux/MarkerText"
 import avatar from "./assets/avatar-hero.webp"
-import warningIcon from "./assets/triangle-warning.svg"
 import { HERO_SOCIAL_ICONS, HERO_SOCIALS } from "./socialIcons"
 import { HelsinkiTime } from "./HelsinkiTime"
 
@@ -54,18 +53,6 @@ export const Header = () => (
   <section className={styles.header}>
     <div className={styles.container}>
       <div className={styles.content}>
-        <div
-          className={`${styles.banner} animate-enter`}
-          style={enter(0).style}
-          role="status"
-        >
-          <img src={warningIcon} width={16} height={16} alt="" />
-          <span>
-            Updated 24.11.2026 · The site is being redesigned, all case studies
-            are open
-          </span>
-        </div>
-
         <h1 className={styles.title}>
           <span
             className={`${styles.hey} animate-enter`}
