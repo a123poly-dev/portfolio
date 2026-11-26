@@ -1,21 +1,15 @@
 @use "../../../styles/variables" as *;
+@use "../../../styles/typography" as type;
 
 // Hero from portfolio Figma 272:67070
 .header {
-  --hero-text: #2c2930;
-  --hero-muted: #717171;
+  --hero-text: var(--ink);
+  --hero-muted: var(--text-tertiary);
   --hero-pill-bg: #eae9ed;
   --hero-banner-bg: rgba(46, 102, 231, 0.06);
 
   margin-top: 124px; // 76 px nav + 48 px
   margin-bottom: 0;
-}
-
-:global([data-theme="dark"]) .header {
-  --hero-text: #fff;
-  --hero-muted: #bdbdbd;
-  --hero-pill-bg: #4a4850;
-  --hero-banner-bg: rgba(83, 147, 255, 0.16);
 }
 
 .container {
@@ -62,13 +56,11 @@
   flex-wrap: nowrap;
   min-height: 97px;
   margin: 0;
+  @include type.display;
   color: var(--hero-text);
-  font-family: var(--font-family);
-  font-weight: 700;
+  // Display scales down with the screen so the row fits at 320 px
   font-size: clamp(20px, 7vw, 56px);
   line-height: 1.2;
-  letter-spacing: 1px;
-  text-transform: uppercase;
   white-space: nowrap;
 }
 
@@ -102,12 +94,8 @@
 .subtitle {
   margin: 0;
   padding-top: 8px;
+  @include type.lead;
   color: var(--hero-text);
-  font-family: var(--font-family);
-  font-weight: 300;
-  font-size: 28px;
-  line-height: 120%;
-  letter-spacing: 0;
 }
 
 // 20 px icons in 48 px circles, no gap between them
@@ -139,25 +127,16 @@
   }
 
   &:focus-visible {
-    outline: 2px solid #9453ff;
+    outline: 2px solid var(--accent);
     outline-offset: 2px;
   }
 }
 
-:global([data-theme="dark"]) .socialLink {
-  color: var(--white);
-
-  &[data-filled] {
-    color: #2c2930;
-  }
-}
 
 .location {
   padding-top: 8px;
+  @include type.body;
   color: var(--hero-muted);
-  font-family: var(--font-family);
-  font-size: 16px;
-  line-height: 22.4px;
 }
 
 @media screen and (max-width: $breakpoint-md) {

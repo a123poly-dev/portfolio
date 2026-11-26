@@ -13,9 +13,9 @@
 
 // Filter tabs: Figma 290:54881. 32 px pills, 8 px apart, 32 px above the grid.
 .filters {
-  --filter-text: #2c2930;
-  --filter-border: #d7d7d7;
-  --filter-active-bg: #2c2930;
+  --filter-text: var(--ink);
+  --filter-border: var(--line);
+  --filter-active-bg: var(--ink);
   --filter-active-text: #fff;
   --filter-count-bg: rgba(159, 152, 179, 0.1);
 
@@ -24,13 +24,6 @@
   justify-content: center;
   gap: 8px;
   margin-bottom: 32px;
-}
-
-:global([data-theme="dark"]) .filters {
-  --filter-text: #fff;
-  --filter-border: #4a4850;
-  --filter-active-bg: #fff;
-  --filter-active-text: #2c2930;
 }
 
 .filter {
@@ -63,7 +56,7 @@
   }
 
   &:focus-visible {
-    outline: 2px solid #9453ff;
+    outline: 2px solid var(--accent);
     outline-offset: 2px;
   }
 }
@@ -80,9 +73,9 @@
   }
 }
 
-// On the light tint the label stays dark, also in dark theme
+// On the light tint the label stays dark
 .filter[data-filled]:not(.filterActive) {
-  color: #2c2930;
+  color: var(--ink);
 }
 
 .count {

@@ -62,6 +62,12 @@ p {
   margin: 0;
 }
 
+// One bold weight across the site
+strong,
+b {
+  font-weight: 600;
+}
+
 address {
   font-style: normal;
 }

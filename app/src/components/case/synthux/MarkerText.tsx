@@ -96,7 +96,7 @@ const DEFAULT_COLOR: Record<MarkType, string> = {
   underline: "#f97316",
   circle: "#2563eb",
   box: "#16a34a",
-  strike: "#dc2626",
+  strike: "#cf2d40",
 };
 
 // How fast the pen travels, in px per ms. A hand slows down on long strokes,

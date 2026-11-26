@@ -1,5 +1,7 @@
+@use "../../../styles/typography" as type;
+
 // SynthUX case pages: light, fluid layout.
-// Layout and spacing scale with the viewport. Type uses only 12, 14, 16, 18, 24 and 28 px.
+// Layout and spacing scale with the viewport. Type follows the shared scale (styles/typography.scss).
 
 .page {
   // Type scale
@@ -26,12 +28,12 @@
   --sx-radius: clamp(12px, 1.6vw, 24px);
 
   // Light colours
-  --sx-text: #1a1b1f;
-  --sx-muted: #5c5f66;
-  --sx-line: #e4e4ea;
-  --sx-surface: #ffffff;
+  --sx-text: var(--ink);
+  --sx-muted: var(--text-secondary);
+  --sx-line: var(--line);
+  --sx-surface: var(--surface);
   --sx-surface-2: #f3f2f7;
-  --sx-accent: #6a3fe0;
+  --sx-accent: var(--accent);
 
   color: var(--sx-text);
   font-family: var(--font-family);
@@ -71,41 +73,31 @@
 
 // Type
 .label {
-  font-size: var(--sx-fs-12);
-  line-height: var(--sx-lh-12);
-  font-weight: 600;
-  letter-spacing: 1px;
-  text-transform: uppercase;
+  @include type.label(600);
   color: var(--sx-accent);
 }
 
-// Case title: the one size outside the type scale, as in the Figma case layout (49 px at desktop)
+// Case title: H1, shrinking on small screens
 .title {
-  font-family: var(--font-family-display);
-  font-size: clamp(28px, 3.5vw + 4px, 49px);
-  line-height: 1.2;
-  letter-spacing: 0.2px;
+  @include type.h1;
+  font-size: clamp(28px, 3.5vw + 4px, 48px);
+  line-height: 1.17;
   color: var(--sx-text);
 }
 
 .heading {
-  font-size: var(--sx-fs-24);
-  font-weight: 500;
-  line-height: var(--sx-lh-24);
+  @include type.h3;
   color: var(--sx-text);
 }
 
 .subheading {
-  font-size: var(--sx-fs-18);
-  line-height: var(--sx-lh-18);
-  font-weight: 600;
+  @include type.h4;
   color: var(--sx-text);
 }
 
 .lead {
   max-width: var(--sx-measure);
-  font-size: var(--sx-fs-18);
-  line-height: var(--sx-lh-18);
+  @include type.body-large;
   color: var(--sx-text);
 }
 
@@ -334,9 +326,7 @@
 }
 
 .statValue {
-  font-family: var(--font-family-display);
-  font-size: var(--sx-fs-28);
-  line-height: var(--sx-lh-28);
+  @include type.h2;
   color: var(--sx-text);
   font-variant-numeric: tabular-nums;
 }

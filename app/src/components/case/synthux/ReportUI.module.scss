@@ -672,7 +672,7 @@ $page: var(--r-page);
 .sevCritical {
   @extend %bar;
 
-  background: #9e1d2c;
+  background: var(--critical);
 }
 
 .sevMajor {

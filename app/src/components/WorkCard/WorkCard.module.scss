@@ -1,4 +1,5 @@
 @use "../../styles/variables" as *;
+@use "../../styles/typography" as type;
 
 .card {
   background-color: var(--bg);
@@ -113,7 +114,7 @@
   flex-direction: column;
   gap: 12px;
   padding: 24px 16px 40px;
-  background: rgba(0, 0, 0, 0.64);
+  background: var(--overlay);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   text-align: left;
@@ -123,10 +124,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  font-family: var(--font-family);
-  font-size: 14px;
-  line-height: 14px;
-  font-weight: 400;
+  @include type.small;
   color: rgba(255, 255, 255, 0.64);
   padding-right: 40px; // clears the arrow
 }
@@ -137,18 +135,14 @@
 }
 
 .metaDot {
-  font-weight: 700;
+  font-weight: 600;
 }
 
 // .panel .title beats the home page's heading overrides
 .panel .title {
   margin: 0;
+  @include type.h4;
   color: #fff;
-  font-family: var(--font-family);
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 1.2;
-  letter-spacing: 0;
 }
 
 .arrow {
@@ -224,9 +218,5 @@
   .panel {
     padding: 16px 16px 20px;
     gap: 8px;
-  }
-
-  .panel .title {
-    font-size: 18px;
   }
 }
