@@ -1,0 +1,1 @@
+export { ConsentNotice } from "./ConsentNotice"

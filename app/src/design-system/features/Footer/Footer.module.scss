@@ -1,4 +1,5 @@
 @use "../../../styles/variables" as *;
+@use "../../../styles/typography" as type;
 
 .footer {
   background-color: var(--footer-bg-color);
@@ -20,6 +21,31 @@
 
 .copyright {
   color: var(--footer-color);
+}
+
+.links {
+  display: flex;
+  gap: 20px;
+}
+
+.link {
+  @include type.small;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text-secondary);
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--ink);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
 }
 
 @media screen and (max-width: $breakpoint-sm) {

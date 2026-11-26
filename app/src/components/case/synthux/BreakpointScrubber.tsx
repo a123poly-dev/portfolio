@@ -55,7 +55,7 @@ export const BreakpointScrubber = ({
 
   return (
     <Reveal>
-      <figure className={styles.figure}>
+      <figure data-demo="breakpoints" className={styles.figure}>
         <div ref={stageRef} className={styles.stage}>
           <div className={styles.tabs} role="group" aria-label="Screen width">
             {items.map((item) => (

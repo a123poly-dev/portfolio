@@ -123,6 +123,9 @@ export const CaseToc = ({
             <a
               href={`#${item.id}`}
               onClick={go(item.id)}
+              data-track="toc_click"
+              data-track-case={location.pathname.replace(/^\//, "")}
+              data-track-section={item.id}
               className={cn(styles.item, active === item.id && styles.active)}
               aria-current={active === item.id ? "location" : undefined}
             >

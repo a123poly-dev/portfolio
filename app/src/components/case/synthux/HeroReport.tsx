@@ -419,7 +419,7 @@ export const HeroReport = () => {
   const scale = width > 0 ? width / viewW : 0;
 
   return (
-    <div className={`${styles.hero} ${dark ? styles.dark : ""}`}>
+    <div data-demo="hero_report" className={`${styles.hero} ${dark ? styles.dark : ""}`}>
       <div
         ref={frameRef}
         className={styles.frame}

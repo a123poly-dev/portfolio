@@ -538,7 +538,7 @@ export const DsBento = () => {
   const scale = width > 0 ? width / viewW : 0;
 
   return (
-    <div
+    <div data-demo="ds_bento"
       ref={frameRef}
       className={cn(styles.frame, dark && styles.frameDark)}
       style={{ aspectRatio: `${viewW} / ${PANEL_H}` }}

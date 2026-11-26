@@ -22,7 +22,13 @@ export const CaseNext = ({ items }: TCaseNextProps) => {
     <div className={styles.next}>
       {items.map((item, index) => (
         <Reveal key={item.to} delay={index * 120}>
-          <Link to={item.to} className={styles.nextCard}>
+          <Link
+            to={item.to}
+            className={styles.nextCard}
+            data-track="next_case_click"
+            data-track-from={location.pathname.replace(/^\//, "")}
+            data-track-to={item.to.replace(/^\//, "")}
+          >
             <span className={styles.label}>{item.eyebrow}</span>
             <span className={styles.subheading}>{item.title}</span>
             <span className={styles.small}>{item.lead}</span>

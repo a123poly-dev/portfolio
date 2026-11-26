@@ -23,11 +23,19 @@ const coverSizeClassMap: Record<TProject["cover"], string> = {
 
 type TWorkCardProps = {
   project: TProject
+  // Place in the grid, from 1, for analytics
+  position?: number
 }
 
 // Image-only card. The meta line, title and arrow sit in a white glass panel that
 // slides up on hover (Figma 290:54602); on touch screens it is always shown.
-export const WorkCard = ({ project }: TWorkCardProps) => {
+export const WorkCard = ({ project, position }: TWorkCardProps) => {
+  const trackProps = {
+    "data-track": "case_card_click",
+    "data-track-case": project.id,
+    "data-track-position": position,
+    "data-track-group": project.id.startsWith("synthux") ? "synthux" : "older",
+  }
   const ref = useScrollReveal<HTMLDivElement>()
 
   const content = (
@@ -78,6 +86,7 @@ export const WorkCard = ({ project }: TWorkCardProps) => {
         target="_blank"
         rel="noopener noreferrer"
         className={styles.card}
+        {...trackProps}
       >
         {content}
       </a>
@@ -85,7 +94,7 @@ export const WorkCard = ({ project }: TWorkCardProps) => {
   }
 
   return (
-    <Link to={project.link} className={styles.card}>
+    <Link to={project.link} className={styles.card} {...trackProps}>
       {content}
     </Link>
   )

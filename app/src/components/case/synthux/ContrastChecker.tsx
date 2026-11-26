@@ -234,7 +234,7 @@ export const ContrastChecker = ({ caption }: { caption?: ReactNode }) => {
 
   return (
     <Reveal>
-      <figure className={caseStyles.figure}>
+      <figure data-demo="contrast_checker" className={caseStyles.figure}>
         <div ref={rootRef} className={tp.root}>
           <div className={pg.head}>
             <span className={tp.title}>
