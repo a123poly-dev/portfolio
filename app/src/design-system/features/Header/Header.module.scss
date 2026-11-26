@@ -5,7 +5,6 @@
 .header {
   --hero-text: var(--ink);
   --hero-muted: var(--text-tertiary);
-  --hero-banner-bg: rgba(46, 102, 231, 0.06);
 
   margin-top: 124px; // 76 px nav + 48 px
   margin-bottom: 0;
@@ -23,26 +22,6 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-}
-
-.banner {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  padding: 10px 16px;
-  margin-bottom: 16px;
-  border-radius: 16px;
-  background: var(--hero-banner-bg);
-  color: var(--hero-text);
-  font-family: var(--font-family);
-  font-size: 14px;
-  line-height: 20px;
-
-  img {
-    flex-shrink: 0;
-  }
 }
 
 // "HEY, [avatar] I'M POLINA —": Inter Tight bold, same family as the body text.
@@ -107,6 +86,7 @@
 .socials {
   display: flex;
   justify-content: center;
+  gap: 8px;
   padding-top: 16px;
 }
 
@@ -114,8 +94,9 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
+  // 40 × 40 hover area, 8 px apart
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   // Same colour as the display title, in both themes
   color: var(--hero-text);
@@ -168,12 +149,6 @@
   .header {
     padding-left: 16px;
     padding-right: 16px;
-  }
-
-  .banner {
-    font-size: 13px;
-    line-height: 18px;
-    gap: 8px;
   }
 
   .subtitle {

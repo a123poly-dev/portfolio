@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { track } from "../../../analytics/track"
 import styles from "./ThemeToggle.module.scss"
+import { fadeToTheme } from "./themeFade"
 
 type TTheme = "light" | "dark"
 
@@ -78,7 +79,7 @@ export const ThemeToggle = ({ className }: { className?: string }) => {
 
   const toggle = () => {
     const next: TTheme = theme === "dark" ? "light" : "dark"
-    applyTheme(next)
+    fadeToTheme(() => applyTheme(next))
     setTheme(next)
     track("theme_toggle", { to: next })
     try {
