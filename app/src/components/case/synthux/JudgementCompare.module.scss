@@ -136,7 +136,7 @@ $phone: 720px;
   display: block;
   width: 100%;
   height: auto;
-  border-radius: clamp(8px, 1vw, 16px);
+  // Square crops, as in the Figma layout
   box-shadow: 0 0 0 1px var(--sx-line);
 }
 
