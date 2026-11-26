@@ -5,6 +5,7 @@ import { Reveal } from "./Reveal";
 import caseStyles from "./Synthux.module.scss";
 import tp from "./TokenPipeline.module.scss";
 import pg from "./TokenPlayground.module.scss";
+import { useSiteDark } from "./useSiteDark";
 import styles from "./ContrastChecker.module.scss";
 
 // Figma "2.5 Contrast checker (variants)" (90:16722): 5 pairs x Light/Dark.
@@ -194,7 +195,10 @@ export const ContrastChecker = ({ caption }: { caption?: ReactNode }) => {
   const rootRef = useRef<HTMLDivElement>(null);
   const bodyRef = useRef<HTMLDivElement>(null);
   const [pairId, setPairId] = useState(PAIRS[0].id);
-  const [theme, setTheme] = useState<TTheme>("light");
+  // Starts on the site theme, and follows it when the reader switches it
+  const siteDark = useSiteDark();
+  const [theme, setTheme] = useState<TTheme>(siteDark ? "dark" : "light");
+  useEffect(() => setTheme(siteDark ? "dark" : "light"), [siteDark]);
   const systemDark = useSystemDark();
   const dark = theme === "dark" || (theme === "system" && systemDark);
   const [layout, setLayout] = useState({ wide: true, scale: 1, height: 0 });

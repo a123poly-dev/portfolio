@@ -2,18 +2,35 @@
 // Gantt timeline, from Figma 249:63483. Type: 12 and 14 px only.
 
 $days: 35;
-$line: #f3f3f4;
-$line-strong: #e8e8e8;
 
 .card {
   @include theme.light-island;
   --label-w: clamp(220px, 40%, 448px);
+  --g-bg: #fff;
+  --g-border: #e4e4ea;
+  --g-head: #5c5f66;
+  --g-text: #0d0d0c;
+  --g-line: #f3f3f4;
+  --g-line-strong: #e8e8e8;
 
   margin: 0;
   padding: 16px 24px;
-  background: #fff;
-  border: 1px solid #e4e4ea;
+  background: var(--g-bg);
+  border: 1px solid var(--g-border);
   border-radius: 12px;
+}
+
+// Dark theme: the timeline follows the site and turns dark
+:global(:root[data-theme="dark"]) .card {
+  color-scheme: dark;
+  --g-bg: #18191b;
+  --g-border: #2a2b2e;
+  --g-head: #a4a6ab;
+  --g-text: #f2f2f3;
+  --g-line: #1f2023;
+  --g-line-strong: #2c2d31;
+
+  color: var(--g-text);
 }
 
 .head,
@@ -26,7 +43,7 @@ $line-strong: #e8e8e8;
   height: 24px;
   font-size: 12px;
   line-height: 16px;
-  color: #5c5f66;
+  color: var(--g-head);
 }
 
 .headLabel {
@@ -60,7 +77,7 @@ $line-strong: #e8e8e8;
   padding-right: 16px;
   font-size: 14px;
   line-height: 19px;
-  color: #0d0d0c;
+  color: var(--g-text);
 
   strong {
     font-weight: 700;
@@ -72,10 +89,10 @@ $line-strong: #e8e8e8;
   position: relative;
   align-self: stretch;
   min-height: 39px;
-  border-right: 1px solid $line-strong;
+  border-right: 1px solid var(--g-line-strong);
   background-image:
-    linear-gradient(to right, $line-strong 1px, transparent 1px),
-    linear-gradient(to right, $line 1px, transparent 1px);
+    linear-gradient(to right, var(--g-line-strong) 1px, transparent 1px),
+    linear-gradient(to right, var(--g-line) 1px, transparent 1px);
   background-size:
     calc(100% * 5 / #{$days}) 100%,
     calc(100% / #{$days}) 100%;
