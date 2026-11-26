@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
 import {
   AgentFlow,
-  CaseFigure,
   CaseSection,
   CaseSectionPair,
   CaseSplit,
@@ -10,11 +9,11 @@ import {
   JudgementCompare,
   Mark,
   MarkerText,
+  PlanRun,
   ThreeWays,
 } from "../../components/case/synthux";
 import { SynthuxCasePage } from "./SynthuxCasePage";
 import caseStyles from "../../components/case/synthux/Synthux.module.scss";
-import planImg from "../assets/synthux/case-3/plan-round-7.webp";
 import reportAiImg from "../assets/synthux/case-3/report-ai.webp";
 import reportMineImg from "../assets/synthux/case-3/report-mine.webp";
 
@@ -40,9 +39,6 @@ const Marked = ({ children }: { children: ReactNode }) => (
 const STORYBOOK_URL = "https://synthetic-users-lab-eight.vercel.app/";
 
 // Case 3: the AI process. Text trimmed from drafts/case-3-ai-process.md to the agreed brief.
-// Step 1 of the Case 3 plan: text and static 2x images. The three motion blocks
-// (cover flow, three ways of working, plan run) and the judgement slider show a
-// still frame until their own step replaces them.
 export const SynthuxAiProcessPage = () => (
   <SynthuxCasePage
     caseKey="aiProcess"
@@ -166,13 +162,7 @@ export const SynthuxAiProcessPage = () => (
           </li>
         </ul>
       </CaseText>
-      <CaseFigure
-        src={planImg}
-        alt="Design-system sync round 7 on Day 32: twelve steps from 17:52 to 19:09, eight code steps and four calls by me, ending with PR #110 merged and packages at 0.3.0"
-        width={2880}
-        height={1600}
-        caption="Day 32: one plan, run step by step. Four of the steps were my calls."
-      />
+      <PlanRun />
     </CaseSection>
 
     <CaseSection

@@ -4,3 +4,10 @@
   ➜  Local:   http://localhost:5179/
   ➜  Network: use --host to expose
 8:37:14 PM [vite] (client) hmr update /src/components/case/synthux/ThreeWays.tsx
+8:40:37 PM [vite] (client) hmr update /src/pages/synthux/SynthuxAiProcessPage.tsx, /src/pages/synthux/SynthuxPreviewPage.tsx, /src/pages/synthux/SynthuxEndToEndPage.tsx, /src/pages/synthux/SynthuxDesignSystemPage.tsx, /src/pages/synthux/SynthuxCasePage.tsx
+8:40:37 PM [vite] (client) hmr update /src/pages/synthux/SynthuxAiProcessPage.tsx
+8:40:37 PM [vite] (client) hmr update /src/pages/synthux/SynthuxAiProcessPage.tsx
+8:40:44 PM [vite] (client) hmr update /src/pages/synthux/SynthuxAiProcessPage.tsx
+8:41:26 PM [vite] (client) hmr update /src/components/case/synthux/PlanRun.tsx
+8:42:00 PM [vite] (client) hmr update /src/components/case/synthux/PlanRun.tsx
+8:42:00 PM [vite] (client) hmr update /src/components/case/synthux/PlanRun.tsx
