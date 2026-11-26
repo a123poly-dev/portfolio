@@ -120,3 +120,11 @@
     padding-right: 24px;
   }
 }
+
+// Matches the hero's 16 px side margins on small phones
+@media screen and (max-width: $breakpoint-xs) {
+  .works {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
