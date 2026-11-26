@@ -110,7 +110,7 @@
   letter-spacing: 0;
 }
 
-// 18 px icons in 48 px circles, no gap between them
+// 20 px icons in 48 px circles, no gap between them
 .socials {
   display: flex;
   justify-content: center;
@@ -134,8 +134,8 @@
 
   svg {
     display: block;
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
   }
 
   &:focus-visible {
