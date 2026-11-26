@@ -54,5 +54,9 @@ export const SYNTHUX_CASES: TSynthuxCaseInfo[] = [
     eyebrow: "SynthUX · Case 3 of 3",
     title: "A design process run with AI agents",
     lead: "I set up AI agents as my execution team, saw the setup fail on Day 18, and rebuilt it around how much I can review well.",
+    timeline: "34 days of active work",
+    pageTitle: "Design work run with AI agents – the judgement stays mine",
+    team: "me, frontend developer (consultant), product developer, AI agents for planning, research, copy and code.",
+    hideLead: true,
   },
 ]

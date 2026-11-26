@@ -1,0 +1,220 @@
+// Agent flow on the Case 3 cover: dark, as in the Figma visual 3.1.
+// The stage is drawn at the Figma size and scaled to the container width.
+
+.root {
+  --af-page: #121211;
+  --af-surface: #1b1b1a;
+  --af-line: rgb(229 230 227 / 16%);
+  --af-text: #e5e6e3;
+  --af-muted: #93948f;
+  --af-green: #89ba50;
+
+  position: relative;
+  width: 100%;
+  border-radius: var(--sx-radius);
+  background-color: var(--af-page);
+  background-image: radial-gradient(circle, rgb(229 230 227 / 10%) 1px, transparent 1.2px);
+  background-size: 24px 24px;
+  color: var(--af-text);
+  font-family: "Geist", ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+.stage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: 0 0;
+
+  > * {
+    position: absolute;
+  }
+}
+
+.line {
+  background: var(--af-line);
+}
+
+// Cards
+
+.cardWrap {
+  border-radius: 16px;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  height: 100%;
+  padding: 16px;
+  border-radius: 16px;
+  background: var(--af-surface);
+}
+
+.cardTitle {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 500;
+  color: var(--af-text);
+  white-space: nowrap;
+}
+
+.cardText {
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--af-muted);
+}
+
+.glow,
+.ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.glow {
+  background: var(--af-green);
+  filter: blur(12px);
+}
+
+.ring {
+  box-shadow: inset 0 0 0 2px var(--af-green);
+}
+
+// Labels
+
+.label {
+  font-family: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: var(--af-muted);
+}
+
+.gatesLabel {
+  display: flex;
+  align-items: center;
+  height: 18px;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 500;
+  color: var(--af-muted);
+  white-space: nowrap;
+}
+
+// Gates
+
+.gate {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid var(--af-line);
+  border-radius: 999px;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--af-text);
+}
+
+.gateLit {
+  position: absolute;
+  inset: -1px;
+  border-radius: 999px;
+  background: rgb(137 186 80 / 12%);
+  box-shadow: inset 0 0 0 1.5px var(--af-green);
+  opacity: 0;
+}
+
+.gateDot {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--af-muted);
+}
+
+// Tags and signal
+
+.tag {
+  padding: 5px 9px;
+  border: 1px solid var(--af-green);
+  border-radius: 6px;
+  background: var(--af-surface);
+  font-family: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  color: var(--af-green);
+  white-space: nowrap;
+  opacity: 0;
+}
+
+.sigX,
+.sigY {
+  display: block;
+}
+
+.signal {
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--af-green);
+  box-shadow: 0 0 10px rgb(137 186 80 / 60%);
+  opacity: 0;
+}
+
+// Controls
+
+.control {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid #30322f;
+  border-radius: 8px;
+  background: var(--af-surface);
+  color: var(--af-text);
+  cursor: pointer;
+
+  &:hover {
+    background-image: linear-gradient(rgb(229 230 227 / 8%), rgb(229 230 227 / 8%));
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--af-green);
+    outline-offset: 2px;
+  }
+}
+
+// Motion: one loop, paused off screen or when the reader pauses it.
+// Paused or with reduced motion it rests on the frame where the gates are lit.
+
+.anim {
+  animation-duration: var(--af-loop);
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+  animation-play-state: paused;
+}
+
+.playing .anim {
+  animation-play-state: running;
+}
+
+.atRest .anim {
+  animation-delay: var(--af-rest);
+}

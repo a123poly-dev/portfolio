@@ -494,3 +494,33 @@
   clip: rect(0 0 0 0);
   white-space: nowrap;
 }
+
+// Two-column table, for example "What I did / What the agents did" in Case 3
+.roleTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--sx-fs-16);
+  line-height: var(--sx-lh-16);
+
+  th,
+  td {
+    text-align: left;
+    vertical-align: top;
+    padding: 12px 16px 12px 0;
+    border-bottom: 1px solid var(--sx-line);
+  }
+
+  th {
+    font-size: var(--sx-fs-12);
+    line-height: var(--sx-lh-12);
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--sx-muted);
+  }
+
+  td:first-child,
+  th:first-child {
+    width: 50%;
+  }
+}

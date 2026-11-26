@@ -1,0 +1,364 @@
+// One plan, run step by step: dark, as in the Figma case frame 314:59257.
+// The PR panel sits on top, the steps below it, at every width.
+
+.root {
+  --pr-page: #121211;
+  --pr-surface: #1b1b1a;
+  --pr-border: #30322f;
+  --pr-text: #e5e6e3;
+  --pr-muted: #93948f;
+  --pr-green: #89ba50;
+  --pr-pad: clamp(20px, 4vw, 56px);
+
+  position: relative;
+  container-type: inline-size;
+  margin: var(--sx-space-block, 32px) 0 0;
+  padding: var(--pr-pad);
+  border-radius: var(--sx-radius);
+  background-color: var(--pr-page);
+  background-image: radial-gradient(circle, rgb(229 230 227 / 10%) 1px, transparent 1.2px);
+  background-size: 24px 24px;
+  color: var(--pr-text);
+  font-family: "Geist", ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+.mono {
+  font-family: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-right: 48px;
+}
+
+.title {
+  margin: 0;
+  font-size: 24px;
+  line-height: 30px;
+  font-weight: 500;
+  text-wrap: balance;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  padding: 7px 11px;
+  border-radius: 8px;
+  background: var(--pr-surface);
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 500;
+  color: var(--pr-muted);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 45px;
+  margin-top: 24px;
+}
+
+// Steps
+
+.steps {
+  --pr-time: 48px;
+  --pr-gap: 14px;
+
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  @container (min-width: 600px) {
+    --pr-time: 58px;
+    --pr-gap: 20px;
+  }
+}
+
+// Runs from the first node to the last one (node centres at 21px)
+.rail {
+  position: absolute;
+  top: 21px;
+  bottom: 21px;
+  left: calc(var(--pr-time) + var(--pr-gap) + 5px);
+  width: 2px;
+  background: rgb(229 230 227 / 12%);
+}
+
+.railFill {
+  position: absolute;
+  inset: 0;
+  background: var(--pr-green);
+  transform-origin: top center;
+}
+
+.step {
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--pr-time) 12px minmax(0, 1fr);
+  column-gap: var(--pr-gap);
+  align-items: start;
+  padding: 10px 0;
+}
+
+.time {
+  font-family: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 500;
+  color: var(--pr-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.node {
+  position: relative;
+  width: 12px;
+  height: 12px;
+  margin-top: 5px;
+  border: 2px solid var(--pr-green);
+  border-radius: 50%;
+  background: var(--pr-page);
+
+  .step[data-me] & {
+    border-color: var(--pr-text);
+  }
+}
+
+.nodeFill {
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  background: var(--pr-green);
+
+  .step[data-me] & {
+    background: var(--pr-text);
+  }
+}
+
+.text {
+  font-size: 16px;
+  line-height: 22px;
+  color: var(--pr-text);
+
+  .step[data-me] & {
+    font-weight: 500;
+  }
+}
+
+.me {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 3px 8px;
+  border: 1px solid rgb(229 230 227 / 40%);
+  border-radius: 999px;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  vertical-align: 1px;
+}
+
+// PR panel
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px 28px;
+  border-radius: 16px;
+  background: var(--pr-surface);
+}
+
+.prLine {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+  min-height: 30px;
+}
+
+.prNumber {
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 500;
+}
+
+.status {
+  --pr-tone: var(--pr-muted);
+
+  padding: 5px 10px;
+  border: 1px solid var(--pr-tone);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--pr-tone) 14%, transparent);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  color: var(--pr-tone);
+  animation: pr-in 0.2s cubic-bezier(0.5, 0, 0.5, 1);
+
+  &[data-status="ready"] {
+    --pr-tone: var(--pr-text);
+  }
+
+  &[data-status="merged"] {
+    --pr-tone: var(--pr-green);
+  }
+}
+
+.countLine {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.panelLabel {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  color: var(--pr-muted);
+}
+
+.count {
+  font-family: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px;
+  line-height: 16px;
+  font-variant-numeric: tabular-nums;
+}
+
+.bar {
+  position: relative;
+  height: 8px;
+  overflow: hidden;
+  border-radius: 4px;
+  background: rgb(229 230 227 / 12%);
+}
+
+.barFill {
+  position: absolute;
+  inset: 0;
+  border-radius: 4px;
+  background: var(--pr-green);
+  transform-origin: left center;
+}
+
+.version {
+  font-family: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  color: var(--pr-muted);
+
+  &[data-new] {
+    color: var(--pr-green);
+    animation: pr-in 0.3s cubic-bezier(0, 0, 0.58, 1);
+  }
+}
+
+// Replay
+
+.control {
+  position: absolute;
+  top: var(--pr-pad);
+  right: var(--pr-pad);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--pr-border);
+  border-radius: 8px;
+  background: var(--pr-surface);
+  color: var(--pr-text);
+  cursor: pointer;
+
+  &:hover {
+    background-image: linear-gradient(rgb(229 230 227 / 8%), rgb(229 230 227 / 8%));
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--pr-green);
+    outline-offset: 2px;
+  }
+}
+
+// Motion: plays once in view on the Figma timeline, then stays on the last frame
+
+.anim {
+  animation-delay: var(--pr-delay, 0s);
+  animation-fill-mode: both;
+  animation-play-state: paused;
+}
+
+.playing .anim {
+  animation-play-state: running;
+}
+
+.step.anim {
+  animation-name: pr-step;
+  animation-duration: 0.3s;
+  animation-timing-function: cubic-bezier(0, 0, 0.58, 1);
+}
+
+.nodeFill.anim {
+  animation-name: pr-fade;
+  animation-duration: 0.2s;
+  animation-timing-function: cubic-bezier(0, 0, 0.58, 1);
+}
+
+.railFill.anim {
+  animation-name: pr-rail;
+  animation-duration: var(--pr-dur);
+  animation-timing-function: linear;
+}
+
+// Keyframes come from PlanRun.tsx (global name, set inline)
+.barFill.anim {
+  animation-duration: var(--pr-dur);
+}
+
+.still .anim,
+.still .status,
+.still .version {
+  animation: none;
+}
+
+@keyframes pr-step {
+  from {
+    opacity: 0.35;
+  }
+}
+
+@keyframes pr-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes pr-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes pr-rail {
+  from {
+    transform: scaleY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anim,
+  .status,
+  .version {
+    animation: none;
+  }
+}
