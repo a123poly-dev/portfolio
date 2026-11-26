@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react"
 import { track } from "../../../analytics/track"
 import styles from "./ThemeToggle.module.scss"
+import { playThemeFill } from "./themeFill"
 
 type TTheme = "light" | "dark"
 
 const STORAGE_KEY = "theme"
+
+// --page in colors.scss: the colour the blob fill floods the screen with
+const PAGE_COLOR: Record<TTheme, string> = { light: "#fafafa", dark: "#0f1011" }
 
 const readTheme = (): TTheme =>
   document.documentElement.dataset.theme === "dark" ? "dark" : "light"
@@ -76,9 +80,16 @@ export const ThemeToggle = ({ className }: { className?: string }) => {
     return () => media.removeEventListener("change", onChange)
   }, [])
 
-  const toggle = () => {
+  const toggle = (e: React.MouseEvent<HTMLButtonElement>) => {
     const next: TTheme = theme === "dark" ? "light" : "dark"
-    applyTheme(next)
+    // Blobs grow from the centre of the toggle; the theme flips once they cover
+    const r = e.currentTarget.getBoundingClientRect()
+    playThemeFill({
+      x: r.left + r.width / 2,
+      y: r.top + r.height / 2,
+      color: PAGE_COLOR[next],
+      onCovered: () => applyTheme(next),
+    })
     setTheme(next)
     track("theme_toggle", { to: next })
     try {

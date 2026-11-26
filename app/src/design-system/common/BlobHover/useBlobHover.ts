@@ -3,15 +3,15 @@ import { useEffect, useRef } from "react"
 // Blob-fill hover, after ttm.supply's "Get started" button: two waves of
 // circles grow from the edge the pointer enters and flood the pill, while the
 // label rolls up to a copy of itself. Leaving plays the fill back 1.8x faster.
-const TOTAL = 700
+export const TOTAL = 700
 const OUT_SPEED = 1.8
-const EASE = {
+export const EASE = {
   out: "cubic-bezier(.33, 1, .68, 1)",
   inOut: "cubic-bezier(.65, 0, .35, 1)",
   roll: "cubic-bezier(.76, 0, .24, 1)",
 }
 // [blob, delay s, duration s, ease]
-const STEPS: [string, number, number, keyof typeof EASE][] = [
+export const STEPS: [string, number, number, keyof typeof EASE][] = [
   ["a1", 0, 0.42, "out"],
   ["a3", 0.04, 0.42, "out"],
   ["a2", 0.05, 0.42, "out"],
