@@ -117,12 +117,10 @@
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  color: var(--black);
-  opacity: 0.8;
-  transition: opacity 150ms ease-out;
+  // Same colour as the display title, in both themes
+  color: var(--hero-text);
 
   &[data-filled] {
-    opacity: 1;
     color: var(--on-pastel);
   }
 
