@@ -110,16 +110,19 @@
   letter-spacing: 0;
 }
 
-// 40 px hit circles with no gap keep the icons 16 px apart, as in Figma
+// 18 px icons in 48 px circles, no gap between them
 .socials {
   display: flex;
   justify-content: center;
-  padding: 16px 0;
+  padding: 12px 0;
 }
 
 .socialLink {
   display: inline-flex;
-  padding: 8px;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   color: var(--black);
   opacity: 0.8;
@@ -127,6 +130,12 @@
 
   &[data-filled] {
     opacity: 1;
+  }
+
+  svg {
+    display: block;
+    width: 18px;
+    height: 18px;
   }
 
   &:focus-visible {
