@@ -198,10 +198,12 @@ $phone: 720px;
   position: absolute;
   width: min(280px, 70vw);
   padding: 14px 16px;
+  border: 1px solid rgb(255 255 255 / 12%);
   border-radius: 12px;
-  background: var(--sx-text);
+  // Always dark, in both themes, so the white text stays readable
+  background: #1a1b1f;
   color: #fff;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.24);
   animation: pop 0.16s ease-out;
 
   &[data-y="below"] {
