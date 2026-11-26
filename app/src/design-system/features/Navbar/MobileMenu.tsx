@@ -9,6 +9,7 @@ import {
 type TMobileMenuProps = {
   isOpen: boolean
   isMainPage: boolean
+  cvUrl: string
   handleLinkClick: () => void
 }
 
@@ -16,6 +17,7 @@ export const MobileMenu = ({
   isOpen,
   handleLinkClick,
   isMainPage,
+  cvUrl,
 }: TMobileMenuProps) => (
   <div className={cn(styles.mobileMenu, isOpen && styles.mobileMenuOpen)}>
     {isMainPage ? (
@@ -43,6 +45,15 @@ export const MobileMenu = ({
       onClick={handleLinkClick}
     >
       LinkedIn
+    </a>
+    <a
+      href={cvUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={styles.mobileLink}
+      onClick={handleLinkClick}
+    >
+      CV Download
     </a>
   </div>
 )

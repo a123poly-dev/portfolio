@@ -25,7 +25,7 @@ type TWorkCardProps = {
   project: TProject
 }
 
-// Image-only card. The meta line, title and arrow sit in a dark panel that
+// Image-only card. The meta line, title and arrow sit in a white glass panel that
 // slides up on hover (Figma 290:54602); on touch screens it is always shown.
 export const WorkCard = ({ project }: TWorkCardProps) => {
   const ref = useScrollReveal<HTMLDivElement>()
@@ -33,7 +33,11 @@ export const WorkCard = ({ project }: TWorkCardProps) => {
   const content = (
     <div
       ref={ref}
-      className={cn("scroll-reveal", styles.cover, coverSizeClassMap[project.cover])}
+      className={cn(
+        "scroll-reveal",
+        styles.cover,
+        coverSizeClassMap[project.cover],
+      )}
     >
       <div
         className={cn(styles.coverImage, coverClassMap[project.coverClass])}

@@ -1,11 +1,19 @@
 import { useState, useEffect, useRef } from "react"
-import { ROOT_PATH, MAIN_PAGE_WORKS } from "../../../constants/routePathConstants"
+import { CV_URL } from "../../../constants/socials"
+import {
+  ROOT_PATH,
+  MAIN_PAGE_WORKS,
+} from "../../../constants/routePathConstants"
 
 import { ButtonLink } from "@design-system/common/ButtonLink"
 import { BurgerButton } from "@design-system/features/BurgerButton"
 import styles from "./Navbar.module.scss"
 import { MobileMenu } from "./MobileMenu"
-import logo from "./assets/logo.svg"
+import { DownloadMorphIcon } from "./DownloadMorphIcon"
+import logo from "./assets/logo-mark.svg"
+
+// How long the CV icon stays a check before turning back into an arrow
+const CV_CHECK_MS = 2000
 
 type TNavbarProps = {
   isMainPage?: boolean
@@ -14,6 +22,16 @@ type TNavbarProps = {
 export const Navbar = ({ isMainPage = false }: TNavbarProps) => {
   const [isOpen, setIsOpen] = useState(false)
   const navRef = useRef<HTMLElement>(null)
+  const [cvDone, setCvDone] = useState(false)
+  const cvTimer = useRef<number>(undefined)
+
+  useEffect(() => () => window.clearTimeout(cvTimer.current), [])
+
+  const handleCvClick = () => {
+    setCvDone(true)
+    window.clearTimeout(cvTimer.current)
+    cvTimer.current = window.setTimeout(() => setCvDone(false), CV_CHECK_MS)
+  }
 
   useEffect(() => {
     if (!isOpen) return
@@ -42,12 +60,7 @@ export const Navbar = ({ isMainPage = false }: TNavbarProps) => {
       <div className={styles.container}>
         <div className={styles.wrapper}>
           <a href={ROOT_PATH} className={styles.logo}>
-            <img
-              src={logo}
-              width={138}
-              alt="Polina's Portfolio"
-              className={styles.logo}
-            />
+            <img src={logo} width={24} height={24} alt="Polina's Portfolio" />
           </a>
 
           {/* Desktop nav — hidden on mobile */}
@@ -63,6 +76,12 @@ export const Navbar = ({ isMainPage = false }: TNavbarProps) => {
                 isExternal
               >
                 LinkedIn
+              </ButtonLink>
+            </li>
+            <li>
+              <ButtonLink href={CV_URL} isExternal onClick={handleCvClick}>
+                CV Download
+                <DownloadMorphIcon checked={cvDone} />
               </ButtonLink>
             </li>
           </ul>
@@ -82,6 +101,7 @@ export const Navbar = ({ isMainPage = false }: TNavbarProps) => {
         isOpen={isOpen}
         handleLinkClick={handleLinkClick}
         isMainPage={isMainPage}
+        cvUrl={CV_URL}
       />
     </nav>
   )

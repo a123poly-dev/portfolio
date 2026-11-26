@@ -1,18 +1,20 @@
-// Nav pill with the blob-fill hover (see common/BlobHover)
+// Nav link (Figma 272:67467) with the blob-fill hover (see common/BlobHover)
 .buttonLink {
   display: inline-flex;
-  color: var(--header-button-color);
+  color: var(--ink);
   font-family: var(--font-family);
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 20px;
-  letter-spacing: 0;
-  padding: 5px 12px;
+  letter-spacing: 0.2px;
+  padding: 8px 16px;
   border-radius: 40px;
   text-decoration: none;
-  transition: color 150ms ease-out;
+}
 
-  &[data-filled] {
-    color: var(--header-button-color-hover);
-  }
+// Text with an optional 16px icon after it
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }

@@ -102,7 +102,7 @@
   background-size: cover;
 }
 
-// Hover panel: Figma 290:54602. 64% black glass at the bottom of the cover,
+// Hover panel: Figma 290:54602, now in the nav's white glass (--glass-*),
 // with the meta line, the title and an up-right arrow.
 .panel {
   position: absolute;
@@ -114,9 +114,10 @@
   flex-direction: column;
   gap: 12px;
   padding: 24px 16px 40px;
-  background: var(--overlay);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 70%);
   text-align: left;
 }
 
@@ -125,7 +126,7 @@
   flex-wrap: wrap;
   gap: 8px;
   @include type.small;
-  color: rgba(255, 255, 255, 0.64);
+  color: var(--text-secondary);
   padding-right: 40px; // clears the arrow
 }
 
@@ -142,7 +143,7 @@
 .panel .title {
   margin: 0;
   @include type.h4;
-  color: #fff;
+  color: var(--ink);
 }
 
 .arrow {
@@ -151,7 +152,7 @@
   right: 8px;
   display: flex;
   padding: 8px;
-  color: #fff;
+  color: var(--ink);
 }
 
 // Real hover: the panel slides up and the cover zooms a little.

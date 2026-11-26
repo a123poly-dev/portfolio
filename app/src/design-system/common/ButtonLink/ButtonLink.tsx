@@ -12,6 +12,7 @@ type TButtonLinkProps = {
   children: React.ReactNode
   isExternal?: boolean
   className?: string
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>
 }
 
 export const ButtonLink = ({
@@ -19,6 +20,7 @@ export const ButtonLink = ({
   children,
   isExternal = false,
   className,
+  onClick,
 }: TButtonLinkProps) => {
   const ref = useBlobHover<HTMLAnchorElement>()
 
@@ -27,10 +29,13 @@ export const ButtonLink = ({
       ref={ref}
       href={href}
       className={cn(blobHostClass, styles.buttonLink, className)}
+      onClick={onClick}
       {...(isExternal && { target: "_blank", rel: "noopener noreferrer" })}
     >
       <BlobLayer />
-      <BlobRoll>{children}</BlobRoll>
+      <BlobRoll>
+        <span className={styles.label}>{children}</span>
+      </BlobRoll>
     </a>
   )
 }
