@@ -9,8 +9,8 @@
   border-radius: 40px;
   text-decoration: none;
   transition:
-    background-color 0.2s,
-    color 0.2s;
+    background-color 150ms ease-out,
+    color 150ms ease-out;
 
   @media (hover: hover) {
     &:hover {

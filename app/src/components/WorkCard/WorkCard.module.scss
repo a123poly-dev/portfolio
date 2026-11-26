@@ -163,18 +163,22 @@
 // Real hover: the panel slides up and the cover zooms a little.
 // Touch screens have no hover, so they keep the panel in place.
 @media (hover: hover) {
+  // Hiding (leaving the card) is quicker than showing
   .panel {
     opacity: 0;
     transform: translateY(24px);
     transition:
-      opacity 0.3s ease,
-      transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+      opacity 150ms ease-out,
+      transform 150ms ease-out;
   }
 
   .card:hover .panel,
   .card:focus-visible .panel {
     opacity: 1;
     transform: translateY(0);
+    transition:
+      opacity 0.3s ease-out,
+      transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   .card:hover .coverImage,

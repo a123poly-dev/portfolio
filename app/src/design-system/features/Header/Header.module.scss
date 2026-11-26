@@ -123,7 +123,7 @@
 .socialLink {
   display: inline-flex;
   color: var(--black);
-  transition: opacity 0.2s ease;
+  transition: opacity 150ms ease-out;
 
   @media (hover: hover) {
     &:hover {

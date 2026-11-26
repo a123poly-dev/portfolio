@@ -1,6 +1,5 @@
 import { useState } from "react"
 import cn from "classnames"
-import { useScrollReveal } from "../../hooks/useScrollReveal"
 import { WorkCard } from "../WorkCard/WorkCard"
 import styles from "./WorksGrid.module.scss"
 import { projects, WORK_CATEGORIES, type TWorkCategory } from "./works-data"
@@ -18,7 +17,6 @@ const FILTERS: TFilter[] = (["All", ...WORK_CATEGORIES] as TFilter[]).filter(
 )
 
 export function WorksGrid() {
-  const ref = useScrollReveal<HTMLDivElement>()
   const [active, setActive] = useState<TFilter>("All")
 
   const visible =
@@ -44,7 +42,8 @@ export function WorksGrid() {
           ))}
         </div>
 
-        <div ref={ref} className={`${styles.grid} scroll-reveal`}>
+        {/* Each card reveals itself; revealing the grid too doubled the rise */}
+        <div className={styles.grid}>
           {visible.map((project) => (
             <div
               key={project.id}

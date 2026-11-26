@@ -50,9 +50,9 @@
   white-space: nowrap;
   cursor: pointer;
   transition:
-    background-color 0.2s ease,
-    border-color 0.2s ease,
-    color 0.2s ease;
+    background-color 150ms ease-out,
+    border-color 150ms ease-out,
+    color 150ms ease-out;
 
   // Taps show the active state, so skip the grey iOS flash
   -webkit-tap-highlight-color: transparent;

@@ -13,9 +13,14 @@
     height: 2px;
     background-color: var(--header-button-color);
     border-radius: 1px;
-    transition:
-      transform 0.3s ease,
-      opacity 0.3s ease;
+    transition: opacity 0.3s ease-out;
+
+    // The bars rotate into an X only without the reduced-motion preference
+    @media (prefers-reduced-motion: no-preference) {
+      transition:
+        transform 0.3s ease-out,
+        opacity 0.3s ease-out;
+    }
   }
 }
 
