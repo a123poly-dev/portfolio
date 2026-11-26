@@ -10,11 +10,11 @@ import {
   JudgementCompare,
   Mark,
   MarkerText,
+  ThreeWays,
 } from "../../components/case/synthux";
 import { SynthuxCasePage } from "./SynthuxCasePage";
 import caseStyles from "../../components/case/synthux/Synthux.module.scss";
 import planImg from "../assets/synthux/case-3/plan-round-7.webp";
-import threeWaysImg from "../assets/synthux/case-3/three-ways.webp";
 import reportAiImg from "../assets/synthux/case-3/report-ai.webp";
 import reportMineImg from "../assets/synthux/case-3/report-mine.webp";
 
@@ -206,13 +206,7 @@ export const SynthuxAiProcessPage = () => (
           and smaller models being weak at open design work.
         </p>
       </CaseText>
-      <CaseFigure
-        src={threeWaysImg}
-        alt="Three ways of working in 6 days: Days 15 to 17, one model did everything, 23 PRs; Day 18, rule v0.1, workers did everything, 0 PRs and 2 of 6 components approved; Day 20, rule v0.4, work split by kind, one step then I approve, 10 PRs merged Days 20 to 32"
-        width={2880}
-        height={1600}
-        caption="Three ways of working, Days 15 to 20."
-      />
+      <ThreeWays />
     </CaseSection>
 
     <CaseSection

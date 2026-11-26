@@ -1,0 +1,272 @@
+// Three ways of working: dark, as in the Figma visual 3.3. Fluid: three columns
+// when the block is wide enough, one column below that.
+
+.root {
+  --tw-page: #121211;
+  --tw-surface: #1b1b1a;
+  --tw-border: #30322f;
+  --tw-text: #e5e6e3;
+  --tw-muted: #93948f;
+  --tw-warn: #d08a46;
+  --tw-green: #89ba50;
+  --tw-pad: clamp(20px, 4vw, 56px);
+
+  position: relative;
+  container-type: inline-size;
+  margin: var(--sx-space-block, 32px) 0 0;
+  padding: var(--tw-pad);
+  border-radius: var(--sx-radius);
+  background-color: var(--tw-page);
+  background-image: radial-gradient(circle, rgb(229 230 227 / 10%) 1px, transparent 1.2px);
+  background-size: 24px 24px;
+  color: var(--tw-text);
+  font-family: "Geist", ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-right: 48px;
+}
+
+.title {
+  margin: 0;
+  font-size: 24px;
+  line-height: 30px;
+  font-weight: 500;
+  text-wrap: balance;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  padding: 7px 11px;
+  border-radius: 8px;
+  background: var(--tw-surface);
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 500;
+  color: var(--tw-muted);
+}
+
+// Stages
+
+.stages {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  margin: 48px 0 0;
+  padding: 0;
+  list-style: none;
+
+  @container (min-width: 880px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.stageItem {
+  position: relative;
+  display: flex;
+  min-width: 0;
+}
+
+.arrow {
+  position: absolute;
+  top: -21px;
+  left: 50%;
+  width: 28px;
+  height: 2px;
+  margin-left: -14px;
+  background: rgb(229 230 227 / 30%);
+  rotate: 90deg;
+
+  @container (min-width: 880px) {
+    top: 50%;
+    left: -34px;
+    margin-left: 0;
+    rotate: none;
+  }
+}
+
+.stage {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 18px;
+  padding: 28px;
+  border-radius: 16px;
+  background: var(--tw-surface);
+}
+
+.stageHead {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.kicker {
+  font-family: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--tw-text);
+
+  [data-tone="warn"] & {
+    color: var(--tw-warn);
+  }
+
+  [data-tone="good"] & {
+    color: var(--tw-green);
+  }
+}
+
+.stageTitle {
+  margin: 0;
+  font-size: 18px;
+  line-height: 23px;
+  font-weight: 500;
+  color: var(--tw-text);
+}
+
+.metric {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 0;
+}
+
+.value {
+  font-family: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 24px;
+  line-height: 31px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: var(--tw-text);
+
+  [data-tone="warn"] & {
+    color: var(--tw-warn);
+  }
+
+  [data-tone="good"] & {
+    color: var(--tw-green);
+  }
+}
+
+.valueBig {
+  font-size: 28px;
+  line-height: 36px;
+}
+
+.metricText {
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--tw-muted);
+}
+
+.note {
+  margin: 0;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--tw-text);
+}
+
+// Replay
+
+.control {
+  position: absolute;
+  top: var(--tw-pad);
+  right: var(--tw-pad);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--tw-border);
+  border-radius: 8px;
+  background: var(--tw-surface);
+  color: var(--tw-text);
+  cursor: pointer;
+
+  &:hover {
+    background-image: linear-gradient(rgb(229 230 227 / 8%), rgb(229 230 227 / 8%));
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--tw-green);
+    outline-offset: 2px;
+  }
+}
+
+// Motion: plays once in view, in the Figma order. Stages rise 16px and fade,
+// their lines fade, the arrows grow from the left.
+
+.anim {
+  animation-delay: var(--tw-delay, 0s);
+  animation-fill-mode: both;
+  animation-play-state: paused;
+}
+
+.playing .anim {
+  animation-play-state: running;
+}
+
+.stage.anim {
+  animation-name: tw-rise;
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0, 0, 0.58, 1);
+}
+
+.fade.anim {
+  animation-name: tw-fade;
+  animation-duration: 0.35s;
+  animation-timing-function: cubic-bezier(0, 0, 0.58, 1);
+}
+
+.arrow.anim {
+  animation-name: tw-grow;
+  animation-duration: 0.4s;
+  animation-timing-function: cubic-bezier(0, 0, 0.58, 1);
+  transform-origin: left center;
+}
+
+.still .anim {
+  animation: none;
+}
+
+@keyframes tw-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  80% {
+    opacity: 1;
+  }
+}
+
+@keyframes tw-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes tw-grow {
+  from {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+
+  25% {
+    opacity: 1;
+  }
+}
