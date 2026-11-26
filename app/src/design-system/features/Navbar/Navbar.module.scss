@@ -1,9 +1,10 @@
 @use "../../../styles/variables" as *;
+@use "../../../styles/glass";
 
-// Glass pill nav, Figma 272:67447: white at 64% over a blur, 16px from the top.
-// Figma's GLASS effect has refraction that CSS can't do, so a frosted blur, a
-// little extra saturation and a soft top highlight stand in for it.
+// Glass pill nav, Figma 272:67447, 16px from the top. The liquid glass layers
+// come from styles/glass.scss.
 .menu {
+  @include glass.surface;
   position: fixed;
   top: 16px;
   right: 0;
@@ -12,15 +13,14 @@
   width: min(var(--container-max-width), calc(100% - 80px));
   margin: 0 auto;
   border-radius: 9999px;
-  background-color: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  box-shadow: var(--glass-shadow);
   display: flex;
   flex-direction: column;
+  @include glass.layers;
 }
 
 .container {
+  position: relative;
+  z-index: 1;
   padding: 12px 24px;
 }
 
@@ -96,6 +96,8 @@
   }
 
   .mobileMenu {
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
