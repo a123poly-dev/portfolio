@@ -1,5 +1,9 @@
-// Palette (portfolio type and colour audit, 26.11.2026). One set, light only.
+// Palette (portfolio type and colour audit, 26.11.2026), light and dark.
+// The theme is set on <html data-theme="light|dark"> (see index.html and
+// features/ThemeToggle). Pastel blob fills keep dark text in both themes.
 :root {
+  color-scheme: light;
+
   --ink: #161718;
   --text-secondary: #5e6064;
   --text-tertiary: #9c9da1;
@@ -7,8 +11,12 @@
   --line: #e5e5e9;
   --page: #fafafa;
   --surface: #ffffff;
+  --surface-2: #f3f2f7;
   --overlay: rgb(22 23 24 / 64%);
   --critical: #cf2d40;
+
+  // Text on the pastel blob fills (#eadcff / #81fdb8): always dark
+  --on-pastel: #161718;
 
   // Roles built on the palette
   --black: var(--ink);
@@ -17,8 +25,27 @@
   --text-color: var(--text-secondary);
   --header-button-color: var(--text-secondary);
   --header-button-color-hover: var(--ink);
-  // Glass tint, used by styles/glass.scss (nav and work card panel)
-  --glass-bg: rgb(255 255 255 / 64%);
+  // Glass tints, used by styles/glass.scss
+  --glass-bg: rgb(255 255 255 / 64%); // work card panel
+  --glass-nav-bg: rgb(255 255 255 / 32%); // nav
   --footer-bg-color: var(--page);
   --footer-color: var(--ink);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --ink: #f2f2f3;
+  --text-secondary: #a4a6ab;
+  --text-tertiary: #75777c;
+  --accent: #a97bff;
+  --line: #2a2b2e;
+  --page: #0f1011;
+  --surface: #18191b;
+  --surface-2: #1f2023;
+  --overlay: rgb(15 16 17 / 64%);
+  --critical: #ff5a6e;
+
+  --glass-bg: rgb(22 23 24 / 64%);
+  --glass-nav-bg: rgb(22 23 24 / 40%);
 }

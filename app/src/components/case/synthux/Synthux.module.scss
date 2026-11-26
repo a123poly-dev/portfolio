@@ -32,7 +32,7 @@
   --sx-muted: var(--text-secondary);
   --sx-line: var(--line);
   --sx-surface: var(--surface);
-  --sx-surface-2: #f3f2f7;
+  --sx-surface-2: var(--surface-2);
   --sx-accent: var(--accent);
 
   color: var(--sx-text);
@@ -220,7 +220,11 @@
 .coverPlain {
   aspect-ratio: 16 / 9;
   border-radius: var(--sx-radius);
-  background: linear-gradient(135deg, #f3f6ff, #f4f1ff);
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--surface-2), #3b6bff 4%),
+    color-mix(in srgb, var(--surface-2), #9453ff 4%)
+  );
   border: 1px solid var(--sx-line);
 }
 
@@ -402,7 +406,7 @@
   border-radius: 999px;
   font-size: var(--sx-fs-12);
   line-height: var(--sx-lh-12);
-  background: rgb(255 255 255 / 90%);
+  background: color-mix(in srgb, var(--surface) 90%, transparent);
   border: 1px solid var(--sx-line);
   color: var(--sx-text);
   pointer-events: none;

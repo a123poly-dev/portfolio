@@ -10,6 +10,11 @@
   padding: 8px 16px;
   border-radius: 40px;
   text-decoration: none;
+
+  // The blob fill is pastel in both themes, so the label turns dark on it
+  &[data-filled] {
+    color: var(--on-pastel);
+  }
 }
 
 // Text with an optional 16px icon after it

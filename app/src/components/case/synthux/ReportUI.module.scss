@@ -672,7 +672,7 @@ $page: var(--r-page);
 .sevCritical {
   @extend %bar;
 
-  background: var(--critical);
+  background: #cf2d40; // mockup keeps its light-theme red (= light --critical)
 }
 
 .sevMajor {

@@ -1,0 +1,22 @@
+// A light island inside the dark theme: product mockups and white demo cards
+// keep their light colours. Re-declares the palette and the SynthUX aliases
+// (custom properties resolve where they are declared, so both are needed).
+@mixin light-island {
+  color-scheme: light;
+  --ink: #161718;
+  --text-secondary: #5e6064;
+  --text-tertiary: #9c9da1;
+  --accent: #9453ff;
+  --line: #e5e5e9;
+  --page: #fafafa;
+  --surface: #ffffff;
+  --surface-2: #f3f2f7;
+  --critical: #cf2d40;
+  --sx-text: #161718;
+  --sx-muted: #5e6064;
+  --sx-line: #e5e5e9;
+  --sx-surface: #ffffff;
+  --sx-surface-2: #f3f2f7;
+  --sx-accent: #9453ff;
+  color: #161718;
+}

@@ -5,7 +5,7 @@
 // come from styles/glass.scss.
 .menu {
   // Clearer than the card panels (user asked for 32% on the nav)
-  --glass-bg: rgb(255 255 255 / 32%);
+  --glass-bg: var(--glass-nav-bg);
   @include glass.surface;
   position: fixed;
   top: 16px;
@@ -35,10 +35,18 @@
 .logo {
   display: block;
   border-radius: 50%;
+  color: var(--ink);
 
-  img {
+  svg {
     display: block;
   }
+}
+
+// Theme switch (and the burger on mobile) on the right
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
 .navList {
@@ -71,7 +79,7 @@
 
   @media (hover: hover) {
     &:hover {
-      color: var(--header-button-color-hover);
+      color: var(--on-pastel);
       background-color: #81fdb8;
     }
   }

@@ -10,7 +10,8 @@ import { BurgerButton } from "@design-system/features/BurgerButton"
 import styles from "./Navbar.module.scss"
 import { MobileMenu } from "./MobileMenu"
 import { CvMorphIcon } from "./CvMorphIcon"
-import logo from "./assets/logo-mark.svg"
+import { LogoMark } from "./LogoMark"
+import { ThemeToggle } from "@design-system/features/ThemeToggle"
 
 // How long the CV icon stays a check before turning back into an arrow
 const CV_CHECK_MS = 2000
@@ -60,7 +61,7 @@ export const Navbar = ({ isMainPage = false }: TNavbarProps) => {
       <div className={styles.container}>
         <div className={styles.wrapper}>
           <a href={ROOT_PATH} className={styles.logo}>
-            <img src={logo} width={24} height={24} alt="Polina's Portfolio" />
+            <LogoMark />
           </a>
 
           {/* Desktop nav — hidden on mobile */}
@@ -86,12 +87,16 @@ export const Navbar = ({ isMainPage = false }: TNavbarProps) => {
             </li>
           </ul>
 
-          {/* Burger — visible on mobile only */}
-          <div className={styles.burgerWrap}>
-            <BurgerButton
-              isOpen={isOpen}
-              onClick={() => setIsOpen((prev) => !prev)}
-            />
+          <div className={styles.actions}>
+            <ThemeToggle />
+
+            {/* Burger — visible on mobile only */}
+            <div className={styles.burgerWrap}>
+              <BurgerButton
+                isOpen={isOpen}
+                onClick={() => setIsOpen((prev) => !prev)}
+              />
+            </div>
           </div>
         </div>
       </div>

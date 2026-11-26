@@ -16,7 +16,7 @@
   --filter-text: var(--ink);
   --filter-border: var(--line);
   --filter-active-bg: var(--ink);
-  --filter-active-text: #fff;
+  --filter-active-text: var(--page);
   --filter-count-bg: rgba(159, 152, 179, 0.1);
 
   display: flex;
@@ -75,7 +75,7 @@
 
 // On the light tint the label stays dark
 .filter[data-filled]:not(.filterActive) {
-  color: var(--ink);
+  color: var(--on-pastel);
 }
 
 .count {

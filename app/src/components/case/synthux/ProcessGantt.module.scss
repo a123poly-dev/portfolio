@@ -1,3 +1,4 @@
+@use "../../../styles/theme";
 // Gantt timeline, from Figma 249:63483. Type: 12 and 14 px only.
 
 $days: 35;
@@ -5,6 +6,7 @@ $line: #f3f3f4;
 $line-strong: #e8e8e8;
 
 .card {
+  @include theme.light-island;
   --label-w: clamp(220px, 40%, 448px);
 
   margin: 0;

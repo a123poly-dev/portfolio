@@ -2,6 +2,17 @@
 <html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
+    <!-- Theme before first paint: the saved choice, else the system setting -->
+    <script>
+      (function () {
+        var t = null
+        try { t = localStorage.getItem("theme") } catch (e) {}
+        if (t !== "light" && t !== "dark") {
+          t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
+        }
+        document.documentElement.dataset.theme = t
+      })()
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Polina's Portfolio</title>
     <meta content="Polina's Portfolio" property="og:title" />

@@ -79,7 +79,8 @@ import { Heading, Navbar } from "@design-system"
 - **common/ButtonLink** — pill-shaped ссылка с hover-эффектом, props: `href`, `children`, `isExternal`
 - **features/Header** — hero section with title, avatar, subtitle
 - **features/Footer** — copyright footer
-- **features/Navbar** — fixed navbar with mobile burger menu, `isMainPage` prop toggles full/minimal links
+- **features/Navbar** — fixed glass pill navbar with mobile burger menu, `isMainPage` prop toggles full/minimal links
+- **features/ThemeToggle** — light/dark switch (moon/sun) used in the navbar
 - **features/BurgerButton** — кнопка-бургер с анимацией в X, props: `isOpen`, `onClick`
 - **features/CaseImage** — `<figure>` с изображением и опциональной подписью (`caption`)
 
@@ -90,7 +91,7 @@ All stories use `tags: ["autodocs"]` for auto-generated Docs pages with code sni
 ## Styling
 
 - **SCSS Modules**: `*.module.scss` with `@use "../../../styles/variables" as *` for breakpoints
-- **Colours**: one light palette in `colors.scss` (`--ink`, `--text-secondary`, `--text-tertiary`, `--accent`, `--line`, `--page`, `--surface`, `--overlay`, `--critical`); no dark theme
+- **Colours**: one palette in `colors.scss` (`--ink`, `--text-secondary`, `--text-tertiary`, `--accent`, `--line`, `--page`, `--surface`, `--surface-2`, `--overlay`, `--critical`) with a light set on `:root` and a dark set on `:root[data-theme="dark"]`. The theme is set before paint by a script in `index.html` (saved choice in localStorage `theme`, else system setting) and switched by `features/ThemeToggle` in the nav. Text on pastel blob fills uses `--on-pastel`. SynthUX product mockups keep fixed colours
 - **Type**: shared scale as SCSS mixins in `styles/typography.scss` (display, h1–h4, lead, body, body-bold, small, label); use them instead of raw sizes
 - **Breakpoints**: `$breakpoint-md: 991px`, `$breakpoint-sm: 767px`, `$breakpoint-xs: 479px`
 - **Fonts**: Inter Tight everywhere (headings and body, from Google Fonts); Geist and Geist Mono only in the home banner, filter tabs and SynthUX product mockups
