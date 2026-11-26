@@ -453,3 +453,31 @@
     opacity: 0;
   }
 }
+
+// Phones: the preview scrolls sideways, so the right edge fades while more is hidden
+.previewFrame {
+  position: relative;
+  min-width: 0;
+
+  &::after {
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    bottom: 1px;
+    width: 40px;
+    border-radius: 0 15px 15px 0;
+    background: linear-gradient(to right, rgb(241 242 239 / 0%), #f1f2ef);
+    content: "";
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 150ms ease-out;
+  }
+}
+
+.previewFrameDark::after {
+  background: linear-gradient(to right, rgb(18 18 17 / 0%), #121211);
+}
+
+.moreRight::after {
+  opacity: 1;
+}
