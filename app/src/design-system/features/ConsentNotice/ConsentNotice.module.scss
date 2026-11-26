@@ -256,7 +256,7 @@
   }
 }
 
-// Phone: full width, Accept on its own row above Reject and Settings
+// Phone: full width, buttons stacked in one column
 @media screen and (max-width: $breakpoint-xs) {
   .notice {
     left: 16px;
@@ -267,12 +267,16 @@
     padding: 16px 16px 12px;
   }
 
+  // One column: Accept all, Settings, Reject all
   .actions {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
   }
 
   .accept {
-    grid-column: 1 / -1;
-    grid-row: 1;
+    order: -2;
+  }
+
+  .settings {
+    order: -1;
   }
 }
