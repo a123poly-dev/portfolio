@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import type { CSSProperties, ReactNode } from "react";
 import cn from "classnames";
 import { usePrefersReducedMotion } from "./usePrefersReducedMotion";
+import { useSiteDark } from "./useSiteDark";
 import styles from "./DsBento.module.scss";
 
 // Case 2 cover: the two-column DS panel from the portfolio Figma (285:21848),
@@ -496,7 +497,10 @@ export const DsBento = () => {
   const frameRef = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(0);
   const [play, setPlay] = useState(false);
-  const [theme, setTheme] = useState<TTheme>("light");
+  // Starts on the site theme, and follows it when the reader switches it
+  const siteDark = useSiteDark();
+  const [theme, setTheme] = useState<TTheme>(siteDark ? "dark" : "light");
+  useEffect(() => setTheme(siteDark ? "dark" : "light"), [siteDark]);
   const systemDark = useSystemDark();
   const dark = theme === "dark" || (theme === "system" && systemDark);
 

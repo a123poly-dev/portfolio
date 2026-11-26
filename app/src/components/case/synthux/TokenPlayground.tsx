@@ -4,6 +4,7 @@ import cn from "classnames";
 import { Reveal } from "./Reveal";
 import caseStyles from "./Synthux.module.scss";
 import tp from "./TokenPipeline.module.scss";
+import { useSiteDark } from "./useSiteDark";
 import styles from "./TokenPlayground.module.scss";
 
 // Figma "2.4 Token playground (variants)" (87:17102): 4 tokens x Light/Dark.
@@ -167,7 +168,10 @@ export const TokenPlayground = ({ caption }: { caption?: ReactNode }) => {
   const rootRef = useRef<HTMLDivElement>(null);
   const bodyRef = useRef<HTMLDivElement>(null);
   const [token, setToken] = useState<TTokenId>("action");
-  const [theme, setTheme] = useState<TTheme>("light");
+  // Starts on the site theme, and follows it when the reader switches it
+  const siteDark = useSiteDark();
+  const [theme, setTheme] = useState<TTheme>(siteDark ? "dark" : "light");
+  useEffect(() => setTheme(siteDark ? "dark" : "light"), [siteDark]);
   const systemDark = useSystemDark();
   const dark = theme === "dark" || (theme === "system" && systemDark);
   const [layout, setLayout] = useState({ wide: true, scale: 1, height: 0 });

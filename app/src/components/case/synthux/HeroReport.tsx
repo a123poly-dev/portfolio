@@ -12,6 +12,7 @@ import {
   TopBar,
 } from "./reportParts";
 
+import { useSiteDark } from "./useSiteDark";
 import styles from "./ReportUI.module.scss";
 
 // Report hero: the Figma frame "Hero / Report motion" (21:2317), rebuilt in HTML and CSS so it
@@ -408,7 +409,10 @@ export const HeroReport = () => {
   // on the finished report, and Play starts it.
   const [paused, setPaused] = useState(reduced);
   // The product's Dark mode, from the DS "SynthUX - Semantic colors" collection
-  const [dark, setDark] = useState(false);
+  // Starts on the site theme, and follows it when the reader switches it
+  const siteDark = useSiteDark();
+  const [dark, setDark] = useState(siteDark);
+  useEffect(() => setDark(siteDark), [siteDark]);
   useHeroTimeline(screenRef, {
     playing: visible && !paused,
     startAtRest: reduced,

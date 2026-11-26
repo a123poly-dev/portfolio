@@ -129,9 +129,9 @@ export const SynthuxDesignSystemPage = () => (
     <CaseSection label="Problem">
       <CaseFigure
         src={gapImg}
-        alt="Three steps: Report 4.1 had no loading state, the DS Skeleton v0.1 was built for it, and the report's loading state was then built from the Skeleton"
+        alt="Hi-fi found what the design system was missing, and the fix went back into the system. 1, hi-fi: Report 4.1 had no loading state (Day 33, gap found). 2, design system: DS Skeleton v0.1 (Day 33, approved). 3, hi-fi again: loading states built from it (Day 33, shipped in DS 0.4.0)"
         width={2880}
-        height={1696}
+        height={1498}
         caption="Day 33: the hi-fi found a missing loading state, and the fix went into the system first."
       />
     </CaseSection>
