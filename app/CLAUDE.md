@@ -94,7 +94,7 @@ All stories use `tags: ["autodocs"]` for auto-generated Docs pages with code sni
 - **CSS Variables**: defined in `colors.scss`, switched via `data-theme` attribute on `<html>`
 - **Themes**: light (default) and dark, toggled by setting `document.documentElement.dataset.theme`
 - **Breakpoints**: `$breakpoint-md: 991px`, `$breakpoint-sm: 767px`, `$breakpoint-xs: 479px`
-- **Fonts**: ClashDisplay (display headings), DM Sans (body, from Google Fonts)
+- **Fonts**: DM Sans everywhere (headings and body, from Google Fonts); Geist and Geist Mono only in the home banner, filter tabs and SynthUX product mockups
 
 ## Routing
 

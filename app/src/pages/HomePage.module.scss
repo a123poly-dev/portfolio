@@ -1,6 +1,5 @@
-// Home page type: everything in DM Sans except the hero title (see Header).
+// Home page type: everything in DM Sans.
 .home {
-  --font-family-display: var(--font-family);
   --nav-link-letter-spacing: 0;
 
   :is(h1, h2, h3, h4, h5, h6) {
