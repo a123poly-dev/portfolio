@@ -11,8 +11,31 @@
   @include theme.light-island;
   overflow: hidden;
   border-radius: var(--sx-radius);
-  border: 1px solid var(--sx-line);
-  background: #fff;
+  border: 1px solid var(--b-border);
+  background: var(--b-bg);
+  --b-bg: #fff;
+  --b-border: var(--sx-line);
+  --b-ink: #0d0d0c;
+  --b-on-ink: #fff;
+  --b-tab-border: #e0e2db;
+  --b-hover: rgb(34 34 33 / 8%);
+  --b-active-hover: #292a28;
+  --b-page: #f1f2ef;
+  --b-window-line: #cdcdcd;
+}
+
+// Dark theme: the block follows the site, with the SynthUX DS Dark values
+:global(:root[data-theme="dark"]) .stage {
+  color-scheme: dark;
+  --b-bg: #1b1b1a;
+  --b-border: #30322f;
+  --b-ink: #e5e6e3;
+  --b-on-ink: #0d0d0c;
+  --b-tab-border: #30322f;
+  --b-hover: rgb(229 230 227 / 8%);
+  --b-active-hover: #cfd0cc;
+  --b-page: #121211;
+  --b-window-line: #30322f;
 }
 
 .tabs {
@@ -30,9 +53,9 @@
   font-size: var(--sx-fs-14);
   line-height: var(--sx-lh-14);
   font-weight: 600;
-  color: #0d0d0c;
+  color: var(--b-ink);
   background: transparent;
-  border: 1px solid #e0e2db;
+  border: 1px solid var(--b-tab-border);
   border-radius: 8px;
   cursor: pointer;
   transition:
@@ -40,21 +63,21 @@
     color 0.15s ease;
 
   &:hover {
-    background: rgb(34 34 33 / 8%);
+    background: var(--b-hover);
   }
 
   &[aria-pressed="true"] {
-    color: #fff;
-    background: #0d0d0c;
-    border-color: #0d0d0c;
+    color: var(--b-on-ink);
+    background: var(--b-ink);
+    border-color: var(--b-ink);
 
     &:hover {
-      background: #292a28;
+      background: var(--b-active-hover);
     }
   }
 
   &:focus-visible {
-    outline: 2px solid #0d0d0c;
+    outline: 2px solid var(--b-ink);
     outline-offset: 2px;
   }
 }
@@ -77,9 +100,9 @@
   left: 50%;
   overflow: hidden;
   transform: translateX(-50%);
-  background: #f1f2ef;
+  background: var(--b-page);
   border-radius: calc(12px * var(--scale));
-  box-shadow: 0 0 0 1px #cdcdcd;
+  box-shadow: 0 0 0 1px var(--b-window-line);
   transition: width 0.5s ease-in-out;
 }
 

@@ -2,6 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import type { CSSProperties, ReactNode } from "react";
 import { Reveal } from "./Reveal";
 import { ReportScreen } from "./ReportScreen";
+import { useSiteDark } from "./useSiteDark";
+
+import ui from "./ReportUI.module.scss";
 
 import styles from "./BreakpointScrubber.module.scss";
 
@@ -39,6 +42,8 @@ export const BreakpointScrubber = ({
   const stageRef = useRef<HTMLDivElement>(null);
   const [stageW, setStageW] = useState(0);
   const [width, setWidth] = useState(initial ?? items[0].width);
+  // Follows the site theme: in Dark the product shows its DS Dark mode
+  const dark = useSiteDark();
 
   useEffect(() => {
     const el = stageRef.current;
@@ -55,7 +60,10 @@ export const BreakpointScrubber = ({
 
   return (
     <Reveal>
-      <figure data-demo="breakpoints" className={styles.figure}>
+      <figure
+        data-demo="breakpoints"
+        className={`${styles.figure} ${dark ? ui.dark : ""}`}
+      >
         <div ref={stageRef} className={styles.stage}>
           <div className={styles.tabs} role="group" aria-label="Screen width">
             {items.map((item) => (
