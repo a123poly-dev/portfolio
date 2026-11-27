@@ -6,11 +6,11 @@ import styles from "./Synthux.module.scss"
 type TCaseFigureProps = {
   src: string
   alt: string
-  // Pixel size of the export. Keeps the aspect ratio so nothing jumps or crops.
+  /** Pixel size of the export. Keeps the aspect ratio so nothing jumps or crops. */
   width: number
   height: number
   caption?: ReactNode
-  // Load at once (for the cover). Other images load lazily.
+  /** Load at once (for the cover). Other images load lazily. */
   priority?: boolean
 }
 

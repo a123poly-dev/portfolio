@@ -1,5 +1,6 @@
 import cn from "classnames"
 import { Link } from "react-router-dom"
+import { ArrowUpRightIcon } from "@design-system/common/Icons"
 import { useScrollReveal } from "../../hooks/useScrollReveal"
 import type { TProject } from "../WorksGrid/works-data"
 
@@ -65,15 +66,7 @@ export const WorkCard = ({ project, position }: TWorkCardProps) => {
         </div>
         <h3 className={styles.title}>{project.title}</h3>
         <span className={styles.arrow} aria-hidden="true">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path
-              d="M7 17L17 7M17 15V7H9"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+          <ArrowUpRightIcon />
         </span>
       </div>
     </div>

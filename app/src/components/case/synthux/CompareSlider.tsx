@@ -15,7 +15,7 @@ type TImage = {
 type TCompareSliderProps = {
   before: TImage
   after: TImage
-  // Pixel size of the exports. Both images must have the same size.
+  /** Pixel size of the exports. Both images must have the same size. */
   width: number
   height: number
   caption?: ReactNode

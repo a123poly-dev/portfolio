@@ -1,1 +1,1 @@
-export { ThemeToggle } from "./ThemeToggle"
+export { ThemeToggle, MoonIcon, SunIcon } from "./ThemeToggle"

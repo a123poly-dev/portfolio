@@ -8,7 +8,7 @@ const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3)
 
 type TCountUpProps = {
   value: number
-  // Matches the Figma hero motion: 1.8 s, cubic-out
+  /** Matches the Figma hero motion: 1.8 s, cubic-out */
   duration?: number
   suffix?: string
 }

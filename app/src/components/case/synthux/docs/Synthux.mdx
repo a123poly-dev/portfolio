@@ -1,0 +1,68 @@
+import { Meta, Title, Subtitle, Canvas, ArgTypes } from "@storybook/addon-docs/blocks"
+import * as SynthuxStories from "./Synthux.stories"
+import {
+  CaseFigure,
+  CaseIntro,
+  CaseNext,
+  CompareSlider,
+  DecisionBlock,
+  StatGrid,
+} from ".."
+
+<Meta of={SynthuxStories} name="Docs" />
+
+<Title>Case / SynthUX</Title>
+
+<Subtitle>Building blocks of the three SynthUX case pages</Subtitle>
+
+Every SynthUX case page is built from the same parts, so the three cases read alike: an intro, sections of text with figures, decisions written in one fixed format, real numbers that count up, and links to the other cases at the end.
+
+The parts use the case tokens, so wrap them in `SynthuxTokens` (the page layout `SynthuxLayout` does this already). `CaseNext` uses router links, so it needs a router. The stories below already have both. Use the **Theme** switch in the toolbar to check dark mode.
+
+## Intro
+
+The top of a case: an eyebrow ("SynthUX · Case 1 of 3"), the title, the one line from the brief, and meta items such as role and team. An optional `cover` shows an image or motion under the text.
+
+<Canvas of={SynthuxStories.Intro} />
+
+<ArgTypes of={CaseIntro} />
+
+## Figure
+
+One screen or export with an optional caption. `width` and `height` are the export's pixel size, so the space is kept while the image loads and nothing jumps. Images load lazily unless `priority` is set (only for the cover).
+
+<Canvas of={SynthuxStories.Figure} />
+
+<ArgTypes of={CaseFigure} />
+
+## Compare
+
+Two screens of the same size on top of each other, with a handle to drag between them, for example wireframe and hi-fi. It also works by tap and with the arrow keys. On first view the handle sweeps once to show it moves, unless the visitor has reduced motion on.
+
+<Canvas of={SynthuxStories.Compare} />
+
+<ArgTypes of={CompareSlider} />
+
+## Decision
+
+Every decision in a case is written the same way: the options, the choice, why, and what it cost.
+
+<Canvas of={SynthuxStories.Decision} />
+
+<ArgTypes of={DecisionBlock} />
+
+## Counters
+
+Real counts only. Each tile counts up from 0 when it scrolls into view (1.8 s), shows the final number at once with reduced motion, and screen readers get the final number.
+
+<Canvas of={SynthuxStories.Counters} />
+
+<ArgTypes of={StatGrid} />
+
+## Next cases
+
+Links to the other two cases at the end of a case page.
+
+<Canvas of={SynthuxStories.NextCases} />
+
+<ArgTypes of={CaseNext} />

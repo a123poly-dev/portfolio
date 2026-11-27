@@ -2,9 +2,25 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: opacity 0.2s ease;
+  // 40 × 40 hover area; place them 8 px apart
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  // Hero sets --hero-text to the display title colour; elsewhere it is the ink
+  color: var(--hero-text, var(--ink));
 
-  &:hover {
-    opacity: 0.6;
+  &[data-filled] {
+    color: var(--on-pastel);
+  }
+
+  svg {
+    display: block;
+    width: 20px;
+    height: 20px;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
   }
 }
