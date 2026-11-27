@@ -43,6 +43,14 @@ export const PrivacyPage = () => (
               Text you type is masked. Off until you agree.
             </td>
           </tr>
+          <tr>
+            <td>Performance</td>
+            <td>Vercel Speed Insights</td>
+            <td>
+              How fast each page loads on your device. No cookies and nothing
+              that identifies you, so it is always on.
+            </td>
+          </tr>
         </tbody>
       </table>
 
