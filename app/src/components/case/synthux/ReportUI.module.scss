@@ -36,7 +36,8 @@ $page: var(--r-page);
 
 // DS Dark mode values
 .dark .frame,
-.dark .screen {
+.dark .screen,
+.dark .product {
   --r-page: #121211;
   --r-ink: #e5e6e3;
   --r-on-ink: #0d0d0c;
