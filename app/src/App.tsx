@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom"
+import { SpeedInsights } from "@vercel/speed-insights/react"
 import "./styles/global.scss"
 import { HomePage } from "./pages/HomePage"
 import { PulkovoPage } from "./pages/PulkovoPage"
@@ -34,10 +35,19 @@ const Analytics = () => {
   return null
 }
 
+// Vercel Speed Insights: page-load timings (Core Web Vitals) per route.
+// No cookies and nothing that identifies a visitor, so it runs without consent;
+// it is listed on the /privacy page. Reports only from Vercel deployments.
+const Performance = () => {
+  const { pathname } = useLocation()
+  return <SpeedInsights route={pathname} />
+}
+
 const App = () => {
   return (
     <BrowserRouter>
       <Analytics />
+      <Performance />
       <ConsentNotice />
       <Routes>
         <Route path={ROOT_PATH} element={<HomePage />} />
