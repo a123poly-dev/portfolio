@@ -1,3 +1,6 @@
 export { Icon } from "./Icon"
 export type { TIconName } from "./Icon"
 export type { TIconSize } from "./Icon"
+export { SOCIAL_ICONS } from "./SocialIcons"
+export type { TSocialIconName } from "./SocialIcons"
+export { ArrowUpRightIcon } from "./ArrowUpRightIcon"

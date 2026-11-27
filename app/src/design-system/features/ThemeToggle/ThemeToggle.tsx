@@ -15,7 +15,7 @@ const applyTheme = (theme: TTheme) => {
 }
 
 // Moon from Figma (290:54981)
-const Moon = () => (
+export const MoonIcon = () => (
   <svg
     width="16"
     height="16"
@@ -34,7 +34,7 @@ const Moon = () => (
 )
 
 // Sun drawn to match the moon: same 1.5 px round stroke on a 16 px grid
-const Sun = () => (
+export const SunIcon = () => (
   <svg
     width="16"
     height="16"
@@ -100,10 +100,10 @@ export const ThemeToggle = ({ className }: { className?: string }) => {
       aria-pressed={isDark}
     >
       <span className={styles.icon} data-shown={!isDark || undefined}>
-        <Moon />
+        <MoonIcon />
       </span>
       <span className={styles.icon} data-shown={isDark || undefined}>
-        <Sun />
+        <SunIcon />
       </span>
     </button>
   )

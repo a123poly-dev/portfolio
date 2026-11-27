@@ -1,15 +1,10 @@
 import { Mark, MarkerText } from "../../../components/case/synthux/MarkerText"
 import avatar from "./assets/avatar-hero.webp"
-import { HERO_SOCIAL_ICONS, HERO_SOCIALS } from "./socialIcons"
+import { HERO_SOCIALS } from "./socialIcons"
 import { HelsinkiTime } from "./HelsinkiTime"
 
-import type { CSSProperties, ReactNode } from "react"
-import {
-  BlobLayer,
-  BlobRoll,
-  blobHostClass,
-  useBlobHover,
-} from "@design-system/common/BlobHover"
+import type { CSSProperties } from "react"
+import { IconButton } from "@design-system/common/IconButton"
 
 import styles from "./Header.module.scss"
 
@@ -22,32 +17,6 @@ const enter = (stagger: number, delayMs = 0) => ({
   className: "animate-enter",
   style: { "--stagger": stagger, "--delay": `${delayMs}ms` } as CSSProperties,
 })
-
-// Icon link with the same blob-fill hover as the nav
-const SocialLink = ({
-  href,
-  label,
-  children,
-}: {
-  href: string
-  label: string
-  children: ReactNode
-}) => {
-  const ref = useBlobHover<HTMLAnchorElement>()
-  return (
-    <a
-      ref={ref}
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label={label}
-      className={`${blobHostClass} ${styles.socialLink}`}
-    >
-      <BlobLayer />
-      <BlobRoll>{children}</BlobRoll>
-    </a>
-  )
-}
 
 export const Header = () => (
   <section className={styles.header}>
@@ -96,18 +65,14 @@ export const Header = () => (
           data-place="hero"
           style={enter(3, 240).style}
         >
-          {HERO_SOCIALS.map((social) => {
-            const SocialIcon = HERO_SOCIAL_ICONS[social.icon]
-            return (
-              <SocialLink
-                key={social.label}
-                href={social.href}
-                label={social.label}
-              >
-                <SocialIcon />
-              </SocialLink>
-            )
-          })}
+          {HERO_SOCIALS.map((social) => (
+            <IconButton
+              key={social.label}
+              icon={social.icon}
+              href={social.href}
+              label={social.label}
+            />
+          ))}
         </div>
 
         <div
